@@ -1,16 +1,22 @@
 import src.partners
 
 class Person:
-    def __init__(self, first, last, robotics, next_steps, t_leader, car):
+    def __init__(self, first, last, phone, email, prev_member, applied_t_leader, prev_t_leader, car_passengers, schedule, robotics, special_needs, preassigned_group=0):
         self.first = first
         self.last = last
-        self.robotics = 1 if robotics == "Yes" else 0
-        self.next_steps = 1 if next_steps == "Yes" else 0
-        self.t_leader = 1 if t_leader == "Yes" else 0
-        self.car = 0 if car == "" else (4 if car == "4 or more" else car)  # "" means 0, "4 or more" means 4
-        self.onTeam = 0 # Do they have a team yet?
+        self.phone = phone
+        self.email = email
+        self.prev_member = prev_member
+        self.applied_t_leader = applied_t_leader # if they applied to be a team leader
+        self.prev_t_leader = prev_t_leader
+        self.car_passengers = car_passengers # 0 if no car
+        self.schedule = schedule
+        self.robotics = robotics
+        self.special_needs = special_needs
+        self.groupNumber = preassigned_group # Do they have a team yet and what is it?
         self.partner_app = 0 # Did they apply with partners? (set in addPartners method) This person is the one that signed the partners up.
         self.partners = 0 # Partner object
+        self.t_leader = 0 # assigned to be a team leader
 
     def addPartners(self, partner1, partner2, partner3):
         self.partner_app = 1
