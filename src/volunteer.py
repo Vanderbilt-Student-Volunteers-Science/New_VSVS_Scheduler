@@ -1,4 +1,5 @@
 import src.partners
+import src.convertSchedule
 
 
 class Volunteer:
@@ -11,7 +12,7 @@ class Volunteer:
         self.applied_t_leader = applied_t_leader # if they applied to be a team leader
         self.prev_t_leader = prev_t_leader
         self.car_passengers = car_passengers # 0 if no car
-        self.schedule = schedule
+        self.schedule = src.convertSchedule.convert_schedule_array(schedule)
         self.robotics = robotics
         self.special_needs = special_needs
         self.group_number = preassigned_group # Do they have a team yet and what is it? TODO: ADD ASSIGN -1 IF NO SCHEDULE IMPORTED

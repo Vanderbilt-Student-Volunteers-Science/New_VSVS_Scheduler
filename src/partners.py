@@ -1,3 +1,6 @@
+import src.convertSchedule
+
+
 class Partners: # object used as a variable for people that filled out the partner application for them and their partners
     def __init__(self, partner1, partner2, partner3, partner_schedule):
 
@@ -16,6 +19,4 @@ class Partners: # object used as a variable for people that filled out the partn
         else:
             self.partner3 = 0
 
-        self.partner_schedule = partner_schedule
-
-        # add partner availability
+        self.partner_schedule = src.convertSchedule.convert_schedule_array(partner_schedule)

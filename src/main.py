@@ -2,12 +2,11 @@ import csv
 import src.volunteer
 import src.partners
 import src.classroom
-import src.militaryTime
 
 # make a way to detect if name submitted for partner application is in database or not (current application already does this)
 
-TEAM_MAX_MEMBERS = 4
-TEAM_MIN_MEMBERS = 3
+MAX_TEAM_SIZE = 4
+MIN_TEAM_SIZE = 3
 
 def main():
 
@@ -36,7 +35,7 @@ def main():
     with open('../test/classrooms.csv') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
         csv_reader = csv.reader(classrooms_csv, delimiter=',')  # csv_reader will divide classrooms_csv by commas
         for row in csv_reader:
-            classroom_list.append(src.classroom.Classroom(row[3], row[4], row[6], row[9], src.militaryTime.convert_to_military(row[11]), src.militaryTime.convert_to_military(row[12]), row[13]))  # creates Classroom object
+            classroom_list.append(src.classroom.Classroom(row[3], row[4], row[6], row[9], row[11], row[12], row[13]))  # creates Classroom object
 
     # set preassigned volunteers in classroom data before assigning
     for volunteer in volunteer_list:
@@ -51,7 +50,7 @@ def main():
             assign_team(volunteer) # will have to go into partners object and add all partners to same team
 
     for volunteer in volunteer_list:
-        if volunteer.group_number == 0 and volunteer.car_passengers > TEAM_MIN_MEMBERS: # figure this out: keep their group under car capacity or dont allow car unless it is TEAM_MAX_MEMBERS
+        if volunteer.group_number == 0 and volunteer.car_passengers > MIN_TEAM_SIZE: # figure this out: keep their group under car capacity or dont allow car unless it is TEAM_MAX_MEMBERS
             assign_team(volunteer)
 
     for volunteer in volunteer_list:
