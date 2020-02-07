@@ -14,7 +14,7 @@ class Volunteer:
         self.schedule = schedule
         self.robotics = robotics
         self.special_needs = special_needs
-        self.group_number = preassigned_group # Do they have a team yet and what is it?
+        self.group_number = preassigned_group # Do they have a team yet and what is it? TODO: ADD ASSIGN -1 IF NO SCHEDULE IMPORTED
         self.partner_app = 0 # Did they apply with partners? (set in addPartners method) This person is the one that signed the partners up.
         self.partners = 0 # Partner object
         self.t_leader = 0 # assigned to be a team leader
