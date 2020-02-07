@@ -3,10 +3,11 @@ import src.volunteer
 import src.partners
 import src.classroom
 
-# make a way to detect if name submitted for partner application is in database or not (current application already does this)
+# TODO: make sure input school names are uniform ex: Head Magnet/Head Middle Magnet/Head won't work
 
 MAX_TEAM_SIZE = 4
 MIN_TEAM_SIZE = 3
+# SCHOOL TRAVEL TIME CONSTANTS IN classroom.py
 
 def main():
 
@@ -47,7 +48,7 @@ def main():
 
     for volunteer in volunteer_list:
         if volunteer.group_number == 0 and volunteer.partner_app:
-            assign_team(volunteer) # will have to go into partners object and add all partners to same team
+            assign_partners(volunteer) # will have to go into partners object and add all partners to same team
 
     for volunteer in volunteer_list:
         if volunteer.group_number == 0 and volunteer.car_passengers > MIN_TEAM_SIZE: # figure this out: keep their group under car capacity or dont allow car unless it is TEAM_MAX_MEMBERS
