@@ -1,5 +1,6 @@
 # Used in volunteer.py, partners.py, and classroom.py
 
+
 class ConvertSchedule:
 
     # input: 40 entries per day (for 5 weekdays), each index represents 15 min increments; 2 is busy, 1 is available, 0 is blank
@@ -14,7 +15,7 @@ class ConvertSchedule:
                 consecutive_free_time += 15
             output_array[i] = consecutive_free_time
 
-    #  returns first time volunteer needs to be free to perform a lesson, rounded down to a multiple of 15
+    #  returns first time volunteer needs to be free to perform a lesson
     def calculate_free_time_start(class_start_time, school_travel_time):
         class_start_minutes = class_start_time % 100
         if class_start_minutes >= school_travel_time:
@@ -23,7 +24,7 @@ class ConvertSchedule:
             class_start_hours = class_start_time - class_start_minutes
             hours_away = int((school_travel_time - class_start_minutes) / 60)
             minutes_away = (school_travel_time - class_start_minutes) % 60
-            if (minutes_away == 0):
+            if minutes_away == 0:
                 return class_start_hours - (hours_away * 100)
             else:
                 return class_start_hours - ((hours_away + 1) * 100) + (60 - minutes_away)
@@ -39,6 +40,23 @@ class ConvertSchedule:
         else:  # start_hour < end_hour
             return (60 - class_start_minutes) + (.6 * (class_end_hours - class_start_hours - 100)) + class_end_minutes + (2 * school_travel_time)
 
+    def military_to_schedule_array(day_of_week, free_time_start):
+        if day_of_week == "Monday":
+            day = 0
+        elif day_of_week == "Tuesday":
+            day = 1
+        elif day_of_week == "Wednesday":
+            day = 2
+        elif day_of_week == "Thursday":
+            day = 3
+        else:  # day_of_week == "Friday":
+            day = 4
+        hour = int(free_time_start / 100)
+        min = free_time_start % 100
+        return (40 * day) + (4 * (hour - 7)) + int(min / 15)
+
+
+
     def convert_to_military(time):
         time_list = time.split(':', 2)  # split into hours, minutes AM/PM
         time_list2 = time_list[1].split(' ', 2)  # split into minutes, AM/PM
@@ -53,4 +71,5 @@ class ConvertSchedule:
 ConvertSchedule.convert_schedule_array = staticmethod(ConvertSchedule.convert_schedule_array)
 ConvertSchedule.calculate_free_time_start = staticmethod(ConvertSchedule.calculate_free_time_start)
 ConvertSchedule.calculate_free_time_needed = staticmethod(ConvertSchedule.calculate_free_time_needed)
+ConvertSchedule.military_to_schedule_array = staticmethod(ConvertSchedule.military_to_schedule_array)
 ConvertSchedule.convert_to_military = staticmethod(ConvertSchedule.convert_to_military)

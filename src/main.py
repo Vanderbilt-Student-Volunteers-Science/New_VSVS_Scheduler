@@ -41,7 +41,7 @@ def main():
     # set preassigned volunteers in classroom data before assigning
     for volunteer in volunteer_list:
         if volunteer.group_number != 0:
-            classroom_list[volunteer.group_number].add_preassigned_volunteer()
+            classroom_list[volunteer.group_number].add_volunteer()
 
 
     # ASSIGN VOLUNTEERS
@@ -51,12 +51,22 @@ def main():
             assign_partners(volunteer) # will have to go into partners object and add all partners to same team
 
     for volunteer in volunteer_list:
-        if volunteer.group_number == 0 and volunteer.car_passengers > MIN_TEAM_SIZE: # figure this out: keep their group under car capacity or dont allow car unless it is TEAM_MAX_MEMBERS
+        if volunteer.group_number == 0 and volunteer.car_passengers > MIN_TEAM_SIZE: # figure this out: keep their group under car capacity or don't allow car unless it is TEAM_MAX_MEMBERS
             assign_team(volunteer)
 
     for volunteer in volunteer_list:
         if volunteer.group_number == 0 and volunteer.t_leader:
             assign_team(volunteer)
+
+
+    # OUTPUT RESULTS
+
+    with open('../results/assignments.csv') as assignments_csv:
+        csv_writer = csv.writer(assignments_csv, delimiter=',')
+        for volunteer_id in range(1, len(volunteer_list)):
+            csv_writer.writerow([volunteer_id, volunteer_list[volunteer_id].group_number, volunteer_list[volunteer_id].first, volunteer_list[volunteer_id].last, volunteer_list[volunteer_id].email, volunteer_list[volunteer_id].phone])
+
+
 
 
 # runs main

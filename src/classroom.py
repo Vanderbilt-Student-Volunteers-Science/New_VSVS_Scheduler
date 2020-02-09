@@ -16,17 +16,21 @@ class Classroom:
         self.class_end_time = src.convertSchedule.convert_to_military(class_end_time)
         self.day_of_week = day_of_week
         self.volunteers_assigned = 0
+        self.t_leader = 0  # has a team leader?
+        self.driver = 0  # has a driver?
 
-        #  maybe a better way to do this? don't want to put if statements in both convertSchedule methods
-        if self.school == 'Head':
+        #  maybe a better way to do this? don't want to put if statements in both convertSchedule methods TODO: add method combining free_time_start and start_time_schedule_index
+        if self.school == "Head":
             self.free_time_start = src.convertSchedule.calculate_free_time_start(self.class_start_time, HEAD)
             self.volunteer_time_needed = src.convertSchedule.calculate_free_time_needed(self.class_start_time, self.class_end_time, HEAD)
-        elif self.school == 'H.G. Hill':
+        elif self.school == "H.G. Hill":
             self.free_time_start = src.convertSchedule.calculate_free_time_start(self.class_start_time, HILL)
             self.volunteer_time_needed = src.convertSchedule.calculate_free_time_needed(self.class_start_time, self.class_end_time, HILL)
         else:
             self.free_time_start = src.convertSchedule.calculate_free_time_start(self.class_start_time, OTHER)
             self.volunteer_time_needed = src.convertSchedule.calculate_free_time_needed(self.class_start_time, self.class_end_time, OTHER)
 
-    def add_preassigned_volunteer(self):
+        self.start_time_schedule_index = src.convertSchedule.military_to_schedule_array(self.day_of_week, self.free_time_start) # the index in the array of the volunteer schedule that needs to be volunteer_time_needed for a volunteer to be able to visit this classroom
+
+    def add_volunteer(self):
         self.volunteers_assigned += 1
