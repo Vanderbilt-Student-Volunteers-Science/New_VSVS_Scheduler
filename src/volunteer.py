@@ -16,10 +16,17 @@ class Volunteer:
         self.robotics = robotics
         self.special_needs = special_needs
         self.group_number = preassigned_group # Do they have a team yet and what is it? TODO: ADD ASSIGN -1 IF NO SCHEDULE IMPORTED
-        self.partner_app = 0  # Did they apply with partners? (set in addPartners method) This person is the one that signed the partners up.
-        self.partners = 0  # Partner object
+        self.partners = 0  # Number of other partners (NOT including this Volunteer) Volunteer applied with, set in add_partners method. This is only set for the Volunteer that signed the partners up
+        self.partner_details = 0  # Partner object. This is only set for the Volunteer that signed the partners up.
         self.t_leader = 0  # assigned to be a team leader
 
     def add_partners(self, partner1, partner2, partner3, partner_schedule):
-        self.partner_app = 1
-        self.partners = src.partners.Partners(partner1, partner2, partner3, partner_schedule)
+
+        self.partner_details = src.partners.Partners(partner1, partner2, partner3, partner_schedule)
+
+        if self.partner_details.partner[2] == 0:
+            self.partners = 1
+        elif self.partner_details.partner[3] == 0:
+            self.partners = 2
+        else:
+            self.partners = 3

@@ -5,6 +5,8 @@ import src.classroom
 
 # TODO: make sure input school names are uniform ex: Head Magnet/Head Middle Magnet/Head won't work
 
+# A lot of one-based indexing
+
 MAX_TEAM_SIZE = 4
 MIN_TEAM_SIZE = 3
 # SCHOOL TRAVEL TIME CONSTANTS IN classroom.py
@@ -47,7 +49,7 @@ def main():
     # ASSIGN VOLUNTEERS
 
     for volunteer in volunteer_list:
-        if volunteer.group_number == 0 and volunteer.partner_app:
+        if volunteer.group_number == 0 and volunteer.partners > 0:
             assign_partners(volunteer) # will have to go into partners object and add all partners to same team
 
     for volunteer in volunteer_list:
