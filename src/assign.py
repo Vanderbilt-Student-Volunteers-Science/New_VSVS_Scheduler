@@ -6,6 +6,10 @@ import src.classroom
 
 class Assign:
 
+    # assign through people from least to most available
+    # assign volunteers to partially filled groups before an empty group
+    # for each person, iterate them through array of partially filled then array of empty classrooms
+
     def findClassroom(mode, volunteer, classroom_list):
         if mode == 'partners':
             for group_number in range(1, len(classroom_list)):

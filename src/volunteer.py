@@ -19,6 +19,7 @@ class Volunteer:
         self.partners = 0  # Number of other partners (NOT including this Volunteer) Volunteer applied with, set in add_partners method. This is only set for the Volunteer that signed the partners up
         self.partner_details = 0  # Partner object. This is only set for the Volunteer that signed the partners up.
         self.t_leader = 0  # assigned to be a team leader
+        self.classrooms_possible # number of classrooms Volunteer can make based off of their schedule
 
     def add_partners(self, partner1, partner2, partner3, partner_schedule):
 

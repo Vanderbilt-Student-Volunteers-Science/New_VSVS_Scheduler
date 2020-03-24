@@ -8,7 +8,10 @@ import src.classroom
 # A lot of one-based indexing
 
 MAX_TEAM_SIZE = 4
-MIN_TEAM_SIZE = 3
+MIN_TEAM_SIZE = 4
+
+# define what row indexes are in import statements
+
 # SCHOOL TRAVEL TIME CONSTANTS IN classroom.py
 
 def main():
@@ -38,7 +41,7 @@ def main():
     with open('../test/classrooms.csv') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
         csv_reader = csv.reader(classrooms_csv, delimiter=',')  # csv_reader will divide classrooms_csv by commas
         for row in csv_reader:
-            classroom_list.append(src.classroom.Classroom(row[3], row[4], row[6], row[9], row[11], row[12], row[13]))  # creates Classroom object
+            classroom_list.append(src.classroom.Classroom(row[2], row[3], row[4], row[6], row[9], row[11], row[12], row[13]))  # creates Classroom object
 
     # set preassigned volunteers in classroom data before assigning
     for volunteer in volunteer_list:
@@ -48,17 +51,32 @@ def main():
 
     # ASSIGN VOLUNTEERS
 
+
+    for classroom in classroom_list:
+        if
+
     for volunteer in volunteer_list:
         if volunteer.group_number == 0 and volunteer.partners > 0:
             assign_partners(volunteer) # will have to go into partners object and add all partners to same team
 
     for volunteer in volunteer_list:
-        if volunteer.group_number == 0 and volunteer.car_passengers > MIN_TEAM_SIZE: # figure this out: keep their group under car capacity or don't allow car unless it is TEAM_MAX_MEMBERS
+        # prioritize drivers that can make least number of classrooms
+        if volunteer.group_number == 0 and volunteer.car_passengers >= MIN_TEAM_SIZE: # figure this out: keep their group under car capacity or don't allow car unless it is TEAM_MAX_MEMBERS
             assign_team(volunteer)
 
+
+    # assign from least availability to most availability
     for volunteer in volunteer_list:
         if volunteer.group_number == 0 and volunteer.t_leader:
             assign_team(volunteer)
+
+    #
+
+    # TODO: assign every volunteer a number corresponding to how many time slots (classrooms) they can make (classrooms_possible).
+    #  Then, go though all of the Volunteers from least classrooms_possible to most classrooms_possible and place them in the queues of all
+    #  of the classroom objects they can make. The VOlunteers will be in priority order (the order they were placed in the queue). Assign classrooms from shortest queue to longest queue.
+
+    # ASSIGN EVERYONE ELSE
 
 
     # OUTPUT RESULTS
