@@ -1,44 +1,40 @@
+# TODO: sort robotics?
+# TODO: group_number == -1 means unassigned
+
 import csv
 import src.volunteer
 import src.partners
 import src.classroom
 
-# TODO: make sure input school names are uniform ex: Head Magnet/Head Middle Magnet/Head won't work
-
-# A lot of one-based indexing
-
 MAX_TEAM_SIZE = 4
 MIN_TEAM_SIZE = 4
 
-# define what row indexes are in import statements
-
-# SCHOOL TRAVEL TIME CONSTANTS IN classroom.py
+# TODO: add what row index inputs correspond to
 
 def main():
 
-    volunteer_list = [] # list of all the volunteers that will be iterated through; STARTS AT INDEX 1 TO MATCH APPLICATION ID
+    volunteer_list = [] # list of all the volunteers that will be iterated through
     classroom_list = [] # list of all the classroom times to to assign groups to
-
-    volunteer_list.append("SKIP THIS LINE") # ignore index 0 bc we want index to match application id #, which starts at 1 (bc weird SQL int)
-    classroom_list.append("SKIP THIS LINE") # ignore index 0 bc we want index to match group number, which starts at 1 (groupNumber initialized at 0)
 
 
     #  IMPORT FILE DATA
 
     # import individual application data
-    with open('../test/individuals.csv') as individuals_csv:  # opens individuals.csv as individuals_csv
+    with open('../data/individuals.csv') as individuals_csv:  # opens individuals.csv as individuals_csv
         csv_reader = csv.reader(individuals_csv, delimiter=',')  # csv_reader will divide individuals_csv by commas
         for row in csv_reader:
-            volunteer_list.append(src.volunteer.Volunteer(row[1], row[2], row[3], row[4], row[8], row[9], row[10], row[12], row[13], row[16], row[18], row[20]))  # creates Volunteer objects and adds them to volunteer_list, indices correspond to columns of responses in volunteers.csv
+            #TODO: add row indexes corresponding to csv output of new form
+            volunteer_list.append(src.volunteer.Volunteer(row[0]))  # creates Volunteer objects and adds them to volunteer_list, indices correspond to columns of responses in volunteers.csv
 
-    # import partner application data
-    with open('../test/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
-        csv_reader = csv.reader(partners_csv, delimiter=',')  # csv_reader will divide partners_csv by commas
-        for row in csv_reader:
-            volunteer_list[row[1]].add_partners(row[2], row[3], row[4], row[6])  # calling addPartner method on line of volunteer that signed partners up (volunteer_list[row[1]])
+    # probably don't need anymore (if we decide individuals and partners will share application)
+        # # import partner application data
+        # with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
+        #     csv_reader = csv.reader(partners_csv, delimiter=',')  # csv_reader will divide partners_csv by commas
+        #     for row in csv_reader:
+        #         volunteer_list[row[1]].add_partners(row[2], row[3], row[4], row[6])  # calling addPartner method on line of volunteer that signed partners up (volunteer_list[row[1]])
 
     # import classroom information
-    with open('../test/classrooms.csv') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
+    with open('../data/classrooms.csv') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
         csv_reader = csv.reader(classrooms_csv, delimiter=',')  # csv_reader will divide classrooms_csv by commas
         for row in csv_reader:
             classroom_list.append(src.classroom.Classroom(row[2], row[3], row[4], row[6], row[9], row[11], row[12], row[13]))  # creates Classroom object
@@ -51,32 +47,40 @@ def main():
 
     # ASSIGN VOLUNTEERS
 
-
-    for classroom in classroom_list:
-        if
-
+    # assign partners
     for volunteer in volunteer_list:
-        if volunteer.group_number == 0 and volunteer.partners > 0:
-            assign_partners(volunteer) # will have to go into partners object and add all partners to same team
+        if volunteer.group_number == -1 and volunteer.partners:
+            src.assign.assign_partners(volunteer) # adds all partners to same team
 
+    # assign drivers
     for volunteer in volunteer_list:
-        # prioritize drivers that can make least number of classrooms
-        if volunteer.group_number == 0 and volunteer.car_passengers >= MIN_TEAM_SIZE: # figure this out: keep their group under car capacity or don't allow car unless it is TEAM_MAX_MEMBERS
-            assign_team(volunteer)
+        if volunteer.group_number == -1 and volunteer.car_passengers >= MIN_TEAM_SIZE: # figure this out: keep their group under car capacity or don't allow car unless it is TEAM_MAX_MEMBERS
+            assign_group(driver_list, classroom_list)
 
-
-    # assign from least availability to most availability
+    # for unassigned people, count classrooms they can make
     for volunteer in volunteer_list:
-        if volunteer.group_number == 0 and volunteer.t_leader:
-            assign_team(volunteer)
+        if volunteer.group_number == -1:
+            for classroom in classroom_list:
+                if volunteer_can_make_class(volunteer, classroom):
+                    volunteer.increment_classrooms_possible()
 
-    #
+    # assign unassigned applied_t_leaders AFTER sorting them by availability (from fewest to most classrooms they can make)
+    applied_t_leader_list = []
+    for volunteer in volunteer_list:
+        if volunteer.group_number == -1 and volunteer.applied_t_leader:
+            applied_t_leader_list.append(volunteer)
+    assign_group(sort_by_availability(applied_t_leader_list), classroom_list)
 
-    # TODO: assign every volunteer a number corresponding to how many time slots (classrooms) they can make (classrooms_possible).
-    #  Then, go though all of the Volunteers from least classrooms_possible to most classrooms_possible and place them in the queues of all
-    #  of the classroom objects they can make. The VOlunteers will be in priority order (the order they were placed in the queue). Assign classrooms from shortest queue to longest queue.
+    #TODO: copy results of group assignments from applied_t_leader_list to volunteer_list
 
-    # ASSIGN EVERYONE ELSE
+    # assign everyone else still unassigned AFTER sorting them by availability (from fewest to most classrooms they can make)
+    unsorted_list = []
+    for volunteer in volunteer_list:
+        if volunteer.group_number == -1:
+            unsorted_list.append(volunteer)
+    assign_group(sort_by_availability(unsorted_list), classroom_list)
+
+    #TODO: copy results of group assignments from unsorted_list to volunteer_list
 
 
     # OUTPUT RESULTS

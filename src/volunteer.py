@@ -3,7 +3,7 @@ import src.convertSchedule
 
 
 class Volunteer:
-    def __init__(self, first, last, phone, email, prev_member, applied_t_leader, prev_t_leader, car_passengers, schedule, robotics, special_needs, preassigned_group=0):
+    def __init__(self, first, last, phone, email, prev_member, applied_t_leader, prev_t_leader, car_passengers, schedule, robotics, special_needs, preassigned_group=-1):
         self.first = first
         self.last = last
         self.phone = phone
@@ -15,11 +15,11 @@ class Volunteer:
         self.schedule = src.convertSchedule.convert_schedule_array(schedule)
         self.robotics = robotics
         self.special_needs = special_needs
-        self.group_number = preassigned_group # Do they have a team yet and what is it? TODO: ADD ASSIGN -1 IF NO SCHEDULE IMPORTED
+        self.group_number = preassigned_group # Do they have a team yet and what is it?
         self.partners = 0  # Number of other partners (NOT including this Volunteer) Volunteer applied with, set in add_partners method. This is only set for the Volunteer that signed the partners up
         self.partner_details = 0  # Partner object. This is only set for the Volunteer that signed the partners up.
         self.t_leader = 0  # assigned to be a team leader
-        self.classrooms_possible # number of classrooms Volunteer can make based off of their schedule
+        self.classrooms_possible = 0 # number of classrooms Volunteer can make based off of their schedule
 
     def add_partners(self, partner1, partner2, partner3, partner_schedule):
 
@@ -31,3 +31,6 @@ class Volunteer:
             self.partners = 2
         else:
             self.partners = 3
+
+    def increment_classrooms_possible(self):
+        classrooms_possible += 1
