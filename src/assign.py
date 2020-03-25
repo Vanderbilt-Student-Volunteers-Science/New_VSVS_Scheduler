@@ -2,30 +2,24 @@ import src.volunteer
 import src.classroom
 
 
-# TODO: deal with t_leaders and drivers (only want to assign one)
-
 class Assign:
 
-    # assign through people from least to most available
-    # assign volunteers to partially filled groups before an empty group
-    # for each person, iterate them through array of partially filled then array of empty classrooms
+    # adds all partners to same team
+    def assign_partners(volunteer):
 
-    def findClassroom(mode, volunteer, classroom_list):
-        if mode == 'partners':
-            for group_number in range(1, len(classroom_list)):
-                if volunteer.partner_details.partner_schedule[classroom_list[group_number].start_time_schedule_index] >= classroom_list[group_number].volunteer_time_needed:
-                    assign_volunteer(volunteer, group_number)
-                    for partner_number in range(1, volunteer.partners):  # one-based indexing
-                        assign_volunteer(volunteer_list[volunteer.partner_details.partner[partner_number]], group_number)
-                        return
-        elif mode == 'drivers':
-        elif mode == 't_leaders':
+    # Matches people in an input list ("group") to a classroom they can make. Group can be list of drivers, t_leaders,
+    # or others. If group is t_leaders or others the list will be sorted from lowest to highest availability.
+    # TODO: Tries to match person with partially filled classrooms first. If they can't make any partially filled
+    #  classrooms, try to place them in an classroom with no volunteers (yet).
+    def assign_group(group, classrooms):
 
-            if (classroom_list[group_number].volunteers_assigned > MIN_TEAM_SIZE):
+    # boolean if volunteer can make a class
+    def volunteer_can_make_class(volunteer, classroom):
+        return volunteer.schedule[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
+    
 
-            if 
-                if volunteer.schedule[classroom_list[group_number].start_time_schedule_index] >= classroom_list[group_number].volunteer_time_needed:
-                    classroom_list[group_number].add_volunteer()
+#  don't depend on Assign objects (there are none)
+Assign.assign_partners = staticmethod(Assign.assign_partners)
+Assign.assign_group = staticmethod(Assign.assign_group)
+Assign.volunteer_can_make_class = staticmethod(Assign.volunteer_can_make_class)
 
-                """ if class is above min
-                        if if they can be assigned to another group, assign them, if not, and group below max, assign to   """
