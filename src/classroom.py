@@ -2,6 +2,7 @@ import src.convertSchedule
 
 SCHOOL_TRAVEL_TIME = 45  # one-way, in minutes
 
+
 class Classroom:
 
     def __init__(self, group_number, teacher_name, teacher_phone, school, teacher_email, class_start_time, class_end_time, day_of_week):
@@ -25,7 +26,6 @@ class Classroom:
 
         # the index in the array of the volunteer schedule that needs to be >= volunteer_time_needed for a volunteer to be able to visit this classroom
         self.start_time_schedule_index = src.convertSchedule.military_to_schedule_array(self.day_of_week, self.free_time_start)
-
 
     def add_volunteer(self):
         self.volunteers_assigned += 1

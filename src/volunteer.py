@@ -33,4 +33,4 @@ class Volunteer:
             self.partners = 3
 
     def increment_classrooms_possible(self):
-        classrooms_possible += 1
+        self.classrooms_possible += 1

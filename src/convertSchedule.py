@@ -12,9 +12,9 @@ class ConvertSchedule:
         else:
             return 1200 + (100 * time_list[0]) + time_list2[0]
 
-    # - Converts the Volunteer schedule array into array where value at each time index corresponds to how much free time
-    # they have starting at that index. For example, if I am free from 10:00 to 11:30, index 12 (10:00) will become 90,
-    # index 13 (10:15) will become 75, index 18 (11:30) will become 0, etc.
+    # - Converts the Volunteer schedule array into array where value at each time index corresponds to how much free
+    # time they have starting at that index. For example, if I am free from 10:00 to 11:30, index 12 (10:00) will
+    # become 90, index 13 (10:15) will become 75, index 18 (11:30) will become 0, etc.
     # - input: 40 entries per day (for 5 weekdays) starting at 7:00 AM, each index represents 15 min increments; 2 is
     # busy, 1 is available, 0 is blank
     # - output: array where value at each time is minutes of consecutive free time they have starting at that time
