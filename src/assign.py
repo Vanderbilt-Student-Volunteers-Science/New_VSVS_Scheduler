@@ -2,18 +2,20 @@ import src.volunteer
 import src.classroom
 
 
+
 class Assign:
 
     # adds all partners to same team
     # TODO
-    def assign_partners(volunteer):
+
+    def assign_partners(self, volunteer):
         return
 
     # Matches people in an input list ("group") to a classroom they can make. Group can be list of drivers, t_leaders,
     # or others. If group is t_leaders or others the list will be sorted from lowest to highest availability.
     # TODO: Tries to match person with partially filled classrooms first. If they can't make any partially filled
     #  classrooms, try to place them in an classroom with no volunteers (yet).
-    def assign_group(group, classrooms):
+    def assign_group(self, group, classrooms):
         return
 
     # helper function for sort_by_availability
