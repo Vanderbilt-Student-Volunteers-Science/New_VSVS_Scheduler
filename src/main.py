@@ -13,9 +13,11 @@ MIN_TEAM_SIZE = 4
 
 # TODO: add what row index inputs correspond to
 
+volunteer_list = []  # list of all the volunteers that will be iterated through
+classroom_list = []  # list of all the classrooms to to assign groups to
+
 def main():
-    volunteer_list = []  # list of all the volunteers that will be iterated through
-    classroom_list = []  # list of all the classroom times to to assign groups to
+
 
 
     #  IMPORT FILE DATA

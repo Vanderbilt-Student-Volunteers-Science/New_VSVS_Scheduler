@@ -18,6 +18,7 @@ class Assign:
     def assign_group(self, group, classrooms):
         return
 
+
     # helper function for sort_by_availability
     def merge(half_1, half_2):
         output = []
@@ -55,6 +56,13 @@ class Assign:
     # boolean if volunteer can make a class
     def volunteer_can_make_class(volunteer, classroom):
         return volunteer.schedule[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
+
+    def return_class_mathches(self, volunteer):
+        return len(volunteer.classroom_match_list)
+
+    def sort_by_availability_2(self, list):
+        list.sort(key=return_class_matches)
+        return list
 
 
 #  don't depend on Assign objects (there are none)

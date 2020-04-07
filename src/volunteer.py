@@ -1,6 +1,6 @@
 import src.partners
 import src.convertSchedule
-
+import src.classroom
 
 class Volunteer:
     def __init__(self, first, last, phone, email, prev_member, applied_t_leader, prev_t_leader, car_passengers, schedule, robotics, special_needs, preassigned_group=-1):
@@ -20,6 +20,8 @@ class Volunteer:
         self.partner_details = 0  # Partner object. This is only set for the Volunteer that signed the partners up.
         self.t_leader = 0  # assigned to be a team leader
         self.classrooms_possible = 0 # number of classrooms Volunteer can make based off of their schedule
+        self.classroom_match_list = [] # list of all the classrooms whose times match up with volunteer. Can either be
+        # list of classroom objects or list of ints that corresponds to the classroom #
 
     def add_partners(self, partner1, partner2, partner3, partner_schedule):
 
