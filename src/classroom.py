@@ -27,5 +27,12 @@ class Classroom:
         # the index in the array of the volunteer schedule that needs to be >= volunteer_time_needed for a volunteer to be able to visit this classroom
         self.start_time_schedule_index = src.convertSchedule.military_to_schedule_array(self.day_of_week, self.free_time_start)
 
-    def add_volunteer(self):
+    def assign_volunteer(self, volunteer):
         self.volunteers_assigned += 1
+        volunteer.set_group_number(self.group_number)
+        if self.driver == 0 and volunteer.driver:
+            self.driver = 1
+            volunteer.assign_driver()
+        if self.t_leader == 0 and volunteer.applied_t_leader:
+            self.t_leader = 1
+            volunteer.assign_t_leader()
