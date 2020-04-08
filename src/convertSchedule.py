@@ -12,23 +12,42 @@ class ConvertSchedule:
         else:
             return 1200 + (100 * time_list[0]) + time_list2[0]
 
-    # - Converts the Volunteer schedule array into array where value at each time index corresponds to how much free
-    # time they have starting at that index. For example, if I am free from 10:00 to 11:30, index 12 (10:00) will
-    # become 90, index 13 (10:15) will become 75, index 18 (11:30) will become 0, etc.
-    # - input: 40 entries per day (for 5 weekdays) starting at 7:00 AM, each index represents 15 min increments; 2 is
-    # busy, 1 is available, 0 is blank
+
+    # Converts the schedule imported from individuals.csv, columns of times containing days volunteers can't make that time,
+    # into array of times in week order (each index is a 15-min increment - indexes 0-33 are Monday 7:15am to 3:45pm,
+    # 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.) listing a 1 if a volunteer is available and a 0 if they aren't
+    def convert_to_schedule_array(imported_schedule):
+        output_array = [1] * 136
+        for i in range(34):
+            if imported_schedule[i].contains('M'):
+                output_array[i] = 0
+            if imported_schedule[i].contains('T'):
+                output_array[34 + i] = 0
+            if imported_schedule[i].contains('W'):
+                output_array[68 + i] = 0
+            if imported_schedule[i].contains('H'):
+                output_array[102 + i] = 0
+
+
+    # - Converts the array of times in week order (output of convert_to_schedule_array) to an array where value at each time index corresponds to how much free
+    # time they have starting at that index. For example, if I am free from 10:00 to 11:30 on Monday, index 11 (10:00-10:15) will
+    # become 90, index 12 (10:15-10:30) will become 75, index 17 (11:30-11:45) will become 0, etc.
+    # - input: 34 entries per day (for 4 weekdays) starting at 7:15am, each index represents 15 min increments; 1 is
+    # available, 0 is unavailable
     # - output: array where value at each time is minutes of consecutive free time they have starting at that time
     def convert_schedule_array(schedule_array):
         output_array = []
-        for i in range(200):
+
+        # i is the index being set, j is the index being tested for availability
+        for i in range(136):
             j = i
             consecutive_free_time = 0
-            while (schedule_array[j] == 1) and ((j - 1) % 40 != 1) and (j < 200): #  ((j - 1) % 40 == 1) means first block of a new day
-                j += 1
+            while j < 136 and schedule_array[j] == 1 and (j % 34 != 0 or j == i): #  (j % 34 != 0 or j == i) prevents overlap into new day                j += 1
                 consecutive_free_time += 15
             output_array[i] = consecutive_free_time
 
-    #  returns first time volunteer needs to be free to perform a lesson
+
+    #  returns first time volunteer needs to be free to perform a lesson in military time
     def calculate_free_time_start(class_start_time, school_travel_time):
         class_start_minutes = class_start_time % 100
         if class_start_minutes >= school_travel_time:
@@ -42,6 +61,7 @@ class ConvertSchedule:
             else:
                 return class_start_hours - ((hours_away + 1) * 100) + (60 - minutes_away)
 
+
     #  returns minutes of free time needed to perform a lesson, taking into account school distance
     def calculate_free_time_needed(class_start_time, class_end_time, school_travel_time):
         class_start_minutes = class_start_time % 100
@@ -53,6 +73,7 @@ class ConvertSchedule:
         else:  # start_hour < end_hour
             return (60 - class_start_minutes) + (60 * (class_end_hours - class_start_hours - 1)) + class_end_minutes + (2 * school_travel_time)
 
+
     def military_to_schedule_array(day_of_week, free_time_start):
         if day_of_week == "Monday":
             day = 0
@@ -60,17 +81,19 @@ class ConvertSchedule:
             day = 1
         elif day_of_week == "Wednesday":
             day = 2
-        elif day_of_week == "Thursday":
+        else:  # day_of_week == "Thursday":
             day = 3
-        else:  # day_of_week == "Friday":
-            day = 4
         hour = int(free_time_start / 100)
         min = free_time_start % 100
-        return (40 * day) + (4 * (hour - 7)) + int(min / 15)
+        min = int(min / 15) * 15
+        if min == 0:
+            return (34 * day) + ((hour - 8) * 4) + 3
+        return (34 * day) + ((hour - 7) * 4) + ((min - 15) / 15)
 
 
 #  don't depend on ConvertSchedule objects (there are none)
 ConvertSchedule.convert_to_military = staticmethod(ConvertSchedule.convert_to_military)
+ConvertSchedule.convert_to_schedule_array = staticmethod(ConvertSchedule.convert_to_schedule_array)
 ConvertSchedule.convert_schedule_array = staticmethod(ConvertSchedule.convert_schedule_array)
 ConvertSchedule.calculate_free_time_start = staticmethod(ConvertSchedule.calculate_free_time_start)
 ConvertSchedule.calculate_free_time_needed = staticmethod(ConvertSchedule.calculate_free_time_needed)

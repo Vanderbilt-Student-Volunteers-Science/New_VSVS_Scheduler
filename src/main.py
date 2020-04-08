@@ -1,4 +1,5 @@
 # TODO: sort robotics?
+# TODO: add global constants + change methods so scheduling times collected can be changed in the future (like constants for start time (7:15), time period (15 min), and periods collected (34))
 # TODO: group_number == -1 means unassigned
 
 import csv
@@ -6,12 +7,16 @@ import src.volunteer
 import src.partners
 import src.classroom
 import src.assign
+import src.convertSchedule
 
 MAX_TEAM_SIZE = 4
 MIN_TEAM_SIZE = 4
 
 
-# TODO: add what row index inputs correspond to
+# row[2] is first name, row[3] is last name, row[4] is phone number, row[5] is email, row[9] is robotics interest,
+# row[10] is special needs interest, row[12] is team leader interest, row[13] is previous team leader, row[14] is car,
+# row[15] is car passengers, row[16-49] are 15-min time slots that range from from 7:15am to 3:45pm
+
 
 volunteer_list = []  # list of all the volunteers that will be iterated through
 classroom_list = []  # list of all the classrooms to to assign groups to
@@ -26,9 +31,12 @@ def main():
     with open('../data/individuals.csv') as individuals_csv:  # opens individuals.csv as individuals_csv
         csv_reader = csv.reader(individuals_csv, delimiter=',')  # csv_reader will divide individuals_csv by commas
         for row in csv_reader:
+
             # creates Volunteer objects and adds them to volunteer_list, indices correspond to columns of responses in
-            # volunteers.csv
-            volunteer_list.append(src.volunteer.Volunteer(row[0])) # TODO: add row indexes corresponding to csv output of new form
+            # individuals.csv
+            volunteer_list.append(src.volunteer.Volunteer(row[2], row[3], row[4], row[5], row[9], row[10], row[12],
+                                                          row[13], row[14], row[15],
+                                                          src.convertSchedule.convert_to_schedule_array(row[16:49])))
 
     # probably don't need anymore (if we decide individuals and partners will share application)
     # # import partner application data
