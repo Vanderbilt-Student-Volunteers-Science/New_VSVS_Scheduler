@@ -46,7 +46,7 @@ def main():
 
     # set preassigned volunteers in classroom data before assigning
     for volunteer in volunteer_list:
-        if volunteer.group_number != 0:
+        if volunteer.group_number != -1:
             classroom_list[volunteer.group_number].add_volunteer()
 
 
@@ -68,6 +68,15 @@ def main():
             for classroom in classroom_list:
                 if src.assign.volunteer_can_make_class(volunteer, classroom):
                     volunteer.increment_classrooms_possible()
+
+    # creates lists of partially filled and empty classrooms
+    empty_classrooms = []
+    nonempty_classrooms = []
+    for classroom in classroom_list:
+        if classroom.volunteers_assigned == 0:
+            empty_classrooms.append(classroom)
+        elif classroom.volunteers_assigned < MAX_TEAM_SIZE:
+            nonempty_classrooms.append(classroom)
 
     # assign unassigned applied_t_leaders AFTER sorting them by availability
     # (from fewest to most classrooms they can make)
