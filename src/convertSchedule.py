@@ -1,5 +1,5 @@
 # Used in volunteer.py, partners.py, and classroom.py
-
+import src.globalAttributes
 
 def convert_to_military(time):
     time_list = time.split(':', 2)  # split into hours, minutes AM/PM
@@ -71,9 +71,9 @@ def calculate_free_time_needed(class_start_time, class_end_time, school_travel_t
     class_end_minutes = class_end_time % 100
     class_end_hours = (class_end_time - class_end_minutes) / 100
     if class_start_hours == class_end_hours:
-        return class_end_minutes - class_start_minutes + (2 * school_travel_time)
+        return int(class_end_minutes - class_start_minutes + (2 * school_travel_time))
     else:  # start_hour < end_hour
-        return (60 - class_start_minutes) + (60 * (class_end_hours - class_start_hours - 1)) + class_end_minutes + (2 * school_travel_time)
+        return int((60 - class_start_minutes) + (60 * (class_end_hours - class_start_hours - 1)) + class_end_minutes + (2 * school_travel_time))
 
 
 def military_to_schedule_array(day_of_week, free_time_start):
@@ -91,3 +91,22 @@ def military_to_schedule_array(day_of_week, free_time_start):
     if min == 0:
         return int((34 * day) + ((hour - 8) * 4) + 3)
     return int((34 * day) + ((hour - 7) * 4) + ((min - 15) / 15))
+
+def create_partner_schedule(volunteer_schedule, num_partners, partner_indexes):
+    partner_schedule_array = []
+
+    if num_partners == 1:
+        partner_schedule_array = schedule_array_and(volunteer_schedule, src.globalAttributes.volunteer_list[partner_indexes[0]].schedule_array)
+    elif num_partners == 2:
+        partner_schedule_array = schedule_array_and(schedule_array_and(volunteer_schedule, src.globalAttributes.volunteer_list[partner_indexes[0]].schedule_array), src.globalAttributes.volunteer_list[partner_indexes[1]].schedule_array)
+    else:
+        partner_schedule_array = schedule_array_and(schedule_array_and(volunteer_schedule, src.globalAttributes.volunteer_list[partner_indexes[0]].schedule_array), schedule_array_and(src.globalAttributes.volunteer_list[partner_indexes[1]].schedule_array, src.globalAttributes.volunteer_list[partner_indexes[2]].schedule_array))
+    return convert_schedule_array(partner_schedule_array)
+
+def schedule_array_and(schedule_array1, schedule_array2):
+    output_array = []
+    for schedule_index in range(len(schedule_array1)):
+        output_array.append(schedule_array1[schedule_index] and schedule_array2[schedule_index])
+
+    return output_array
+
