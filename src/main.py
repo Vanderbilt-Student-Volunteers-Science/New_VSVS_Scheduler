@@ -76,8 +76,9 @@ def main():
 
             # creates a Volunteer object and adds it to global variable volunteer_list
             # row indices correspond to columns of responses in individuals.csv
-            src.globalAttributes.volunteer_list.append(src.volunteer.Volunteer(row[2], row[3], row[4], row[5], row[7],
-                                                                               row[8], row[9], row[10], row[12],
+            src.globalAttributes.volunteer_list.append(src.volunteer.Volunteer(row[2].strip(), row[3].strip(),
+                                                                               row[4].strip(), row[5].strip(), row[7],
+                                                                               row[8].strip(), row[9], row[10], row[12],
                                                                                row[15], row[16:50]))
 
     # import partner application data from partners.csv
