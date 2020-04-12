@@ -31,9 +31,9 @@ class Classroom:
         # minutes of free time needed starting at free_time_start for a volunteer to be able to make this lesson
         self.volunteer_time_needed = src.convertSchedule.calculate_free_time_needed(self.class_start_time, self.class_end_time, src.globalAttributes.SCHOOL_TRAVEL_TIME)
 
-        # the index in the array of Volunteer attribute volunteer_schedule (or partner_schedule) that needs to be
+        # the index in the array of Volunteer attribute free_time_array (or partner_schedule) that needs to be
         # >= volunteer_time_needed for a volunteer to be able to visit this classroom
-        self.start_time_schedule_index = src.convertSchedule.military_to_schedule_array(self.day_of_week, self.free_time_start)
+        self.start_time_schedule_index = src.convertSchedule.military_to_free_time_array(self.day_of_week, self.free_time_start)
 
     # Assigns a volunteer to a classroom. Updates the Volunteer group_number attribute with the group number of the
     # classroom the volunteer is being assigned to and the Classroom object with a new volunteers_assigned value. If
@@ -50,4 +50,3 @@ class Classroom:
         if self.t_leader == 0 and volunteer.applied_t_leader:
             self.t_leader = 1
             volunteer.assign_t_leader()
-            

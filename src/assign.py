@@ -95,7 +95,7 @@ def assign_others(sorted_others):
 # volunteer - Volunteer object of volunteer being checked
 # classroom - Classroom object of classroom being checked
 def volunteer_can_make_class(volunteer, classroom):
-    return volunteer.volunteer_schedule[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
+    return volunteer.free_time_array[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
 
 
 # Returns boolean if a partner group can make a class.

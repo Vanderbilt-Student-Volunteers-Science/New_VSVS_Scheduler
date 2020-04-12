@@ -2,6 +2,7 @@
 # TODO: add global constants + change methods so scheduling times collected can be changed in the future (like constants for start time (7:15), time period (15 min), and periods collected (34))
 # TODO: group_number == -1 means unassigned
 # TODO: how many passengers to consider someone a driver? currently if passengers >= MAX_TEAM_SIZE. highest option on form is 4+, so if we change MAX_TEAM_SIZE to 5, no one will ever be a driver
+# TODO: optimize scheduling more by adding TRAVEL_TIME constants for every school
 
 # VSVS Volunteer Sorting Program, created 2019-2020
 # Imports data from data/classrooms.csv, data/individuals.csv, and data/partners.csv and assigns volunteers to groups. Assigns
