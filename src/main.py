@@ -58,7 +58,6 @@
 import csv
 import src.globalAttributes
 import src.volunteer
-import src.partners
 import src.classroom
 import src.assign
 import src.convertSchedule
@@ -130,14 +129,12 @@ def main():
             driver_list.append(volunteer)
     src.assign.assign_drivers(src.assign.sort_by_availability(driver_list))
 
-    # creates lists of empty and partially filled classrooms
-    empty_classrooms = []
-    partially_filled_classrooms = []
+    # creates global variable lists of empty and partially filled classrooms
     for classroom in src.globalAttributes.classroom_list:
         if classroom.volunteers_assigned == 0:
-            empty_classrooms.append(classroom)
+            src.globalAttributes.empty_classrooms.append(classroom)
         elif classroom.volunteers_assigned < src.globalAttributes.MAX_TEAM_SIZE:
-            partially_filled_classrooms.append(classroom)
+            src.globalAttributes.partially_filled_classrooms.append(classroom)
 
     # make list of unassigned applied_t_leaders, sort them by the number of classrooms they can make (fewest to greatest
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
@@ -146,7 +143,7 @@ def main():
     for volunteer in src.globalAttributes.volunteer_list:
         if volunteer.group_number == -1 and volunteer.applied_t_leader:
             applied_t_leader_list.append(volunteer)
-    src.assign.assign_group(src.assign.sort_by_availability(applied_t_leader_list), partially_filled_classrooms, empty_classrooms)
+    src.assign.assign_applied_t_leaders(src.assign.sort_by_availability(applied_t_leader_list))
 
     # make list of unassigned volunteers, sort them by the number of classrooms they can make (fewest to greatest
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
@@ -155,7 +152,7 @@ def main():
     for volunteer in src.globalAttributes.volunteer_list:
         if volunteer.group_number == -1:
             unsorted_list.append(volunteer)
-    src.assign.assign_group(src.assign.sort_by_availability(unsorted_list), partially_filled_classrooms, empty_classrooms)
+    src.assign.assign_others(src.assign.sort_by_availability(unsorted_list))
 
 
     # OUTPUT RESULTS
