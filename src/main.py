@@ -63,8 +63,7 @@ import src.classroom
 import src.assign
 import src.convertSchedule
 
-# All global constants (MAX_TEAM_SIZE, MIN_TEAM_SIZE, SCHOOL_TRAVEL_TIME) and variables (volunteer_list, classroom_list)
-# are in globalAttributes.py
+# All global constants and variables are in globalAttributes.py
 
 
 def main():
