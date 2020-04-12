@@ -1,5 +1,5 @@
-import src.convertSchedule
 import src.globalAttributes
+import src.convertSchedule
 
 
 class Classroom:

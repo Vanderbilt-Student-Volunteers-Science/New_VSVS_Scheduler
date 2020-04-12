@@ -1,7 +1,4 @@
-import src.volunteer
-import src.classroom
 import src.globalAttributes
-
 
 # Assigns a group of partners to a classroom they all can make (if there is one) using the partner_schedule attribute of
 # the first partner's Volunteer object. When a group is assigned, uses classroom.assign_volunteer to reflect this in the

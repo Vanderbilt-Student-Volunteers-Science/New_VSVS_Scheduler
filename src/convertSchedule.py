@@ -1,4 +1,3 @@
-# Used in volunteer.py, partners.py, and classroom.py
 import src.globalAttributes
 
 def convert_to_military(time):

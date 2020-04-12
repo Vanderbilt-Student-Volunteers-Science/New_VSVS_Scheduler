@@ -57,10 +57,9 @@
 
 import csv
 import src.globalAttributes
-import src.volunteer
-import src.classroom
 import src.assign
-import src.convertSchedule
+import src.classroom
+import src.volunteer
 
 # All global constants and variables are in globalAttributes.py
 
@@ -77,8 +76,8 @@ def main():
             # creates a Volunteer object and adds it to global variable volunteer_list
             # row indices correspond to columns of responses in individuals.csv
             src.globalAttributes.volunteer_list.append(src.volunteer.Volunteer(row[2], row[3], row[4], row[5], row[7],
-                                                                               row[8], row[9], row[10], row[12], row[15],
-                                                                               src.convertSchedule.convert_to_schedule_array(row[16:50])))
+                                                                               row[8], row[9], row[10], row[12],
+                                                                               row[15], row[16:50]))
 
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
