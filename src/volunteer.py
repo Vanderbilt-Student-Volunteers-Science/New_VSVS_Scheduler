@@ -13,24 +13,58 @@ class Volunteer:
         self.major = major
         self.robotics_interest = robotics_interest
         self.special_needs_interest = special_needs_interest
-        self.applied_t_leader = applied_t_leader # if they applied to be a team leader
+
+        # if volunteer applied to be a team leader
+        self.applied_t_leader = applied_t_leader
+
+        # people a driver can drive (not including driver)
         if car_passengers == '':
             self.car_passengers = 0
         elif car_passengers == '4+':
             self.car_passengers = 4
         else:
             self.car_passengers = int(car_passengers)
-        self.driver = (self.car_passengers >= src.globalAttributes.MAX_TEAM_SIZE)  # can drive if needed
-        self.schedule_array = src.convertSchedule.convert_to_schedule_array(imported_schedule)  # array of 1's and 0's
-        self.free_time_array = src.convertSchedule.convert_to_free_time_array(self.schedule_array)  # array of minutes of consecutive free time after each time
-        self.group_number = -1
-        self.partners = 0  # Number of other partners (NOT including this Volunteer) Volunteer applied with, set in add_partners method. This is only set for the Volunteer that signed the partners up
-        self.partner_indexes = []  # index of each partner in volunteer_list
-        self.partner_free_time_array = 0  # Partner object. This is only set for the Volunteer that signed the partners up.
-        self.assigned_driver = 0
-        self.assigned_t_leader = 0  # assigned to be a team leader
-        self.classrooms_possible = 0 # number of classrooms Volunteer can make based off of their schedule
 
+        # if they have a car that can carry the MAX_TEAM_SIZE
+        self.driver = (self.car_passengers + 1 >= src.globalAttributes.MAX_TEAM_SIZE)
+
+        # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday
+        # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.); value at
+        # an index is 1 if volunteer is available at that time and 0 if they are busy
+        self.schedule_array = src.convertSchedule.convert_to_schedule_array(imported_schedule)
+
+        # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday
+        # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.); value at
+        # an index is the minutes of consecutive free time the volunteer has starting at that time
+        self.free_time_array = src.convertSchedule.convert_to_free_time_array(self.schedule_array)
+
+        # group number of -1 means not assigned to a group
+        self.group_number = -1
+
+        # The number of other partners (NOT including this Volunteer) Volunteer applied with, set in add_partners
+        # method. This is only set in the Volunteer object of the first partner in the group.
+        self.partners = 0
+
+        # Index of each of this volunteer's partners in volunteer_list. Set in add_partners method. This is only set in
+        # the Volunteer object of the first partner in the group.
+        self.partner_indexes = []
+
+        # free_time_array for a partner group. This is only set in the Volunteer object of the first partner in the
+        # group.
+        self.partner_free_time_array = 0
+
+        # Was the volunteer assigned to be the driver for their group?
+        self.assigned_driver = 0
+
+        # Was the volunteer assigned to be their group's team leader?
+        self.assigned_t_leader = 0
+
+        # Number of classrooms the volunteer can make according to their schedule. Set after partners and drivers are
+        # assigned.
+        self.classrooms_possible = 0
+
+    # Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of the first
+    # partner in the group (the self object).
     def add_partners(self, partner1_email, partner2_email, partner3_email):
         partner1_email = partner1_email.lower()
         partner2_email = partner2_email.lower()
@@ -43,7 +77,7 @@ class Volunteer:
 
         self.partners = len(self.partner_indexes)
 
-        self.partner_schedule = src.convertSchedule.create_partner_schedule(self.schedule_array, self.partners, self.partner_indexes)
+        self.partner_free_time_array = src.convertSchedule.create_partner_schedule(self.schedule_array, self.partners, self.partner_indexes)
 
     def increment_classrooms_possible(self):
         self.classrooms_possible += 1
@@ -51,8 +85,10 @@ class Volunteer:
     def set_group_number(self, group_number):
         self.group_number = group_number
 
+    # Designate the volunteer as the driver for their group
     def assign_driver(self):
         self.assigned_driver = 1
 
+    # Designate the volunteer as the team leader for their group
     def assign_t_leader(self):
         self.assigned_t_leader = 1

@@ -103,7 +103,7 @@ def volunteer_can_make_class(volunteer, classroom):
 #             of the group of partners (only one is set when partners.csv is imported)
 # classroom - Classroom object of classroom being checked
 def partners_can_make_class(partner, classroom):
-    return partner.partner_schedule[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
+    return partner.partner_free_time_array[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
 
 
 # Helper method for sort_by_availability
