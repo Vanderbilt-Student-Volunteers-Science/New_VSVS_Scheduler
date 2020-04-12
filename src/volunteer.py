@@ -22,7 +22,7 @@ class Volunteer:
             self.car_passengers = int(car_passengers)
         self.driver = (self.car_passengers >= src.globalAttributes.MAX_TEAM_SIZE)  # can drive if needed
         self.schedule_array = src.convertSchedule.convert_to_schedule_array(imported_schedule)  # array of 1's and 0's
-        self.schedule = src.convertSchedule.convert_schedule_array(self.schedule_array)  # array of minutes of consecutive free time after each time
+        self.volunteer_schedule = src.convertSchedule.convert_schedule_array(self.schedule_array)  # array of minutes of consecutive free time after each time
         self.group_number = -1
         self.partners = 0  # Number of other partners (NOT including this Volunteer) Volunteer applied with, set in add_partners method. This is only set for the Volunteer that signed the partners up
         self.partner_indexes = []  # index of each partner in volunteer_list
