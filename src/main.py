@@ -11,10 +11,8 @@
 # Before running:
 #   1. Export the responses to the individual application to csv and call it individuals.csv
 #   2. Export the responses to the partner application to csv and call it partners.csv
-#   3. Copy and paste (don't export) the classroom table from Access and call it classrooms.csv
-#   4. Delete the heading row from all three tables (so that the first row in each table is the first row of data)
-#   5. Place individuals.csv, partners.csv, and classrooms.csv into the data directory of this program
-#   6. Create a new file in the results directory called assignments.csv (where the program will write results)
+#   3. Copy and paste (don't export) the classroom table from Access with headings and call it classrooms.csv
+#   4. Place individuals.csv, partners.csv, and classrooms.csv into the data directory of this program
 
 # Columns of individuals.csv that matter (using zero-based indexing):
 #   column 2 is first name
@@ -74,6 +72,7 @@ def main():
     # import individual application data from individuals.csv
     with open('../data/individuals.csv', 'r') as individuals_csv:  # opens individuals.csv as individuals_csv
         csv_reader = csv.reader(individuals_csv, delimiter=',')  # divides individuals_csv by commas
+        next(csv_reader)
         for row in csv_reader:  # for each individual
 
             # creates a Volunteer object and adds it to global variable volunteer_list
@@ -86,6 +85,7 @@ def main():
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
         csv_reader = csv.reader(partners_csv, delimiter=',')  # divides partners_csv by commas
+        next(csv_reader)
         for row in csv_reader:  # for each group of partners
 
             # finds first volunteer in partner group in volunteer_list and sets their Volunteer object
@@ -102,6 +102,7 @@ def main():
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
         csv_reader = csv.reader(classrooms_csv, delimiter=',')  # divides classrooms_csv by commas
+        next(csv_reader)
         for row in csv_reader:  # for each classroom
 
             # creates a Classroom object and adds it to global variable classroom_list
