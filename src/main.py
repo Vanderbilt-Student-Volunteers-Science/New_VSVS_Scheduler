@@ -57,16 +57,18 @@
 
 
 import csv
-import src.globalAttributes
+import os
+
 import src.assign
 import src.classroom
+import src.globalAttributes
 import src.volunteer
+
 
 # All global constants and variables are in globalAttributes.py
 
 
 def main():
-
     #  IMPORT FILE DATA
 
     # import individual application data from individuals.csv
@@ -106,7 +108,6 @@ def main():
             # row indices correspond to columns of classrooms.csv
             src.globalAttributes.classroom_list.append(src.classroom.Classroom(row[1], row[3], row[4], row[6], row[9],
                                                                                row[11], row[12], row[13]))
-
 
     # ASSIGN VOLUNTEERS
 
@@ -155,8 +156,20 @@ def main():
             unsorted_list.append(volunteer)
     src.assign.assign_others(src.assign.sort_by_availability(unsorted_list))
 
-
     # OUTPUT RESULTS
+
+    # create the results directory if it does not exist
+    path = "../results"
+
+    if not os.path.exists(path):
+        try:
+            os.mkdir(path)
+        except OSError:
+            print("failed to create %s directory" % path)
+        else:
+            print("created the %s directory" % path)
+    else:
+        print("%s directory already exists" % path)
 
     with open('../results/assignments.csv', 'w') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
