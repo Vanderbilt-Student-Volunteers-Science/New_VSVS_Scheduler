@@ -172,7 +172,7 @@ def main():
     else:
         print("%s directory already exists" % path)
 
-    with open('../results/assignments.csv', 'w') as assignments_csv:
+    with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
         for volunteer_id in range(len(src.globalAttributes.volunteer_list)):
             csv_writer.writerow(
