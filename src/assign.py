@@ -24,13 +24,13 @@ def assign_partners(partner1):
 # in the driver's Volunteer object and the Classroom object of the classroom they are being assigned to.
 # sorted_drivers - list of all volunteers that are unassigned and can drive a group of volunteers sorted from the
 #                  fewest to greatest number of classrooms they can make
-def assign_drivers(sorted_drivers):
-    for driver in sorted_drivers:
+def assign_in_person(sorted_in_person_volunteers):
+    for volunteer in sorted_in_person_volunteers:
         classroom_idx = 0
-        while driver.group_number == -1 and classroom_idx < len(src.globalAttributes.classroom_list):
+        while volunteer.group_number == -1 and classroom_idx < len(src.globalAttributes.classroom_list):
             classroom = src.globalAttributes.classroom_list[classroom_idx]
-            if volunteer_can_make_class(driver, classroom) and classroom.driver == 0 and classroom.volunteers_assigned < src.globalAttributes.MAX_TEAM_SIZE:
-                classroom.assign_volunteer(driver)
+            if volunteer_can_make_class(volunteer, classroom) and classroom.has_in_person_volunteer == 0 and classroom.volunteers_assigned < src.globalAttributes.MAX_TEAM_SIZE:
+                classroom.assign_volunteer(volunteer)
             else:
                 classroom_idx += 1
 

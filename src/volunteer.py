@@ -4,7 +4,7 @@ import src.convertSchedule
 
 
 class Volunteer:
-    def __init__(self, first, last, phone, email, year_in_school, major, robotics_interest, special_needs_interest, applied_t_leader, car_passengers, imported_schedule):
+    def __init__(self, first, last, phone, email, year_in_school, major, robotics_interest, special_needs_interest, applied_t_leader, car_passengers, imported_schedule, is_in_person):
         self.first = first
         self.last = last
         self.phone = phone
@@ -63,6 +63,9 @@ class Volunteer:
         # assigned.
         self.classrooms_possible = 0
 
+        # 1 if the volunteer is in person, 0 if they are remote.
+        self.is_in_person = is_in_person
+
     # Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of the first
     # partner in the group (the self object).
     def add_partners(self, partner1_email, partner2_email, partner3_email):
@@ -107,9 +110,11 @@ class Volunteer:
 
         self.partners = len(self.partner_indexes)
 
-        if self.partners == 0:
-            self.partner_free_time_array = self.schedule_array
-        else:
+        # If all three partners are remote, they cannot be assigned in a group together. At least one volunteer in each group must be in person.
+        if self.partners == 2 and not self.is_in_person and not src.globalAttributes.volunteer_list[self.partner_indexes[0]].is_in_person and not src.globalAttributes.volunteer_list[self.partner_indexes[1]].is_in_person:
+            print(self.email + "'s partner group cannot be grouped together because they are all remote.")
+
+        elif self.partners != 0:
             self.partner_free_time_array = src.convertSchedule.create_partner_schedule(self.schedule_array, self.partners, self.partner_indexes)
 
     def increment_classrooms_possible(self):
@@ -117,10 +122,6 @@ class Volunteer:
 
     def set_group_number(self, group_number):
         self.group_number = group_number
-
-    # Designate the volunteer as the driver for their group
-    def assign_driver(self):
-        self.assigned_driver = 1
 
     # Designate the volunteer as the team leader for their group
     def assign_t_leader(self):

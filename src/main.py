@@ -146,13 +146,13 @@ def main():
                 if src.assign.volunteer_can_make_class(volunteer, classroom):
                     volunteer.increment_classrooms_possible()
 
-    # make list of unassigned drivers, sort them by the number of classrooms they can make (fewest to greatest number
+    # make list of unassigned in person volunteers, sort them by the number of classrooms they can make (fewest to greatest number
     # of classrooms they can make), then assign them to classroom groups
-    driver_list = []
+    in_person_list = []
     for volunteer in src.globalAttributes.volunteer_list:
-        if volunteer.group_number == -1 and volunteer.driver:
-            driver_list.append(volunteer)
-    src.assign.assign_drivers(src.assign.sort_by_availability(driver_list))
+        if volunteer.group_number == -1 and volunteer.is_in_person:
+            in_person_list.append(volunteer)
+    src.assign.assign_in_person(src.assign.sort_by_availability(in_person_list))
 
     # creates global variable lists of empty and partially filled classrooms
     for classroom in src.globalAttributes.classroom_list:
