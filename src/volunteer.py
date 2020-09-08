@@ -63,7 +63,7 @@ class Volunteer:
         # assigned.
         self.classrooms_possible = 0
 
-        # 1 if the volunteer is in person, 0 if they are remote.
+        # True if the volunteer is in person, False if they are remote.
         self.is_in_person = is_in_person
 
     # Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of the first

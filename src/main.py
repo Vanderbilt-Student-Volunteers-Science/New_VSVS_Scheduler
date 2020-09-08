@@ -73,7 +73,7 @@ import src.assign
 import src.classroom
 import src.globalAttributes
 from src.globalAttributes import I
-import src.volunteer
+from src.volunteer import Volunteer
 
 
 # All global constants and variables are in globalAttributes.py
@@ -89,11 +89,24 @@ def main():
         for row in csv_reader:  # for each individual
 
             # creates a Volunteer object and adds it to global variable volunteer_list
+            # I is a dictionary containing all the indices for each field
             # row indices correspond to columns of responses in individuals.csv
-            src.globalAttributes.volunteer_list.append(src.volunteer.Volunteer(row[I['FIRST']].strip(), row[I['LAST']].strip(),
-                                                                               row[4].strip(), row[5].strip(), row[7],
-                                                                               row[8].strip(), row[9], row[10], row[12],
-                                                                               row[15], row[16:50]))
+            volunteer = Volunteer(first=row[I['FIRST']].strip(),
+                                  last=row[I['LAST']].strip(),
+                                  phone=row[I['PHONE']].strip(),
+                                  email=row[I['EMAIL']].strip(),
+                                  year_in_school=row[I['YEAR']].strip(),
+                                  major=row[I['MAJOR']].strip(),
+                                  robotics_interest=False,  # no robotics for Fall 2020
+                                  special_needs_interest=row[I['SPECIAL_NEEDS_INTEREST']].strip(),
+                                  applied_t_leader=row[I['APPLIED_T_LEADER']].strip(),
+                                  car_passengers=0,  # no drivers/cars for Fall 2020
+                                  imported_schedule=row[I['IMPORTED_SCHEDULE_START']:I['IMPORTED_SCHEDULE_END']],
+                                  # location column in csv is either 'On-campus' or 'Remote', so we need to convert
+                                  # to boolean
+                                  is_in_person=(lambda x: True if x == 'On-campus' else False)(row[I['LOCATION']].strip())
+                                  )
+            src.globalAttributes.volunteer_list.append(volunteer)
 
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
@@ -119,7 +132,8 @@ def main():
 
                 # if no volunteers in volunteer_list have same email, print an alert
                 elif volunteer == src.globalAttributes.volunteer_list[-1]:
-                    print(row[1] + ' first volunteer in their partner group was not found in individual application data.')
+                    print(row[
+                              1] + ' first volunteer in their partner group was not found in individual application data.')
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
@@ -146,8 +160,8 @@ def main():
                 if src.assign.volunteer_can_make_class(volunteer, classroom):
                     volunteer.increment_classrooms_possible()
 
-    # make list of unassigned in person volunteers, sort them by the number of classrooms they can make (fewest to greatest number
-    # of classrooms they can make), then assign them to classroom groups
+    # make list of unassigned in person volunteers, sort them by the number of classrooms they can make
+    # (fewest to greatest number of classrooms they can make), then assign them to classroom groups
     in_person_list = []
     for volunteer in src.globalAttributes.volunteer_list:
         if volunteer.group_number == -1 and volunteer.is_in_person:
