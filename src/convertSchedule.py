@@ -130,6 +130,7 @@ def create_partner_schedule(volunteer_schedule_array, num_partners, partner_inde
 
     return convert_to_free_time_array(partner_schedule_array)
 
+
 # Helper function for create_partner_schedule. Computes the 'and' schedule array of two schedule arrays.
 def schedule_array_and(schedule_array1, schedule_array2):
     output_array = []

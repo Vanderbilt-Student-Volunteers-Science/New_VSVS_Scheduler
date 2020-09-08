@@ -85,12 +85,12 @@ def main():
     # import individual application data from individuals.csv
     with open('../data/individuals.csv', 'r') as individuals_csv:  # opens individuals.csv as individuals_csv
         csv_reader = csv.reader(individuals_csv, delimiter=',')  # divides individuals_csv by commas
-        next(csv_reader)
+        next(csv_reader) # skips the header
         for row in csv_reader:  # for each individual
 
-            # creates a Volunteer object and adds it to global variable volunteer_list
+            # pull data from row in the csv, create a Volunteer object, and add it to global variable
+            # volunteer_list
             # I is a dictionary containing all the indices for each field
-            # row indices correspond to columns of responses in individuals.csv
             volunteer = Volunteer(first=row[I['FIRST']].strip(),
                                   last=row[I['LAST']].strip(),
                                   phone=row[I['PHONE']].strip(),
@@ -101,12 +101,14 @@ def main():
                                   special_needs_interest=row[I['SPECIAL_NEEDS_INTEREST']].strip(),
                                   applied_t_leader=row[I['APPLIED_T_LEADER']].strip(),
                                   car_passengers=0,  # no drivers/cars for Fall 2020
-                                  imported_schedule=row[I['IMPORTED_SCHEDULE_START']:I['IMPORTED_SCHEDULE_END']],
+                                  imported_schedule=row[I['IMPORTED_SCHEDULE_START']:I['IMPORTED_SCHEDULE_END']+1],
                                   # location column in csv is either 'On-campus' or 'Remote', so we need to convert
                                   # to boolean
                                   is_in_person=(lambda x: True if x == 'On-campus' else False)(row[I['LOCATION']].strip())
                                   )
             src.globalAttributes.volunteer_list.append(volunteer)
+
+    print('There are {} volunteers.'.format(len(src.globalAttributes.volunteer_list)))
 
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
@@ -132,8 +134,7 @@ def main():
 
                 # if no volunteers in volunteer_list have same email, print an alert
                 elif volunteer == src.globalAttributes.volunteer_list[-1]:
-                    print(row[
-                              1] + ' first volunteer in their partner group was not found in individual application data.')
+                    print('WARNING: ' + row[1] + ' first volunteer in their partner group was not found in individual application data.')
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
@@ -202,7 +203,7 @@ def main():
         try:
             os.mkdir(path)
         except OSError:
-            print("failed to create %s directory" % path)
+            print("WARNING: failed to create %s directory" % path)
         else:
             print("created the %s directory" % path)
     else:
