@@ -1,8 +1,20 @@
+# TO DO FUTURE
 # TODO: sort robotics?
 # TODO: add global constants + change methods so scheduling times collected can be changed in the future (like constants for start time (7:15), time period (15 min), and periods collected (34))
 # TODO: group_number == -1 means unassigned
 # TODO: how many passengers to consider someone a driver? currently if passengers >= MAX_TEAM_SIZE. highest option on form is 4+, so if we change MAX_TEAM_SIZE to 5, no one will ever be a driver
 # TODO: optimize scheduling more by adding TRAVEL_TIME constants for every school
+
+# TO DO FALL 2020
+# TODO: switch the order of inputs - Nilai
+# TODO: assign at least one in person volunteer to each group - David
+#  substitute drivers with in-person
+# TODO: delete stuff that has to do with drivers
+
+# TESTING METRICS
+# people can make classrooms theyre assigned to
+# groups are assigned together
+# each group has at least one in-person
 
 # VSVS Volunteer Sorting Program, created 2019-2020
 # Imports data from data/classrooms.csv, data/individuals.csv, and data/partners.csv and assigns volunteers to groups. Assigns
@@ -60,6 +72,7 @@ import os
 import src.assign
 import src.classroom
 import src.globalAttributes
+from src.globalAttributes import I
 import src.volunteer
 
 
@@ -77,7 +90,7 @@ def main():
 
             # creates a Volunteer object and adds it to global variable volunteer_list
             # row indices correspond to columns of responses in individuals.csv
-            src.globalAttributes.volunteer_list.append(src.volunteer.Volunteer(row[2].strip(), row[3].strip(),
+            src.globalAttributes.volunteer_list.append(src.volunteer.Volunteer(row[I['FIRST']].strip(), row[I['LAST']].strip(),
                                                                                row[4].strip(), row[5].strip(), row[7],
                                                                                row[8].strip(), row[9], row[10], row[12],
                                                                                row[15], row[16:50]))
