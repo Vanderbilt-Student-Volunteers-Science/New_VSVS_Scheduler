@@ -90,14 +90,23 @@ def main():
 
             # finds first volunteer in partner group in volunteer_list and sets their Volunteer object
             # attributes partners, partner_indexes, and partner_schedule
-            for volunteer in src.globalAttributes.volunteer_list:
-                if volunteer.email == row[1]:
+            volunteer_index = 0
+            first_volunteer_matched = 0
+            while volunteer_index < len(src.globalAttributes.volunteer_list) and first_volunteer_matched == 0:
+                volunteer = src.globalAttributes.volunteer_list[volunteer_index]
+                volunteer_index += 1
+                if row[1].lower() == volunteer.email:
                     if len(row) == 5:
                         volunteer.add_partners(row[2], row[3], row[4])
                     elif len(row) == 4:
                         volunteer.add_partners(row[2], row[3], '')
                     else:
                         volunteer.add_partners(row[2], '', '')
+                    first_volunteer_matched = 1
+
+                # if no volunteers in volunteer_list have same email, print an alert
+                elif volunteer == src.globalAttributes.volunteer_list[-1]:
+                    print(row[1] + ' first volunteer in their partner group was not found in individual application data.')
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
