@@ -82,7 +82,6 @@ class Volunteer:
             partner3_matched = 1
         while volunteer_index < len(src.globalAttributes.volunteer_list) and partners_matched == 0:
             volunteer = src.globalAttributes.volunteer_list[volunteer_index]
-            volunteer_index += 1
             if volunteer.email == partner1_email:
                 self.partner_indexes.append(volunteer_index)
                 partner1_matched = 1
@@ -92,6 +91,8 @@ class Volunteer:
             elif volunteer.email == partner3_email:
                 self.partner_indexes.append(volunteer_index)
                 partner3_matched = 1
+
+            volunteer_index += 1
 
             if partner1_matched and partner2_matched and partner3_matched:
                 partners_matched = 1
