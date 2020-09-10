@@ -11,6 +11,10 @@
 #  substitute drivers with in-person
 # TODO: delete stuff that has to do with drivers
 
+# Possible TO Do
+# TODO: The phone numbers have different formats. We could use this package: https://pypi.org/project/phonenumbers/
+#  to parse phone numbers
+
 # TESTING METRICS
 # people can make classrooms theyre assigned to
 # groups are assigned together
