@@ -195,6 +195,8 @@ def main():
 
     # OUTPUT RESULTS
 
+    unassigned_volunteers = 0
+
     # create the results directory if it does not exist
     path = "../results"
 
@@ -211,6 +213,8 @@ def main():
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
         for volunteer_id in range(len(src.globalAttributes.volunteer_list)):
+            if src.globalAttributes.volunteer_list[volunteer_id].group_number == -1:
+                unassigned_volunteers += 1
             csv_writer.writerow(
                 [volunteer_id, src.globalAttributes.volunteer_list[volunteer_id].group_number,
                  src.globalAttributes.volunteer_list[volunteer_id].first,
@@ -221,6 +225,8 @@ def main():
                  src.globalAttributes.volunteer_list[volunteer_id].major, '',
                  src.globalAttributes.volunteer_list[volunteer_id].assigned_driver,
                  src.globalAttributes.volunteer_list[volunteer_id].assigned_t_leader])
+
+    print('There were {} unassigned volunteers.'.format(unassigned_volunteers))
 
 
 # runs main
