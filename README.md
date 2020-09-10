@@ -122,8 +122,7 @@ The volunteer class has the following members:
 - [ ] optimize scheduling more by adding TRAVEL_TIME constants for every school
 
 ### Possible To-do:
-- [ ] The phone numbers have different formats. We could use this [package](https://pypi.org/project/phonenumbers
-/) to parse phone numbers.
+- [ ] The phone numbers have different formats. We could use this [package](https://pypi.org/project/phonenumbers/) to parse phone numbers.
 - [ ] Add type annotations/docstrings to specify the type for each attribute
  
  
