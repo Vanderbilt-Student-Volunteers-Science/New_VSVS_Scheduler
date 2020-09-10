@@ -54,10 +54,10 @@ class Volunteer:
         self.partner_free_time_array = 0
 
         # Was the volunteer assigned to be the driver for their group?
-        self.assigned_driver = 0
+        self.assigned_driver = False
 
         # Was the volunteer assigned to be their group's team leader?
-        self.assigned_t_leader = 0
+        self.assigned_t_leader = False
 
         # Number of classrooms the volunteer can make according to their schedule. Set after partners and drivers are
         # assigned.
@@ -126,4 +126,7 @@ class Volunteer:
 
     # Designate the volunteer as the team leader for their group
     def assign_t_leader(self):
-        self.assigned_t_leader = 1
+        self.assigned_t_leader = True
+
+    def __str__(self):
+        return self.first + ' ' + self.last

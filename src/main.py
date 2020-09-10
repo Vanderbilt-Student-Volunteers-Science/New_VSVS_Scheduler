@@ -71,6 +71,7 @@ import os
 import src.assign
 import src.classroom
 import src.globalAttributes
+from src.classroom import Classroom
 from src.globalAttributes import I
 from src.volunteer import Volunteer
 
@@ -84,27 +85,27 @@ def main():
     # import individual application data from individuals.csv
     with open('../data/individuals.csv', 'r') as individuals_csv:  # opens individuals.csv as individuals_csv
         csv_reader = csv.reader(individuals_csv, delimiter=',')  # divides individuals_csv by commas
-        next(csv_reader) # skips the header
+        next(csv_reader)  # skips the header
         for row in csv_reader:  # for each individual
 
             # pull data from row in the csv, create a Volunteer object, and add it to global variable
             # volunteer_list
             # I is a dictionary containing all the indices for each field
-            volunteer = Volunteer(first=row[I['FIRST']].strip(),
-                                  last=row[I['LAST']].strip(),
-                                  phone=row[I['PHONE']].strip(),
-                                  email=row[I['EMAIL']].strip(),
-                                  year_in_school=row[I['YEAR']].strip(),
-                                  major=row[I['MAJOR']].strip(),
-                                  robotics_interest=False,  # no robotics for Fall 2020
-                                  special_needs_interest=row[I['SPECIAL_NEEDS_INTEREST']].strip(),
-                                  applied_t_leader=row[I['APPLIED_T_LEADER']].strip(),
-                                  car_passengers=0,  # no drivers/cars for Fall 2020
-                                  imported_schedule=row[I['IMPORTED_SCHEDULE_START']:I['IMPORTED_SCHEDULE_END']+1],
-                                  # location column in csv is either 'On-campus' or 'Remote', so we need to convert
-                                  # to boolean
-                                  is_in_person=(lambda x: True if x == 'On-campus' else False)(row[I['LOCATION']].strip())
-                                  )
+            volunteer = Volunteer(
+                first=row[I['FIRST']].strip(),
+                last=row[I['LAST']].strip(),
+                phone=row[I['PHONE']].strip(),
+                email=row[I['EMAIL']].strip(),
+                year_in_school=row[I['YEAR']].strip(),
+                major=row[I['MAJOR']].strip(),
+                robotics_interest=False,  # no robotics for Fall 2020
+                special_needs_interest=(lambda x: True if x == 'Yes' else False)(row[I['SPECIAL_NEEDS_INTEREST']].strip()),
+                applied_t_leader=(lambda x: True if x == 'Yes' else False)(row[I['APPLIED_T_LEADER']].strip()),
+                car_passengers=0,  # no drivers/cars for Fall 2020
+                imported_schedule=row[I['IMPORTED_SCHEDULE_START']:I['IMPORTED_SCHEDULE_END'] + 1],
+                # location column in csv is either 'On-campus' or 'Remote', so we need to convert to boolean
+                is_in_person=(lambda x: True if x == 'On-campus' else False)(row[I['LOCATION']].strip())
+            )
             src.globalAttributes.volunteer_list.append(volunteer)
 
     print('There are {} volunteers.'.format(len(src.globalAttributes.volunteer_list)))
@@ -133,7 +134,8 @@ def main():
 
                 # if no volunteers in volunteer_list have same email, print an alert
                 elif volunteer == src.globalAttributes.volunteer_list[-1]:
-                    print('WARNING: ' + row[1] + ' first volunteer in their partner group was not found in individual application data.')
+                    print('WARNING: ' + row[
+                        1] + ' first volunteer in their partner group was not found in individual application data.')
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
@@ -143,8 +145,16 @@ def main():
 
             # creates a Classroom object and adds it to global variable classroom_list
             # row indices correspond to columns of classrooms.csv
-            src.globalAttributes.classroom_list.append(src.classroom.Classroom(row[1], row[3], row[4], row[6], row[9],
-                                                                               row[11], row[12], row[13]))
+            classroom = Classroom(group_number=int(row[1].strip()),
+                                  teacher_name=row[3],
+                                  teacher_phone=row[4],
+                                  school=row[6],
+                                  teacher_email=row[9],
+                                  class_start_time=row[11],
+                                  class_end_time=row[12],
+                                  day_of_week=row[13]
+                                  )
+            src.globalAttributes.classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
 
@@ -212,19 +222,27 @@ def main():
 
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
+        # FIXME: we should iterate on volunteers not index
         for volunteer_id in range(len(src.globalAttributes.volunteer_list)):
             if src.globalAttributes.volunteer_list[volunteer_id].group_number == -1:
                 unassigned_volunteers += 1
             csv_writer.writerow(
-                [volunteer_id, src.globalAttributes.volunteer_list[volunteer_id].group_number,
-                 src.globalAttributes.volunteer_list[volunteer_id].first,
-                 src.globalAttributes.volunteer_list[volunteer_id].last,
-                 src.globalAttributes.volunteer_list[volunteer_id].email,
-                 src.globalAttributes.volunteer_list[volunteer_id].phone,
-                 src.globalAttributes.volunteer_list[volunteer_id].year_in_school, '',
-                 src.globalAttributes.volunteer_list[volunteer_id].major, '',
-                 src.globalAttributes.volunteer_list[volunteer_id].assigned_driver,
-                 src.globalAttributes.volunteer_list[volunteer_id].assigned_t_leader])
+                [
+                    volunteer_id,
+                    src.globalAttributes.volunteer_list[volunteer_id].group_number,
+                    src.globalAttributes.volunteer_list[volunteer_id].first,
+                    src.globalAttributes.volunteer_list[volunteer_id].last,
+                    src.globalAttributes.volunteer_list[volunteer_id].email,
+                    src.globalAttributes.volunteer_list[volunteer_id].phone,
+                    src.globalAttributes.volunteer_list[volunteer_id].year_in_school,
+                    '',
+                    src.globalAttributes.volunteer_list[volunteer_id].major,
+                    '',
+                    int(src.globalAttributes.volunteer_list[volunteer_id].assigned_driver),  # convert True/False to 1/0
+                    int(src.globalAttributes.volunteer_list[volunteer_id].assigned_t_leader)
+                    # convert True/False to 1/0
+                ]
+            )
 
     print('There were {} unassigned volunteers.'.format(unassigned_volunteers))
 

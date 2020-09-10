@@ -14,10 +14,10 @@ class Classroom:
         self.volunteers_assigned = 0
 
         # has a team leader?
-        self.t_leader = 0
+        self.t_leader = False
 
         # has a driver?
-        self.driver = 0
+        self.driver = False
 
         # time the class starts in military time
         self.class_start_time = src.convertSchedule.convert_to_military(class_start_time)
@@ -49,6 +49,9 @@ class Classroom:
         volunteer.set_group_number(self.group_number)
         if self.has_in_person_volunteer == 0 and volunteer.is_in_person:
             self.has_in_person_volunteer = 1
-        if self.t_leader == 0 and volunteer.applied_t_leader:
-            self.t_leader = 1
+        if self.t_leader is False and volunteer.applied_t_leader:
+            self.t_leader = True
             volunteer.assign_t_leader()
+
+    def __str__(self):
+        return self.teacher_name + ' at ' + self.school
