@@ -5,20 +5,15 @@
 # TODO: how many passengers to consider someone a driver? currently if passengers >= MAX_TEAM_SIZE. highest option on form is 4+, so if we change MAX_TEAM_SIZE to 5, no one will ever be a driver
 # TODO: optimize scheduling more by adding TRAVEL_TIME constants for every school
 
-# TO DO FALL 2020
-# TODO: switch the order of inputs - Nilai
-# TODO: assign at least one in person volunteer to each group - David
-#  substitute drivers with in-person
-# TODO: delete stuff that has to do with drivers
-
 # Possible TO Do
 # TODO: The phone numbers have different formats. We could use this package: https://pypi.org/project/phonenumbers/
 #  to parse phone numbers
 
 # TESTING METRICS
-# people can make classrooms theyre assigned to
+# people can make classrooms they're assigned to
 # groups are assigned together
 # each group has at least one in-person
+# see how many groups of <MAX there are
 
 # VSVS Volunteer Sorting Program, created 2019-2020
 # Imports data from data/classrooms.csv, data/individuals.csv, and data/partners.csv and assigns volunteers to groups. Assigns

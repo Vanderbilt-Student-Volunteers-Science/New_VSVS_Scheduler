@@ -100,6 +100,7 @@ class Volunteer:
             if partner1_matched and partner2_matched and partner3_matched:
                 partners_matched = 1
             elif volunteer == src.globalAttributes.volunteer_list[-1]:
+                print("WARNING: ", end = '')
                 if partner1_matched == 0:
                     print(partner1_email, end = ' ')
                 if partner2_matched == 0:
@@ -112,7 +113,7 @@ class Volunteer:
 
         # If all three partners are remote, they cannot be assigned in a group together. At least one volunteer in each group must be in person.
         if self.partners == 2 and not self.is_in_person and not src.globalAttributes.volunteer_list[self.partner_indexes[0]].is_in_person and not src.globalAttributes.volunteer_list[self.partner_indexes[1]].is_in_person:
-            print(self.email + "'s partner group cannot be grouped together because they are all remote.")
+            print("WARNING:" + self.email + "'s partner group cannot be grouped together because they are all remote.")
 
         elif self.partners != 0:
             self.partner_free_time_array = src.convertSchedule.create_partner_schedule(self.schedule_array, self.partners, self.partner_indexes)
