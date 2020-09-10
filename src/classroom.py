@@ -35,7 +35,7 @@ class Classroom:
         # >= volunteer_time_needed for a volunteer to be able to visit this classroom
         self.start_time_schedule_index = src.convertSchedule.military_to_free_time_array(self.day_of_week, self.free_time_start)
 
-        self.has_in_person_volunteer = 0
+        self.has_in_person_volunteer = False
 
 
     # Assigns a volunteer to a classroom. Updates the Volunteer group_number attribute with the group number of the
@@ -47,9 +47,9 @@ class Classroom:
     def assign_volunteer(self, volunteer):
         self.volunteers_assigned += 1
         volunteer.set_group_number(self.group_number)
-        if self.has_in_person_volunteer == 0 and volunteer.is_in_person:
-            self.has_in_person_volunteer = 1
-        if self.t_leader is False and volunteer.applied_t_leader:
+        if not self.has_in_person_volunteer and volunteer.is_in_person:
+            self.has_in_person_volunteer = True
+        if not self.t_leader and volunteer.applied_t_leader:
             self.t_leader = True
             volunteer.assign_t_leader()
 
