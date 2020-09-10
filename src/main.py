@@ -134,8 +134,7 @@ def main():
 
                 # if no volunteers in volunteer_list have same email, print an alert
                 elif volunteer == src.globalAttributes.volunteer_list[-1]:
-                    print('WARNING: ' + row[
-                        1] + ' first volunteer in their partner group was not found in individual application data.')
+                    print('WARNING: ' + row[1] + ' first volunteer in their partner group was not found in individual application data.')
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
@@ -214,33 +213,31 @@ def main():
         try:
             os.mkdir(path)
         except OSError:
-            print("WARNING: failed to create %s directory" % path)
+            print('WARNING: failed to create {} directory'.format(path))
         else:
-            print("created the %s directory" % path)
+            print('Created {} directory'.format(path))
     else:
-        print("%s directory already exists" % path)
+        print('{} directory already exists'.format(path))
 
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
-        # FIXME: we should iterate on volunteers not index
-        for volunteer_id in range(len(src.globalAttributes.volunteer_list)):
-            if src.globalAttributes.volunteer_list[volunteer_id].group_number == -1:
+        for volunteer_id, volunteer in enumerate(src.globalAttributes.volunteer_list):
+            if volunteer.group_number == -1:
                 unassigned_volunteers += 1
             csv_writer.writerow(
                 [
                     volunteer_id,
-                    src.globalAttributes.volunteer_list[volunteer_id].group_number,
-                    src.globalAttributes.volunteer_list[volunteer_id].first,
-                    src.globalAttributes.volunteer_list[volunteer_id].last,
-                    src.globalAttributes.volunteer_list[volunteer_id].email,
-                    src.globalAttributes.volunteer_list[volunteer_id].phone,
-                    src.globalAttributes.volunteer_list[volunteer_id].year_in_school,
+                    volunteer.group_number,
+                    volunteer.first,
+                    volunteer.last,
+                    volunteer.email,
+                    volunteer.phone,
+                    volunteer.year_in_school,
                     '',
-                    src.globalAttributes.volunteer_list[volunteer_id].major,
+                    volunteer.major,
                     '',
-                    int(src.globalAttributes.volunteer_list[volunteer_id].assigned_driver),  # convert True/False to 1/0
-                    int(src.globalAttributes.volunteer_list[volunteer_id].assigned_t_leader)
-                    # convert True/False to 1/0
+                    int(volunteer.assigned_driver),  # convert True/False to 1/0
+                    int(volunteer.assigned_t_leader)  # convert True/False to 1/0
                 ]
             )
 
