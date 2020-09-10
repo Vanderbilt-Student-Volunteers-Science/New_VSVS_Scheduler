@@ -54,10 +54,10 @@ class Volunteer:
         self.partner_free_time_array = 0
 
         # Was the volunteer assigned to be the driver for their group?
-        self.assigned_driver = 0
+        self.assigned_driver = False
 
         # Was the volunteer assigned to be their group's team leader?
-        self.assigned_t_leader = 0
+        self.assigned_t_leader = False
 
         # Number of classrooms the volunteer can make according to their schedule. Set after partners and drivers are
         # assigned.
@@ -100,6 +100,7 @@ class Volunteer:
             if partner1_matched and partner2_matched and partner3_matched:
                 partners_matched = 1
             elif volunteer == src.globalAttributes.volunteer_list[-1]:
+                print("WARNING: ", end = '')
                 if partner1_matched == 0:
                     print(partner1_email, end = ' ')
                 if partner2_matched == 0:
@@ -112,7 +113,7 @@ class Volunteer:
 
         # If all three partners are remote, they cannot be assigned in a group together. At least one volunteer in each group must be in person.
         if self.partners == 2 and not self.is_in_person and not src.globalAttributes.volunteer_list[self.partner_indexes[0]].is_in_person and not src.globalAttributes.volunteer_list[self.partner_indexes[1]].is_in_person:
-            print(self.email + "'s partner group cannot be grouped together because they are all remote.")
+            print("WARNING:" + self.email + "'s partner group cannot be grouped together because they are all remote.")
 
         elif self.partners != 0:
             self.partner_free_time_array = src.convertSchedule.create_partner_schedule(self.schedule_array, self.partners, self.partner_indexes)
@@ -125,4 +126,7 @@ class Volunteer:
 
     # Designate the volunteer as the team leader for their group
     def assign_t_leader(self):
-        self.assigned_t_leader = 1
+        self.assigned_t_leader = True
+
+    def __str__(self):
+        return self.first + ' ' + self.last
