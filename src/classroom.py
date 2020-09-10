@@ -14,7 +14,7 @@ class Classroom:
         self.volunteers_assigned = 0
 
         # has a team leader?
-        self.t_leader = 0
+        self.t_leader = 0  # FIXME: Why are we using an int for these fields instead of a bool?
 
         # has a driver?
         self.driver = 0
