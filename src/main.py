@@ -11,8 +11,8 @@
 
 # TESTING METRICS
 # people can make classrooms they're assigned to
-# groups are assigned together
-# each group has at least one in-person
+# groups are assigned together - yes
+# each group has at least one in-person - yes
 # see how many groups of <MAX there are
 
 # VSVS Volunteer Sorting Program, created 2019-2020

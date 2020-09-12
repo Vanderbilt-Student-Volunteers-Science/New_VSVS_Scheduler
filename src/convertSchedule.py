@@ -29,7 +29,7 @@ def convert_to_schedule_array(imported_schedule):
             schedule_array[34 + i] = 0
         if 'W' in imported_schedule[i]:
             schedule_array[68 + i] = 0
-        if 'H' in imported_schedule[i]:
+        if 'R' in imported_schedule[i]:
             schedule_array[102 + i] = 0
     return schedule_array
 

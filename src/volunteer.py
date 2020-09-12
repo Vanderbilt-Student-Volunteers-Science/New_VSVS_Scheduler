@@ -29,6 +29,7 @@ class Volunteer:
         # if they have a car that can carry the MAX_TEAM_SIZE
         self.driver = (self.car_passengers + 1 >= src.globalAttributes.MAX_TEAM_SIZE)
 
+        # TODO Convert directly from input schedule to free_time_array in one method. Don't need convert_to_schedule_array.
         # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday
         # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.); value at
         # an index is 1 if volunteer is available at that time and 0 if they are busy

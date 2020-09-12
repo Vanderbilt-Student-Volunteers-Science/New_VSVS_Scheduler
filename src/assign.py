@@ -17,6 +17,8 @@ def assign_partners(partner1):
                 classroom.assign_volunteer(src.globalAttributes.volunteer_list[partner_index])
         else:
             classroom_idx += 1
+    if partner1.group_number == -1:
+        print("WARNING: " + partner1.email + "'s partner group could not be assigned together because of scheduling conflicts.")
 
 
 # Assigns drivers to classroom groups without drivers. If all of the classrooms a driver can make already have drivers
