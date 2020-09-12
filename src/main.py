@@ -113,7 +113,7 @@ def main():
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
         csv_reader = csv.reader(partners_csv, delimiter=',')  # divides partners_csv by commas
-        next(csv_reader)
+        next(csv_reader) # skip header row
         for row in csv_reader:  # for each group of partners
 
             # finds first volunteer in partner group in volunteer_list and sets their Volunteer object
@@ -139,7 +139,7 @@ def main():
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
         csv_reader = csv.reader(classrooms_csv, delimiter=',')  # divides classrooms_csv by commas
-        next(csv_reader)
+        next(csv_reader)  # skip header row
         for row in csv_reader:  # for each classroom
 
             # creates a Classroom object and adds it to global variable classroom_list
@@ -221,6 +221,7 @@ def main():
 
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
+        # FIXME: should we add a header row for this output file?
         for volunteer_id, volunteer in enumerate(src.globalAttributes.volunteer_list):
             if volunteer.group_number == -1:
                 unassigned_volunteers += 1

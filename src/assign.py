@@ -106,13 +106,13 @@ def volunteer_can_make_class(volunteer, classroom):
 def partners_can_make_class(partner, classroom):
     return partner.partner_free_time_array[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
 
-
+# FIXME: Do we need these two methods? I feel like they can be done inline...
 # Helper method for sort_by_availability
 def return_classrooms_possible(volunteer):
     return volunteer.classrooms_possible
 
 
 # Sorts a list of Volunteer objects from the least to greatest classrooms_possible
-def sort_by_availability(list):
-    list.sort(key=return_classrooms_possible)
-    return list
+def sort_by_availability(volunteer_list):
+    volunteer_list.sort(key=return_classrooms_possible)
+    return volunteer_list
