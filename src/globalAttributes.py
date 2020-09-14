@@ -10,7 +10,7 @@ MAX_TEAM_SIZE = 3
 MIN_TEAM_SIZE = 3
 
 # minutes to travel one-way to any school
-SCHOOL_TRAVEL_TIME = 45
+SCHOOL_TRAVEL_TIME = 15
 
 # index for each field in the individuals csv
 I = {'FIRST': 3, 'LAST': 4, 'PHONE': 5, 'EMAIL': 6, 'SCHOOL': 7, 'YEAR': 8, 'MAJOR': 9, 'SPECIAL_NEEDS_INTEREST': 10,
