@@ -202,6 +202,19 @@ def main():
             unsorted_list.append(volunteer)
     src.assign.assign_others(src.assign.sort_by_availability(unsorted_list))
 
+
+    # reassign volunteers that were assigned to groups of 1
+    # TODO: think through this part better
+    unassigned_volunteers = []
+    for classroom in src.globalAttributes.classroom_list:
+        if classroom.volunteers_assigned == 1:
+            unassigned_volunteers.extend(classroom.empty_classroom())
+    src.assign.assign_others(src.assign.sort_by_availability(unassigned_volunteers))
+
+
+
+
+
     # OUTPUT RESULTS
 
     unassigned_volunteers = 0
@@ -219,12 +232,16 @@ def main():
     else:
         print('{} directory already exists'.format(path))
 
+
+    group_size = [0] * 108
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
         # FIXME: should we add a header row for this output file?
         for volunteer_id, volunteer in enumerate(src.globalAttributes.volunteer_list):
             if volunteer.group_number == -1:
                 unassigned_volunteers += 1
+            else:
+                group_size[volunteer.group_number] += 1
             csv_writer.writerow(
                 [
                     volunteer_id,
@@ -243,6 +260,10 @@ def main():
             )
 
     print('There were {} unassigned volunteers.'.format(unassigned_volunteers))
+
+    # TODO: Remove after testing?
+    for classroom in src.globalAttributes.classroom_list:
+        print("{} volunteers assigned to group {}".format(group_size[classroom.group_number], classroom.group_number))
 
 
 # runs main

@@ -5,6 +5,8 @@ import src.convertSchedule
 class Classroom:
 
     def __init__(self, group_number, teacher_name, teacher_phone, school, teacher_email, class_start_time, class_end_time, day_of_week):
+
+        # TODO: make group_number the index of classroom in classroom_list
         self.group_number = group_number
         self.teacher_name = teacher_name
         self.teacher_phone = teacher_phone
@@ -52,6 +54,25 @@ class Classroom:
         if not self.t_leader and volunteer.applied_t_leader:
             self.t_leader = True
             volunteer.assign_t_leader()
+
+    # unassigns volunteers from a classroom and returns a list of the volunteers that were unassigned
+    def empty_classroom(self):
+        unassigned_volunteers = []
+        for volunteer in src.globalAttributes.volunteer_list:
+            if volunteer.group_number == self.group_number:
+
+                # unassign volunteers
+                volunteer.set_group_number(-1)
+                volunteer.assigned_t_leader = False
+                volunteer.assigned_driver = False
+                unassigned_volunteers.append(volunteer)
+
+        # make classroom empty
+        self.volunteers_assigned = 0
+        self.t_leader = False
+        self.driver = False
+        self.has_in_person_volunteer = False
+        return unassigned_volunteers
 
     def __str__(self):
         return self.teacher_name + ' at ' + self.school
