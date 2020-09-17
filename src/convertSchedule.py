@@ -81,13 +81,15 @@ def calculate_free_time_start(class_start_time, school_travel_time):
 # class_end_time -     time class ends in military time
 # school_travel_time - time it takes to travel to school one-way in minutes
 # TODO: import travel times directly from globalAttributes to here
+# TODO: use ints not floats
 def calculate_free_time_needed(class_start_time, class_end_time, school_travel_time):
     class_start_minutes = class_start_time % 100
     class_start_hours = (class_start_time - class_start_minutes) / 100  # 1PM is 13 (NOT 1300)
     class_end_minutes = class_end_time % 100
     class_end_hours = (class_end_time - class_end_minutes) / 100
     if class_start_hours == class_end_hours:
-        return int(class_end_minutes - class_start_minutes + (2 * school_travel_time))
+        # TODO: change from (1 * school_travel_time) to (2 * school_travel_time) to account for driving time both ways
+        return int(class_end_minutes - class_start_minutes + (1 * school_travel_time))
     else:  # start_hour < end_hour
         # TODO: change from (1 * school_travel_time) to (2 * school_travel_time) to account for driving time both ways
         # changed because we only need 15 mins at beginning of lesson for teams to review their lessons (no travel time this semester)
@@ -104,8 +106,11 @@ def military_to_free_time_array(day_of_week, free_time_start):
         day = 1
     elif day_of_week == "Wednesday":
         day = 2
-    else:  # day_of_week == "Thursday":
+    elif day_of_week == "Thursday":
         day = 3
+    else:
+        print("WARNING: " + day_of_week + "  is an invalid day of the week")
+
     hour = int(free_time_start / 100)
     min = free_time_start % 100
     min = int(min / 15) * 15

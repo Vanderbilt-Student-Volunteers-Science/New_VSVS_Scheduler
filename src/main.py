@@ -4,6 +4,8 @@
 # TODO: group_number == -1 means unassigned
 # TODO: how many passengers to consider someone a driver? currently if passengers >= MAX_TEAM_SIZE. highest option on form is 4+, so if we change MAX_TEAM_SIZE to 5, no one will ever be a driver
 # TODO: optimize scheduling more by adding TRAVEL_TIME constants for every school
+# TODO: checking for duplicate submissions - if people fill out twice
+# TODO: do something if classroom is more than hour long
 
 # Possible TO Do
 # TODO: The phone numbers have different formats. We could use this package: https://pypi.org/project/phonenumbers/
@@ -153,6 +155,7 @@ def main():
                                   class_end_time=row[12],
                                   day_of_week=row[13]
                                   )
+
             src.globalAttributes.classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
@@ -213,8 +216,6 @@ def main():
 
 
 
-
-
     # OUTPUT RESULTS
 
     unassigned_volunteers = 0
@@ -264,7 +265,6 @@ def main():
     # TODO: Remove after testing?
     for classroom in src.globalAttributes.classroom_list:
         print("{} volunteers assigned to group {}".format(group_size[classroom.group_number], classroom.group_number))
-
 
 # runs main
 if __name__ == '__main__':
