@@ -1,5 +1,6 @@
 import src.globalAttributes
 
+
 # Assigns a group of partners to a classroom they all can make (if there is one) using the partner_schedule attribute of
 # the first partner's Volunteer object. When a group is assigned, uses classroom.assign_volunteer to reflect this in the
 # Volunteer objects of each of the volunteers in the group and the Classroom object of the classroom the group is being
@@ -11,14 +12,16 @@ def assign_partners(partner1):
 
     while partner1.group_number == -1 and classroom_idx < len(src.globalAttributes.classroom_list):
         classroom = src.globalAttributes.classroom_list[classroom_idx]
-        if partners_can_make_class(partner1, classroom) and src.globalAttributes.MAX_TEAM_SIZE - classroom.volunteers_assigned >= partner1.partners + 1:
+        if partners_can_make_class(partner1, classroom) and \
+                src.globalAttributes.MAX_TEAM_SIZE - classroom.volunteers_assigned >= partner1.partners + 1:
             classroom.assign_volunteer(partner1)
             for partner_index in partner1.partner_indexes:
                 classroom.assign_volunteer(src.globalAttributes.volunteer_list[partner_index])
         else:
             classroom_idx += 1
     if partner1.group_number == -1:
-        print("WARNING: " + partner1.email + "'s partner group could not be assigned together because of scheduling conflicts.")
+        print(
+            "WARNING: " + partner1.email + "'s partner group could not be assigned together because of scheduling conflicts.")
 
 
 # Assigns drivers to classroom groups without drivers. If all of the classrooms a driver can make already have drivers
@@ -88,7 +91,8 @@ def assign_others(sorted_others):
         while volunteer.group_number == -1 and classroom_idx < len(src.globalAttributes.empty_classrooms):
             if volunteer_can_make_class(volunteer, src.globalAttributes.empty_classrooms[classroom_idx]):
                 src.globalAttributes.empty_classrooms[classroom_idx].assign_volunteer(volunteer)
-                src.globalAttributes.partially_filled_classrooms.append(src.globalAttributes.empty_classrooms[classroom_idx])
+                src.globalAttributes.partially_filled_classrooms.append(
+                    src.globalAttributes.empty_classrooms[classroom_idx])
                 src.globalAttributes.empty_classrooms.pop(classroom_idx)
             else:
                 classroom_idx += 1
@@ -107,6 +111,7 @@ def volunteer_can_make_class(volunteer, classroom):
 # classroom - Classroom object of classroom being checked
 def partners_can_make_class(partner, classroom):
     return partner.partner_free_time_array[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
+
 
 # FIXME: Do we need these two methods? I feel like they can be done inline...
 # Helper method for sort_by_availability
