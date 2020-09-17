@@ -1,16 +1,25 @@
 import src.globalAttributes
-
+import re
 
 # Converts input time to military time.
 # time - time with AM or PM; ex: "2:05 PM"
 def convert_to_military(time):
-    time_list = time.split(':', 2)  # split into hours, minutes AM/PM
-    time_list2 = time_list[1].split(' ', 2)  # split into minutes, AM/PM
+    # use regular expressions to split string into three groups for hour, min, AM/PM
+    # groups in the regex are set off with parentheses
+    # [\d]* means one or more numbers
+    # [A|P]M means AM or PM
+    regex = r'([\d]*): ([\d]*) ([A|P]M)'
+    try:
+        # search the time string for this regex pattern
+        # then, select groups 1, 2, and 3 and save them as hour, min, am_pm
+        hour, minute, am_pm = re.search(regex, time).group(1,2,3)
+    except:
+        raise ValueError('{} is an invalid time string.'.format(time))
 
-    if time_list2[1] == 'AM' or time_list[0] == '12':
-        return (100 * int(time_list[0])) + int(time_list2[0])
+    if am_pm == 'AM' or hour == '12':
+        return (100 * int(hour)) + int(minute)
     else:
-        return 1200 + (100 * int(time_list[0])) + int(time_list2[0])
+        return 1200 + (100 * int(hour)) + int(minute)
 
 
 # Converts the schedule imported from individuals.csv into a schedule_array.
@@ -109,7 +118,7 @@ def military_to_free_time_array(day_of_week, free_time_start):
     elif day_of_week == "Thursday":
         day = 3
     else:
-        print("WARNING: " + day_of_week + "  is an invalid day of the week")
+        raise ValueError('{} is an invalid day of the week.'.format(day_of_week))
 
     hour = int(free_time_start / 100)
     min = free_time_start % 100
