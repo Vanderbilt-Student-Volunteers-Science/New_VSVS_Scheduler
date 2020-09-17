@@ -31,13 +31,13 @@ class Volunteer:
 
         # TODO Convert directly from input schedule to free_time_array in one method. Don't need convert_to_schedule_array.
         # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday
-        # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.); value at
-        # an index is 1 if volunteer is available at that time and 0 if they are busy
+        # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.)
+        # value at an index is 1 if volunteer is available at that time and 0 if they are busy
         self.schedule_array = src.convertSchedule.convert_to_schedule_array(imported_schedule)
 
         # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday
-        # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.); value at
-        # an index is the minutes of consecutive free time the volunteer has starting at that time
+        # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.)
+        # value at an index is the minutes of consecutive free time the volunteer has starting at that time
         self.free_time_array = src.convertSchedule.convert_to_free_time_array(self.schedule_array)
 
         # group number of -1 means not assigned to a group
@@ -47,12 +47,12 @@ class Volunteer:
         # method. This is only set in the Volunteer object of the first partner in the group.
         self.partners = 0
 
-        # Index of each of this volunteer's partners in volunteer_list. Set in add_partners method. This is only set in
-        # the Volunteer object of the first partner in the group.
+        # Index of each of this volunteer's partners in volunteer_list.
+        # Set in add_partners method. This is only set in the Volunteer object of the first partner in the group.
         self.partner_indexes = []
 
-        # free_time_array for a partner group. This is only set in the Volunteer object of the first partner in the
-        # group.
+        # free_time_array for a partner group.
+        # This is only set in the Volunteer object of the first partner in the group.
         self.partner_free_time_array = 0
 
         # Was the volunteer assigned to be the driver for their group?
@@ -61,8 +61,8 @@ class Volunteer:
         # Was the volunteer assigned to be their group's team leader?
         self.assigned_t_leader = False
 
-        # Number of classrooms the volunteer can make according to their schedule. Set after partners and drivers are
-        # assigned.
+        # Number of classrooms the volunteer can make according to their schedule.
+        # Set after partners and drivers are assigned.
         self.classrooms_possible = 0
 
         # True if the volunteer is in person, False if they are remote.
@@ -113,7 +113,8 @@ class Volunteer:
 
         self.partners = len(self.partner_indexes)
 
-        # If all three partners are remote, they cannot be assigned in a group together. At least one volunteer in each group must be in person.
+        # If all three partners are remote, they cannot be assigned in a group together.
+        # At least one volunteer in each group must be in person.
         if self.partners == 2 and not self.is_in_person and not src.globalAttributes.volunteer_list[
             self.partner_indexes[0]].is_in_person and not src.globalAttributes.volunteer_list[
             self.partner_indexes[1]].is_in_person:

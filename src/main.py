@@ -101,7 +101,8 @@ def main():
                 year_in_school=row[I['YEAR']].strip(),
                 major=row[I['MAJOR']].strip(),
                 robotics_interest=False,  # no robotics for Fall 2020
-                special_needs_interest=(lambda x: True if x == 'Yes' else False)(row[I['SPECIAL_NEEDS_INTEREST']].strip()),
+                special_needs_interest=(lambda x: True if x == 'Yes' else False)(
+                    row[I['SPECIAL_NEEDS_INTEREST']].strip()),
                 applied_t_leader=(lambda x: True if x == 'Yes' else False)(row[I['APPLIED_T_LEADER']].strip()),
                 car_passengers=0,  # no drivers/cars for Fall 2020
                 imported_schedule=row[I['IMPORTED_SCHEDULE_START']:I['IMPORTED_SCHEDULE_END'] + 1],
@@ -115,7 +116,7 @@ def main():
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
         csv_reader = csv.reader(partners_csv, delimiter=',')  # divides partners_csv by commas
-        next(csv_reader) # skip header row
+        next(csv_reader)  # skip header row
         for row in csv_reader:  # for each group of partners
 
             # finds first volunteer in partner group in volunteer_list and sets their Volunteer object
@@ -136,7 +137,8 @@ def main():
 
                 # if no volunteers in volunteer_list have same email, print an alert
                 elif volunteer == src.globalAttributes.volunteer_list[-1]:
-                    print('WARNING: ' + row[1] + ' first volunteer in their partner group was not found in individual application data.')
+                    print('WARNING: ' + row[
+                        1] + ' first volunteer in their partner group was not found in individual application data.')
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
@@ -205,7 +207,6 @@ def main():
             unsorted_list.append(volunteer)
     src.assign.assign_others(src.assign.sort_by_availability(unsorted_list))
 
-
     # reassign volunteers that were assigned to groups of 1
     # TODO: think through this part better
     unassigned_volunteers = []
@@ -213,8 +214,6 @@ def main():
         if classroom.volunteers_assigned == 1:
             unassigned_volunteers.extend(classroom.empty_classroom())
     src.assign.assign_others(src.assign.sort_by_availability(unassigned_volunteers))
-
-
 
     # OUTPUT RESULTS
 
@@ -232,7 +231,6 @@ def main():
             print('Created {} directory'.format(path))
     else:
         print('{} directory already exists'.format(path))
-
 
     group_size = [0] * 108
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
@@ -265,6 +263,7 @@ def main():
     # TODO: Remove after testing?
     for classroom in src.globalAttributes.classroom_list:
         print("{} volunteers assigned to group {}".format(group_size[classroom.group_number], classroom.group_number))
+
 
 # runs main
 if __name__ == '__main__':
