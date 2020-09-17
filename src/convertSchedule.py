@@ -8,7 +8,7 @@ def convert_to_military(time):
     # groups in the regex are set off with parentheses
     # [\d]* means one or more numbers
     # [A|P]M means AM or PM
-    regex = r'([\d]*): ([\d]*) ([A|P]M)'
+    regex = r'([\d]*):([\d]*) ([A|P]M)'
     try:
         # search the time string for this regex pattern
         # then, select groups 1, 2, and 3 and save them as hour, min, am_pm
