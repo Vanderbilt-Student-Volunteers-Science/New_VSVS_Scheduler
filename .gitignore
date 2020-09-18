@@ -218,6 +218,3 @@ fabric.properties
 
 # VSCode files
 .vscode/
-
-# Do not commit results to git
-results/

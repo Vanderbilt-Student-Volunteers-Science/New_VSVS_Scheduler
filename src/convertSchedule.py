@@ -99,14 +99,16 @@ def calculate_free_time_needed(class_start_time, class_end_time, school_travel_t
     class_start_hours = (class_start_time - class_start_minutes) / 100  # 1PM is 13 (NOT 1300)
     class_end_minutes = class_end_time % 100
     class_end_hours = (class_end_time - class_end_minutes) / 100
+    if class_end_time == 1545:
+        return 60
     if class_start_hours == class_end_hours:
         # TODO: change from (1 * school_travel_time) to (2 * school_travel_time) to account for driving time both ways
-        return int(class_end_minutes - class_start_minutes + (1 * school_travel_time))
+        return int(class_end_minutes - class_start_minutes + (2 * school_travel_time))
     else:  # start_hour < end_hour
         # TODO: change from (1 * school_travel_time) to (2 * school_travel_time) to account for driving time both ways
         # changed because we only need 15 mins at beginning of lesson for teams to review their lessons (no travel time this semester)
         return int((60 - class_start_minutes) + (60 * (class_end_hours - class_start_hours - 1)) + class_end_minutes + (
-                    1 * school_travel_time))
+                    2 * school_travel_time))
 
 
 # Returns the index in a free_time_array that corresponds to the time (and day of week) a lesson starts.
