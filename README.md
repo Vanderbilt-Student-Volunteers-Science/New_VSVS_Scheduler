@@ -1,2 +1,2 @@
 # New_VSVS_Scheduler
-Project started October 2019
+Final version used Fall 2020 with results
