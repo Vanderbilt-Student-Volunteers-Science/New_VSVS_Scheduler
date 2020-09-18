@@ -2,7 +2,7 @@
 
 **Final version used Fall 2020 with results**
 
-![Python application](https://github.com/VanderbiltSVS/New_VSVS_Scheduler/workflows/Python%20application/badge.svg?branch=Fall_2020_Semester)
+![Python application](https://github.com/VanderbiltSVS/New_VSVS_Scheduler/workflows/Python%20application/badge.svg?branch=Fall_2020)
 
 Project started October 2019
 
