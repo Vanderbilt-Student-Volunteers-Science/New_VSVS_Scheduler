@@ -4,7 +4,7 @@
 # CONSTANTS
 
 # maximum number of volunteers to allow in a classroom group
-MAX_TEAM_SIZE = 3
+MAX_TEAM_SIZE = 4
 
 # minimum acceptable number of volunteers in a classroom group that can visit a classroom
 MIN_TEAM_SIZE = 3
