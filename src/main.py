@@ -1,4 +1,3 @@
-
 import csv
 import os
 
@@ -33,7 +32,8 @@ def main():
                 year_in_school=row[I['YEAR']].strip(),
                 major=row[I['MAJOR']].strip(),
                 robotics_interest=False,  # no robotics for Fall 2020
-                special_needs_interest=(lambda x: True if x == 'Yes' else False)(row[I['SPECIAL_NEEDS_INTEREST']].strip()),
+                special_needs_interest=(lambda x: True if x == 'Yes' else False)(
+                    row[I['SPECIAL_NEEDS_INTEREST']].strip()),
                 applied_t_leader=(lambda x: True if x == 'Yes' else False)(row[I['APPLIED_T_LEADER']].strip()),
                 car_passengers=0,  # no drivers/cars for Fall 2020
                 imported_schedule=row[I['IMPORTED_SCHEDULE_START']:I['IMPORTED_SCHEDULE_END'] + 1],
@@ -47,7 +47,7 @@ def main():
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
         csv_reader = csv.reader(partners_csv, delimiter=',')  # divides partners_csv by commas
-        next(csv_reader)
+        next(csv_reader)  # skip header row
         for row in csv_reader:  # for each group of partners
 
             # finds first volunteer in partner group in volunteer_list and sets their Volunteer object
@@ -74,7 +74,7 @@ def main():
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
         csv_reader = csv.reader(classrooms_csv, delimiter=',')  # divides classrooms_csv by commas
-        next(csv_reader)
+        next(csv_reader)  # skip header row
         for row in csv_reader:  # for each classroom
 
             # creates a Classroom object and adds it to global variable classroom_list
@@ -88,6 +88,7 @@ def main():
                                   class_end_time=row[12],
                                   day_of_week=row[13]
                                   )
+
             src.globalAttributes.classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
@@ -137,6 +138,14 @@ def main():
             unsorted_list.append(volunteer)
     src.assign.assign_others(src.assign.sort_by_availability(unsorted_list))
 
+    # reassign volunteers that were assigned to groups of 1
+    # TODO: think through this part better
+    unassigned_volunteers = []
+    for classroom in src.globalAttributes.classroom_list:
+        if classroom.volunteers_assigned == 1:
+            unassigned_volunteers.extend(classroom.empty_classroom())
+    src.assign.assign_others(src.assign.sort_by_availability(unassigned_volunteers))
+
     # OUTPUT RESULTS
 
     unassigned_volunteers = 0
@@ -148,37 +157,43 @@ def main():
         try:
             os.mkdir(path)
         except OSError:
-            print("WARNING: failed to create %s directory" % path)
+            print('WARNING: failed to create {} directory'.format(path))
         else:
-            print("created the %s directory" % path)
+            print('Created {} directory'.format(path))
     else:
-        print("%s directory already exists" % path)
+        print('{} directory already exists'.format(path))
 
+    group_size = [0] * 108
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
-        # FIXME: we should iterate on volunteers not index
-        for volunteer_id in range(len(src.globalAttributes.volunteer_list)):
-            if src.globalAttributes.volunteer_list[volunteer_id].group_number == -1:
+        # FIXME: should we add a header row for this output file?
+        for volunteer_id, volunteer in enumerate(src.globalAttributes.volunteer_list):
+            if volunteer.group_number == -1:
                 unassigned_volunteers += 1
+            else:
+                group_size[volunteer.group_number] += 1
             csv_writer.writerow(
                 [
                     volunteer_id,
-                    src.globalAttributes.volunteer_list[volunteer_id].group_number,
-                    src.globalAttributes.volunteer_list[volunteer_id].first,
-                    src.globalAttributes.volunteer_list[volunteer_id].last,
-                    src.globalAttributes.volunteer_list[volunteer_id].email,
-                    src.globalAttributes.volunteer_list[volunteer_id].phone,
-                    src.globalAttributes.volunteer_list[volunteer_id].year_in_school,
+                    volunteer.group_number,
+                    volunteer.first,
+                    volunteer.last,
+                    volunteer.email,
+                    volunteer.phone,
+                    volunteer.year_in_school,
                     '',
-                    src.globalAttributes.volunteer_list[volunteer_id].major,
+                    volunteer.major,
                     '',
-                    int(src.globalAttributes.volunteer_list[volunteer_id].assigned_driver),  # convert True/False to 1/0
-                    int(src.globalAttributes.volunteer_list[volunteer_id].assigned_t_leader)
-                    # convert True/False to 1/0
+                    int(volunteer.assigned_driver),  # convert True/False to 1/0
+                    int(volunteer.assigned_t_leader)  # convert True/False to 1/0
                 ]
             )
 
     print('There were {} unassigned volunteers.'.format(unassigned_volunteers))
+
+    # TODO: Remove after testing?
+    for classroom in src.globalAttributes.classroom_list:
+        print("{} volunteers assigned to group {}".format(group_size[classroom.group_number], classroom.group_number))
 
 
 # runs main

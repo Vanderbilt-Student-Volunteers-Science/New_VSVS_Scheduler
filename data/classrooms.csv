@@ -1,102 +1,46 @@
 ID,Group #,Title,Teacher Name,Phone,Cell Number,School,School Phone,School Ext #,Teacher Email,Grade,Start Time,End Time,Day of Week,DOW for sorting,Rotation,Week 1 Experiment,Week 2 Experiment,Week 3 Experiment,Week 4 Experiment,Week 5 Experiment,Week 6 Experiment,Week 7 Experiment,Week 8 Experiment,Barcode,SendEmail
-1,1,,Robert Paxton,,(615) 298-8095,JT Moore Middle School,,563130,robert.paxton@mnps.org,6,1:10 PM,2:05 PM,Tuesday,2,A,Robotics,Robotics,Robotics,Robotics,--,,,,,FALSE
-2,2,Mr.,Tyler Lisowski,,(615) 767-3142,Community Based Transition Program at The Center B,,,tyler.lisowski@mnps.org,5,12:45 PM,1:45 PM,Thursday,4,A,Chemistry in a ziploc bag,Comets,Polymer Chemistry,Rates of Chemical Reactions,--,,,,,FALSE
-4,4,Mrs.,Alice DeGuira,(615) 298-8425,(615) 512-8432,West End Middle,,,alice.deguira@mnps.org,5,1:55 PM,2:52 PM,Wednesday,3,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-5,5,Ms.,La-Tanya Greene,,(615) 631-2542,West End Middle School,(615) 298-8425,770100,la-tanya.greene@mnps.org,6,10:10 AM,11:07 AM,Tuesday,2,A,Survivor,Saltwater Density,Chemical Energy Conversions,Potential Energy,--,,,,,FALSE
-6,6,,Christian Johnson,,,Meigs Middle Magnet,,555131,christian.johnson@mnps.org,5,8:15 AM,9:20 AM,Tuesday,2,A,N/A,Chemistry in a ziploc bag,N/A,Comets,Polymer Chemistry,Rates of Chemical Reactions,,,,FALSE
-7,7,Ms.,Cassie Norton ,,(513) 728-9660,JT Moore Middle School,,812697,mary.norton@mnps.org,8,10:15 AM,11:00 AM,Tuesday,2,A,N/A,Stratigraphy,Vacuums & Air Pressure,Igneous Rocks,Survivor,,,,,FALSE
-8,8,Ms.,Cassie Norton ,,(513) 728-9660,JT Moore Middle School,,812697,mary.norton@mnps.org,8,1:10 PM,2:05 PM,Tuesday,2,A,Survivor,Stratigraphy,Vacuums & Air Pressure,Igneous Rocks,--,,,,,FALSE
-9,9,Mr.,Benjamin Keil,,(812) 361-8022,Rose Park Magnet Middle,(615) 291-6405,811670,benjamin.keil@mnps.org,8,12:38 PM,1:38 PM,Thursday,4,B,N/A,Vacuums & Air Pressure,Igneous Rocks,Stratigraphy,Survivor,,,,,FALSE
-10,10,Mr.,Benjamin Keil,,(812) 361-8022,Rose Park Magnet Middle,(615) 291-6405,811670,benjamin.keil@mnps.org,8,8:52 AM,9:52 AM,Thursday,4,B,N/A,Vacuums & Air Pressure,Igneous Rocks,Stratigraphy,Survivor,,,,,FALSE
-11,11,Ms.,Ms.  Ashley Ramos,,(731) 336-8848,HG Hill Middle,(615) 353-2020,,ashley.ramos@mnps.org,8,1:10 PM,2:05 PM,Monday,1,A,Survivor,Igneous Rocks,Stratigraphy,Vacuums & Air Pressure,--,,,,,FALSE
-12,12,Ms.,Ms.  Ashley Ramos,,(731) 336-8848,HG Hill Middle,(615) 353-2020,,ashley.ramos@mnps.org,8,12:05 PM,1:05 PM,Monday,1,A,Survivor,Igneous Rocks,Stratigraphy,Vacuums & Air Pressure,--,,,,,FALSE
-13,13,,Andrew Strong,,(615) 973-1509,West End Middle,(615) 973-1509,,gary.strong@mnps.org,5,1:50 PM,2:50 PM,Monday,1,A,Chemistry in a ziploc bag,Comets,Polymer Chemistry,Rates of Chemical Reactions,--,,,,,FALSE
-14,14,Mrs.,Jamie Schimenti,,(615) 347-9078,Meigs,(615) 271-3222,,jamie.phifer-schimenti@mnps.org,6,8:15 AM,9:15 AM,Thursday,4,A,Survivor,Chemical Energy Conversions,Potential Energy,Saltwater Density,--,,,,,FALSE
-15,15,Mrs.,Jamie Schimenti,,(615) 347-9078,Meigs,(615) 271-3222,,jamie.phifer-schimenti@mnps.org,6,11:45 AM,12:45 PM,Thursday,4,A,Survivor,Chemical Energy Conversions,Potential Energy,Saltwater Density,--,,,,,FALSE
-16,16,Mrs.,Jamie Schimenti,,(615) 347-9078,Meigs,(615) 271-3222,,jamie.phifer-schimenti@mnps.org,6,1:50 PM,2:50 PM,Thursday,4,A,Survivor,Chemical Energy Conversions,Potential Energy,Saltwater Density,--,,,,,FALSE
-17,17,Miss,Rachel Keim,,(270) 703-9003,Meigs Middle,(615) 271-3222,,rachel.keim@mnps.org,5,9:20 AM,10:25 AM,Thursday,4,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-18,18,Miss,Rachel Keim,,(270) 703-9003,Meigs Middle,(615) 271-3222,,rachel.keim@mnps.org,5,1:45 PM,2:55 PM,Thursday,4,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-19,19,Miss,Rachel Keim,,(270) 703-9003,Meigs Middle,(615) 271-3222,,rachel.keim@mnps.org,5,8:00 AM,9:15 AM,Thursday,4,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-20,20,,Justine McMurray ,,(615) 294-0984,Meigs,,2713222,jmtrackchick@gmail.com,5,9:20 AM,10:25 AM,Tuesday,2,A,Chemistry in a ziploc bag,Rates of Chemical Reactions,Comets,Polymer Chemistry,--,,,,,FALSE
-21,21,,Justine McMurray ,,(615) 294-0984,Meigs,,2713222,jmtrackchick@gmail.com,5,8:10 AM,9:15 AM,Tuesday,2,A,Chemistry in a ziploc bag,Rates of Chemical Reactions,Comets,Polymer Chemistry,--,,,,,FALSE
-22,22,,Justine McMurray ,,(615) 294-0984,Meigs,,2713222,jmtrackchick@gmail.com,5,1:45 PM,2:50 PM,Tuesday,2,A,Chemistry in a ziploc bag,Rates of Chemical Reactions,Comets,Polymer Chemistry,--,,,,,FALSE
-23,23,Mr.,Dwayne Hardin,,(615) 482-0983,Head Middle Magnet School,,410118,dwayne.hardin@mnps.org,7,2:00 PM,2:55 PM,Tuesday,2,A,N/A,Blood Typing & Inheritance,Effects of CO2 on the Environment,Crazy Traits,Evidence for Chemical Reactions,,,,,FALSE
-24,24,Mr.,Dwayne Hardin,,(615) 482-0983,Head Middle Magnet School,,410118,dwayne.hardin@mnps.org,7,12:55 PM,1:55 PM,Tuesday,2,A,Evidence for Chemical Reactions,Blood Typing & Inheritance,Effects of CO2 on the Environment,Crazy Traits,--,,,,,FALSE
-25,25,Mr.,Dwayne Hardin,,(615) 482-0983,Head Middle Magnet School,,410118,dwayne.hardin@mnps.org,7,9:55 AM,10:55 AM,Tuesday,2,A,Evidence for Chemical Reactions,Blood Typing & Inheritance,Effects of CO2 on the Environment,Crazy Traits,--,,,,,FALSE
-26,26,Mr.,Dwayne Hardin,,(615) 482-0983,Head Middle Magnet School,,410118,dwayne.hardin@mnps.org,7,11:00 AM,11:55 AM,Tuesday,2,A,Evidence for Chemical Reactions,Blood Typing & Inheritance,Effects of CO2 on the Environment,Crazy Traits,--,,,,,FALSE
-27,27,Mr.,Andrew West,,,J.T. Moore Middle,,563117,andrew.west@mnps.org,6,2:10 PM,3:05 PM,Monday,1,B,Survivor,Potential Energy,Saltwater Density,Chemical Energy Conversions,--,,,,,FALSE
-28,28,Mr.,Andrew West,,,J.T. Moore Middle,,563117,andrew.west@mnps.org,6,11:40 AM,12:40 PM,Monday,1,B,Survivor,Potential Energy,Saltwater Density,Chemical Energy Conversions,--,,,,,FALSE
-29,29,Mr.,Andrew West,,,J.T. Moore Middle,,563117,andrew.west@mnps.org,6,9:15 AM,10:10 AM,Monday,1,B,Survivor,Potential Energy,Saltwater Density,Chemical Energy Conversions,--,,,,,FALSE
-30,30,Mr.,Andrew West,,,J.T. Moore Middle,,563117,andrew.west@mnps.org,6,10:15 AM,11:10 AM,Monday,1,B,Survivor,Potential Energy,Saltwater Density,Chemical Energy Conversions,--,,,,,FALSE
-31,31,Mrs.,Alecia Ford,,,JT Moore Middle School,(615) 298-8095,563110,Alecia.Ford@mnps.org,7,2:10 PM,3:05 PM,Wednesday,3,B,Evidence for Chemical Reactions,Effects of CO2 on the Environment,Crazy Traits,Blood Typing & Inheritance,--,,,,,FALSE
-32,32,Mrs.,Alecia Ford,,,JT Moore Middle School,(615) 298-8095,563110,Alecia.Ford@mnps.org,7,9:15 AM,10:10 AM,Wednesday,3,B,Evidence for Chemical Reactions,Effects of CO2 on the Environment,Crazy Traits,Blood Typing & Inheritance,--,,,,,FALSE
-33,33,Mrs.,Alecia Ford,,,JT Moore Middle School,(615) 298-8095,563110,Alecia.Ford@mnps.org,7,12:50 PM,1:50 PM,Wednesday,3,B,Evidence for Chemical Reactions,Effects of CO2 on the Environment,Crazy Traits,Blood Typing & Inheritance,--,,,,,FALSE
-34,34,Mrs.,Alecia Ford,,,JT Moore Middle School,(615) 298-8095,563110,Alecia.Ford@mnps.org,7,10:15 AM,11:15 AM,Wednesday,3,B,Evidence for Chemical Reactions,Effects of CO2 on the Environment,Crazy Traits,Blood Typing & Inheritance,--,,,,,FALSE
-35,35,,Andrew Marino,,,JT Moore Middle School,(615) 298-8095,813000,andrew.marino@mnps.org,7,10:15 AM,11:15 AM,Monday,1,A,N/A,Crazy Traits,Blood Typing & Inheritance,Effects of CO2 on the Environment,Evidence for Chemical Reactions,,,,,FALSE
-36,36,,Andrew Marino,,,JT Moore Middle School,(615) 298-8095,813000,andrew.marino@mnps.org,7,12:50 PM,1:50 PM,Monday,1,A,Evidence for Chemical Reactions,Crazy Traits,Blood Typing & Inheritance,Effects of CO2 on the Environment,--,,,,,FALSE
-37,37,,Andrew Marino,,,JT Moore Middle School,(615) 298-8095,813000,andrew.marino@mnps.org,7,2:10 PM,3:05 PM,Monday,1,A,Evidence for Chemical Reactions,Crazy Traits,Blood Typing & Inheritance,Effects of CO2 on the Environment,--,,,,,FALSE
-38,38,,Andrew Marino,,,JT Moore Middle School,(615) 298-8095,813000,andrew.marino@mnps.org,7,9:15 AM,10:10 AM,Monday,1,A,Evidence for Chemical Reactions,Crazy Traits,Blood Typing & Inheritance,Effects of CO2 on the Environment,--,,,,,FALSE
-39,39,,Leslie Bryan,,(347) 256-4918,J.T. Moore Middle School,,563125,leslie.bryan@mnps.org,5,2:10 PM,3:05 PM,Tuesday,2,A,Chemistry in a ziploc bag,Comets,Polymer Chemistry,Rates of Chemical Reactions,--,,,,,FALSE
-40,40,,Leslie Bryan,,(347) 256-4918,J.T. Moore Middle School,,563125,leslie.bryan@mnps.org,5,9:15 AM,10:10 AM,Tuesday,2,A,N/A,Comets,Polymer Chemistry,Rates of Chemical Reactions,Chemistry in a ziploc bag,,,,,FALSE
-41,41,,Leslie Bryan,,(347) 256-4918,J.T. Moore Middle School,,563125,leslie.bryan@mnps.org,5,1:10 PM,2:05 PM,Tuesday,2,A,Chemistry in a ziploc bag,Comets,Polymer Chemistry,Rates of Chemical Reactions,--,,,,,FALSE
-42,42,,Leslie Bryan,,(347) 256-4918,J.T. Moore Middle School,,563125,leslie.bryan@mnps.org,5,11:15 AM,12:10 PM,Tuesday,2,A,Chemistry in a ziploc bag,Comets,Polymer Chemistry,Rates of Chemical Reactions,--,,,,,FALSE
-43,43,Ms.,Allison Friar,,(334) 224-8016,JT Moore,,811884,ms.friar13@gmail.com,5,11:15 AM,12:10 PM,Wednesday,3,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-44,44,Ms.,Allison Friar,,(334) 224-8016,JT Moore,,811884,ms.friar13@gmail.com,5,1:10 PM,2:05 PM,Wednesday,3,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-45,45,Ms.,Allison Friar,,(334) 224-8016,JT Moore,,811884,ms.friar13@gmail.com,5,2:10 PM,3:05 PM,Wednesday,3,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-46,46,Ms.,Allison Friar,,(334) 224-8016,JT Moore,,811884,ms.friar13@gmail.com,5,9:15 AM,10:10 AM,Wednesday,3,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-47,47,Ms.,Lily Joy,,,Head Middle Magnet,,637114,Lily.joy@mnps.org,5,9:50 AM,10:45 PM,Thursday,4,A,N/A,Rates of Chemical Reactions,Comets,Polymer Chemistry,Chemistry in a ziploc bag,,,,,FALSE
-48,48,Ms.,Lily Joy,,,Head Middle Magnet,,637114,Lily.joy@mnps.org,5,8:50 AM,9:45 AM,Thursday,4,A,N/A,Rates of Chemical Reactions,Comets,Polymer Chemistry,Chemistry in a ziploc bag,,,,,FALSE
-49,49,Ms.,Lily Joy,,,Head Middle Magnet,,637114,Lily.joy@mnps.org,5,2:00 PM,2:55 PM,Thursday,4,A,Chemistry in a ziploc bag,Rates of Chemical Reactions,Comets,Polymer Chemistry,--,,,,,FALSE
-50,50,Ms.,Lily Joy,,,Head Middle Magnet,,637114,Lily.joy@mnps.org,5,1:00 PM,1:55 PM,Thursday,4,A,Chemistry in a ziploc bag,Rates of Chemical Reactions,Comets,Polymer Chemistry,--,,,,,FALSE
-51,51,Mr.,Raheem Merriweather,,(615) 439-0739,John Trotwood Moore Middle Prep,,540143,Raheem-Asad.Merriweather@mnps.org,8,11:15 AM,1:05 PM,Tuesday,2,A,Survivor,Stratigraphy,Vacuums & Air Pressure,Igneous Rocks,--,,,,,FALSE
-52,52,Mr.,Raheem Merriweather,,(615) 439-0739,John Trotwood Moore Middle Prep,,540143,Raheem-Asad.Merriweather@mnps.org,8,2:10 PM,3:05 PM,Tuesday,2,A,Survivor,Stratigraphy,Vacuums & Air Pressure,Igneous Rocks,--,,,,,FALSE
-53,53,Mr.,Raheem Merriweather,,(615) 439-0739,John Trotwood Moore Middle Prep,,540143,Raheem-Asad.Merriweather@mnps.org,8,10:15 AM,11:10 AM,Tuesday,2,A,N/A,Stratigraphy,Vacuums & Air Pressure,Igneous Rocks,Survivor,,,,,FALSE
-54,54,Mr.,Raheem Merriweather,,(615) 439-0739,John Trotwood Moore Middle Prep,,540143,Raheem-Asad.Merriweather@mnps.org,8,1:10 PM,2:05 PM,Tuesday,2,A,Survivor,Stratigraphy,Vacuums & Air Pressure,Igneous Rocks,--,,,,,FALSE
-58,58,Mr.,Alex Lute,,(615) 775-0077,JT Moore Middle School,( 61) 577-5077,,Alex.Lute@mnps.org,6,9:10 AM,10:10 AM,Monday,1,A,N/A,Survivor,Chemical Energy Conversions,Potential Energy,Saltwater Density,,,,,FALSE
-59,59,Mr.,Alex Lute,,(615) 775-0077,JT Moore Middle School,( 61) 577-5077,,Alex.Lute@mnps.org,6,2:10 PM,3:05 PM,Monday,1,A,N/A,N/A,Chemical Energy Conversions,Potential Energy,Saltwater Density,Survivor,,,,FALSE
-60,60,Mr.,Alex Lute,,(615) 775-0077,JT Moore Middle School,( 61) 577-5077,,Alex.Lute@mnps.org,6,11:40 AM,12:40 PM,Monday,1,A,N/A,Survivor,Chemical Energy Conversions,Potential Energy,Saltwater Density,,,,,FALSE
-61,61,Mr.,Michael Holland,,(270) 831-0144,H.G. Hill Middle School,,812672,michael.holland@mnps.org,5,2:10 PM,3:00 PM,Monday,1,A,Chemistry in a ziploc bag,Comets,Polymer Chemistry,Rates of Chemical Reactions,--,,,,,FALSE
-62,62,Mr.,Michael Holland,,(270) 831-0144,H.G. Hill Middle School,,812672,michael.holland@mnps.org,5,9:10 AM,10:00 AM,Monday,1,A,Chemistry in a ziploc bag,Comets,Polymer Chemistry,Rates of Chemical Reactions,--,,,,,FALSE
-63,63,Mr.,Michael Holland,,(270) 831-0144,H.G. Hill Middle School,,812672,michael.holland@mnps.org,5,1:10 PM,2:00 PM,Monday,1,A,Chemistry in a ziploc bag,Comets,Polymer Chemistry,Rates of Chemical Reactions,--,,,,,FALSE
-64,64,Mr.,Michael Holland,,(270) 831-0144,H.G. Hill Middle School,,812672,michael.holland@mnps.org,5,11:10 AM,12:00 PM,Monday,1,A,Chemistry in a ziploc bag,Comets,Polymer Chemistry,Rates of Chemical Reactions,--,,,,,FALSE
-65,65,Ms.,Hawkins,,(615) 870-4906,Head Middle Magnet School,,410123,andrea.hawkins@mnps.org,8,1:10 PM,2:05 PM,Wednesday,3,B,Survivor,Vacuums & Air Pressure,Igneous Rocks,Stratigraphy,--,,,,,FALSE
-66,66,Ms.,Hawkins,,(615) 870-4906,Head Middle Magnet School,,410123,andrea.hawkins@mnps.org,8,2:05 PM,3:00 PM,Wednesday,3,B,Survivor,Vacuums & Air Pressure,Igneous Rocks,Stratigraphy,--,,,,,FALSE
-68,68,Ms.,Hawkins,,(615) 870-4906,Head Middle Magnet School,,410123,andrea.hawkins@mnps.org,8,8:50 AM,9:55 AM,Wednesday,3,B,Survivor,Vacuums & Air Pressure,Igneous Rocks,Stratigraphy,--,,,,,FALSE
-69,69,,Becky Zazulak,,(480) 307-3975,HG Hill Middle School,(615) 353-2020,,rebecca.zazulak@mnps.org,5,2:05 PM,3:05 PM,Monday,1,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-70,70,,Becky Zazulak,,(480) 307-3975,HG Hill Middle School,(615) 353-2020,,rebecca.zazulak@mnps.org,5,1:05 PM,2:05 PM,Monday,1,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-71,71,,Becky Zazulak,,(480) 307-3975,HG Hill Middle School,(615) 353-2020,,rebecca.zazulak@mnps.org,5,11:05 AM,12:05 PM,Monday,1,B,Chemistry in a ziploc bag,N/A,Rates of Chemical Reactions,Comets,Polymer Chemistry,,,,,FALSE
-72,72,,Becky Zazulak,,(480) 307-3975,HG Hill Middle School,(615) 353-2020,,rebecca.zazulak@mnps.org,5,9:00 AM,10:05 AM,Monday,1,B,Chemistry in a ziploc bag,Polymer Chemistry,Rates of Chemical Reactions,Comets,--,,,,,FALSE
-73,73,Mrs.,Emily Warren,,(731) 225-9268,HG Hill Middle School,,434113,emily.warren@mnps.org,6,11:10 AM,12:10 PM,Thursday,4,B,Survivor,Potential Energy,Saltwater Density,Chemical Energy Conversions,--,,,,,FALSE
-74,74,Mrs.,Emily Warren,,(731) 225-9268,HG Hill Middle School,,434113,emily.warren@mnps.org,6,1:10 PM,2:05 PM,Thursday,4,B,Survivor,Potential Energy,Saltwater Density,Chemical Energy Conversions,--,,,,,FALSE
-75,75,Mrs.,Emily Warren,,(731) 225-9268,HG Hill Middle School,,434113,emily.warren@mnps.org,6,2:10 PM,3:05 PM,Thursday,4,B,Survivor,Potential Energy,Saltwater Density,Chemical Energy Conversions,--,,,,,TRUE
-76,76,Mrs.,Emily Warren,,(731) 225-9268,HG Hill Middle School,,434113,emily.warren@mnps.org,6,10:10 AM,11:05 AM,Thursday,4,B,Survivor,Potential Energy,Saltwater Density,Chemical Energy Conversions,--,,,,,FALSE
-77,77,Ms.,Erica Valerie,,(615) 416-0651,Head Middle Magnet School,(615) 329-8160,410110,erica.valerie@mnps.org,6,9:00 AM,9:50 AM,Thursday,4,A,N/A,Saltwater Density,Chemical Energy Conversions,Potential Energy,Survivor,,,,,FALSE
-78,78,Ms.,Erica Valerie,,(615) 416-0651,Head Middle Magnet School,(615) 329-8160,410110,erica.valerie@mnps.org,6,12:00 PM,12:55 PM,Thursday,4,A,N/A,Saltwater Density,Chemical Energy Conversions,Potential Energy,Survivor,,,,,FALSE
-79,79,Ms.,Erica Valerie,,(615) 416-0651,Head Middle Magnet School,(615) 329-8160,410110,erica.valerie@mnps.org,6,10:00 AM,10:55 AM,Thursday,4,A,N/A,Saltwater Density,Chemical Energy Conversions,Potential Energy,Survivor,,,,,FALSE
-80,80,Ms.,Erica Valerie,,(615) 416-0651,Head Middle Magnet School,(615) 329-8160,410110,erica.valerie@mnps.org,6,2:05 PM,2:55 PM,Thursday,4,A,N/A,Saltwater Density,Chemical Energy Conversions,Potential Energy,Survivor,,,,,FALSE
-81,81,Mrs.,Esther Cancasci,,(615) 481-0834,Head Middle Magnet School,,410107,esther.cancasci@mnps.org,5,9:50 AM,10:45 AM,Wednesday,3,A,Chemistry in a ziploc bag,Rates of Chemical Reactions,Comets,Polymer Chemistry,--,,,,,FALSE
-82,82,Mrs.,Esther Cancasci,,(615) 481-0834,Head Middle Magnet School,,410107,esther.cancasci@mnps.org,5,8:50 AM,9:45 AM,Wednesday,3,A,Chemistry in a ziploc bag,Rates of Chemical Reactions,Comets,Polymer Chemistry,,,,,,FALSE
-83,83,Mrs.,Esther Cancasci,,(615) 481-0834,Head Middle Magnet School,,410107,esther.cancasci@mnps.org,5,12:55 PM,1:55 PM,Wednesday,3,A,Chemistry in a ziploc bag,Rates of Chemical Reactions,Comets,Polymer Chemistry,--,,,,,FALSE
-84,84,Mrs.,Esther Cancasci,,(615) 481-0834,Head Middle Magnet School,,410107,esther.cancasci@mnps.org,5,2:00 PM,2:55 PM,Wednesday,3,A,Chemistry in a ziploc bag,Rates of Chemical Reactions,Comets,Polymer Chemistry,--,,,,,FALSE
-85,85,Mrs.,Nicola Vincent,,(615) 300-3772,Rose Park Magnet,(615) 291-6405,811880,nicola.vincent@mnps.org,7,11:00 AM,12:00 PM,Monday,1,A,Evidence for Chemical Reactions,Blood Typing & Inheritance,Effects of CO2 on the Environment,Crazy Traits,--,,,,,FALSE
-86,86,Mrs.,Nicola Vincent,,(615) 300-3772,Rose Park Magnet,(615) 291-6405,811880,nicola.vincent@mnps.org,7,12:55 PM,1:55 PM,Monday,1,A,Evidence for Chemical Reactions,Blood Typing & Inheritance,Effects of CO2 on the Environment,Crazy Traits,--,,,,,FALSE
-87,87,Mrs.,Nicola Vincent,,(615) 300-3772,Rose Park Magnet,(615) 291-6405,811880,nicola.vincent@mnps.org,7,9:55 AM,10:57 AM,Monday,1,A,N/A,Blood Typing & Inheritance,Effects of CO2 on the Environment,Crazy Traits,Evidence for Chemical Reactions,,,,,FALSE
-88,88,Mrs.,Nicola Vincent,,(615) 300-3772,Rose Park Magnet,(615) 291-6405,811880,nicola.vincent@mnps.org,7,2:00 PM,2:55 PM,Monday,1,A,Evidence for Chemical Reactions,Blood Typing & Inheritance,Effects of CO2 on the Environment,Crazy Traits,--,,,,,FALSE
-89,89,Ms.,Yolanda Burrell,,(615) 948-3225,East Nashville Middle School,,296110,yolanda.burrell@mnps.org,8,12:00 PM,12:55 PM,Thursday,4,A,Survivor,Igneous Rocks,Stratigraphy,Vacuums & Air Pressure,--,,,,,FALSE
-90,90,Ms.,Yolanda Burrell,,(615) 948-3225,East Nashville Middle School,,296110,yolanda.burrell@mnps.org,8,2:00 PM,2:55 PM,Thursday,4,A,Survivor,Igneous Rocks,Stratigraphy,Vacuums & Air Pressure,--,,,,,FALSE
-91,91,Ms.,Yolanda Burrell,,(615) 948-3225,East Nashville Middle School,,296110,yolanda.burrell@mnps.org,8,1:00 PM,1:55 PM,Thursday,4,A,Survivor,Igneous Rocks,Stratigraphy,Vacuums & Air Pressure,--,,,,,FALSE
-92,92,Ms.,Yolanda Burrell,,(615) 948-3225,East Nashville Middle School,,296110,yolanda.burrell@mnps.org,8,8:00 AM,8:55 AM,Thursday,4,A,Survivor,Igneous Rocks,Stratigraphy,Vacuums & Air Pressure,--,,,,,FALSE
-93,93,Mr.,William Sayles,,,HG Hill Middle School,,3532020,william.sayles@mnps.org,8,1:10 PM,2:05 PM,Thursday,4,A,Survivor,Stratigraphy,Vacuums & Air Pressure,Igneous Rocks,--,,,,,FALSE
-94,94,Mr.,William Sayles,,,HG Hill Middle School,,3532020,william.sayles@mnps.org,8,9:00 AM,10:00 AM,Thursday,4,A,Survivor,Stratigraphy,Vacuums & Air Pressure,Igneous Rocks,--,,,,,FALSE
-95,95,Mr.,William Sayles,,,HG Hill Middle School,,3532020,william.sayles@mnps.org,8,10:10 AM,11:05 AM,Thursday,4,A,Survivor,Stratigraphy,Vacuums & Air Pressure,Igneous Rocks,--,,,,,FALSE
-96,96,Mr.,William Sayles,,,HG Hill Middle School,,3532020,william.sayles@mnps.org,8,12:05 PM,1:05 PM,Thursday,4,A,Survivor,Stratigraphy,Vacuums & Air Pressure,Igneous Rocks,--,,,,,FALSE
-97,97,Ms.,Elizabeth Taylor,,(615) 877-1815,HG Hill Middle School,(615) 353-2020,,elizabeth.taylor2@mnps.org,6,10:10 AM,11:05 AM,Thursday,4,A,Survivor,Chemical Energy Conversions,Potential Energy,Saltwater Density,--,,,,,FALSE
-98,98,Ms.,Elizabeth Taylor,,(615) 877-1815,HG Hill Middle School,(615) 353-2020,,elizabeth.taylor2@mnps.org,6,11:10 AM,12:15 PM,Thursday,4,A,N/A,Chemical Energy Conversions,Potential Energy,Saltwater Density,Survivor,,,,,FALSE
-99,99,Ms.,Elizabeth Taylor,,(615) 877-1815,HG Hill Middle School,(615) 353-2020,,elizabeth.taylor2@mnps.org,6,2:10 PM,3:05 PM,Thursday,4,A,Survivor,N/A,Potential Energy,Saltwater Density,Chemical Energy Conversions,,,,,FALSE
-100,100,Ms.,Elizabeth Taylor,,(615) 877-1815,HG Hill Middle School,(615) 353-2020,,elizabeth.taylor2@mnps.org,6,1:10 PM,2:05 PM,Thursday,4,A,Survivor,Chemical Energy Conversions,Potential Energy,Saltwater Density,--,,,,,FALSE
-101,101,,Shaun Greene,,(561) 281-6513,HG Hill Middle School,(615) 353-2020,,Shaun.greene@mnps.org,7,12:15 PM,1:10 PM,Wednesday,3,B,Evidence for Chemical Reactions,Effects of CO2 on the Environment,Crazy Traits,Blood Typing & Inheritance,--,,,,,FALSE
-102,102,,Shaun Greene,,(561) 281-6513,HG Hill Middle School,(615) 353-2020,,Shaun.greene@mnps.org,7,2:10 PM,3:05 PM,Wednesday,3,B,Evidence for Chemical Reactions,Effects of CO2 on the Environment,Crazy Traits,Blood Typing & Inheritance,--,,,,,FALSE
-103,103,,Shaun Greene,,(561) 281-6513,HG Hill Middle School,(615) 353-2020,,Shaun.greene@mnps.org,7,9:10 AM,10:05 AM,Wednesday,3,B,N/A,Effects of CO2 on the Environment,Crazy Traits,Blood Typing & Inheritance,Evidence for Chemical Reactions,,,,,FALSE
-104,104,,Shaun Greene,,(561) 281-6513,HG Hill Middle School,(615) 353-2020,,Shaun.greene@mnps.org,7,10:10 AM,11:05 AM,Wednesday,3,B,Evidence for Chemical Reactions,Effects of CO2 on the Environment,Crazy Traits,Blood Typing & Inheritance,--,,,,,FALSE
-106,106,Mr.,Alex Lute,,(615) 775-0077,JT Moore Middle School,( 61) 577-5077,,Alex.Lute@mnps.org,6,10:15 AM,11:10 AM,Monday,1,A,N/A,Survivor,Chemical Energy Conversions,Potential Energy,Saltwater Density,,,,,FALSE
-107,107,,Andrew Strong,,(615) 973-1509,West End Middle,(615) 973-1509,,gary.strong@mnps.org,5,10:00 AM,11:00 AM,Monday,1,A,N/A,N/A,Polymer Chemistry,Rates of Chemical Reactions,Chemistry in a ziploc bag,Comets,,,,FALSE
+,1,,Katelin Henson,3522264631,3522264631,West End Middle School,,,Katelin.henson@mnps.org,5th,12:00 PM,1:45 PM,Tuesday,,,,,,,,,,,,
+,2,,Mrs. Alice DeGuira,6.15E+15,6155128432,West End Middle,,,alice.deguira@gmail.com,5th,1:00 PM,1:45 PM,Tuesday,,,,,,,,,,,,
+,3,,Ms. Warren,434207,7312259268,HG Hill,,,emily.warren@mnps.org,6th,1:00 PM,2:00 PM,Tuesday,,,,,,,,,,,,
+,4,,Ms. Warren,434207,7312259268,HG Hill,,,emily.warren@mnps.org,6th,1:00 PM,2:00 PM,Thursday,,,,,,,,,,,,
+,5,,Emily Warren,434207,7312259268,HG Hill,,,emily.warren@mnps.org,6th,2:35 PM,3:35 PM,Thursday,,,,,,,,,,,,
+,6,,Mrs Lauren Cecil ,6152988425,6155135403,West End Middle,,,lauren.cecil@mnps.org,5th,10:00 AM,10:45 AM,Wednesday,,,,,,,,,,,,
+,7,,Michael Holland,812672,2708310144,H.G. Hill Middle School,,,mdholland@mnps.org,5th,10:00 AM,11:00 AM,Thursday,,,,,,,,,,,,
+,8,,Michael Holland,812672,2708310144,H.G. Hill Middle School,,,mdholland@mnps.org,5th,11:00 AM,12:00 PM,Thursday,,,,,,,,,,,,
+,9,,Michael Holland,812672,2708310144,H.G. Hill Middle School,,,mdholland@mnps.org,5th,12:00 PM,1:00 PM,Thursday,,,,,,,,,,,,
+,10,,Mr. Andrew Golden,9316983665,9316983665,JT Moore Middle,,,andrew.golden@mnps.org,6th,9:45 AM,10:30 AM,Monday,,,,,,,,,,,,
+,11,,Mr. Andrew Golden,9316983665,9316983665,JT Moore Middle,,,andrew.golden@mnps.org,6th,10:45 AM,11:30 AM,Monday,,,,,,,,,,,,
+,12,,Mr. Andrew Golden,9316983665,9316983665,JT Moore Middle,,,andrew.golden@mnps.org,6th,1:30 PM,2:15 PM,Wednesday,,,,,,,,,,,,
+,13,,Mr. Andrew Golden,9316983665,9316983665,JT Moore Middle,,,andrew.golden@mnps.org,6th,3:00 PM,3:45 PM,Monday,,,,,,,,,,,,
+,14,,Mr. Alex Lute,6157750077,6157750077,JT Moore Middle School,,,Alex.Lute@mnps.org,6th,9:45 AM,10:30 AM,Monday,,,,,,,,,,,,
+,15,,Mr. Alex Lute,6157750077,6157750077,JT Moore Middle School,,,Alex.Lute@mnps.org,6th,10:45 AM,11:30 AM,Monday,,,,,,,,,,,,
+,16,,Mr. Alex Lute,6157750077,6157750077,JT Moore Middle School,,,Alex.Lute@mnps.org,6th,1:30 PM,2:15 PM,Wednesday,,,,,,,,,,,,
+,17,,Mr. Alex Lute,6157750077,6157750077,JT Moore Middle School,,,Alex.Lute@mnps.org,6th,3:00 PM,3:45 PM,Monday,,,,,,,,,,,,
+,19,,Ms. Friar,811884,3342248016,JT Moore,,,allison.friar@mnps.org,5th,9:45 AM,10:30 AM,Monday,,,,,,,,,,,,
+,20,,Ms. Friar,811884,3342248016,JT Moore,,,allison.friar@mnps.org,5th,10:45 AM,11:30 AM,Monday,,,,,,,,,,,,
+,21,,Ms. Friar,811884,3342248016,JT Moore,,,allison.friar@mnps.org,5th,12:15 PM,1:00 PM,Wednesday,,,,,,,,,,,,
+,22,,Ms. Friar,811884,3342248016,JT Moore,,,allison.friar@mnps.org,5th,1:15 PM,2:00 PM,Wednesday,,,,,,,,,,,,
+,23,,Ms. Doaa Jaha,0,,Nashville International Academy ,,,djaha@niatn.org,6th,1:45 PM,2:15 PM,Monday,,,,,,,,,,,,
+,24,,Ms. Doaa Jaha,0,,Nashville International Academy ,,,djaha@niatn.org,7th,2:45 PM,3:15 PM,Tuesday,,,,,,,,,,,,
+,25,,Ms. Doaa Jaha,0,,Nashville International Academy ,,,djaha@niatn.org,8th,9:45 AM,10:15 AM,Wednesday,,,,,,,,,,,,
+,26,,Ms. Doaa Jaha,0,,Nashville International Academy ,,,djaha@niatn.org,9th,10:45 AM,11:15 AM,Thursday,,,,,,,,,,,,
+,27,,Ms. Doaa Jaha,0,,Nashville International Academy ,,,djaha@niatn.org,10th,11:45 AM,12:15 PM,Tuesday,,,,,,,,,,,,
+,28,,Mr. Benjamin Keil,6152916405,8123618022,Rose Park Magnet Middle,,,benjamin.keil@mnps.org,8th,8:00 AM,9:00 AM,Wednesday,,,,,,,,,,,,
+,29,,Mr. Benjamin Keil,6152916405,8123618022,Rose Park Magnet Middle,,,benjamin.keil@mnps.org,8th,10:00 AM,10:45 AM,Thursday,,,,,,,,,,,,
+,30,,Mr. Benjamin Keil,6152916405,8123618022,Rose Park Magnet Middle,,,benjamin.keil@mnps.org,8th,2:00 PM,2:45 PM,Monday,,,,,,,,,,,,
+,31,,Mrs. Gunter,434205,6154833331,H G Hill Middle,,,Laura.gunter@mnps.org,6th,10:00 AM,11:00 AM,Wednesday,,,,,,,,,,,,
+,32,,Mrs. Gunter,434205,6154833331,H G Hill Middle,,,Laura.gunter@mnps.org,6th,11:00 AM,12:00 PM,Wednesday,,,,,,,,,,,,
+,33,,Mrs. Gunter,434205,6154833331,H G Hill Middle,,,Laura.gunter@mnps.org,6th,1:00 PM,2:00 PM,Thursday,,,,,,,,,,,,
+,34,,Yolanda Burrell,296110,6159483225,East Nashville Middle School,,,yolanda.burrell@mnps.org,8th,8:30 AM,9:15 AM,Monday,,,,,,,,,,,,
+,35,,Yolanda Burrell,296110,6159483225,East Nashville Middle School,,,yolanda.burrell@mnps.org,8th,10:30 AM,11:15 AM,Tuesday,,,,,,,,,,,,
+,36,,Yolanda Burrell,296110,6159483225,East Nashville Middle School,,,yolanda.burrell@mnps.org,8th,11:15 AM,12:00 PM,Wednesday,,,,,,,,,,,,
+,37,,Yolanda Burrell,296110,6159483225,East Nashville Middle School,,,yolanda.burrell@mnps.org,8th,12:00 PM,12:45 PM,Thursday,,,,,,,,,,,,
+,38,,Mrs. Petrony,6.15E+15,7022414279,Rose Park Magnet Middle School,,,Kristin.Petrony@mnps.org,5th,9:00 AM,9:45 AM,Tuesday,,,,,,,,,,,,
+,39,,Mrs. Petrony,6.15E+15,7022414279,Rose Park Magnet Middle School,,,Kristin.Petrony@mnps.org,5th,11:15 AM,12:00 PM,Wednesday,,,,,,,,,,,,
+,40,,Mrs. Siena Lang,7157977230,7157977230,Rose Park Middle School,,,siena.lang@mnps.org,6th,8:00 AM,8:45 AM,Wednesday,,,,,,,,,,,,
+,41,,Mrs. Siena Lang,7157977230,7157977230,Rose Park Middle School,,,siena.lang@mnps.org,6th,9:00 AM,9:45 AM,Wednesday,,,,,,,,,,,,
+,42,,Mrs. Siena Lang,7157977230,7157977230,Rose Park Middle School,,,siena.lang@mnps.org,6th,10:00 AM,10:45 AM,Wednesday,,,,,,,,,,,,
+,43,,Mrs. Siena Lang,7157977230,7157977230,Rose Park Middle School,,,siena.lang@mnps.org,6th,2:00 PM,2:45 PM,Tuesday,,,,,,,,,,,,
+,44,,Brent Goddard,6155007512,6155007512,HG Hill Middle School,,,douglas.goddard@mnps.org,5th,10:00 AM,11:00 AM,Monday,,,,,,,,,,,,
+,45,,Brent Goddard,6155007512,6155007512,HG Hill Middle School,,,douglas.goddard@mnps.org,5th,11:00 AM,12:00 PM,Tuesday,,,,,,,,,,,,
+,46,,Brent Goddard,6155007512,6155007512,HG Hill Middle School,,,douglas.goddard@mnps.org,5th,12:00 PM,1:00 PM,Wednesday,,,,,,,,,,,,
