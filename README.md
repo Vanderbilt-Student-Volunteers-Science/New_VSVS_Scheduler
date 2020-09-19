@@ -1,8 +1,8 @@
 # New_VSVS_Scheduler
 
-**Final version used Fall 2020 with results**
+**This branch is for active development.**
 
-![Python application](https://github.com/VanderbiltSVS/New_VSVS_Scheduler/workflows/Python%20application/badge.svg?branch=Fall_2020)
+![Python application](https://github.com/VanderbiltSVS/New_VSVS_Scheduler/workflows/Python%20application/badge.svg?branch=develop)
 
 Project started October 2019
 
