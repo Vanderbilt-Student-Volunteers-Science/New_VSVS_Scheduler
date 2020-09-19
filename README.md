@@ -107,36 +107,11 @@ The volunteer class has the following members:
 - is_in_person (True if the volunteer is in person, False if they are remote.)
 
 ## To-do
- 
-### For Fall 2020:
- 
-- [x] Write this documentation
-- [x] switch the order of inputs
-- [x] assign at least one in person volunteer to each group - David
-- [x] substitute drivers with in-person
-- [x] delete stuff that has to do with drivers
-- [x] run sorting program and validate results
+
+**Look in Issues and/or Projects**
 
 ### Testing Metrics:
 - [ ] people can make classrooms they're assigned to
 - [ ] groups are assigned together
 - [ ] each group has at least one in-person
 - [ ] see how many groups of <MAX there are
-
-### For the Future:
-
-- [ ] sort robotics?
-- [ ] add global constants + change methods so scheduling times collected can be changed in the future (like constants for start time (7:15), time period (15 min), and periods collected (34))
-- [ ] group_number == -1 means unassigned
-- [ ] how many passengers to consider someone a driver? currently if passengers >= MAX_TEAM_SIZE. highest option on form is 4+, so if we change MAX_TEAM_SIZE to 5, no one will ever be a driver
-- [ ] optimize scheduling more by adding TRAVEL_TIME constants for every school
-- [x] checking for duplicate submissions - if people fill out twice (On Google Form, limit to 1 response)
-- [ ] do something if classroom is more than hour long
-- [ ] make a teacher sign up form with better data input and data validation
-- [ ] add a lot of unit tests
-
-### Possible To-do:
-- [ ] The phone numbers have different formats. We could use this [package](https://pypi.org/project/phonenumbers/) to parse phone numbers.
-- [ ] Add type annotations/docstrings to specify the type for each attribute
- 
- 
