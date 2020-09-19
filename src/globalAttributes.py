@@ -16,6 +16,20 @@ SCHOOL_TRAVEL_TIME = 15
 I = {'FIRST': 3, 'LAST': 4, 'PHONE': 5, 'EMAIL': 6, 'SCHOOL': 7, 'YEAR': 8, 'MAJOR': 9, 'SPECIAL_NEEDS_INTEREST': 10,
      'APPLIED_T_LEADER': 12, 'IMPORTED_SCHEDULE_START': 14, 'IMPORTED_SCHEDULE_END': 47, 'LOCATION': 51}
 
+# Volunteer Schedule Constants
+# Each volunteer fills out a Google Form (individuals.csv) where they input their time commitments from
+# Monday to Thursday. The schedule starts at 7:15 AM (SCHEDULE_START_TIME) and continues in 15 min blocks
+# (SCHEDULE_BLOCK_LENGTH) for 34 (NUMBER_of_PERIODS_PER_DAYS) blocks until 3:45 PM
+
+# duration of each time period in individuals.csv Google Form (minutes)
+SCHEDULE_BLOCK_LENGTH = 15
+
+# time that the schedule in the individuals.csv Google Form starts at (in military time)
+SCHEDULE_START_TIME = 715
+
+# number of periods of length SCHEDULE_BLOCK_LENGTH for each day that starts at SCHEDULE_START_TIME
+NUMBER_OF_BLOCKS_PER_DAY = 34
+
 # VARIABLES
 
 # contains all of the Volunteer objects, one for each VSVS volunteer
