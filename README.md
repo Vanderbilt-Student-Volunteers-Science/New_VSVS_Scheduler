@@ -1,6 +1,6 @@
 # New_VSVS_Scheduler
 
-**This branch is for active development.**
+**This project is not complete. If you have improvements, please open a pull request.**
 
 ![Python application](https://github.com/VanderbiltSVS/New_VSVS_Scheduler/workflows/Python%20application/badge.svg?branch=develop)
 
