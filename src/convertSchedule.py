@@ -1,6 +1,7 @@
 import re
 
 import src.globalAttributes
+from src.globalAttributes import *
 
 
 # Converts input time to military time.
@@ -32,16 +33,16 @@ def convert_to_military(time):
 #                     are Wednesday, etc.); value at an index is 1 if volunteer is available at that time and 0 if they
 #                     are busy
 def convert_to_schedule_array(imported_schedule):
-    schedule_array = [1] * 136
-    for i in range(34):
+    schedule_array = [1] * 4 * BLOCKS_PER_DAY
+    for i in range(BLOCKS_PER_DAY):
         if 'M' in imported_schedule[i]:
             schedule_array[i] = 0
         if 'T' in imported_schedule[i]:
-            schedule_array[34 + i] = 0
+            schedule_array[BLOCKS_PER_DAY + i] = 0
         if 'W' in imported_schedule[i]:
-            schedule_array[68 + i] = 0
+            schedule_array[2 * BLOCKS_PER_DAY + i] = 0
         if 'R' in imported_schedule[i]:
-            schedule_array[102 + i] = 0
+            schedule_array[3 * BLOCKS_PER_DAY + i] = 0
     return schedule_array
 
 
@@ -59,13 +60,13 @@ def convert_to_free_time_array(schedule_array):
     free_time_array = []
 
     # i is the index being set, j is the index being tested for availability
-    for i in range(136):
+    for i in range(4 * BLOCKS_PER_DAY):
         j = i
         consecutive_free_time = 0
-        while j < 136 and schedule_array[j] == 1 and (
-                j % 34 != 0 or j == i):  # (j % 34 != 0 or j == i) prevents overlap into new day
+        while j < 4 * BLOCKS_PER_DAY and schedule_array[j] == 1 and (
+                j % BLOCKS_PER_DAY != 0 or j == i):  # (j % 34 != 0 or j == i) prevents overlap into new day
             j += 1
-            consecutive_free_time += 15
+            consecutive_free_time += SCHEDULE_BLOCK_LENGTH
         free_time_array.append(consecutive_free_time)
 
     return free_time_array
@@ -99,6 +100,7 @@ def calculate_free_time_needed(class_start_time, class_end_time, school_travel_t
     class_start_hours = (class_start_time - class_start_minutes) / 100  # 1PM is 13 (NOT 1300)
     class_end_minutes = class_end_time % 100
     class_end_hours = (class_end_time - class_end_minutes) / 100
+    # FIXME: edge case on last time period
     if class_end_time == 1545:
         return 60
     if class_start_hours == class_end_hours:
@@ -114,6 +116,7 @@ def calculate_free_time_needed(class_start_time, class_end_time, school_travel_t
 # Returns the index in a free_time_array that corresponds to the time (and day of week) a lesson starts.
 # day_of_week -     day of the week the lesson takes place
 # free_time_start - the first time a volunteer needs to be free to perform a lesson in military time
+# TODO: remove constants in this function
 def military_to_free_time_array(day_of_week, free_time_start):
     if day_of_week == "Monday":
         day = 0
@@ -128,10 +131,12 @@ def military_to_free_time_array(day_of_week, free_time_start):
 
     hour = int(free_time_start / 100)
     min = free_time_start % 100
+    # FIXME: The line below this comment doesn't do anything?
     min = int(min / 15) * 15
+    # TODO: what is this doing? documentation?
     if min == 0:
-        return int((34 * day) + ((hour - 8) * 4) + 3)
-    return int((34 * day) + ((hour - 7) * 4) + ((min - 15) / 15))
+        return int((BLOCKS_PER_DAY * day) + ((hour - 8) * 4) + 3)
+    return int((BLOCKS_PER_DAY * day) + ((hour - 7) * 4) + ((min - 15) / 15))
 
 
 # Creates a free_time_array for a group of partners.
