@@ -7,11 +7,11 @@ on:
   push:
     branches:
       - master
-      - Fall_2020_Semester
+      - Fall_2020
   pull_request:
     branches:
       - master
-      - Fall_2020_Semester
+      - Fall_2020
   # Also trigger on page_build, as well as release created events
   page_build:
   release:
