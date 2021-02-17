@@ -98,6 +98,20 @@ def assign_others(sorted_others):
                 classroom_idx += 1
 
 
+# # Assigns board to classroms first so that they are team leaders
+# def assign_board(board_list):
+#     for volunteer in board_list:
+#         for classroom in src.globalAttributes.classroom_list:
+#             if classroom.volunteers_assigned == 0:
+#                 if volunteer_can_make_class(volunteer, classroom):
+#                         classroom.assign_volunteer(volunteer)
+#
+#         for classroom in src.globalAttributes.classroom_list:
+#             if volunteer_can_make_class(volunteer, classroom):
+#                     classroom.assign_volunteer(volunteer)
+#
+
+
 # Returns boolean if volunteer can make a classroom.
 # volunteer - Volunteer object of volunteer being checked
 # classroom - Classroom object of classroom being checked

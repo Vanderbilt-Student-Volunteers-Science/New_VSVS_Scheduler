@@ -5,7 +5,7 @@ import src.globalAttributes
 
 class Volunteer:
     def __init__(self, first, last, phone, email, year_in_school, major, robotics_interest, special_needs_interest,
-                 applied_t_leader, car_passengers, imported_schedule, is_in_person):
+                 applied_t_leader, board, car_passengers, imported_schedule, is_in_person):
         self.first = first
         self.last = last
         self.phone = phone
@@ -17,6 +17,7 @@ class Volunteer:
 
         # if volunteer applied to be a team leader
         self.applied_t_leader = applied_t_leader
+        self.board = board
 
         # people a driver can drive (not including driver)
         if car_passengers == '':
@@ -70,21 +71,27 @@ class Volunteer:
 
     # Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of the first
     # partner in the group (the self object).
-    def add_partners(self, partner1_email, partner2_email, partner3_email):
+    def add_partners(self, partner1_email, partner2_email, partner3_email, partner4_email):
         partner1_email = partner1_email.lower()
         partner2_email = partner2_email.lower()
         partner3_email = partner3_email.lower()
+        partner4_email = partner4_email.lower()
 
         volunteer_index = 0
 
         partner1_matched = 0
         partner2_matched = 0
         partner3_matched = 0
+        partner4_matched = 0
+
         partners_matched = 0
         if partner2_email == '':
             partner2_matched = 1
         if partner3_email == '':
             partner3_matched = 1
+        if partner4_email == '':
+            partner4_matched = 1
+
         while volunteer_index < len(src.globalAttributes.volunteer_list) and partners_matched == 0:
             volunteer = src.globalAttributes.volunteer_list[volunteer_index]
             if volunteer.email == partner1_email:
@@ -96,10 +103,13 @@ class Volunteer:
             elif volunteer.email == partner3_email:
                 self.partner_indexes.append(volunteer_index)
                 partner3_matched = 1
+            elif volunteer.email == partner4_email:
+                self.partner_indexes.append(volunteer_index)
+                partner4_matched = 1
 
             volunteer_index += 1
 
-            if partner1_matched and partner2_matched and partner3_matched:
+            if partner1_matched and partner2_matched and partner3_matched and partner4_matched:
                 partners_matched = 1
             elif volunteer == src.globalAttributes.volunteer_list[-1]:
                 print("WARNING: ", end='')
@@ -109,15 +119,18 @@ class Volunteer:
                     print(partner2_email, end=' ')
                 if partner3_matched == 0:
                     print(partner3_email, end=' ')
+                if partner4_matched == 0:
+                    print(partner4_email, end=' ')
                 print("from " + self.email + "'s partner group were not found in individual application data.")
 
         self.partners = len(self.partner_indexes)
 
-        # If all three partners are remote, they cannot be assigned in a group together.
+        # If all four partners are remote, they cannot be assigned in a group together.
         # At least one volunteer in each group must be in person.
         if self.partners == 2 and not self.is_in_person and not src.globalAttributes.volunteer_list[
             self.partner_indexes[0]].is_in_person and not src.globalAttributes.volunteer_list[
-            self.partner_indexes[1]].is_in_person:
+            self.partner_indexes[1]].is_in_person and not src.globalAttributes.volunteer_list[
+            self.partner_indexes[2]].is_in_person:
             print("WARNING:" + self.email + "'s partner group cannot be grouped together because they are all remote.")
 
         elif self.partners != 0:

@@ -5,7 +5,7 @@ import src.assign
 import src.classroom
 import src.globalAttributes
 from src.classroom import Classroom
-from src.globalAttributes import I
+from src.globalAttributes import I, CLASSROOM_INDEX
 from src.volunteer import Volunteer
 
 
@@ -35,6 +35,7 @@ def main():
                 special_needs_interest=(lambda x: True if x == 'Yes' else False)(
                     row[I['SPECIAL_NEEDS_INTEREST']].strip()),
                 applied_t_leader=(lambda x: True if x == 'Yes' else False)(row[I['APPLIED_T_LEADER']].strip()),
+                board=(lambda x: True if x == 'Yes' else False)(row[I['BOARD']].strip()),
                 car_passengers=0,  # no drivers/cars for Fall 2020
                 imported_schedule=row[I['IMPORTED_SCHEDULE_START']:I['IMPORTED_SCHEDULE_END'] + 1],
                 # location column in csv is either 'On-campus' or 'Remote', so we need to convert to boolean
@@ -58,12 +59,14 @@ def main():
                 volunteer = src.globalAttributes.volunteer_list[volunteer_index]
                 volunteer_index += 1
                 if row[1].lower() == volunteer.email:
-                    if len(row) == 5:
-                        volunteer.add_partners(row[2], row[3], row[4])
+                    if len(row) == 6:
+                        volunteer.add_partners(row[2], row[3], row[4], row[5])
+                    elif len(row) == 5:
+                        volunteer.add_partners(row[2], row[3], row[4], '')
                     elif len(row) == 4:
-                        volunteer.add_partners(row[2], row[3], '')
+                        volunteer.add_partners(row[2], row[3], '', '')
                     else:
-                        volunteer.add_partners(row[2], '', '')
+                        volunteer.add_partners(row[2], '', '', '')
                     first_volunteer_matched = 1
 
                 # if no volunteers in volunteer_list have same email, print an alert
@@ -79,20 +82,27 @@ def main():
 
             # creates a Classroom object and adds it to global variable classroom_list
             # row indices correspond to columns of classrooms.csv
-            # TODO: create index dictionary for this too
-            classroom = Classroom(group_number=int(row[1].strip()),
-                                  teacher_name=row[3],
-                                  teacher_phone=row[4],
-                                  school=row[6],
-                                  teacher_email=row[9],
-                                  class_start_time=row[11],
-                                  class_end_time=row[12],
-                                  day_of_week=row[13]
+            classroom = Classroom(group_number=int(row[CLASSROOM_INDEX['GROUP_NUMBER']].strip()),
+                                  teacher_name=row[CLASSROOM_INDEX['TEACHER_NAME']],
+                                  teacher_phone=row[CLASSROOM_INDEX['TEACHER_PHONE']],
+                                  school=row[CLASSROOM_INDEX['SCHOOL']],
+                                  teacher_email=row[CLASSROOM_INDEX['TEACHER_EMAIL']],
+                                  class_start_time=row[CLASSROOM_INDEX['CLASS_START_TIME']],
+                                  class_end_time=row[CLASSROOM_INDEX['CLASS_END_TIME']],
+                                  day_of_week=row[CLASSROOM_INDEX['DAY_OF_WEEK']]
                                   )
 
             src.globalAttributes.classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
+
+    # board
+    # board_list = []
+    # for volunteer in src.globalAttributes.volunteer_list:
+    #     if volunteer.board and volunteer.group_number == -1:
+    #         board_list.append(volunteer)
+    #
+    # src.assign.assign_board(src.assign.sort_by_availability(board_list))
 
     # assign partners
     for volunteer in src.globalAttributes.volunteer_list:
