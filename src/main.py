@@ -174,9 +174,13 @@ def main():
     else:
         print('{} directory already exists'.format(path))
 
-    with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
+    with open('../results/raw_assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
-        # FIXME: should we add a header row for this output file?
+
+        # Header row
+        csv_writer.writerow(["Volunteer ID", "Group Number", "First Name", "Last Name", "Email", "Phone Number",
+                             "Year in School", " ", "Major", " ", "Driver", "Team Leader"])
+
         for volunteer_id, volunteer in enumerate(src.globalAttributes.volunteer_list):
             if volunteer.group_number == -1:
                 unassigned_volunteers += 1
@@ -199,7 +203,6 @@ def main():
 
     print('There were {} unassigned volunteers.'.format(unassigned_volunteers))
 
-    # TODO: Remove after testing?
     for classroom in src.globalAttributes.classroom_list:
         print("{} volunteers assigned to group {}".format(classroom.volunteers_assigned, classroom.group_number))
 
