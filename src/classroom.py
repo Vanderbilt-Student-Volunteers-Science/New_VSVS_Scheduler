@@ -44,6 +44,8 @@ class Classroom:
 
         self.has_in_person_volunteer = False
 
+        self.volunteers = []
+
     # Assigns a volunteer to a classroom. Updates the Volunteer group_number attribute with the group number of the
     # classroom the volunteer is being assigned to and the Classroom object with a new volunteers_assigned value. If
     # the classroom doesn't have a team leader or driver and the volunteer is one of those, sets the Classroom t_leader
@@ -51,13 +53,16 @@ class Classroom:
     # self -      Classroom object volunteer is being assigned to
     # volunteer - volunteer being assigned to self Classroom object
     def assign_volunteer(self, volunteer):
-        self.volunteers_assigned += 1
-        volunteer.set_group_number(self.group_number)
-        if not self.has_in_person_volunteer and volunteer.is_in_person:
-            self.has_in_person_volunteer = True
-        if not self.t_leader and volunteer.applied_t_leader:
-            self.t_leader = True
-            volunteer.assign_t_leader()
+        if self.volunteers_assigned < src.globalAttributes.MAX_TEAM_SIZE:
+            self.volunteers_assigned += 1
+            self.volunteers.append(volunteer)
+
+            volunteer.set_group_number(self.group_number)
+            if not self.has_in_person_volunteer and volunteer.is_in_person:
+                self.has_in_person_volunteer = True
+            if not self.t_leader and volunteer.applied_t_leader:
+                self.t_leader = True
+                volunteer.assign_t_leader()
 
     # unassigns volunteers from a classroom and returns a list of the volunteers that were unassigned
     def empty_classroom(self):
@@ -75,7 +80,8 @@ class Classroom:
         self.t_leader = False
         self.driver = False
         self.has_in_person_volunteer = False
+        self.volunteers = []
         return unassigned_volunteers
 
     def __str__(self):
-        return self.teacher_name + ' at ' + self.school
+        return self.teacher_name + ' @ ' + self.school
