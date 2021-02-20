@@ -1,5 +1,6 @@
 import csv
 import os
+import warnings
 
 import src.assign
 import src.classroom
@@ -9,8 +10,14 @@ from src.global_attributes import INDIVIDUAL_INDEX, CLASSROOM_INDEX
 from src.volunteer import Volunteer
 
 
-# TODO: all warnings should import warnings and use python Warnings
 # All global constants and variables are in global_attributes.py
+
+def custom_formatwarning(msg, *args, **kwargs):
+    # ignore everything except the message
+    return f"WARNING: {str(msg)}  \n"
+
+
+warnings.formatwarning = custom_formatwarning
 
 
 def main():
@@ -24,8 +31,8 @@ def main():
 
             # check vanderbilt email
             if not ('vanderbilt' in row[INDIVIDUAL_INDEX['EMAIL']].strip().lower()):
-                print(
-                    f"WARNING: {row[INDIVIDUAL_INDEX['FIRST']].strip()} {row[INDIVIDUAL_INDEX['LAST']].strip()} does not have a Vanderbilt email.")
+                warnings.warn(
+                    f"{row[INDIVIDUAL_INDEX['FIRST']].strip()} {row[INDIVIDUAL_INDEX['LAST']].strip()} does not have a Vanderbilt email.")
 
             # pull data from row in the csv, create a Volunteer object, and add it to global variable
             # volunteer_list
@@ -56,8 +63,6 @@ def main():
 
     # import partner application data from partners.csv
 
-    print("\n ------  PARTNER APPLICATION ERRORS ------")
-
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
         csv_reader = csv.reader(partners_csv, delimiter=',')  # divides partners_csv by commas
         next(csv_reader)  # skip header row
@@ -73,10 +78,8 @@ def main():
                 # add remaining partners to first partner
                 first_partner.add_partners(*tuple(row[2:]))
             else:
-                print(f'WARNING: {first_partner_email} filled out a partner application but not an individual '
-                      f'application.')
-
-    print("------------")
+                warnings.warn(f'{first_partner_email} filled out a partner application but not an individual '
+                              f'application.')
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
@@ -183,11 +186,9 @@ def main():
         try:
             os.mkdir(path)
         except OSError:
-            print('WARNING: failed to create {} directory'.format(path))
+            warnings.warn(f'failed to create {path} directory')
         else:
-            print('Created {} directory'.format(path))
-    else:
-        print('{} directory already exists'.format(path))
+            print(f'Created {path} directory')
 
     with open('../results/raw_assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')

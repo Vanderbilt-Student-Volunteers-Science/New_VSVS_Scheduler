@@ -1,3 +1,5 @@
+import warnings
+
 import src.global_attributes
 from src.classroom import Classroom
 from src.volunteer import Volunteer
@@ -25,12 +27,13 @@ def assign_partners(partner1):
                 # assign remaining partners
                 for partner_index in partner1.partner_indexes:
                     if src.global_attributes.volunteer_list[partner_index].group_number != -1:
-                        print(f"--WARNING: {src.global_attributes.volunteer_list[partner_index]} is being reassigned")
+                        warnings.warn(f"{src.global_attributes.volunteer_list[partner_index]} is being reassigned "
+                                      f"during partner assignment.")
                     classroom.assign_volunteer(src.global_attributes.volunteer_list[partner_index])
     # failed to assign
     if partner1.group_number == -1:
-        print(
-            f"WARNING: {str(partner1)}'s partner group could not be assigned together because of scheduling conflicts.")
+        warnings.warn(
+            f"{str(partner1)}'s partner group could not be assigned together because of scheduling conflicts.")
 
 
 def assign_in_person(sorted_in_person_volunteers):

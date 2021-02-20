@@ -1,3 +1,5 @@
+import warnings
+
 import src.classroom
 import src.convert_schedule
 import src.global_attributes
@@ -146,8 +148,8 @@ class Volunteer:
                         found = True
 
                 if not found:
-                    print(f"WARNING: {partner_email} from {self.email}'s volunteer group was not found in the "
-                          f"individual application data.")
+                    warnings.warn(
+                        f"{partner_email} from {self.email}'s volunteer group was not found in the individual application data.")
 
         # count number of partners
         self.partners = len(self.partner_indexes)
@@ -161,7 +163,7 @@ class Volunteer:
             self.partner_indexes[0]].is_in_person and not src.global_attributes.volunteer_list[
             self.partner_indexes[1]].is_in_person and not src.global_attributes.volunteer_list[
             self.partner_indexes[2]].is_in_person:
-            print("WARNING:" + self.email + "'s partner group cannot be grouped together because they are all remote.")
+            warnings.warn(f"{self.email}'s partner group cannot be grouped together because they are all remote.")
 
         elif self.partners != 0:
             # if it is fine, then generate partner free time array
