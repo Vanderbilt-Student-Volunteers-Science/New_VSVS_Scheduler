@@ -1,399 +1,465 @@
-0,62,David,Ward,david.e.ward@vanderbilt.edu,3215443871,Senior,,CS,,0,1
-1,10,Salem,Omer,salem.a.omer@vanderbilt.edu,6154767265,Sophomore,,Neuroscience,,0,0
-2,-1,Alexandre,Da Silva,alexandre.v.da.silva@vanderbilt.edu,3053430387,Junior,,Psychology and MHS,,0,0
-3,56,Veeraj,Shah,veeraj.m.shah@vanderbilt.edu,2015751351,First-Year,,Biochemistry,,0,0
-4,67,Sarah,Chappell,sarah.k.chappell@vanderbilt.edu,404-483-0783,Senior,,"Medicine, Health, and Society",,0,1
-5,63,Tokunbo,Faparusi,adetokunbo.e.faparusi@vanderbilt.edu,8048393983,Junior,,Chemical Engineering,,0,1
-6,81,Sandra,Drmanovic,aleksandra.drmanovic@vanderbilt.edu,5613741610,Junior,,Neuroscience and Mathematics,,0,0
-7,49,Vidhya,Sundar,vidhya.shunmugasundaram@vanderbilt.edu,8566738449,Sophomore,,Biomedical Engineering,,0,1
-8,25,Haseeb,Tariq,haseeb.h.tariq@vanderbilt.edu,5024452568,Sophomore,,NSC + MHS,,0,0
-9,74,Pouya,Ejtemaeimehr,pouya.ejtemaeimehr@vanderbilt.edu,6155210678,Sophomore,,"Neuroscience,  French",,0,0
-10,31,Nilai,Vemula,nilai.r.vemula@vanderbilt.edu,19015051560,Junior,,"Physics, Applied Math",,0,1
-11,66,Dev,Patel,dev.d.patel@vanderbilt.edu,6307768526,Sophomore,,"Neuroscience and Medicine, Health, and Society",,0,0
-12,37,Reethi,Padmanabhan,reethi.s.padmanabhan@vanderbilt.edu,2404219204,Sophomore,,Biomedical Engineering,,0,1
-13,27,Nicholas,Lowe,nicholas.d.lowe@vanderbilt.edu,8159194875,Sophomore,,"Chemical Engineering, Communication of Science and Technology",,0,1
-14,-1,Karthik,Vuyyuru,karthik.vuyyuru@vanderbilt.edu,6168810119,Junior,,Neuroscience/HOD,,0,0
-15,89,Fan,Xue,fan.xue@vanderbilt.edu,6156025754,Sophomore,,Biomedical engineering and electrical engineering,,0,0
-16,91,Sera,Eviner,sera.d.eviner@vanderbilt.edu,15164937034,Sophomore,,Computer Science,,0,1
-17,82,Samantha,Greenblatt,samantha.l.greenblatt@vanderbilt.edu,3019289810,Senior,,MHS and gender and sexuality studies,,0,1
-18,80,Josh,Bandopadhay,josh.bando@vanderbilt.edu,4694264520,Senior,,Neuroscience,,0,0
-19,20,Murray,Marx,murray.r.marx@vanderbilt.edu,6146209923,Sophomore,,"Neuroscience, Biochemistry",,0,0
-20,85,Alexis,Hollingsworth,alexis.n.hollingsworth@vanderbilt.edu,3863013462,Senior,,"Philosophy, Biology",,0,0
-21,33,Stephanie,Miller,stephanie.e.miller@vanderbilt.edu,3127586639,Sophomore,,Psych and HOD,,0,1
-22,-1,Emma,Fargo,emma.fargo@vanderbilt.edu,6154785186,Senior,,Psychology,,0,0
-23,86,Madison,McKinney,madison.j.mckinney@vanderbilt.edu,4235793020,Sophomore,,Chemical Engineering,,0,0
-24,81,Maya,Sachs,maya.g.sachs@vanderbilt.edu,9178607113,Sophomore,,Neuroscience,,0,1
-25,15,Sophia,Gerberg,sophia.a.gerberg@vanderbilt.edu,6316624315,Junior,,Medicine Health and Society and Spanish,,0,1
-26,62,Samantha,Brener,samantha.c.brener@vanderbilt.edu,6786449654,Senior,,"MHS, Neuroscience",,0,0
-27,2,Sophie,Robison,sophie.robison@vanderbilt.edu,7065182922,Junior,,Cognitive Studies,,0,0
-28,36,Joselyn,Yang,joselyn.w.yang@vanderbilt.edu,2818147989,Junior,,Biochemistry & MHS,,0,1
-29,-1,Joseph,Nacario,joseph.j.nacario@vanderbilt.edu,7604480221,Sophomore,,Cognitive Studies and MHS,,0,0
-30,91,Runze (Mike),Jiang,mike.jiang@vanderbilt.edu,9718013301,First-Year,,Unsure/Neuroscience,,0,0
-31,88,Weixi,Kang,weixi.kang@vanderbilt.edu,6298887232,Sophomore,,Chemistry,,0,0
-32,75,Ananya,Terala,ananya.s.terala@vanderbilt.edu,6786621456,Sophomore,,Neuroscience & MHS,,0,1
-33,20,Soumya,Vytla,sai.soumya.vytla@vanderbilt.edu,5132382476,First-Year,,Neuroscience & MHS,,0,0
-34,90,Jonathan,Wong,jonathan.wong@vanderbilt.edu,6269054776,Junior,,neuroscience,,0,0
-35,87,Maya,Xia,maya.y.xia@vanderbilt.edu,8327047741,Junior,,Neuroscience,,0,0
-36,36,Rebekah,Crane,rebekah.e.crane@vanderbilt.edu,2485589993,Junior,,"Secondary Education, Chemistry",,0,0
-37,-1,Marilyn,Wen,wanning.wen@vanderbilt.edu,2242533736,First-Year,,Biosciences,,0,0
-38,9,Keiji,Chan,keiji.h.chan@vanderbilt.edu,9729658836,Sophomore,,"Medicine, Health, and Society",,0,0
-39,37,Grace,Delmonte,grace.a.delmonte@vanderbilt.edu,4046837237,First-Year,,Neuroscience,,0,0
-40,48,Joyce,Sanks,jjs.sanks@gmail.com,17708959053,First-Year,,EEOB and English,,0,0
-41,67,Lindsay,Breidenbach,lindsay.b.breidenbach@vanderbilt.edu,6128899300,Graduate,,biochemistry,,0,0
-42,1,Gabriel,Diraviam,gabriel.a.diraviam@vanderbilt.edu,9548124882,Sophomore,,Math and CS,,0,0
-43,-1,Emily,Chuang,emily.a.chuang@vanderbilt.edu,331-472-9054,Senior,,MHS/Neuro,,0,0
-44,32,Peter,Pietri,peter.a.pietri@vanderbilt.edu,301-980-1887,First-Year,,"Medicine, Health, & Society",,0,0
-45,-1,Sam,Kwon,wooseok.kwon@vanderbilt.edu,2016479088,Sophomore,,Neuroscience,,0,0
-46,1,Ivy,Han,ivy.s.han@vanderbilt.edu,2404471897,Sophomore,,"Child Development, MCB",,0,0
-47,76,Quint,Gfroerer,george.l.gfroerer@vanderbilt.edu,4047024436,Sophomore,,Neuroscience,,0,1
-48,9,Shiva,Senthilkumar,shiva.senthilkumar@vanderbilt.edu,8654387562,Sophomore,,Chemical Biology,,0,0
-49,5,Benjamin,Fahrenkrug,benjamin.c.fahrenkrug@vanderbilt.edu,5155055521,Sophomore,,Electrical Engineering,,0,0
-50,5,Kenneth,Huff,kenneth.b.huff@vanderbilt.edu,8644943905,Sophomore,,Electrical Engineering,,0,1
-51,57,Anqy,Tong,anqy.tong@vanderbilt.edu,9726971619,First-Year,,Economics,,0,0
-52,1,Sally,Johnson,sally.f.johnson@vanderbilt.edu,(615)513-2940,Sophomore,,Political Science,,0,0
-53,64,Haley,Frey,haley.g.frey@vanderbilt.edu,9088099749,Senior,,Neuroscience,,0,0
-54,47,Anisha,Mathew,anisha.a.mathew@vanderbilt.edu,9787276401,Senior,,Chemical Engineering,,0,1
-55,1,Jessica,Handwerker,jessica.r.handwerker@vanderbilt.edu,3036013646,Sophomore,,Biomedical Engineering,,0,1
-56,36,Sung Jin,Lee,sung.jin.lee@vanderbilt.edu,6784679575,Junior,,Neuroscience and Music (Clarinet),,0,0
-57,19,Clare,Gippo,clare.e.gippo@vanderbilt.edu,3145567819,Sophomore,,Computer Science,,0,1
-58,4,Emily,Lattman,emily.b.lattman@vanderbilt.edu,9142551372,Sophomore,,"Medicine, Health, and Society",,0,0
-59,4,Samantha,Keller,samantha.r.keller@vanderbilt.edu,973 723 6450,Sophomore,,"Medicine, Health and Society",,0,0
-60,28,Aaron (Zaiyang),Guo,zaiyang.guo@vanderbilt.edu,"615-753-9880, +86 138-8613-5395",Sophomore,,(Intended) Biomedical Engineering,,0,0
-61,57,Emily,Zeller,emily.a.zeller@vanderbilt.edu,2102687860,Sophomore,,Civil Engineering,,0,0
-62,35,Yurim,Hong,yurim.hong@vanderbilt.edu,6503829961,Junior,,Psychology & MHS,,0,0
-63,80,Emily,DeSantis,emily.desantis@vanderbilt.edu,440-665-4852,Senior,,Neuroscience,,0,1
-64,2,Sophia,Buzanis,sophia.t.buzanis@vanderbilt.edu,7816975213,Senior,,Molecular Biology,,0,1
-65,-1,Kate,Scheetz,katherine.a.scheetz@vanderbilt.edu,3175040003,Sophomore,,Neuroscience,,0,0
-66,2,Brianna,Jacobson,brianna.jacobson@vanderbilt.edu,2014100666,Sophomore,,Biomedical Engineering,,0,0
-67,2,Mira,Patel,mira.p.patel@vanderbilt.edu,4693963398,Sophomore,,Neuroscience and MHS,,0,0
-68,40,Lina,Drechsler,lina.i.drechsler@vanderbilt.edu,5138864056,Sophomore,,Computer Science,,0,0
-69,53,Caitlin,Grogan,caitlin.e.grogan@vanderbilt.edu,2817486659,Sophomore,,Biomedical Engineering,,0,0
-70,43,Jeevan,Rajkumar,jeevan.s.rajkumar@vanderbilt.edu,9259974864,First-Year,,Chemistry,,0,0
-71,74,Varsha,Nair,varsha.m.nair@vanderbilt.edu,9496480224,Junior,,Neuroscience and African American & Diaspora Studies (AADS),,0,1
-72,-1,Vignesh,Chennupati,dhearaj.v.chennupati@vanderbilt.edu,4095048015,Sophomore,,Biomedical Engineering,,0,0
-73,6,Maia,Regan,maia.d.regan@vanderbilt.edu,2032174262,Junior,,Chemistry and MHS,,0,0
-74,7,Jenna,Lawrence,jennifer.l.lawrence@vanderbilt.edu,4048890805,Junior,,MHS & Child Development,,0,1
-75,40,Mathilde,Caindec,mathilde.k.caindec@vanderbilt.edu,4157557727,Sophomore,,Econ/CS,,0,0
-76,77,Jack,Yarnall,robert.h.yarnall@vanderbilt.edu,7708771765,Sophomore,,Biochem/Chem Bio and MHS,,0,1
-77,72,Andrew,Noonan,andrew.p.noonan@vanderbilt.edu,2036353000,Sophomore,,MEchanical Engineering,,0,0
-78,16,Mert,Sekmen,mert.sekmen@vanderbilt.edu,6155093770,First-Year,,MHS,,0,0
-79,26,Benjamin,Womsley,benjamin.j.womsley@vanderbilt.edu,8477076721,First-Year,,Undeclared,,0,0
-80,89,Bemnet,Argaw,bemnet.argaw@vanderbilt.edu,16158101981,First-Year,,"Medicine, Health, and Society on a pre-med track",,0,0
-81,59,Hari,Patel,hari.u.patel@vanderbilt.edu,3176253024,First-Year,,BME,,0,0
-82,5,Cerys,Egan,cerys.j.egan@vanderbilt.edu,3122215382,First-Year,,Chemistry (tentative),,0,0
-83,15,Callahan,Henry,callahan.g.henry@vanderbilt.edu,(203) 985-9645,Sophomore,,Math and Computer Science,,0,0
-84,5,Gwen,Lynch,gwen.l.lynch@vanderbilt.edu,8044323268,First-Year,,Chemistry (tentative),,0,0
-85,78,Corrina,Lueptow,corrina.j.lueptow@vanderbilt.edu,2629498608,First-Year,,"Medicine, Health, and Society",,0,0
-86,58,Claire,Hanson,claire.i.hanson@vanderbilt.edu,9523938994,Senior,,Neuroscience,,0,0
-87,83,Brian,Yoon,brian.s.yoon@vanderbilt.edu,551-486-6428,Sophomore,,Chemistry,,0,0
-88,23,jared,robinson,jared.robinson@vanderbilt.edu,4844319707,Junior,,"neuroscience, MHS",,0,0
-89,42,Sophia,Chung,sophia.chung@vanderbilt.edu,6017508356,First-Year,,Biomedical Engineering,,0,0
-90,23,Philip,Allison,andrew.p.allison@vanderbilt.edu,8595762691,Junior,,Economics and History,,0,1
-91,60,Lauren,Malley,lauren.m.malley@vanderbilt.edu,6509466499,Sophomore,,MHS and psychology,,0,0
-92,54,Yeabsira,Mekonnen,yeabsira.t.mekonnen@vanderbilt.edu,2517534962,Junior,,Chemical Engineering,,0,0
-93,26,Derek,Lee,lynn.lee.1@vanderbilt.edu,6033054643,Junior,,Chemical Engineering,,0,1
-94,12,Sarah,Shapiro,sarah.a.shapiro@vanderbilt.edu,6509060250,Senior,,"Medicine, Health and Society",,0,0
-95,12,Anna,Young,anna.young@vanderbilt.edu,2819019874,Senior,,MHS; Spanish,,0,1
-96,12,Marshall,Biven,marshall.k.biven@vanderbilt.edu,4026905606,Senior,,Engineering science,,0,0
-97,80,Ruchi,Patel,ruchi.c.patel@vanderbilt.edu,4238769129,Sophomore,,Neuroscience,,0,0
-98,41,Nicholas,Fomin,nicholas.f.fomin@vanderbilt.edu,6175103708,First-Year,,Neuroscience,,0,0
-99,3,Robert,Castro,robert.a.castro@vanderbilt.edu,3057931212,Junior,,"Medicine, Health, and Society",,0,1
-100,-1,Rakesh,Kathiresan,rakesh.kathiresan@vanderbilt.edu,2143103138,Junior,,"Medicine, Health, and Society",,0,0
-101,-1,Yiqi,Zhao,yiqi.zhao@vanderbilt.edu,8025356417,First-Year,,Math and Electrical Engineering,,0,0
-102,75,Alex,Shen,alex.shen@vanderbilt.edu,9493947423,First-Year,,Neuroscience,,0,0
-103,26,Kush,Chaudhari,kush.chaudhari@vanderbilt.edu,7322167309,First-Year,,Biology,,0,0
-104,28,Zakiya,Mensah,zakiya.d.mensah@vanderbilt.edu,7736799969,Sophomore,,Neuroscience and MHS,,0,0
-105,78,John Edwards,Dugan,john.e.dugan@vanderbilt.edu,6153192699,Senior,,Neuroscience,,0,0
-106,74,Alex,Ruemmler,alex.k.ruemmler@vanderbilt.edu,4087122078,Sophomore,,Secondary Education and Chemistry,,0,0
-107,90,Andrew,Gnegy,andrew.d.gnegy@vanderbilt.edu,3049165388,Junior,,Biomedical Engineering,,0,1
-108,28,Jalil,Mitchell,jalil.a.mitchell@vanderbilt.edu,5673223134,Sophomore,,NSC and MHS,,0,1
-109,48,Nyssa,Kantorek,nyssa.r.kantorek@vanderbilt.edu,2146298723,Senior,,Neuroscience,,0,1
-110,34,Yulia,Lee,seo.yeon.lee@vanderbilt.edu,2023807593,Senior,,Neuroscience and Psychology,,0,1
-111,77,Ray,Kongmanychanh,jasmine.m.kongmanychanh@vanderbilt.edu,6157137525,First-Year,,BioSci,,0,0
-112,87,Shuayng,Lin,shuyang.lin.1@vanderbilt.edu,6366755974,Junior,,Biology,,0,0
-113,88,Ada,Novak,ada.novak@vanderbilt.edu,6307157987,First-Year,,Undecided Engineering,,0,0
-114,45,Hemangi,Rajpal,hemangi.rajpal@vanderbilt.edu,9547985227,Sophomore,,Neuroscience,,0,0
-115,78,Alexander,Stoneman,alexander.d.stoneman@vanderbilt.edu,3305021686,Sophomore,,Biomedical and Chemical Engineering,,0,1
-116,-1,Sarina,Hamer,sarina.hamer@vanderbilt.edu,8186483557,Junior,,"Medicine, Health, and Society",,0,0
-117,13,Shery,Girgis,shery.e.girgis@vanderbilt.edu,6159677065,Sophomore,,Psychology,,0,1
-118,84,Joseph,Monsef,joseph.y.monsef@vanderbilt.edu,9077237753,Junior,,Biological Sciences,,0,0
-119,53,Blake,Shin,sungjin.shin@vanderbilt.edu,2147730374,First-Year,,Musical Arts,,0,0
-120,83,Ali,Romines,alexandra.j.romines@vanderbilt.edu,9013555933,Junior,,Neuroscience,,0,0
-121,23,Max,Winshall,max.s.winshall@vanderbilt.edu,6177977071,Senior,,Computer Science,,0,0
-122,31,Xingzhu,Chen,xingzhu.chen@vanderbilt.edu,3376787721,First-Year,,Biochemistry,,0,0
-123,46,Caroline,Holman,caroline.m.holman@vanderbilt.edu,3014615330,First-Year,,MHS,,0,0
-124,30,Neleah,Nugent,neleah.e.nugent@vanderbilt.edu,8654061832,First-Year,,Biology/MHS,,0,0
-125,31,Malea,Hayles,malea.hayles@vanderbilt.edu,3104673481,First-Year,,"medicine,health, and society",,0,0
-126,42,Madeleine,Sass,madeleine.a.sass@vanderbilt.edu,7329484889,Sophomore,,MHS/Neuro,,0,0
-127,22,Sarah,Eknoyan,sarah.g.eknoyan@vanderbilt.edu,7138987138,Sophomore,,Cognitive Studies,,0,0
-128,-1,Harrison,Schwartz,harrison.d.schwartz@vanderbilt.edu,2158168143,Sophomore,,Biology,,0,0
-129,7,Griffin,Collins,griffin.a.collins@vanderbilt.edu,6154146669,Junior,,Chemical Engineering,,0,0
-130,6,Tamara,Naidoo,tamara.i.naidoo@vanderbilt.edu,7133969701,Junior,,Neuroscience,,0,0
-131,44,Darian,Thomas,darian.c.thomas@vanderbilt.edu,8643085081,Graduate,,Molecular Physiology and Biophysics,,0,0
-132,52,Jordan,Baisley,jordan.l.baisley@vanderbilt.edu,2039457292,Sophomore,,"Human Organizational Development, and Medicine, Health and Society",,0,0
-133,38,Wacays,Dualeh,wacays.a.dualeh@vanderbilt.edu,6156026579,Junior,,MHS,,0,0
-134,-1,Faith,Viers,faith.e.viers@vanderbilt.edu,6155807559,First-Year,,Chemistry,,0,0
-135,32,Haley,Walker,haley.m.walker@vanderbilt.edu,6478029600,Junior,,MHS and Psychology,,0,0
-136,3,Jack,Tracy,jack.h.tracy@vanderbilt.edu,8657656005,Junior,,"Medicine, Health & Society",,0,0
-137,69,Jhanavi,Thakkar,jhanavi.a.thakkar@vanderbilt.edu,4135756026,First-Year,,Computer Science/Biology,,0,0
-138,4,Aire,Wu,aire.wu@vanderbilt.edu,5627397480,Junior,,Biomedical Engineering,,0,0
-139,82,Mary Grace,Hash,mary.grace.hash@vanderbilt.edu,2566583376,Graduate,,Biomedical Sciences,,0,0
-140,21,Alex,La Poche,alex.r.la.poche@vanderbilt.edu,9172887196,Senior,,Medicine Health and Society,,0,0
-141,76,Gabrielle,Jacobson,gabrielle.a.jacobson@vanderbilt.edu,9177977231,Senior,,History,,0,0
-142,45,Allie,Frymire,alexandra.m.frymire@vanderbilt.edu,4074460604,Sophomore,,Math and CS,,0,0
-143,61,Kaitlyn,Lane,kaitlyn.t.lane15@gmail.com,7313438617,First-Year,,Physics?,,0,0
-144,4,Amy,Sihn,amy.sihn@vanderbilt.edu,9377897093,Junior,,Electrical Engineering and Mathematics,,0,0
-145,70,Ismail,Mohyuddin,ismail.a.mohyuddin@vanderbilt.edu,6158185177,Sophomore,,Religious Studies,,0,0
-146,-1,Michael,Selzer,michael.p.selzer@vanderbilt.edu,9148069621,Senior,,Electrical Engineering,,0,0
-147,-1,Matthew,Stein,matthew.k.stein.1@vanderbilt.edu,9549182008,Senior,,Mhs and econ,,0,0
-148,44,Carly,Stewart,carly.m.stewart@vanderbilt.edu,4406798289,Sophomore,,Molecular & Cellular Biology and Communication of Science & Technology,,0,1
-149,24,Mae,Winglass,mae.winglass@vanderbilt.edu,2074499296,Sophomore,,Cognitive Studies,,0,0
-150,46,Doah,Shin,doah.e.shin@vanderbilt.edu,7143090548,Sophomore,,Neuroscience,,0,1
-151,79,Ethan,Chi,ethan.s.chi@vanderbilt.edu,412-580-0350,Sophomore,,MCB,,0,0
-152,46,Andrew,Nam,andrew.nam@vanderbilt.edu,9197863778,Sophomore,,Neuroscience,,0,0
-153,46,Jingdian(Jamie),Huang,jingdian.huang@vanderbilt.edu,9098099989,Sophomore,,MHS,,0,0
-154,67,Alexandra,Eisenreich,alexandra.s.eisenreich@vanderbilt.edu,3107042333,First-Year,,I intend to major in either biochemistry or math.,,0,0
-155,75,Sean,Yang,sean.t.yang@vanderbilt.edu,9019214398,Sophomore,,Piano + Neuroscience,,0,0
-156,73,Macy,Noe,macy.d.noe@vanderbilt.edu,4233070547,First-Year,,Chemical Engineering,,0,0
-157,48,Robert (Rob),Harvey,robert.b.harvey@vanderbilt.edu,6158567799,Junior,,"1) Engineering Science with a concentration in data analytics, 2) Applied Mathematics",,0,0
-158,88,Kate,Beier,katherine.l.beier@vanderbilt.edu,6153547246,Senior,,Molecular and Cellular Biology,,0,0
-159,3,Nikki,Han,nicola.g.han@vanderbilt.edu,2196701818,Junior,,hod & economics,,0,0
-160,3,Kirsten,von Rosenvinge,kirsten.e.von.rosenvinge@vanderbilt.edu,3473308749,Junior,,Biomedical Engineering,,0,0
-161,58,Virali,Patel,virali.n.patel@vanderbilt.edu,4788320100,Sophomore,,Political Science and Biology,,0,0
-162,-1,Eric,Han,tianyu.han@vanderbilt.edu,Not in US,Junior,,Computer Science,,0,0
-163,85,Irene,Chu,irene.j.chu@vanderbilt.edu,8482205226,Junior,,Biology and MHS,,0,0
-164,16,Emma,Francis,emma.j.francis@vanderbilt.edu,6177772949,Junior,,Secondary Ed/ Math,,0,0
-165,16,Sam,MacGavin,samantha.a.macgavin@vanderbilt.edu,6364898808,Junior,,Neuroscience and MHS,,0,1
-166,52,Sandra,Zaki,sandra.zaki@vanderbilt.edu,6152439161,Junior,,Neuroscience,,0,0
-167,50,Katlyn,Gonzalez,katlyn.m.gonzalez@vanderbilt.edu,9804225141,Junior,,MHS and Neuroscience,,0,1
-168,58,Ben,Ambrose,benjamin.e.ambrose@vanderbilt.edu,6156783977,Junior,,Economics,,0,0
-169,80,Joseph,Choe,yongho.choe@vanderbilt.edu,4254177938,Sophomore,,Molecular Cellular Biology and Psychology,,0,0
-170,77,Zoe,Abel,zoe.k.abel@vanderbit.edu,2023511269,First-Year,,"Medicine, Health and Society + French",,0,0
-171,59,Kevin,Nguyen,kevin.k.nguyen@vanderbilt.edu,615-707-3263,Junior,,Neuroscience and MHS,,0,0
-172,25,Mariana,Smith,mariana.e.smith@vanderbilt.edu,5714424278,Sophomore,,Mechanical Engineering,,0,0
-173,42,Aria,Sajjad,aria.a.sajjad@vanderbilt.edu,8659249414,Senior,,Molecular and Cell Biology,,0,1
-174,48,Niraj,Rama,niraj.rama@vanderbilt.edu,8596195618,Sophomore,,Neuroscience/economics,,0,0
-175,72,Amanda,Pan,amanda.c.pan@vanderbilt.edu,4058873859,Senior,,MHS,,0,0
-176,72,Kevin,Sun,kevin.w.sun@vanderbilt.edu,7143073312,Senior,,Molec/Cell Bio and MHS,,0,1
-177,55,Bryan,Han,bryan.han@vanderbilt.edu,3526725990,First-Year,,Planning on Biological Sciences,,0,0
-178,41,Kleio,Jiang,wenyi.jiang@vanderbilt.edu,+86 15325335368,Sophomore,,Psychology and Communication Studies,,0,0
-179,7,Salma,Abuhamda,salma.abuhamda@vanderbilt.edu,3178477314,Sophomore,,Neuroscience and MHS,,0,0
-180,39,owen.m.lamson@vanderbilt.edu,Lamson,owen.m.lamson@vanderbilt.edu,608-577-1989,Junior,,MHS and Political Science,,0,1
-181,13,Jacob,Schoenthal,jacob.r.schoenthal@vanderbilt.edu,618-560-2868,Senior,,Biological Sciences,,0,0
-182,38,Allison,Powell,allison.v.powell@vanderbilt.edu,9012583569,Senior,,Cognitive Studies and Neuroscience,,0,0
-183,57,Ashley,White,ashley.e.white@vanderbilt.edu,5026458262,Sophomore,,Computer Science,,0,1
-184,7,Nyah,Webb,nyah.p.webb@vanderbilt.edu,7047075113,Sophomore,,"Medicine, Health, and Society",,0,0
-185,65,Assata,DeMyers,assata.demyers@vanderbilt.edu,6019553430,Senior,,English,,0,1
-186,62,Noah,Sommer,noah.n.sommer@vanderbilt.edu,3173793993,First-Year,,"German, HOD",,0,0
-187,49,Sarah,Reilly,sarah.k.reilly@vanderbilt.edu,5807478597,Sophomore,,Biomedical engineering,,0,0
-188,39,Jordan,Walker,jordan.a.walker@vanderbilt.edu,214-354-3807,First-Year,,Chemical Engineering,,0,0
-189,62,Sonakshi,Dixit,sonakshi.y.dixit@vanderbilt.edu,7027646768,Sophomore,,"Medicine, Health, and Society",,0,0
-190,47,Jiachen,Sun,jiachen.sun@vanderbilt.edu,5712175368,First-Year,,Biology,,0,0
-191,49,Anya,D'Costa,anya.m.dcosta@vanderbilt.edu,9734207480,First-Year,,Biomedical engineering maybe,,0,0
-192,49,Alexis,Wiemer,alexis.n.wiemer@vanderbilt.edu,6159699459,Sophomore,,Biomedical Engineering,,0,0
-193,24,Sam,Condro,samantha.b.condro@vanderbilt.edu,7036092950,Sophomore,,Elementary Education,,0,0
-194,6,Karla,Rodriguez,karla.rodriguez@vanderbilt.edu,4402781211,Junior,,Chemical Engineering,,0,0
-195,6,Madison,Stokes,madison.a.stokes@vanderbilt.edu,8599927688,Junior,,MHS,,0,0
-196,71,Tyler,Oddo,tyler.d.oddo@vanderbilt.edu,2245589153,First-Year,,Chemical Engineering,,0,0
-197,21,Sophie,Acosta,sophia.c.acosta@vanderbilt.edu,3058157349,Junior,,Engineering Science & MHS,,0,0
-198,23,Sophie,Vogelsang,sophia.a.vogelsang@vanderbilt.edu,517-575-9530,Junior,,Chemistry and Art History,,0,0
-199,14,Monika,Naguib,monika.m.naguib@vanderbilt.edu,(615)600-2425,First-Year,,Undecided,,0,0
-200,87,Kenneth,Konam,kenneth.g.konam@vanderbilt.edu,6152436430,Junior,,Chemical Engineering,,0,0
-201,79,Jack,Pantlin,jack.l.pantlin@vanderbilt.edu,7705493844,Junior,,Engineering Science,,0,0
-202,55,Kamdyn,Lyon,kamdyn.d.lyon@vanderbilt.edu,5126058385,First-Year,,MHS,,0,0
-203,58,Kyle,Schroeder,kyle.r.schroeder@vanderbilt.edu,5134449624,Junior,,"Neuroscience and Medicine, Health, & Society",,0,1
-204,86,Theo,Hodges,theodore.r.hodges@vanderbilt.edu,9084999251,First-Year,,Biomedical Engineering,,0,0
-205,-1,Michelle,Kwon,michelle.h.kwon@vanderbilt.edu,6304537977,Sophomore,,Neuroscience & MHS,,0,0
-206,44,Chris,Keller,christopher.s.keller@vanderbilt.edu,4129135479,Sophomore,,Civil Engineering,,0,0
-207,12,Andrea,Gutierrez,andrea.gutierrez@vanderbilt.edu,7864519315,First-Year,,Biology Pre-Med track,,0,0
-208,8,Alex,Prusky,alex.d.prusky@vanderbilt.edu,6107404740,Sophomore,,Neuroscience,,0,0
-209,61,Macy,Scott,macy.a.scott@vanderbilt.edu,4252951077,Sophomore,,Biomedical Engineering,,0,0
-210,51,Isabel,Tate,isabel.m.tate@vanderbilt.edu,5088684889,First-Year,,Biochemistry,,0,0
-211,50,Ahmad,Shiraz,ahmad.shiraz@vanderbilt.edu,773-412-1891,First-Year,,Undecided,,0,0
-212,26,Sonja,Moons,sonja.e.moons@vanderbilt.edu,5037760357,First-Year,,Chemistry,,0,0
-213,30,Maggie,Huntley,margaret-anne.w.huntley@vanderbilt.edu,954-993-4394,Sophomore,,Neuroscience and MCB,,0,0
-214,84,Parker,Penny,parker.c.penny@vanderbilt.edu,4073145054,Junior,,Neuroscience,,0,0
-215,21,Peter,Dinella,peter.c.dinella@vanderbilt.edu,6463063787,Senior,,BSCI,,0,0
-216,-1,Brooke,Landry,brooke.a.landry@vanderbilt.edu,9723692954,Senior,,MHS and Computer Science,,0,0
-217,-1,Casey,Hamilton,casey.j.hamilton@vanderbilt.edu,8622648954,Senior,,Neuroscience,,0,0
-218,-1,Margaret,Clement,margaret.a.clement@vanderbilt.edu,2102620776,Senior,,Cellular and molecular biology,,0,0
-219,90,Fay,Zhang,anran.zhang@vanderbilt.edu,2066370692,Junior,,Hod and Cognitive Studies,,0,0
-220,50,Julius,Jan,julius.ethan.lucine.jan@vanderbilt.edu,6156885822,First-Year,,Cognitive Studies,,0,0
-221,17,Kolapo,Dairo,kolapo.dairo@vanderbilt.edu,6147262712,Junior,,Psychology,,0,0
-222,17,Evan,Curtin,evan.d.curtin@vanderbilt.edu,5083146642,Junior,,Neuroscience,,0,0
-223,8,Thomas,Hunt,thomas.r.hunt@vanderbilt.edu,8329549195,Sophomore,,Undecided,,0,0
-224,81,Kyle,Nevitt,kyle.c.nevitt@vanderbilt.edu,2102622144,Sophomore,,Biological sciences and HOD,,0,0
-225,34,Matthew,Shou,matthew.shou@vanderbilt.edu,5139685298,Senior,,Molecular and Cellular Biology,,0,0
-226,9,Joey,Lu,joey.lu@vanderbilt.edu,6189750106,Sophomore,,Neuroscience,,0,1
-227,9,Jasmine,Su,jasmine.j.su@vanderbilt.edu,2035977433,Sophomore,,biomedical engineering,,0,0
-228,16,Brian,Kim,mincheol.b.kim@vanderbilt.edu,240-454-2674,First-Year,,Planning on MC bio and Neuroscience,,0,0
-229,34,Sonia,Kim,sonia.b.kim@vanderbilt.edu,7143218763,Senior,,Neuroscience,,0,0
-230,66,Alyxis,Smith,alyxis.l.smith@vanderbilt.edu,6159450355,First-Year,,Neuroscience or Psychology (Intended),,0,0
-231,70,Bethanie,Stauffer,bethanie.l.stauffer@vanderbilt.edu,7042321664,Junior,,Chemistry,,0,1
-232,-1,Allen,Westerfield,allen.d.westerfield@vanderbilt.edu,8594947843,Junior,,HOD,,0,0
-233,-1,Jackson,Blough,jackson.w.blough@vanderbilt.edu,2178919763,Junior,,Neuroscience,,0,0
-234,10,Sarah,Groves,sarah.f.maddox@vanderbilt.edu,7577734294,Graduate,,Cancer Biology,,0,0
-235,10,Esha,Dalvie,esha.d.dalvie@vanderbilt.edu,7608143203,Graduate,,Biochemistry,,0,0
-236,35,Katie,Helman,katherine.e.helman@vanderbilt.edu,7173214810,Junior,,"Computer Science, Math",,0,1
-237,35,Ava,Singh,ava.c.singh@vanderbilt.edu,703-409-4599,Junior,,Psychology and MHS,,0,0
-238,42,Yassmine,Bazir,yassmine.bazir@vanderbilt.edu,8179255691,First-Year,,MHS,,0,0
-239,30,Kenia,Virgo,kenia.p.virgo@vanderbilt.edu,17545514972,First-Year,,MHS,,0,0
-240,54,Eve,Shanahan,eve.e.shanahan@vanderbilt.edu,6307094930,Sophomore,,Chemical engineering,,0,1
-241,60,Olivia,Ben-Levy,olivia.n.ben-levy@vanderbilt.edu,5164277263,First-Year,,MHS,,0,0
-242,66,Lily,Jaremski,lily.a.jaremski@vanderbilt.edu,7068258481,Senior,,"Medicine, Health, and Society",,0,1
-243,8,Sydney,Wolfe,sydney.m.wolfe@vanderbilt.edu,973-908-2928,Junior,,"Medicine, Health and Society",,0,0
-244,65,Tolu,Akinpelu,toluwani.akinpelu@vanderbilt.edu,2818547330,Senior,,MHS & Neuroscience,,0,0
-245,41,Addison,White,addison.e.white@vanderbilt.edu,2547168385,Sophomore,,biomedical engineering,,0,1
-246,41,Anna,Eberwein,anna.e.eberwein@vanderbilt.edu,2039147527,Sophomore,,Cellular and Molecular Biology,,0,0
-247,70,Isabel,Peppard,isabel.e.peppard@vanderbilt.edu,2142089963,Sophomore,,Mechanical Engineering,,0,0
-248,84,Rebecca,Pereles,rebecca.s.pereles@vanderbilt.edu,5406496617,Senior,,Biomedical Engineering,,0,1
-249,66,Neeraj,Namburu,neeraj.s.namburu@vanderbilt.edu,6155162921,First-Year,,Neuroscience,,0,0
-250,51,Grayson,Liptack,grayson.c.liptack@vanderbilt.edu,914-552-4361,Sophomore,,"Spanish, Cinema and Media Arts",,0,0
-251,51,Emily,Gresser,emily.b.gresser@vanderbilt.edu,734-582-3676,Sophomore,,Neuroscience,,0,0
-252,51,Addison,Van Namen,addison.r.van.namen@vanderbilt.edu,3015251673,Sophomore,,MHS,,0,1
-253,64,Jennifer,Kong,jennifer.a.kong@vanderbilt.edu,2015905757,Sophomore,,MCB and Sociology,,0,0
-254,73,Alexandra,Manoni,alexandra.manoni@vanderbilt.edu,2039085928,Senior,,Molecular and Cellular Bio,,0,1
-255,29,Katie,Preisinger,katherine.j.preisinger@vanderbilt.edu,4047918415,Junior,,Neuroscience,,0,1
-256,22,Evan,Steigman,evan.l.steigman@vanderbilt.edu,516-554-2024,Junior,,Economics,,0,0
-257,10,Alexandria,Oviatt,alexandria.a.oviatt@vanderbilt.edu,4236453537,Graduate,,Chemical and Physical Biology,,0,1
-258,17,Katie,Kim,katherine.h.kim@vanderbilt.edu,7708916405,Sophomore,,MHS,,0,0
-259,29,Meredith,Mentz,meredith.mentz@vanderbilt.edu,5042568595,Senior,,Medicine Health and Society,,0,0
-260,-1,Lucinda,Pastora,lucinda.e.pastora@vanderbilt.edu,7134923396,Graduate,,Chemical and Biomolecular Engineering,,0,0
-261,78,Alejandra,Taulet,alejandra.taulet@vanderbilt.edu,34633870627,First-Year,,Biomedical Engineering,,0,0
-262,17,Eileen,Yu,eileen.yu@vanderbilt.edu,8173689728,Sophomore,,MHS and Psychology,,0,0
-263,72,Aaron,yang,aaron.yang.1@vanderbilt.edu,3108787117,Senior,,Neuro,,0,0
-264,39,Theodora,Anghelina,theodora.anghelina@vanderbilt.edu,6143594733,First-Year,,MHS,,0,0
-265,-1,Jeffrey,Roh,jeffrey.roh@vanderbilt.edu,3024379675,First-Year,,Undecided,,0,0
-266,60,Sean,Collins,sean.p.collins.1@vanderbilt.edu,412-709-0232,Sophomore,,Secondary Education + Physics,,0,1
-267,-1,Sriya,Jonnakuti,sriya.t.jonnakuti@vanderbilt.edu,6507137336,First-Year,,"Medicine, Health, and Society",,0,0
-268,38,Rishi,Das,rishi.s.das@vanderbilt.edu,317-361-9459,Junior,,Biomedical Engineering,,0,1
-269,24,anissa,jayathilake,anissa.l.jayathilake@vanderbilt.edu,6154987241,First-Year,,"medicine, health, and society",,0,0
-270,24,Dzifa,Dumenyo,dzifa.e.dumenyo@vanderbilt.edu,6157050962,First-Year,,Civil Engineerin,,0,0
-271,19,Tristen,Gittens,tristen.gittens@vanderbilt.edu,8133941192,Sophomore,,"MHS, Biological Science",,0,0
-272,-1,Liana,Weinstein,liana.d.weinstein@vanderbilt.edu,516-581-9280,Senior,,Neuroscience and MHS,,0,0
-273,88,Amy,Pang,amy.s.pang@vanderbilt.edu,6014971589,Sophomore,,Chemical Engineering,,0,1
-274,53,Molly,Friedman,molly.h.friedman@vanderbilt.edu,6304707045,Sophomore,,Chemical Engineering,,0,1
-275,82,Akhila,Ramgiri,akhila.r.ramgiri@vanderbilt.edu,5103647307,Sophomore,,Chemical Engineering,,0,0
-276,54,Ally,Questell,alyssa.m.questell@vanderbilt.edu,(336)258-0135,Sophomore,,biomedical engineering + environmental sociology,,0,0
-277,-1,Grace,Chen,grace.v.chen@vanderbilt.edu,8055512558,Sophomore,,Cognitive Studies and Piano,,0,0
-278,56,Justin,Kim,justin.d.kim@vanderbilt.edu,9082957920,Sophomore,,Neuroscience,,0,0
-279,36,John,Lee,hyoungjin.lee@vanderbilt.edu,4045284006,Sophomore,,Chemistry,,0,0
-280,25,Arthur,Yu,arthur.k.yu@vanderbilt.edu,6787990943,Sophomore,,HOD and MHS,,0,1
-281,22,Jack,Adams,jack.adams@vanderbilt.edu,8473376665,Junior,,MHS,,0,1
-282,40,Teddy,Wagner,nicholas.e.wagner@vanderbilt.edu,6026637567,Junior,,Computer Science,,0,1
-283,8,Katie,Friedman,kate.n.friedman@vanderbilt.edu,8327761349,Junior,,MHS,,0,0
-284,13,Jay,Patel,jay.h.patel@vanderbilt.edu,6158709997,Senior,,Economics/MHS,,0,0
-285,56,Heather,Murray,heather.n.murray@vanderbilt.edu,9379419377,First-Year,,Biomedical Engineering,,0,0
-286,33,Evan,Semet,evan.c.semet@vanderbilt.edu,7325138826,First-Year,,Undeclared,,0,0
-287,79,Joseph,Fontana,joseph.r.fontana@vanderbilt.edu,7576337109,Junior,,MHS,,0,1
-288,33,Ryan,Schreck,ryan.c.schreck@vanderbilt.edu,8607986288,Junior,,Economics and History,,0,0
-289,50,Jinsun,Kim,jinsun.kim@vanderbilt.edu,6786501394,First-Year,,Chemistry,,0,0
-290,60,Amanda,Bortner,amanda.c.bortner-hirszman@vanderbilt.edu,9143275128,First-Year,,MHS or psych,,0,0
-291,85,Carli,Needle,carli.d.needle@vanderbilt.edu,2026696834,Senior,,Neuroscience and MHS,,0,1
-292,85,Jennie,Reisman,jennie.a.reisman@vanderbilt.edu,6106084081,Senior,,Psychology,,0,0
-293,33,John (Jack),Wohlgemuth,john.b.wohlgemuth@vanderbilt.edu,9499405274,Sophomore,,Neuroscience,,0,0
-294,39,Meghana,Bhimreddy,meghana.bhimreddy@vanderbilt.edu,8134081004,Senior,,Neuroscience,,0,0
-295,37,Micah,Yu,micah.j.yu@vanderbilt.edu,2013149233,First-Year,,MHS,,0,0
-296,-1,Irfan,Ibrahim,irfan.r.ibrahim@vanderbilt.edu,8653181852,Graduate,,Environmental Engineering,,0,0
-297,19,Katherine,Zhong,katherine.y.zhong@vanderbilt.edu,9735241257,Sophomore,,Molecular and Cell Biology/ MHS,,0,0
-298,52,Charlie,Rost,charlie.l.rost@vanderbilt.edu,6159744474,First-Year,,Neuroscience (maybe),,0,0
-299,71,Sabrina,Scollar,sabrina.scollar@vanderbilt.edu,9177447375,Senior,,"Biological Sciences & Medicine, Health, and Society",,0,0
-300,59,Brian,Koh,tae.ho.koh@vanderbilt.edu,8037673687,Senior,,MHS,,0,1
-301,27,Isaac,Kirk-Koffi Jr,isaac.t.kirk-koffi@vanderbilt.edu,4694277480,Junior,,Biomedical Engineering,,0,0
-302,-1,Molly,Joyce,mary-ruth.m.joyce@vanderbilt.edu,6038170160,Graduate,,Biomedical Sciences,,0,0
-303,-1,Sriraj,Atluri,sriraj.atluri@vanderbilt.edu,9542480587,Junior,,Neuroscience,,0,0
-304,-1,Saron,Hunegnaw,saron.a.hunegnaw@vanderbilt.edu,6152901797,Senior,,Neuroscience,,0,0
-305,27,Stefany,Rodrigues,stefany.c.rodrigues@vanderbilt.edu,9546084929,Junior,,Electrical Engineering,,0,0
-306,53,Grae,Chambers,bethany.g.chambers@vanderbilt.edu,859-321-3545,Senior,,Neuroscience,,0,0
-307,56,Kai,Yearwood,kai.yearwood@vanderbilt.edu,3126236009,Junior,,MHS,,0,1
-308,-1,Leen,Alabdalla,leen.alabdalla@vanderbilt.edu,6159579076,First-Year,,Neuroscience,,0,0
-309,64,Emily,Hurren,emily.p.hurren@vanderbilt.edu,6097601293,Junior,,Economics,,0,1
-310,38,Emilia,Lew,emilia.lew@vanderbilt.edu,7817756500,Senior,,Musical Arts/Neuroscience,,0,0
-311,71,Pranav,Kodali,pranav.kodali@vanderbilt.edu,9169038090,Senior,,Biochemistry,,0,1
-312,13,Colin,Fricker,colin.m.fricker@vanderbilt.edu,4408406565,Senior,,Neuroscience,,0,0
-313,14,Natalie,Thomas,natalie.thomas@vanderbilt.edu,7705809988,Junior,,Biomedical engineering,,0,0
-314,43,Preethi,Karnam,preethi.c.karnam@vanderbilt.edu,3343275666,Junior,,Neuroscience and MHS double major,,0,1
-315,43,Olivia,Justice,olivia.a.justice@vanderbilt.edu,(619) 823-1340,Junior,,"Neuroscience, MHS",,0,0
-316,87,Kenny,Ta,kenny.t.ta@vanderbilt.edu,9524860365,Sophomore,,Chemistry,,0,1
-317,83,Hans,Zhao,zhihan.zhao@vanderbilt.edu,+ 86 18600859039,Sophomore,,Biochemistry & Computer Science,,0,0
-318,74,Hannah,Kirkham,hannah.k.kirkham@vanderbilt.edu,5135074129,Sophomore,,BME,,0,0
-319,21,Adam,Geffner,adam.geffner@vanderbilt.edu,9739853534,Senior,,Communication of Science and Technology,,0,1
-320,-1,Kayla,Anderson,kayla.a.anderson@vanderbilt.edu,803-389-4638,First-Year,,MHS,,0,0
-321,65,Kathleen,Katchis,kathleen.v.katchis@vanderbilt.edu,516 512 3144,First-Year,,Computer Science,,0,0
-322,25,Krish,Shah,krish.u.shah@vanderbilt.edu,8474181009,First-Year,,Cognitive Science,,0,0
-323,59,Corey,Hsiao,corey.hsiao@vanderbilt.edu,3212400732,Senior,,Chemistry,,0,0
-324,29,Supriyo,Rana,supriyo.rana@vanderbilt.edu,508-981-4640,First-Year,,Biomedical Engineering,,0,0
-325,91,Michelle,Lee,michelle.e.lee@vanderbilt.edu,9014097821,Sophomore,,Neuroscience,,0,0
-326,69,Bradley,Moon,bradley.j.moon@vanderbilt.edu,2627202594,Junior,,Biochemistry,,0,0
-327,43,Bailey,Hughes,bailey.hughes@vanderbilt.edu,5164938521,Junior,,"Medicine, Health, and Society",,0,0
-328,55,Megan,McKeen,megan.c.mckeen@vanderbilt.edu,7034729070,First-Year,,Biomedical Engineering,,0,0
-329,90,Andrew,Astre,andrew.l.astre@vanderbilt.edu,4792218872,Sophomore,,Chemical Engineering,,0,0
-330,73,Sydney,Corey,sydney.a.corey@vanderbilt.edu,8137657936,Senior,,Neuro/ MHS,,0,0
-331,61,Omar,Shaikh,omar.i.shaikh@vanderbilt.edu,6302475991,Sophomore,,"MHS-HOD, Pre-med track",,0,0
-332,45,Serena,Pao,serena.r.pao@vanderbilt.edu,8473234911,Junior,,Chemistry and Secondary Education,,0,1
-333,-1,Juliana,Valenzuela,juliana.e.valenzuela@vanderbilt.edu,8584497895,Sophomore,,Neuroscience,,0,0
-334,69,Nathaniel,Baek,nathaniel.baek@vanderbilt.edu,9493837469,Senior,,MHS,,0,0
-335,22,Benjamin,Share,benjamin.t.share@vanderbilt.edu,2024411001,First-Year,,Secondary education and chemistry,,0,0
-336,44,Gabrielle,Napper,gabrielle.napper@vanderbilt.edu,8156080757,Senior,,Neuroscience,,0,0
-337,31,Joseph,Napoli,joseph.m.napoli@vanderbilt.edu,908-334-7778,Sophomore,,Computer Science,,0,0
-338,73,Carmen,Alia Arias,carmen.alia.arias@vanderbilt.edu,(305) 922-5816,First-Year,,Biomedical engineering,,0,0
-339,68,HANAN,FAKHRUDDIN,hanan.s.fakhruddin@vanderbilt.edu,16156134162,Senior,,MHS and Child Development,,0,1
-340,68,Md Emazuddin,Alif,md.emazuddin.alif@vanderbilt.edu,6154829336,Senior,,Mechanical Engineering,,0,0
-341,-1,Farouk,Haroun,farouk.haroun@vanderbilt.edu,6156023629,Sophomore,,Computer Science and Mathematics,,0,0
-342,20,Chey,Sirota,chey.s.sirota@vanderbilt.edu,9548923510,Sophomore,,Mechanical Engineering,,0,1
-343,89,Phoebe,White,phoebe.a.white@vanderbilt.edu,9147071214,Senior,,Biology and MHS,,0,0
-344,91,Sarah,Bellete,sarah.f.bellete@vanderbilt.edu,7047790632,Junior,,Child Studies and MHS,,0,0
-345,15,Emmeline,Wang,emmeline.wang@vanderbilt.edu,7037981672,First-Year,,Neuroscience,,0,0
-346,83,Namrah,Ajmal,namrah.ajmal@vanderbilt.edu,6153368919,Sophomore,,BME,,0,1
-347,28,Darren,Francis,darren.t.francis@vanderbilt.edu,5044606074,Sophomore,,Engineering Science,,0,0
-348,11,Omar,Amir,omar.amir@vanderbilt.edu,2144255525,Senior,,"HOD, MHS",,0,0
-349,11,Matthew,Milad,matthew.milad@vanderbilt.edu,8327942904,Senior,,Biochemistry,,0,1
-350,30,Matthew,Anguiano,matthew.t.anguiano@vanderbilt.edu,6197875969,Sophomore,,Neuroscience,,0,0
-351,47,connor,oltman,connor.g.oltman@vanderbilt.edu,7148003932,Junior,,BME,,0,0
-352,63,Phillip,Yoon,taehyung.yoon@vanderbilt.edu,6157054231,Sophomore,,BME,,0,0
-353,29,Henry,Fant,henry.c.fant@vanderbilt.edu,2022628943,First-Year,,Economics + minor in Chinese,,0,0
-354,55,Robert,A'Hearn,robert.m.ahearn@vanderbilt.edu,7023510499,Senior,,BME,,0,1
-355,11,Anusha,Srivastava,anusha.srivastava@vanderbilt.edu,(614) 822-0458,Junior,,"Medicine, Health, and Society and Molecular and Cellular Biology",,0,0
-356,63,Grace,Lee,grace.j.lee@vanderbilt.edu,2144065819,Sophomore,,Molecular and Cellular Biology,,0,0
-357,34,Youssef,Mohamed,youssef.k.mohamed@vanderbilt.edu,7328959988,Sophomore,,Chemical Engineering,,0,0
-358,63,Tanner,Adams,tanner.c.adams@vanderbilt.edu,8702609447,Junior,,BME,,0,0
-359,64,William,Whitworth,william.j.whitworth@vanderbilt.edu,8178882394,Senior,,Economics,,0,0
-360,71,Preston,Gourville,preston.c.gourville@vanderbilt.edu,9102328767,Graduate,,Chemistry,,0,0
-361,20,Kaan,Alp,kaan.alp@vanderbilt.edu,4234864295,Junior,,"Medicine, Health, and Society",,0,0
-362,81,Michael,Knight,michael.a.knight@vanderbilt.edu,2059370695,Junior,,Computer Science,,0,0
-363,84,Neeti,Gandra,neeti.gandra@vanderbilt.edu,2482778214,Junior,,Neuroscience,,0,0
-364,69,Jason,Lee,jason.lee@vanderbilt.edu,2052186099,Senior,,MHS,,0,1
-365,14,Walker,House,david.w.house@vanderbilt.edu,6062319349,Junior,,Biochemistry & Chemical Biology,,0,1
-366,14,Kaitlyn,Simpson,kaitlyn.r.simpson@vanderbilt.edu,2013949841,Junior,,"Medicine, Health, and Society",,0,0
-367,40,Henrik,de Jounge,henrik.c.de.jounge@vanderbilt.edu,203-727-0473,Junior,,Computer Science,,0,0
-368,32,Matthew,Sgaglione,matthew.w.sgaglione@vanderbilt.edu,5164598457,Junior,,MHS,,0,1
-369,-1,Sharath,Narayan,sharath.narayan@vanderbilt.edu,2564175727,Junior,,Molecular and Cellular Biology,,0,0
-370,32,Sam,Bogdanov,samuel.b.bogdanov@vanderbilt.edu,5165541013,Sophomore,,Chemical Engineering,,0,0
-371,76,Anurag,Epparla,anurag.epparla@vanderbilt.edu,9012832707,Junior,,Molecular and Cellular Biology,,0,0
-372,54,Ariana,Paulo,ariana.paulo@vanderbilt.edu,6178512588,Graduate,,Biomedical Science,,0,0
-373,27,Nicole,Cuthbert,nicole.e.cuthbert@vanderbilt.edu,415-948-7255,Sophomore,,Psychology and Computer Science,,0,0
-374,79,Rohan,Nigam,rohan.nigam@vanderbilt.edu,3017878932,First-Year,,"Medicine, Health, and Society",,0,0
-375,70,Juliana,Qin,juliana.qin@vanderbilt.edu,7659833716,Senior,,MCB and Philosophy,,0,0
-376,65,Alicia,Liu,alicia.liu@vanderbilt.edu,5106761130,Senior,,"MHS, Economics",,0,0
-377,57,ALEXANDRIA,SWANSON,alexandria.i.swanson@vanderbilt.edu,7703554117,Junior,,mhs,,0,0
-378,11,Sreekar,Miriyala,sreekar.miriyala@vanderbilt.edu,6148003668,Junior,,"Molecular and Cellular Biology; Medicine, Health, and Society",,0,0
-379,47,Eddie,Qian,eddie.s.qian@vanderbilt.edu,609-955-4202,Junior,,"Double Major MHS and Molecular and Cellular Biology, Minor in Art",,0,0
-380,67,Stuart,Karimi,stuart.b.karimi@vanderbilt.edu,3108013185,Junior,,Psychology,,0,0
-381,45,Zeer,Cen,zeer.cen@vanderbilt.edu,5124970999,Sophomore,,Molecular Biology,,0,0
-382,-1,Anthony,Kavanagh,anthony.k.kavanagh@vanderbilt.edu,5742134650,Sophomore,,Political Science,,0,0
-383,68,Marium,Hashemi,marium.h.hashemi@vanderbilt.edu,6158281230,Senior,,"Psychology, MHS",,0,0
-384,75,Zachary,Ritholz,zachary.ritholz@vanderbilt.edu,5164973983,Sophomore,,Computer Science,,0,0
-385,76,Leila,Azari,leila.azari@vanderbilt.edu,9045991253,Graduate,,Medicine Health and Society,,0,0
-386,37,Umphaipun,Atipunumphai,umphaipun.atipunumphai@vanderbilt.edu,66888830777,First-Year,,Computer Science,,0,0
-387,35,Elise,Farley,elise.r.farley@vanderbilt.edu,8475046008,First-Year,,Computer Science,,0,0
-388,77,Tim,Schachner,timothy.j.schachner@vanderbilt.edu,6466686717,First-Year,,Computer Engineering,,0,0
-389,52,Bryce,Tatum,bryce.a.tatum@vanderbilt.edu,8138415479,Sophomore,,Neuroscience,,0,1
-390,86,Martina,Hannaalla,martina.m.hannaalla@vanderbilt.edu,6154829775,Sophomore,,Neuroscience,,0,1
-391,82,Zoe,Jaffe-Berkowitz,zoe.t.jaffe-berkowitz@vanderbilt.edu,2039898001,First-Year,,Undecided,,0,0
-392,86,Madelaine,Thorpe,madelaine.p.thorpe@vanderbilt.edu,7657603533,Graduate,,Chemistry Ph.D Program,,0,0
-393,89,Kavita,Kakkar,kavita.kakkar@vanderbilt.edu,2564049552,Senior,,MHS,,0,1
-394,19,Elizabeth,Baum,elizabeth.m.baum@vanderbilt.edu,6155569594,First-Year,,HOD,,0,0
-395,15,Ethan,Nguyen,ethan.h.nguyen@vanderbilt.edu,5712348916,Sophomore,,Computer Science & Mathematics,,0,0
-396,-1,Maximillian,Kirimi,maximillian.kirimi@vanderbilt.edu,6784694095,Sophomore,,Computer Science,,0,0
-397,61,Ian,Barckhausen,ian.r.barckhausen@vanderbilt.edu,3522864524,Senior,,MHS,,0,1
-398,68,Margaret (Meg),Mercante,margaret.g.mercante@vanderbilt.edu,985-807-7676,Sophomore,,"Medicine, Health, and Society",,0,0
+0  ,-1,Nilai              ,Vemula            ,nilai.r.vemula@vanderbilt.edu            ,9015051560                   ,Junior    ,,"Physics, Applied Math"                                                                                         ,,0,0
+1  ,11,Stuart             ,Karimi            ,stuart.b.karimi@vanderbilt.edu           ,13108013185                  ,Junior    ,,Psychology                                                                                                      ,,0,1
+2  ,3 ,Sung Jin           ,Lee               ,sung.jin.lee@vanderbilt.edu              ,678-467-9575                 ,Junior    ,,Neuroscience and Music (Clarinet)                                                                               ,,0,0
+3  ,-1,Anna               ,McGovern          ,anna.g.mcgovern@vanderbilt.edu           ,7724866002                   ,Sophomore ,,"Medicine, Health, & Society"                                                                                   ,,0,0
+4  ,3 ,John               ,Lee               ,hyoungjin.lee@vanderbilt.edu             ,4045284006                   ,Sophomore ,,Chemistry and Computer Science                                                                                  ,,0,1
+5  ,-1,Kenny              ,Ta                ,kenny.t.ta@vanderbilt.edu                ,9524860365                   ,Sophomore ,,Chemistry/MHS                                                                                                   ,,0,0
+6  ,-1,Tonner             ,DeBeer            ,tonner.e.debeer@vanderbilt.edu           ,5024369034                   ,Junior    ,,MHS and Psychology                                                                                              ,,0,0
+7  ,-1,Veeraj             ,Shah              ,veeraj.m.shah@vanderbilt.edu             ,2015751351                   ,First-Year,,Biology                                                                                                         ,,0,0
+8  ,-1,Yimeng             ,Ma                ,yimeng.ma@woodward.edu                   ,+1 4704942358/+86 18729201077,First-Year,,Computer Science & Math                                                                                         ,,0,0
+9  ,-1,Nathan             ,Raju              ,nathan.raju@vanderbilt.edu               ,4805169526                   ,Junior    ,,MHS                                                                                                             ,,0,0
+10 ,13,Min                ,Kalasikam         ,mrinmoyee.c.kalasikam@vanderbilt.edu     ,6158928041                   ,First-Year,,Biochemistry                                                                                                    ,,0,0
+11 ,-1,Maia               ,Regan             ,maia.d.regan@vanderbilt.edu              ,2032174262                   ,Junior    ,,"Medicine, Health, and Society"                                                                                 ,,0,0
+12 ,-1,Maya               ,Xia               ,maya.y.xia@vanderbilt.edu                ,8327047741                   ,Junior    ,,Neuroscience                                                                                                    ,,0,0
+13 ,-1,Reethi             ,Padmanabhan       ,reethi.s.padmanabhan@vanderbilt.edu      ,2404219204                   ,Sophomore ,,Biomedical Engineering                                                                                          ,,0,0
+14 ,18,Hari               ,Patel             ,hari.u.patel@vanderbilt.edu              ,3176253024                   ,First-Year,,BME                                                                                                             ,,0,0
+15 ,-1,Jordan             ,Walker            ,jordan.a.walker@vanderbilt.edu           ,2143543807                   ,First-Year,,Chemical Engineering                                                                                            ,,0,0
+16 ,-1,Alex               ,Ruemmler          ,alex.k.ruemmler@vanderbilt.edu           ,4087122078                   ,Sophomore ,,Secondary Ed and Chemistry                                                                                      ,,0,0
+17 ,-1,Pouya              ,Ejtemaeimehr      ,pouya.ejtemaeimehr@vanderbilt.edu        ,6155210678                   ,Sophomore ,,Neuroscience and French                                                                                         ,,0,0
+18 ,-1,Molly              ,Bingham           ,molly.a.bingham@vanderbilt.edu           ,4436758473                   ,Junior    ,,Biomedical engineering                                                                                          ,,0,0
+19 ,-1,Bryce              ,Tatum             ,bryce.a.tatum@vanderbilt.edu             ,8138415479                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+20 ,-1,Sarah              ,Eknoyan           ,sarah.g.eknoyan@vanderbilt.edu           ,7138987138                   ,Sophomore ,,Cognitive Studies and Child Development                                                                         ,,0,0
+21 ,-1,Harrison           ,Schwartz          ,harrison.d.schwartz@vanderbilt.edu       ,2158168143                   ,Sophomore ,,MHS                                                                                                             ,,0,0
+22 ,15,Ananya             ,Terala            ,ananya.s.terala@vanderbilt.edu           ,6786621456                   ,Sophomore ,,Neuroscience and Child Development                                                                              ,,0,1
+23 ,-1,Max                ,Lichtenfeld       ,maxwell.j.lichtenfeld@vanderbilt.edu     ,6783618543                   ,Sophomore ,,Cognitive Studies and Neuroscience                                                                              ,,0,0
+24 ,-1,Ray                ,Kongmanychanh     ,jasmine.m.kongmanychanh@vanderbilt.edu   ,6157137525                   ,First-Year,,BioSci and Studio Arts                                                                                          ,,0,0
+25 ,-1,Kate               ,Scheetz           ,katherine.a.scheetz@vanderbilt.edu       ,3175040003                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+26 ,1 ,Lohitha            ,Basa              ,lohitha.s.basa@vanderbilt.edu            ,901-286-0128                 ,First-Year,,Biological Sciences                                                                                             ,,0,1
+27 ,1 ,Jeevan             ,Rajkumar          ,jeevan.s.rajkumar@vanderbilt.edu         ,9259974864                   ,First-Year,,Chemical Biology                                                                                                ,,0,0
+28 ,3 ,Sophia             ,Gerberg           ,sophia.a.gerberg@vanderbilt.edu          ,6316624315                   ,Junior    ,,MHS and Spanish                                                                                                 ,,0,0
+29 ,-1,Kolapo             ,Dairo             ,kolapo.dairo@vanderbilt.edu              ,6147262712                   ,Junior    ,,"Psychology, MHS"                                                                                               ,,0,0
+30 ,-1,Evan               ,Curtin            ,evan.d.curtin@vanderbilt.edu             ,5083146642                   ,Junior    ,,Neuroscience                                                                                                    ,,0,0
+31 ,1 ,Dev                ,Patel             ,dev.d.patel@vanderbilt.edu               ,6307768526                   ,Sophomore ,,Molecular and Cellular Biology                                                                                  ,,0,0
+32 ,-1,Justin             ,Kim               ,justin.d.kim@vanderbilt.edu              ,9082957920                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+33 ,-1,Sydney             ,Jackson           ,sydney.e.jackson@vanderbilt.edu          ,6146389104                   ,Junior    ,,Biochemistry                                                                                                    ,,0,0
+34 ,-1,Theodora           ,Anghelina         ,theodora.anghelina@vanderbilt.edu        ,6143594733                   ,First-Year,,MHS                                                                                                             ,,0,0
+35 ,-1,Chibuzor           ,Onwochei          ,chibuzor.c.onwochei@vanderbilt.edu       ,16302056923                  ,Junior    ,,MHS and Classical & Mediterranean Studies                                                                       ,,0,0
+36 ,-1,Emily              ,Lattman           ,emily.b.lattman@vanderbilt.edu           ,9142551372                   ,Sophomore ,,"Medicine, Health and Society"                                                                                  ,,0,0
+37 ,-1,Murray             ,Marx              ,murray.r.marx@vanderbilt.edu             ,6146209923                   ,Sophomore ,,Biochemistry and Neuroscience                                                                                   ,,0,0
+38 ,-1,Hayden             ,Paige             ,hayden.a.paige@vanderbilt.edu            ,3105622313                   ,First-Year,,chemistry/mhs                                                                                                   ,,0,0
+39 ,-1,Alex               ,Prusky            ,alex.d.prusky@vanderbilt.edu             ,6107404740                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+40 ,17,Namrah             ,Ajmal             ,namrah.ajmal@vanderbilt.edu              ,615-336-8919                 ,Sophomore ,,BME and applied math                                                                                            ,,0,0
+41 ,-1,Judy               ,Chong             ,judy.j.chong@vanderbilt.edu              ,4049185925                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+42 ,-1,Jonah              ,Barrett           ,david.j.barrett@vanderbilt.edu           ,2054929299                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+43 ,-1,Doah               ,Shin              ,doah.e.shin@vanderbilt.edu               ,7143090548                   ,Sophomore ,,MHS                                                                                                             ,,0,0
+44 ,-1,Lauren             ,Corliss           ,lauren.e.corl8ss@vanderbilt.edu          ,3392038054                   ,First-Year,,Biology and Chemistry                                                                                           ,,0,0
+45 ,-1,Helen              ,Zhang             ,zhixin.zhang@vanderbilt.edu              ,6155065356                   ,Sophomore ,,Cognitive Studies and Neuroscience                                                                              ,,0,0
+46 ,-1,Nicole             ,Huh               ,nicole.y.huh@vanderbilt.edu              ,2019739981                   ,First-Year,,Undecided                                                                                                       ,,0,0
+47 ,-1,Nicholas           ,Skoufis           ,nicholas.s.skoufis@vanderbilt.edu        ,8505160329                   ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+48 ,-1,Alexis             ,Portlock          ,alexis.r.portlock@vanderbilt.edu         ,6154272620                   ,Sophomore ,,Mechanical Engineering                                                                                          ,,0,0
+49 ,-1,Fatima             ,Roque             ,fatima.roque@vanderbilt.edu              ,2146061494                   ,Sophomore ,,Neuroscience and MHS                                                                                            ,,0,0
+50 ,-1,Maya               ,Sachs             ,maya.g.sachs@vanderbilt.edu              ,9178607113                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+51 ,-1,Anisha             ,Mathew            ,anisha.a.mathew@vanderbilt.edu           ,9787276401                   ,Senior    ,,Chemical Engineering                                                                                            ,,0,0
+52 ,-1,Vincent            ,Gilliam           ,vincent.a.gilliam@vanderbilt.edu         ,410-693-5523                 ,First-Year,,Computer Science                                                                                                ,,0,0
+53 ,-1,John Paul          ,Libanati          ,john.paul.libanati@vanderbilt.edu        ,2408398355                   ,First-Year,,Biomedical engineering                                                                                          ,,0,0
+54 ,-1,Jiayue             ,Li                ,jiayue.li@vanderbilt.edu                 ,15953166026                  ,First-Year,,Biological Sciences                                                                                             ,,0,0
+55 ,-1,Mohamad            ,Feron             ,mohamad.h.feron@vanderbilt.edu           ,6155697658                   ,First-Year,,Biology                                                                                                         ,,0,0
+56 ,5 ,Sarah              ,Moore             ,sarah.e.moore.1@vanderbilt.edu           ,7039016044                   ,First-Year,,Mechanical Engineering                                                                                          ,,0,1
+57 ,-1,Sarah              ,Kang              ,sarah.h.kang@vanderbilt.edu              ,8188762348                   ,First-Year,,Molecular and Cellular Biology                                                                                  ,,0,0
+58 ,-1,Eileen             ,Yu                ,eileen.yu@vanderbilt.edu                 ,8173689728                   ,Sophomore ,,MHS & Neuroscience                                                                                              ,,0,0
+59 ,-1,Bethanie           ,Stauffer          ,bethanie.l.stauffer@vanderbilt.edu       ,7042321664                   ,Junior    ,,Chemistry                                                                                                       ,,0,0
+60 ,8 ,Natalie            ,Oyenarte          ,natalie.a.oyenarte@vanderbilt.edu        ,3523398577                   ,First-Year,,Biomedical engineering                                                                                          ,,0,1
+61 ,-1,Will               ,Murray            ,will.murray@vanderbilt.edu               ,6198846189                   ,First-Year,,Chemistry and MHS                                                                                               ,,0,0
+62 ,-1,Sam                ,Ellis             ,samuel.t.ellis@vanderbilt.edu            ,6149009046                   ,First-Year,,Mechanical Engineering                                                                                          ,,0,0
+63 ,-1,Samantha           ,Brener            ,samantha.c.brener@vanderbilt.edu         ,6786449654                   ,Senior    ,,MHS; Neuroscience                                                                                               ,,0,0
+64 ,-1,Sojourner          ,Rouco-Crenshaw    ,sojourner.e.rouco-crenshaw@vanderbilt.edu,2053060871                   ,Sophomore ,,Molecular and Cellular Biology                                                                                  ,,0,0
+65 ,-1,Amanda             ,Bortner           ,amanda.c.bortner-hirszman@vanderbilt.edu ,9143275128                   ,First-Year,,MHS                                                                                                             ,,0,0
+66 ,-1,William            ,Rotondo-McCord    ,william.d.rotondo-mccord@vanderbilt.edu  ,5043135057                   ,Sophomore ,,Philosophy and Math                                                                                             ,,0,0
+67 ,-1,Lorenz             ,Chen              ,lorenz.chen@vanderbilt.edu               ,8055707179                   ,Sophomore ,,Psychology                                                                                                      ,,0,0
+68 ,-1,Jamie              ,Huang             ,jingdian.huang@vanderbilt.edu            ,9098099989                   ,Sophomore ,,MHS and Molecular and Cell Biology                                                                              ,,0,0
+69 ,-1,Mia                ,Haschert          ,mia.r.haschert@vanderbilt.edu            ,4107587155                   ,First-Year,,Biomedical or chemical engineering                                                                              ,,0,0
+70 ,2 ,Maya               ,Levinson          ,maya.h.levinson@vanderbilt.edu           ,2016385967                   ,First-Year,,MHS                                                                                                             ,,0,1
+71 ,-1,Alexandra          ,Eisenreich        ,alexandra.s.eisenreich@vanderbilt.edu    ,3107042333                   ,First-Year,,chemistry                                                                                                       ,,0,0
+72 ,-1,Jennifer           ,Kong              ,jennifer.a.kong@vanderbilt.edu           ,2015905757                   ,Sophomore ,,"Molecular and Cellular Biology, Sociology"                                                                     ,,0,0
+73 ,-1,Sophia             ,Buzanis           ,sophia.t.buzanis@vanderbilt.edu          ,7816975213                   ,Senior    ,,Molecular Biology                                                                                               ,,0,0
+74 ,17,Veronica           ,Wrobleski         ,veronica.r.wrobleski@vanderbilt.edu      ,2604339822                   ,First-Year,,Biological Sciences and Secondary Education                                                                     ,,0,0
+75 ,-1,Layla              ,Reejhsinghani     ,layla.p.reejhsinghani@vanderbilt.edu     ,2035611887                   ,First-Year,,Biomedial Engineering                                                                                           ,,0,0
+76 ,-1,Angela             ,Qian              ,angela.qian@vanderbilt.edu               ,3176580667                   ,First-Year,,cognitive studies and MHS                                                                                       ,,0,0
+77 ,-1,Tracey             ,He                ,tracey.z.he@vanderbilt.edu               ,9492918762                   ,Junior    ,,MHS                                                                                                             ,,0,0
+78 ,8 ,Ethan              ,Chi               ,ethan.s.chi@vanderbilt.edu               ,4125800350                   ,Sophomore ,,MCB                                                                                                             ,,0,0
+79 ,-1,Sam                ,Kwon              ,wooseok.kwon@vanderbilt.edu              ,2016479088                   ,Sophomore ,,neuroscience                                                                                                    ,,0,0
+80 ,5 ,Tingyu             ,Zhang             ,tingyu.zhang@vanderbilt.edu              ,6153978324                   ,Sophomore ,,Psychology                                                                                                      ,,0,0
+81 ,-1,Hannah             ,Tsiao             ,hannah.a.tsiao@vanderbilt.edu            ,4256154124                   ,Sophomore ,,"Human and Organizational Development, English"                                                                 ,,0,0
+82 ,-1,Qiwenjing          ,Jiang             ,qiwenjing.jiang@vanderbilt.edu           ,(+86)17880203389             ,Junior    ,,Mathematics and psychology                                                                                      ,,0,0
+83 ,-1,Salma              ,Abuhamda          ,salma.abuhamda@vanderbilt.edu            ,3178477314                   ,Sophomore ,,Neuroscience & MHS                                                                                              ,,0,0
+84 ,-1,Tiara              ,Oldfield          ,tiara.m.oldfield@vanderbilt.edu          ,2408997980                   ,Sophomore ,,ChemBio/CSET                                                                                                    ,,0,0
+85 ,-1,Connor             ,Mahoney           ,connor.l.mahoney@vanderbilt.edu          ,7818505975                   ,First-Year,,Chemistry                                                                                                       ,,0,0
+86 ,-1,Nikhita            ,Joshi             ,nikhita.joshi@vanderbilt.edu             ,4044262836                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+87 ,18,Rachael            ,Kim               ,rachael.h.kim@vanderbilt.edu             ,678-665-4529                 ,Sophomore ,,Elementary Education                                                                                            ,,0,0
+88 ,-1,Andrew             ,Nam               ,andrew.nam@vanderbilt.edu                ,9197863778                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+89 ,-1,Connie             ,Hu                ,connie.d.hu@vanderbilt.edu               ,19728166186                  ,First-Year,,"Medicine, Health, and Society"                                                                                 ,,0,0
+90 ,12,Carmen             ,Alia Arias        ,carmen.alia.arias@vanderbilt.edu         ,3059225816                   ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+91 ,14,Max                ,Sharp             ,maxwell.e.sharp@vanderbilt.edu           ,2033213509                   ,First-Year,,Biomedical Engineering and Chemical Engineering                                                                 ,,0,0
+92 ,-1,Leen               ,Alabdalla         ,leen.alabdalla@vanderbilt.edu            ,+971 50 597 2985             ,First-Year,,Neuroscience                                                                                                    ,,0,0
+93 ,13,Jennie             ,Reisman           ,jennie.a.reisman@vanderbilt.edu          ,6106084081                   ,Senior    ,,Psychology                                                                                                      ,,0,0
+94 ,13,Carli              ,Needle            ,carli.d.needle@vanderbilt.edu            ,2026696834                   ,Senior    ,,Neuroscience and MHS                                                                                            ,,0,1
+95 ,-1,Alex               ,Lashgari          ,alexander.m.lashgari@vanderbilt.edu      ,4436992142                   ,First-Year,,Undecided (Leaning towards chemistry or psychology)                                                             ,,0,0
+96 ,-1,Timothy            ,Egbonim           ,timothy.i.egbonim@vanderbilt.edu         ,5128088537                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+97 ,5 ,Camryn             ,Dinvaut           ,camryn.n.dinvaut@vanderbilt.edu          ,5049408335                   ,Junior    ,,"MHS, French"                                                                                                   ,,0,0
+98 ,5 ,Matt               ,Zgombic           ,matthew.s.zgombic@vanderbilt.edu         ,9086350316                   ,Junior    ,,"MHS, Spanish"                                                                                                  ,,0,0
+99 ,9 ,Marina             ,He                ,marina.he@vanderbilt.edu                 ,6179973076                   ,First-Year,,Intended Major: Molecular and Cellular Biology                                                                  ,,0,0
+100,9 ,Julius Ethan Lucine,Jan               ,julius.ethan.lucine.jan@vanderbilt.edu   ,6156685822                   ,First-Year,,Cognitive Studies                                                                                               ,,0,0
+101,22,Sophia             ,Chung             ,sophia.chung@vanderbilt.edu              ,6017508356                   ,First-Year,,Biomedical engineering                                                                                          ,,0,0
+102,-1,Hemangi (Hershey)  ,Rajpal            ,hemangi.rajpal@vanderbilt.edu            ,9547985227                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+103,-1,Nikhil             ,Kamdar            ,nikhil.x.kamdar@vanderbilt.edu           ,7327708950                   ,Sophomore ,,Mathematics                                                                                                     ,,0,0
+104,-1,Christopher        ,Fitz              ,christopher.a.fitz@vanderbilt.edu        ,8596387769                   ,First-Year,,Chemical Engineering                                                                                            ,,0,0
+105,16,Anna               ,Young             ,anna.young@vanderbilt.edu                ,2819019874                   ,Senior    ,,"Medicine, Health, and Society and Spanish"                                                                     ,,0,0
+106,18,John               ,Alvord            ,john.j.alvord@vanderbilt.edu             ,5137601948                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+107,-1,Sean               ,Yang              ,sean.t.yang@vanderbilt.edu               ,9019214398                   ,Sophomore ,,Piano and Neuroscience                                                                                          ,,0,0
+108,-1,Maximillian        ,Kirimi            ,maximillian.kirimi@vanderbilt.edu        ,6784694095                   ,Sophomore ,,Computer Science                                                                                                ,,0,0
+109,-1,Ali                ,Romines           ,alexandra.j.romines@vanderbilt.edu       ,9013555933                   ,Junior    ,,Neuroscience                                                                                                    ,,0,0
+110,-1,Mahlet             ,Derege            ,mahlet.derege@vanderbilt.edu             ,6157329749                   ,First-Year,,Computer Science                                                                                                ,,0,0
+111,-1,Maggie             ,Alexander         ,margaret.i.alexander@vanderbilt.edu      ,9018601897                   ,First-Year,,Computer Science                                                                                                ,,0,0
+112,18,Travis             ,Ho                ,travis.j.ho@vanderbilt.edu               ,832-986-3270                 ,First-Year,,Cognitive Studies                                                                                               ,,0,0
+113,-1,Chloe              ,Tzau              ,chloe.k.tzau@vanderbilt.edu              ,2247272781                   ,First-Year,,MHS                                                                                                             ,,0,0
+114,-1,Jessica            ,Cobbinah          ,jescobb1@gmail.com                       ,16158184127                  ,Sophomore ,,Secondary Education and English                                                                                 ,,0,0
+115,-1,Paterne            ,Migwaguro         ,paterne.migwaguro@vanderbilt.edu         ,6154815526                   ,Sophomore ,,Engineering Science and Economics                                                                               ,,0,0
+116,-1,Mark               ,Wilkins           ,mark.wilkins@vanderbilt.edu              ,9046524999                   ,Junior    ,,Biochemistry and Chemical Biology                                                                               ,,0,0
+117,3 ,Joselyn            ,Yang              ,joselyn.w.yang@vanderbilt.edu            ,2818147989                   ,Junior    ,,Biochemistry & MHS                                                                                              ,,0,0
+118,-1,Isabel             ,Tate              ,isabel.m.tate@vanderbilt.edu             ,5088684889                   ,First-Year,,Biochemistry                                                                                                    ,,0,0
+119,-1,John               ,Dugan             ,john.e.dugan@vanderbilt.edu              ,6153192699                   ,Senior    ,,Neuroscience                                                                                                    ,,0,0
+120,-1,Parker             ,Penny             ,parker.c.penny@vanderbilt.edu            ,4073145054                   ,Junior    ,,neuroscience                                                                                                    ,,0,0
+121,1 ,Katelyn            ,Dohler            ,katelyn.e.dohler@vanderbilt.edu          ,8476029394                   ,Sophomore ,,MHS; Spanish                                                                                                    ,,0,0
+122,-1,Kavita             ,Kakkar            ,kavita.kakkar@vanderbilt.edu             ,2564049552                   ,Senior    ,,MHS                                                                                                             ,,0,0
+123,4 ,Shiva              ,Senthilkumar      ,shiva.senthilkumar@vanderbilt.edu        ,8654387562                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,1
+124,-1,Shelby             ,Kuehnle           ,shelby.n.kuehnle@vanderbilt.edu          ,267-229-5259                 ,Sophomore ,,Molecular and Cellular Biology                                                                                  ,,0,0
+125,-1,Zakiya             ,Mensah            ,zdmensah@gmail.com                       ,7736799969                   ,Sophomore ,,Neuroscience and MHS                                                                                            ,,0,0
+126,-1,Jarrett            ,Lee               ,jae.hyup.lee@vanderbilt.edu              ,512-502-4143                 ,Junior    ,,Chemistry                                                                                                       ,,0,0
+127,-1,Rohan              ,Nigam             ,rohan.nigam@vanderbilt.edu               ,3017878932                   ,First-Year,,Molecular and Cellular Biology                                                                                  ,,0,0
+128,-1,Owen               ,Lamson            ,owen.m.lamson@vanderbilt.edu             ,608-577-1989                 ,Junior    ,,"Medicine, Health, and Society"                                                                                 ,,0,0
+129,8 ,Darcie             ,Kim               ,darcie.s.kim@vanderbilt.edu              ,8475256190                   ,Sophomore ,,Neuroscience and English                                                                                        ,,0,0
+130,17,Lara               ,Russell-Lasalandra,lara.l.russell-lasalandra@vanderbilt.edu ,2013164585                   ,Sophomore ,,HOD and Applied Statistics (an interdisciplinary major)                                                         ,,0,0
+131,3 ,Rebekah            ,Crane             ,rebekah.e.crane@vanderbilt.edu           ,2485589993                   ,Junior    ,,"Secondary Education, Chemistry"                                                                                ,,0,0
+132,-1,Joshua             ,Lynch             ,joshua.c.lynch@vanderbilt.edu            ,6157614587                   ,Sophomore ,,"Human and Organizational Development; Medicine, Health, and Society"                                           ,,0,0
+133,-1,Catherine          ,Yang              ,catherine.y.yang@vanderbilt.edu          ,9727578694                   ,First-Year,,Computer Science                                                                                                ,,0,0
+134,-1,Pilar              ,Swankler          ,pilar.l.swankler@vanderbilt.edu          ,7246915982                   ,Sophomore ,,"English and Medicine, Health, and Society"                                                                     ,,0,0
+135,-1,Kaitlyn            ,Kim               ,kaitlyn.kim@vanderbilt.edu               ,2015626819                   ,First-Year,,Undecided                                                                                                       ,,0,0
+136,-1,Katherine          ,Zhong             ,katherine.y.zhong@vanderbilt.edu         ,9735241257                   ,Sophomore ,,Molecular and Cellular Biology/ MHS                                                                             ,,0,0
+137,-1,Grace              ,Delmonte          ,grace.a.delmonte@vanderbilt.edu          ,4046837237                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+138,-1,Lillian            ,Hubbard           ,lillian.a.hubbard@vanderbilt.edu         ,6159701746                   ,First-Year,,Biology & psychology                                                                                            ,,0,0
+139,-1,Ismail             ,Mohyuddin         ,ismailmohyy@gmail.com                    ,6158185177                   ,Sophomore ,,Religious Studies                                                                                               ,,0,0
+140,-1,Ananya             ,Sagar             ,ananya.sagar@vanderbilt.edu              ,8328037748                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+141,6 ,Callahan           ,Henry             ,callahan.g.henry@vanderbilt.edu          ,(203) 985-9645               ,Sophomore ,,Computer Science & Math                                                                                         ,,0,0
+142,-1,Matthew            ,Sigel             ,matthew.e.sigel@vanderbilt.edu           ,2165136544                   ,First-Year,,"Medicine, Health, and Society"                                                                                 ,,0,0
+143,-1,Aarzu              ,Miharia           ,aarzu.miharia@vanderbilt.edu             ,781-460-8276                 ,First-Year,,Biology                                                                                                         ,,0,0
+144,-1,Alexis             ,Wiemer            ,alexis.n.wiemer@vanderbilt.edu           ,6159699459                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+145,6 ,Laith              ,Kayat             ,laith.s.kayat@vanderbilt.edu             ,2482146402                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,1
+146,4 ,Laura              ,Wan               ,laura.h.wan@vanderbilt.edu               ,8019536819                   ,First-Year,,Neuroscience/MHS                                                                                                ,,0,0
+147,-1,Richard            ,Goyette           ,richard.b.goyette@vanderbilt.edu         ,8603776680                   ,First-Year,,Intending on Neuroscience                                                                                       ,,0,0
+148,-1,Madeline           ,King              ,madeline.n.king@vanderbilt.edu           ,4084557707                   ,First-Year,,Communication of Science and Technology                                                                         ,,0,0
+149,-1,Krisha             ,Shah              ,krisha.shah@vanderbilt.edu               ,6156029114                   ,First-Year,,Psychology                                                                                                      ,,0,0
+150,-1,Qiuchen            ,Li                ,qiuchen.li@vanderbilt.edu                ,513-885-3725                 ,Sophomore ,,Biology                                                                                                         ,,0,0
+151,-1,Mike               ,Jiang             ,runze.jiang@vanderbilt.edu               ,9718013301                   ,First-Year,,Undeclared                                                                                                      ,,0,0
+152,-1,Morgan             ,Cramer            ,morgan.a.cramer@vanderbilt.edu           ,6159561418                   ,Senior    ,,Undecided                                                                                                       ,,0,0
+153,-1,Maya               ,Biran             ,maya.b.biran@vanderbilt.edu              ,5088587413                   ,Sophomore ,,MHS and Child Studies on pre-med track                                                                          ,,0,0
+154,6 ,Arthur             ,Yu                ,arthur.k.yu@vanderbilt.edu               ,6787990943                   ,Sophomore ,,HOD and MHS                                                                                                     ,,0,0
+155,-1,Isabel             ,Peppard           ,isabel.e.peppard@vanderbilt.edu          ,2142089963                   ,Sophomore ,,Mechanical Engineering                                                                                          ,,0,0
+156,11,Jhanavi            ,Thakkar           ,jhanavi.a.thakkar@vanderbilt.edu         ,4135756026                   ,First-Year,,Computer Science and Biology                                                                                    ,,0,0
+157,11,Sarah              ,Lyou              ,sarah.h.lyou@vanderbilt.edu              ,6466295733                   ,First-Year,,"medicine, health, and society"                                                                                 ,,0,0
+158,-1,Rachael            ,Garcia            ,rachael.i.garcia@vanderbilt.edu          ,7813756302                   ,First-Year,,MHS                                                                                                             ,,0,0
+159,-1,Samantha           ,Mallahan          ,samantha.g.mallahan@vanderbilt.edu       ,8472744569                   ,Sophomore ,,Biomedical Engineering                                                                                          ,,0,0
+160,-1,Nicole             ,Cuthbert          ,nicole.e.cuthbert@vanderbilt.edu         ,415-948-7255                 ,Sophomore ,,Computer science and psychology                                                                                 ,,0,0
+161,-1,Salomon            ,Dushimirimana     ,salomon.dushimirimana@vanderbilt.edu     ,+16153356819                 ,First-Year,,Strongly considering Computer Science                                                                           ,,0,0
+162,-1,Tokunbo            ,Faparusi          ,adetokunbo.e.faparusi@vanderbilt.edu     ,8048393983                   ,Junior    ,,Chemical Engineering                                                                                            ,,0,0
+163,-1,Juliana            ,Bronzini          ,juliana.m.bronzini@vanderbilt.edu        ,9253326979                   ,First-Year,,biological sciences                                                                                             ,,0,0
+164,2 ,Payton             ,McGrath           ,payton.d.mcgrath@vanderbilt.edu          ,6083709103                   ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+165,-1,Peter              ,Dinella           ,peter.c.dinella@vanderbilt.edu           ,6463063787                   ,Senior    ,,BSCI                                                                                                            ,,0,0
+166,-1,Hans               ,Zhao              ,zhihan.zhao@vanderbilt.edu               ,6153355425                   ,Sophomore ,,Biochemistry & Mathematics                                                                                      ,,0,0
+167,-1,Isra               ,Shuster           ,isra.e.shuster@vanderbilt.edi            ,7038999719                   ,First-Year,,Biochemistry                                                                                                    ,,0,0
+168,-1,Bemnet             ,Argaw             ,bemnet.argaw@vanderbilt.edu              ,6158101981                   ,First-Year,,Undecided (Child Development & MHS)                                                                             ,,0,0
+169,-1,Rabeb              ,Layouni           ,rabeb.layouni@vanderbilt.edu             ,5419687518                   ,Graduate  ,,Chemical Engineering                                                                                            ,,0,0
+170,-1,Marshall           ,Biven             ,marshall.k.biven@vanderbilt.edu          ,4026905606                   ,Senior    ,,Engineering Science                                                                                             ,,0,0
+171,20,Bryan              ,Han               ,bryan.han@vanderbilt.edu                 ,3526725990                   ,First-Year,,Biological Sciences                                                                                             ,,0,0
+172,-1,Hayden             ,Pagendarm         ,hayden.m.pagendarm@vanderbilt.edu        ,2404570180                   ,Graduate  ,,Biomedical Engineering                                                                                          ,,0,0
+173,-1,Sarah              ,Shapiro           ,sarah.a.shapiro@vanderbilt.edu           ,6509069250                   ,Senior    ,,MHS                                                                                                             ,,0,0
+174,6 ,Sera               ,Eviner            ,sera.d.eviner@vanderbilt.edu             ,5164937034                   ,Sophomore ,,Computer Science                                                                                                ,,0,0
+175,-1,Mara               ,Yella             ,mara.e.yella@vanderbilt.edu              ,9176977079                   ,Sophomore ,,"Chemistry and Classics (Currently Chemical Engineering, but trying to transfer)"                               ,,0,0
+176,-1,Emily              ,Zeller            ,emily.a.zeller@vanderbilt.edu            ,2102687860                   ,Sophomore ,,Civil Engineering                                                                                               ,,0,0
+177,-1,Sarah              ,Groves            ,sarahmaddoxgroves@gmail.com              ,7577734294                   ,Graduate  ,,Chemical and Physics Biology                                                                                    ,,0,0
+178,-1,Sarina             ,Hamer             ,sarina.haner@vanderbilt.edu              ,8186583557                   ,Junior    ,,MHS                                                                                                             ,,0,0
+179,21,Alex               ,La Poche          ,alex.r.la.poche@vanderbilt.edu           ,9172887196                   ,Senior    ,,"Medicine, Health and Society"                                                                                  ,,0,0
+180,-1,Joseph             ,Nacario           ,joseph.j.nacario@vanderbilt.edu          ,7604480221                   ,Sophomore ,,Child Development and MHS                                                                                       ,,0,0
+181,-1,Max                ,Winshall          ,max.s.winshall@vanderbilt.edu            ,6177977071                   ,Senior    ,,Computer Science                                                                                                ,,0,0
+182,4 ,Natalie            ,Loveridge         ,natalie.m.loveridge@vanderbilt.edu       ,6185671296                   ,First-Year,,Molecular and Cellular Biology and MHS                                                                          ,,0,0
+183,-1,Walker             ,House             ,david.w.house@vanderbilt.edu             ,6062319349                   ,Junior    ,,Biochemistry and Chemical Biology                                                                               ,,0,0
+184,-1,Kaitlyn            ,Siimpson          ,kaitlyn.r.simpson@vanderbilt.edu         ,2013949841                   ,Junior    ,,"Medicine, Health and Society"                                                                                  ,,0,0
+185,9 ,Jessica            ,Handwerker        ,jessica.r.handwerker@vanderbilt.edu      ,3036013646                   ,Sophomore ,,Biomedical Engineering                                                                                          ,,0,1
+186,21,Alexandra          ,Manoni            ,alexandra.manoni@vanderbilt.edu          ,2039085928                   ,Senior    ,,"Molecular/Cellular Bio, MHS, Spanigh"                                                                          ,,0,1
+187,9 ,Sally              ,Johnson           ,sally.f.johnson@vanderbilt.edu           ,(615)513-2940                ,Sophomore ,,"Political Science, English"                                                                                    ,,0,0
+188,-1,Jordan             ,Baisley           ,jordan.l.baisley@vanderbilt.edu          ,2039457292                   ,Sophomore ,,"Human and Organizational Development; Medicine, Health and Society"                                            ,,0,0
+189,-1,Maximilian         ,Garcia            ,maximilian.j.garcia@vanderbilt.edu       ,7143064032                   ,Junior    ,,Neuroscience/Spanish                                                                                            ,,0,0
+190,-1,Mariana            ,Smith             ,mariana.e.smith@vanderbilt.edu           ,5714424278                   ,Sophomore ,,Mechanical Engineering                                                                                          ,,0,0
+191,-1,Karla              ,Rodriguez         ,karla.rodriguez@vanderbilt.edu           ,4402781211                   ,Junior    ,,"Spanish, MHS"                                                                                                  ,,0,0
+192,1 ,Vignesh            ,Chennupati        ,dhearaj.v.chennupati@vanderbilt.edu      ,4095048015                   ,Sophomore ,,Biomedical Engineering                                                                                          ,,0,0
+193,-1,Neeraj             ,Namburu           ,neeraj.s.namburu@vanderbilt.edu          ,6155162921                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+194,-1,Sandra             ,Drmanovic         ,aleksandra.drmanovic@vanderbilt.edu      ,561-374-1610                 ,Junior    ,,Neuroscience and Math                                                                                           ,,0,0
+195,-1,Ayana              ,Wild              ,ayana.a.wild@vanderbilt.edu              ,6158183843                   ,Graduate  ,,Computer Science                                                                                                ,,0,0
+196,-1,Alexandre          ,Da Silva          ,alexandre.v.da.silva@vanderbilt.edu      ,3053430387                   ,Junior    ,,"MHS, Psychology"                                                                                               ,,0,0
+197,-1,Peter              ,Pietri            ,peter.a.pietri@vanderbilt.edu            ,301-980-1887                 ,First-Year,,Neuroscience                                                                                                    ,,0,0
+198,15,Elise              ,Farley            ,elise.r.farley@vanderbilt.edu            ,8475046008                   ,First-Year,,Computer Science                                                                                                ,,0,0
+199,15,Cerys              ,Egan              ,cerys.j.egan@vanderbilt.edu              ,3122215382                   ,First-Year,,Chemistry                                                                                                       ,,0,0
+200,10,Kenneth            ,Konam             ,kenneth.g.konam@vanderbilt.edu           ,6152436430                   ,Junior    ,,Chemical engineering                                                                                            ,,0,0
+201,-1,Wacays             ,Dualeh            ,wacays.a.dualeh@vanderbilt.edu           ,6156026579                   ,Junior    ,,MHS                                                                                                             ,,0,0
+202,10,Derek              ,Lee               ,lynn.lee.1@vanderbilt.edu                ,6033054643                   ,Junior    ,,Chemical Engineering                                                                                            ,,0,1
+203,-1,Jeremiah           ,Cox               ,jeremiah.cox@vanderbilt.edu              ,9155261475                   ,Senior    ,,Neuroscience                                                                                                    ,,0,0
+204,-1,Laura              ,Katunas           ,laura.katunas@vanderbilt.edu             ,3123203368                   ,Junior    ,,MHS                                                                                                             ,,0,0
+205,-1,Brianna            ,Jacobson          ,brianna.jacobson@vanderbilt.edu          ,2014100666                   ,Sophomore ,,Biomedical engineering                                                                                          ,,0,0
+206,-1,Minjin             ,Choi              ,minjin.choi@vanderbilt.edu               ,7033807914                   ,Junior    ,,Neuroscience                                                                                                    ,,0,0
+207,-1,Theo               ,Hodges            ,theodore.r.hodges@vanderbilt.edu         ,908-499-9251                 ,First-Year,,Computer Engineering                                                                                            ,,0,0
+208,-1,Avani              ,Putcha            ,avaniputcha@sbcglobal.net                ,4693071428                   ,First-Year,,"Economics, Political Science"                                                                                  ,,0,0
+209,13,Rabia              ,Shaban            ,rabia.k.shaban@vanderbilt.edu            ,6159693274                   ,Sophomore ,,MHS                                                                                                             ,,0,0
+210,-1,Steve              ,Wang              ,steve.wang@vanderbilt.edu                ,3477209841                   ,First-Year,,Psychology                                                                                                      ,,0,0
+211,12,Olivia             ,Justice           ,olivia.a.justice@vanderbilt.edu          ,6198231340                   ,Junior    ,,Neuroscience; MHS                                                                                               ,,0,0
+212,12,Anna               ,Bright            ,anna.c.bright@vanderbilt.edu             ,7315923232                   ,Junior    ,,Neuroscience                                                                                                    ,,0,0
+213,-1,Andrew Philip      ,Allison           ,andrew.p.allison@vanderbilt.edu          ,8595762691                   ,Junior    ,,Economics and History                                                                                           ,,0,0
+214,12,Preethi            ,Karnam            ,preethi.c.karnam@vanderbilt.edu          ,334-327-5666                 ,Junior    ,,"Neuroscience and Medicine, Health, and Society"                                                                ,,0,1
+215,-1,Jasmin             ,Elnaggar          ,jasmin.e.elnaggar@vanderbilt.edu         ,5047225538                   ,First-Year,,"Medicine, Health, and Society"                                                                                 ,,0,0
+216,-1,Noah               ,Sommer            ,noah.n.sommer@vanderbilt.edu             ,3173793993                   ,First-Year,,German and HOD                                                                                                  ,,0,0
+217,-1,Charles            ,Hopper            ,charles.n.hopper@vanderbilt.edu          ,6154950500                   ,First-Year,,Biochemistry                                                                                                    ,,0,0
+218,-1,Christina          ,Valentine         ,christina.l.valentine@vanderbilt.edu     ,8633035680                   ,First-Year,,Molecular and Cellular Biology                                                                                  ,,0,0
+219,-1,Kathleen           ,McClanahan        ,kathleen.mcclanahan@vanderbilt.edu       ,5017731342                   ,Graduate  ,,Molecular Pathology & Immunology                                                                                ,,0,0
+220,-1,Joseph             ,Fontana           ,joseph.r.fontana@vanderbilt.edu          ,7576337109                   ,Junior    ,,MHS                                                                                                             ,,0,0
+221,10,Yibby              ,Mekonnen          ,yeabsira.t.mekonnen@vanderbilt.edu       ,2517534962                   ,Junior    ,,Chemical Engineering                                                                                            ,,0,0
+222,-1,Sara               ,Gregg             ,sara.l.gregg@vanderbilt.edu              ,8479028114                   ,First-Year,,Child Development                                                                                               ,,0,0
+223,-1,Kaiya              ,Scott             ,kaiya.p.scott@vanderbilt.edu             ,7753010610                   ,First-Year,,Psychology and Chemistry (undeclared)                                                                           ,,0,0
+224,-1,Gabrielle          ,Napper            ,gabrielle.napper@vanderbilt.edu          ,8156080757                   ,Senior    ,,Neuroscience                                                                                                    ,,0,0
+225,-1,Karima             ,Raharjo           ,karima.raharjo@vanderbilt.edu            ,9102287055                   ,Senior    ,,Elementary Education and Cognitive Studies                                                                      ,,0,0
+226,11,John               ,Lee               ,john.h.lee@vanderbilt.edu                ,9083004923                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+227,11,Jun Hee            ,Shin              ,jun.hee.c.shin@vanderbilt.edu            ,(910) 322 - 0463             ,First-Year,,Chemistry                                                                                                       ,,0,0
+228,-1,Isaac              ,Howard            ,isaac.v.howard@vanderbilt.edu            ,615-913-6726                 ,Sophomore ,,Biology                                                                                                         ,,0,0
+229,-1,Samuel             ,Bogdanov          ,samuel.b.bogdanov@vanderbilt.edu         ,5165541013                   ,Sophomore ,,Chemical Engineering                                                                                            ,,0,0
+230,-1,Keithian           ,Starling          ,keithian.l.starling@vanderbilt.edu       ,6156081327                   ,Senior    ,,Engineering Science                                                                                             ,,0,0
+231,19,Mary Grace         ,Hash              ,mary.grace.hash@vanderbilt.edu           ,2566583376                   ,Graduate  ,,Bio                                                                                                             ,,0,0
+232,-1,Noah               ,Foster            ,noah.foster@vanderbilt.edu               ,6128399443                   ,Graduate  ,,Biomedical Sciences                                                                                             ,,0,0
+233,-1,Kasie              ,Azie              ,kasie.o.azie@vanderbilt.edu              ,2248171619                   ,First-Year,,Physics                                                                                                         ,,0,0
+234,-1,Hajin              ,Suh               ,hajin.c.suh@vanderbilt.edu               ,8087411369                   ,First-Year,,Elementary Education                                                                                            ,,0,0
+235,5 ,Danielle           ,Lesinski          ,danielle.s.lesinski@vanderbilt.edu       ,8474313264                   ,First-Year,,Computer Science                                                                                                ,,0,0
+236,20,Isabelle           ,Smith             ,isabelle.t.smith@vanderbilt.edu          ,2032742733                   ,First-Year,,Biology                                                                                                         ,,0,0
+237,20,Kelsey             ,Corwen            ,kelsey.m.corwen@vanderbilt.edu           ,5166379985                   ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+238,-1,Aria               ,Sajjad            ,aria.a.sajjad@vanderbilt.edu             ,8659249414                   ,Senior    ,,MCB                                                                                                             ,,0,0
+239,7 ,Jeremiah           ,Johnson           ,jeremiah.j.johnson@vanderbilt.edu        ,2147772266                   ,Sophomore ,,Biomedical Engineering                                                                                          ,,0,0
+240,20,Gannon             ,Carroll           ,gannon.j.carroll@vanderbilt.edu          ,7434039775                   ,First-Year,,Biomedical engineering                                                                                          ,,0,0
+241,16,Katie              ,Friedman          ,kate.n.friedman@vanderbilt.edu           ,8327761349                   ,Junior    ,,"Medicine, Health, and Society"                                                                                 ,,0,1
+242,-1,Haoran             ,Cao               ,haoran.cao@vanderbilt.edu                ,6152433991                   ,Junior    ,,"Economics & History, Mathematics"                                                                              ,,0,0
+243,-1,Payton             ,Stone             ,payton.t.stone@vanderbilt.edu            ,6185709660                   ,Graduate  ,,Chemical and Biomolecular Engineering                                                                           ,,0,0
+244,-1,Anna               ,Wright            ,anna.m.wright@vanderbilt.edu             ,2252356236                   ,Graduate  ,,Cognitive psychology                                                                                            ,,0,0
+245,-1,Mitali             ,Kumar             ,mitali.kumar@vanderbilt.edu              ,5099019166                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+246,-1,Leo                ,Park              ,dongyong.d.park@vanderbilt.edu           ,832-349-2418                 ,First-Year,,Neurscience                                                                                                     ,,0,0
+247,7 ,David              ,Cenk              ,david.a.cenk@vanderbilt.edu              ,9158614251                   ,Junior    ,,Public Policy                                                                                                   ,,0,0
+248,7 ,Daniel             ,Crabb             ,daniel.w.crabb@vanderbilt.edu            ,5012577997                   ,Junior    ,,Psychology and MHS double                                                                                       ,,0,0
+249,7 ,Ashwin             ,Gupta             ,ashwin.gupta@vanderbilt.edu              ,2173312219                   ,Junior    ,,MHS                                                                                                             ,,0,0
+250,7 ,Connor             ,Oltman            ,connor.g.oltman@vanderbilt.edu           ,7148003932                   ,Junior    ,,BME                                                                                                             ,,0,1
+251,-1,Neleah             ,Nugent            ,neleah.e.nugent@vanderbilt.edu           ,8654061832                   ,First-Year,,MHS                                                                                                             ,,0,0
+252,-1,Kenia              ,Virgo             ,keniavirgo1@gmail.com                    ,17545514972                  ,First-Year,,MHS                                                                                                             ,,0,0
+253,-1,Andrew             ,Gnegy             ,andrew.d.gnegy@vanderbilt.edu            ,3049165388                   ,Junior    ,,Biomedical Engineering                                                                                          ,,0,0
+254,-1,Elijah             ,Soh               ,elijah.j.soh@vanderbilt.edu              ,201-772-4907                 ,First-Year,,Undecided - I am in premed - thinking about majoring in chemistry                                               ,,0,0
+255,-1,Joi                ,Gordon            ,joi.d.gordon@vanderbilt.edu              ,6782004499                   ,First-Year,,Neuroscience and MHS                                                                                            ,,0,0
+256,-1,Sophie             ,Robison           ,sophie.robison@vanderbilt.edu            ,7065182922                   ,Junior    ,,Cognitive Studies                                                                                               ,,0,0
+257,18,Trace              ,Teodori           ,trace.t.teodori@vanderbilt.edu           ,2405954445                   ,First-Year,,Mechanical Engineering                                                                                          ,,0,1
+258,-1,Daniel             ,Rau               ,daniel.j.rau@vanderbilt.edu              ,7734568195                   ,First-Year,,Chemical and Biomolecular Engineering                                                                           ,,0,0
+259,-1,Alex               ,Zhang             ,alex.y.zhang@vanderbilt.edu              ,6178660829                   ,First-Year,,Economics/Computer Science                                                                                      ,,0,0
+260,-1,Josh               ,Scherer           ,joshua.r.scherer@vanderbilt.edu          ,2057573235                   ,First-Year,,Computer Science                                                                                                ,,0,0
+261,-1,Jialei             ,Wei               ,jialei.wei@vanderbilt.edu                ,9293258282                   ,First-Year,,"Ecology, evolution and organismal biology"                                                                     ,,0,0
+262,-1,Christine          ,Chen              ,zhuo.chen@vanderbilt.edu                 ,4342288205                   ,First-Year,,undecided; intended major: Communication of science and technology; intended minor: computer science & economics,,0,0
+263,-1,Tyler              ,Oddo              ,tyler.d.oddo@vanderbilt.edu              ,2245589153                   ,First-Year,,Chemical Engineering                                                                                            ,,0,0
+264,-1,Sean               ,Collins           ,sean.p.collins.1@vanderbilt.edu          ,412-709-0232                 ,Sophomore ,,Secondary Education and Physics                                                                                 ,,0,0
+265,-1,Eve                ,Shanahan          ,eve.e.shanahan@vanderbilt.edu            ,6307094930                   ,Sophomore ,,chemical engineering                                                                                            ,,0,0
+266,-1,Maya               ,Smith             ,maya.n.smith@vanderbilt.edu              ,3173546776                   ,Sophomore ,,"Medicine, Health, and Society"                                                                                 ,,0,0
+267,-1,Zane               ,Lewis             ,zane.a.lewis@vanderbilt.edu              ,9035307737                   ,First-Year,,Philospohy                                                                                                      ,,0,0
+268,15,Caroline           ,Rutigliano        ,caroline.g.rutigliano@vanderbilt.edu     ,919-376-5740                 ,First-Year,,MHS/neuroscience (technically undeclared)                                                                       ,,0,0
+269,-1,Claire             ,Chen              ,claire.l.chen@vanderbilt.edu             ,4125195572                   ,First-Year,,"Econ, Hist"                                                                                                    ,,0,0
+270,-1,Aarushi            ,Negi              ,aarushi.s.negi@vanderbilt.edu            ,4104568764                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+271,-1,Macy               ,Noe               ,macy.d.noe@vanderbilt.edu                ,4233070547                   ,First-Year,,Chemical Engineering                                                                                            ,,0,0
+272,13,Nicholas           ,Lowe              ,nicholas.d.lowe@vanderbilt.edu           ,8159194875                   ,Sophomore ,,"Chemical Engineering, CSET"                                                                                    ,,0,0
+273,-1,Blake              ,Christiansen      ,blake.a.christiansen@vanderbilt.edu      ,2569244803                   ,Sophomore ,,Chemical Engineering                                                                                            ,,0,0
+274,-1,Preston            ,Gourville         ,preston.c.gourville@vanderbilt.edu       ,9102328767                   ,Graduate  ,,Chemistry                                                                                                       ,,0,0
+275,-1,Kai                ,Yearwood          ,kai.yearwood@vanderbilt.edu              ,3126236009                   ,Junior    ,,MHS                                                                                                             ,,0,0
+276,-1,Griffin            ,Jones             ,griffin.m.jones@gmail.com                ,(404) 771-1573               ,Sophomore ,,Secondary Education/English                                                                                     ,,0,0
+277,-1,Kevin              ,Masih             ,kevin.masih@vanderbilt.edu               ,+447455358618                ,First-Year,,Mechanical Engineering                                                                                          ,,0,0
+278,-1,Keila              ,Saiegh            ,keila.m.saiegh@vanderbilt.edu            ,7863974483                   ,Sophomore ,,"Medicine, Health and Society"                                                                                  ,,0,0
+279,-1,Julia              ,Van Epps          ,julia.c.van.epps@vanderbilt.edu          ,7044397082                   ,Sophomore ,,Biomedical and Chemical Engineering                                                                             ,,0,0
+280,-1,Michelle           ,Kwon              ,michelle.h.kwon@vanderbilt.edu           ,6304537977                   ,Sophomore ,,Neuroscience & MHS                                                                                              ,,0,0
+281,-1,Emmeline           ,Wang              ,emmeline.wang@vanderbilt.edu             ,7037981672                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+282,16,Sydney             ,Wolfe             ,sydney.m.wolfe@vanderbilt.edu            ,9739082928                   ,Junior    ,,"Medicine, Health and Society"                                                                                  ,,0,0
+283,-1,Sabrina            ,Scollar           ,sabrina.scollar@vanderbilt.edu           ,9177447375                   ,Senior    ,,Biological Sciences & MHS                                                                                       ,,0,0
+284,-1,Lauren             ,Malley            ,lauren.m.malley@vanderbilt.edu           ,6509466499                   ,Sophomore ,,MHS and Psychology                                                                                              ,,0,0
+285,-1,Brooke             ,DeMarco           ,brooke.c.demarco@vandebilt.edu           ,7039156452                   ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+286,-1,Leah               ,Mann              ,leah.g.mann@vanderbilt.edu               ,(520)282-3434                ,Graduate  ,,Neuroscience                                                                                                    ,,0,0
+287,-1,Chandu             ,Kona              ,chandrahaas.r.kona@vanderbilt.edu        ,502-599-8147                 ,Sophomore ,,Neuroscience and Economics                                                                                      ,,0,0
+288,-1,Malcolm            ,Sundell           ,malcolm.g.sundell@vanderbilt.edu         ,5046489620                   ,Junior    ,,Psychology                                                                                                      ,,0,0
+289,12,Bailey             ,Hughes            ,bailey.hughes@vanderbilt.edu             ,5164938521                   ,Junior    ,,MHS                                                                                                             ,,0,0
+290,16,Jack               ,Adams             ,jack.adams@vanderbilt.edu                ,8473376665                   ,Junior    ,,MHS                                                                                                             ,,0,0
+291,16,Evan               ,Steigman          ,evan.l.steigman@vanderbilt.edu           ,5165542024                   ,Junior    ,,Economics                                                                                                       ,,0,0
+292,-1,Angela             ,Brinckerhoff      ,angela.j.brinckerhoff@vanderbilt.edu     ,(630) 484-1407               ,First-Year,,Undecided                                                                                                       ,,0,0
+293,-1,Gabriella          ,Modugno           ,gabriella.a.modugno@vanderbilt.edu       ,2035719348                   ,First-Year,,Cognitive Studies                                                                                               ,,0,0
+294,2 ,Esha               ,Dalvie            ,esha.d.dalvie@vanderbilt.edu             ,7608143203                   ,Graduate  ,,Biochemistry                                                                                                    ,,0,0
+295,2 ,Alexandria         ,Oviatt            ,alexandria.a.oviatt@vanderbilt.edu       ,4236453537                   ,Graduate  ,,Chemical and Physical Biology                                                                                   ,,0,0
+296,-1,Amelia             ,Muir              ,amelia.f.muir@vanderbilt.edu             ,415-272-8708                 ,First-Year,,Economics                                                                                                       ,,0,0
+297,21,Wells              ,Jacocks           ,mitchell.w.jacocks@vanderbilt.edu        ,8038736137                   ,Graduate  ,,MS in Biomedical Sciences                                                                                       ,,0,0
+298,-1,Sarah              ,Reilly            ,sarah.k.reilly@vanderbilt.edu            ,5807478597                   ,Sophomore ,,Biomedical Engineering                                                                                          ,,0,0
+299,-1,Elizabeth          ,Baum              ,elizabeth.m.baum@vanderbilt.edu          ,6155569594                   ,First-Year,,HOD                                                                                                             ,,0,0
+300,2 ,Allen              ,Westerfield       ,adwv@aol.com                             ,8594947843                   ,Junior    ,,HOD                                                                                                             ,,0,0
+301,-1,Janki              ,Bava              ,janki.m.bava@vanderbilt.edu              ,7325109905                   ,First-Year,,"Biomedical Engineering, premed"                                                                                ,,0,0
+302,-1,Jackson            ,Blough            ,jackson.w.blough@vanderbilt.edu          ,217-891-9763                 ,Junior    ,,Neuroscience                                                                                                    ,,0,0
+303,-1,Forest             ,Chen              ,forest.m.chen@vanderbilt.edu             ,8652329472                   ,First-Year,,"Math, CS"                                                                                                      ,,0,0
+304,21,Savannah           ,Rogers            ,savannah.r.rogers@vanderbilt.edu         ,8034575458                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+305,-1,Khari Nyela        ,Walter            ,khari.n.walter@vanderbilt.edu            ,650-477-9453                 ,First-Year,,Neuroscience                                                                                                    ,,0,0
+306,-1,Fabrice            ,Jacques           ,fabrice.jacques@vanderbilt.edu           ,8572616553                   ,First-Year,,MHS (pre-med)                                                                                                   ,,0,0
+307,6 ,Natalie            ,Thomas            ,natalie.thomas@vanderbilt.edu            ,770-580-9988                 ,Junior    ,,Biomedical Engineering                                                                                          ,,0,0
+308,-1,Alexander          ,Stoneman          ,alexander.d.stoneman@vanderbilt.edu      ,3305021686                   ,Sophomore ,,Chemical Engineering and Chemistry                                                                              ,,0,0
+309,-1,Justin             ,Terry             ,justin.j.terry@vanderbilt.edu            ,6304081886                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+310,-1,Joseph             ,Napoli            ,joseph.m.napoli@vanderbilt.edu           ,9083347778                   ,Sophomore ,,Computer Science                                                                                                ,,0,0
+311,-1,Nicole             ,Klein             ,nicole.z.klein@vanderbilt.edu            ,7328614042                   ,First-Year,,Mathematics                                                                                                     ,,0,0
+312,9 ,Addison            ,Van Namen         ,addisonr.r.van.namen@vanderbilt.edu      ,3015251673                   ,Sophomore ,,"Medicine, Health, and Society"                                                                                 ,,0,0
+313,-1,Emily              ,Gresser           ,emily.b.gresser@vanderbilt.edu           ,7345823676                   ,Sophomore ,,Neuroscience and MHS                                                                                            ,,0,0
+314,-1,Grayson            ,Liptack           ,grayson.c.liptack@vanderbilt.edu         ,9145524361                   ,Senior    ,,Spanish                                                                                                         ,,0,0
+315,4 ,Joey               ,Lu                ,joey.lu@vanderbilt.edu                   ,6189750106                   ,Sophomore ,,biochem                                                                                                         ,,0,0
+316,4 ,Jasmine            ,Su                ,jasmine.j.su@vanderbilt.edu              ,2035977433                   ,Sophomore ,,biomedical engineering                                                                                          ,,0,0
+317,-1,Joanna             ,Kim               ,joanna.kim@vanderbilt.edu                ,5306017309                   ,Sophomore ,,Cello performance and child development                                                                         ,,0,0
+318,-1,Sam                ,MacGavin          ,samantha.a.macgavin@vanderbilt.edu       ,6364898808                   ,Junior    ,,Neuroscience and MHS                                                                                            ,,0,0
+319,-1,Juliana            ,Valenzuela        ,julianaevalenzuela@gmail.com             ,18584497895                  ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+320,-1,Michelle           ,Lee               ,michelle.e.lee@vanderbilt.edu            ,(901)409-7821                ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+321,-1,Gideon             ,Kpurubu           ,gideon.b.kpurubu@vanderbilt.edu          ,901-207-0462                 ,First-Year,,Molecular & Cellular Biology (intended)                                                                         ,,0,0
+322,-1,Carly              ,Stewart           ,carly.m.stewart@vanderbilt.edu           ,4406798289                   ,Sophomore ,,"Molecular & Cellular Biology, planning to declare a double major in Communication of Science & Technology"     ,,0,0
+323,-1,Alyssa             ,Kovalski          ,alyssaakovalski@gmail.com                ,2816903895                   ,First-Year,,Biomedical engineering                                                                                          ,,0,0
+324,-1,Kai-li             ,Sam Fong          ,kai-li.sam.fong@vanderbilt.edu           ,8014200286                   ,Junior    ,,MHS and Philosophy                                                                                              ,,0,0
+325,-1,Benjamin           ,Wiggins           ,benjamin.w.wiggins@vanderbilt.edu        ,2392470354                   ,First-Year,,Economics                                                                                                       ,,0,0
+326,-1,Rebecka            ,Baker             ,rebecka.e.baker@vanderbilt.edu           ,9258768136                   ,First-Year,,Math-CompSci                                                                                                    ,,0,0
+327,10,Nicholas           ,Wan               ,nicholas.c.wan@vanderbilt.edu            ,6306361431                   ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+328,10,Riley              ,Chu               ,riley.k.chu@vanderbilt.edu               ,6264147137                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+329,-1,Pierce             ,Bivens            ,piercebivens@gmail.com                   ,8086349776                   ,Sophomore ,,HOD / Polisci                                                                                                   ,,0,0
+330,20,Kirsten            ,Koehler           ,kirsten.m.koehler@vanderbilt.edu         ,3095332574                   ,First-Year,,Biological Sciences                                                                                             ,,0,1
+331,-1,Kathleen           ,Katchis           ,kathleen.v.katchis@vanderbilt.edu        ,5165123144                   ,First-Year,,Computer Science                                                                                                ,,0,0
+332,-1,Chris              ,Keller            ,christopher.s.keller@vanderbilt.edu      ,4129135479                   ,Sophomore ,,Civil Engineering                                                                                               ,,0,0
+333,-1,Brian              ,Ferrer            ,brian.ferrer@vanderbilt.edu              ,9202468011                   ,Graduate  ,,Biochemistry                                                                                                    ,,0,0
+334,-1,Justin             ,Chen              ,justin.f.chen@vanderbilt.edu             ,6154747632                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+335,-1,Junenyeong (Ryan)  ,Hong              ,junenyeong.hong@vanderbilt.edu           ,7036781588                   ,Sophomore ,,MHS                                                                                                             ,,0,0
+336,-1,Brian              ,Kim               ,brian.kim.1@vanderbilt.edu               ,+5719690782                  ,Sophomore ,,"Medicine, Health, and Society"                                                                                 ,,0,0
+337,19,Arjun              ,Bansal            ,arjun.bansal@vanderbilt.edu              ,3479689556                   ,Senior    ,,Chemical Engineering & Mathematics                                                                              ,,0,0
+338,-1,Lina               ,Drechsler         ,lina.i.drechsler@vanderbilt.edu          ,5138864056                   ,Sophomore ,,Computer Science                                                                                                ,,0,0
+339,-1,Jinsun             ,Kim               ,jinsun.kim@vanderbilt.edu                ,6786501394                   ,First-Year,,Undecided (possibly Chemistry)                                                                                  ,,0,0
+340,19,David              ,Ward              ,david.e.ward@vanderbilt.edu              ,3215443871                   ,Senior    ,,CS                                                                                                              ,,0,1
+341,-1,Nicholas           ,Fomin             ,nicholas.f.fomin@vanderbilt.edu          ,6175103708                   ,First-Year,,Undeclared                                                                                                      ,,0,0
+342,-1,Lana               ,Trautman          ,lana.c.trautman@vanderbilt.edu           ,6127903710                   ,Sophomore ,,MHS                                                                                                             ,,0,0
+343,-1,Elisabeth          ,Wood              ,elisabeth.d.wood@vanderbilt.edu          ,9542498882                   ,Sophomore ,,Chemistry                                                                                                       ,,0,0
+344,-1,Janelle            ,Clovie            ,janelle.h.clovie@vanderbilt.edu          ,4048844485                   ,Junior    ,,"medicine, health, and society"                                                                                 ,,0,0
+345,-1,Nora               ,Goring            ,nora.goring@vanderbilt.edu               ,2109782719                   ,Junior    ,,Political Science                                                                                               ,,0,0
+346,-1,Duncan             ,Steeples          ,duncan.p.steeples@vanderbilt.edu         ,6158016543                   ,First-Year,,Mechanical Engineering                                                                                          ,,0,0
+347,-1,Bradley            ,Moon              ,bradley.j.moon@vanderbilt.edu            ,2627202594                   ,Junior    ,,Biochemistry                                                                                                    ,,0,0
+348,21,Charlie            ,Rebuck            ,charles.j.rebuck@vanderbilt.edu          ,8572482565                   ,First-Year,,Cognitive Studies                                                                                               ,,0,0
+349,-1,Jason              ,Lee               ,jason.lee@vanderbilt.edu                 ,2052186099                   ,Senior    ,,MHS                                                                                                             ,,0,0
+350,-1,Sahil              ,Patel             ,sahil.a.patel.1@vanderbilt.edu           ,9312278142                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+351,-1,Jade               ,Moore             ,deira.j.moore@vanderbilt.edu             ,7026661975                   ,First-Year,,Psychology                                                                                                      ,,0,0
+352,17,Taylor             ,McDonald          ,taylor.p.mcdonald@vanderbilt.edu         ,6155573332                   ,Sophomore ,,Neuro & MHS                                                                                                     ,,0,1
+353,-1,Nicholas           ,Fields            ,nicholas.r.fields@vanderbilt.edu         ,7082670812                   ,Graduate  ,,BMS                                                                                                             ,,0,0
+354,-1,Jordyn             ,Sanner            ,jordyn.e.sanner@vanderbilt.edu           ,8145665236                   ,Graduate  ,,Biological Sciences                                                                                             ,,0,0
+355,-1,Mathilde           ,Caindec           ,mathilde.k.caindec@vanderbilt.edu        ,4157557727                   ,Sophomore ,,"Major: Economics; Minors: Computer Science, Art History"                                                       ,,0,0
+356,-1,Samantha           ,Keller            ,samantha.r.keller@vanderbilt.edu         ,9737236450                   ,Sophomore ,,Medicine Health and Society                                                                                     ,,0,0
+357,-1,Veronica           ,Figueroa          ,veronica.e.figueroa@vanderbilt.edu       ,6094018563                   ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+358,-1,Andrea             ,Gutierrez         ,andrea.gutierrez@vanderbilt.edu          ,7864519315                   ,First-Year,,Biology                                                                                                         ,,0,0
+359,-1,Cole               ,Potrock           ,cole.g.potrock@vanderbilt.edu            ,4077569797                   ,First-Year,,Psychology                                                                                                      ,,0,0
+360,-1,Thanvi             ,Dola              ,thanvi.dola@vanderbilt.edu               ,3026023036                   ,First-Year,,undecided                                                                                                       ,,0,0
+361,-1,Megan              ,McKeen            ,megan.c.@vanderbilt.edu                  ,7034729070                   ,First-Year,,Biomedical                                                                                                      ,,0,0
+362,-1,Charlie            ,Hartsell          ,charles.a.hartsell@vanderbilt.edu        ,2564798794                   ,Graduate  ,,Electrical Engineering                                                                                          ,,0,0
+363,-1,Eliza              ,Smith             ,eliza.smith@vanderbilt.edu               ,(518) 209-3602               ,Senior    ,,Neuroscience and Communication of Science and Technology                                                        ,,0,0
+364,-1,Jefferson          ,Guaman            ,jefferson.s.guaman@vanderbilt.edu        ,3474942837                   ,First-Year,,"Medicine, Health, and Society"                                                                                 ,,0,0
+365,-1,Lillian            ,Zheng             ,lillian.m.zheng@vanderbilt.edu           ,3013265031                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+366,-1,Kayla              ,Anderson          ,kayla.a.anderson@vanderbilt.edu          ,8033894638                   ,First-Year,,MHS on premed track                                                                                             ,,0,0
+367,-1,Lucinda            ,Pastora           ,lucinda.e.pastora@vanderbilt.edu         ,7134923396                   ,Graduate  ,,Chemical and Biomolecular Engineering                                                                           ,,0,0
+368,-1,Maggie             ,Fye               ,margret.a.fye@vanderbilt.edu             ,4803351369                   ,Graduate  ,,Graduate (IGP)                                                                                                  ,,0,0
+369,22,Jeffrey            ,Benner            ,jeffrey.s.benner@vanderbilt.edu          ,4439441869                   ,First-Year,,Chemistry                                                                                                       ,,0,0
+370,-1,Kyle               ,Medas             ,kyle.m.medas@vanderbilt.edu              ,7742941290                   ,Graduate  ,,Chemistry                                                                                                       ,,0,0
+371,-1,Tristan            ,Sealy             ,tristan.t.sealy@vanderbilt.edu           ,8329186776                   ,First-Year,,N/A                                                                                                             ,,0,0
+372,-1,Shuyang            ,Lin               ,shuyang.lin.1@vanderbilt.edu             ,6366755974                   ,Junior    ,,biology                                                                                                         ,,0,0
+373,-1,Emily              ,Hall              ,emily.g.hall@vanderbilt.edu              ,9016517627                   ,Sophomore ,,HOD/ Architecture and the Built Environment                                                                     ,,0,0
+374,-1,Vamsi              ,Veeramachaneni    ,vamsi.veeramachaneni@vanderbilt.edu      ,5029095546                   ,First-Year,,"Medicine, Health, and Society/ Neuroscience"                                                                   ,,0,0
+375,-1,Amisha             ,Mittal            ,amisha.r.mittal@vanderbilt.edu           ,5135204597                   ,Sophomore ,,"MHS, Spanish, HOD"                                                                                             ,,0,0
+376,-1,Basim              ,Naim              ,basim.naim@vanderbilt.edu                ,2054270473                   ,First-Year,,Chemistry & MHS                                                                                                 ,,0,0
+377,-1,Salem              ,Omer              ,salem.a.omer@vanderbilt.edu              ,6154767265                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+378,-1,Caitlin            ,Grogan            ,caitlin.e.grogan@vanderbilt.edu          ,2817486659                   ,Sophomore ,,Biomedical Engineering                                                                                          ,,0,0
+379,-1,Mert               ,Sekmen            ,mert.sekmen@vanderbilt.edu               ,6155093770                   ,First-Year,,MHS/CS                                                                                                          ,,0,0
+380,-1,Molly              ,Friedman          ,molly.h.friedman@vanderbilt.edu          ,6304707045                   ,Sophomore ,,Chemical Engineering/Chemistry                                                                                  ,,0,0
+381,-1,Joslin             ,Blair             ,joslin.a.blair@vandebrilt.edu            ,9702744398                   ,First-Year,,MHS                                                                                                             ,,0,0
+382,-1,Niki               ,Narayani          ,nikita.a.narayani@vanderbilt.edu         ,865-582-6822                 ,Sophomore ,,"Medicine, Health, and Society"                                                                                 ,,0,0
+383,-1,Ugonna             ,Adugba            ,ugonna.k.adugba@vanderbilt.edu           ,2146834322                   ,Sophomore ,,Biological Sciences                                                                                             ,,0,0
+384,-1,Hongkai            ,Wang              ,hongkai.wang@vanderbilt.edu              ,2153009770                   ,Junior    ,,Biochemistry                                                                                                    ,,0,0
+385,-1,Fay                ,Zhang             ,anran.zhang@vanderbilt.edu               ,2066370692                   ,Junior    ,,"HOD, Cognitive Studies"                                                                                        ,,0,0
+386,-1,Max                ,Beck              ,max.l.beck@vanderbilt.edu                ,5514044232                   ,Sophomore ,,Biochemistry and Chemical Biology                                                                               ,,0,0
+387,-1,Joyce              ,Huang             ,joyce.j.huang@vanderbilt.edu             ,4045106118                   ,First-Year,,chemical engineering                                                                                            ,,0,0
+388,-1,Serena             ,Pao               ,serena.r.pao@vanderbilt.edu              ,8473234911                   ,Junior    ,,Secondary Education and Chemistry                                                                               ,,0,0
+389,-1,Jacob              ,Schoenthal        ,jrschoenthal@gmail.com                   ,6185602868                   ,Senior    ,,Biological Sciences                                                                                             ,,0,0
+390,-1,Emilia             ,Lew               ,emilia.lew@vanderbilt.edu                ,7817756500                   ,Senior    ,,"Musical Arts, second major Neuroscience"                                                                       ,,0,0
+391,-1,Colin              ,Fricker           ,colin.m.fricker@vanderbilt.edu           ,4408406565                   ,Senior    ,,Neuroscience                                                                                                    ,,0,0
+392,-1,Katie              ,Kim               ,katherine.h.kim@vanderbilt.edu           ,7708916405                   ,Sophomore ,,MHS and Child Development                                                                                       ,,0,0
+393,-1,Ian                ,Barckhausen       ,ian.r.barckhausen@vanderbilt.edu         ,3522864524                   ,Senior    ,,MHS                                                                                                             ,,0,0
+394,-1,Isabela            ,Arcila            ,isabela.arcila@vanderbilt.edu            ,8134380255                   ,First-Year,,neuroscience                                                                                                    ,,0,0
+395,14,Cooper             ,Bolton            ,cooper.j.bolton@vanderbilt.edu           ,4237544142                   ,First-Year,,MHS on premed                                                                                                   ,,0,0
+396,14,Thomas             ,Raymond           ,thomas.m.raymond@vanderbilt.edu          ,5613129193                   ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+397,-1,Brian              ,Kim               ,mincheol.b.kim@vanderbilt.edu            ,240-454-2674                 ,First-Year,,Molecular Cellular Biology and Neuroscience                                                                     ,,0,0
+398,-1,Krish              ,Shah              ,krish.u.shah@vanderbilt.edu              ,8474181009                   ,First-Year,,Cognitive Studies                                                                                               ,,0,0
+399,-1,Ruchi              ,Patel             ,ruchi.c.patel@vanderbilt.edu             ,4238769129                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+400,14,Aman               ,Momin             ,aman.momin@vanderbilt.edu                ,5129993629                   ,First-Year,,Computer Science and HOD                                                                                        ,,0,1
+401,-1,Katherine          ,Walker            ,katherine.a.walker@vanderbilt.edu        ,5713869316                   ,First-Year,,Undecided                                                                                                       ,,0,0
+402,-1,Niya               ,Burney            ,niya.burney@vanderbilt.edu               ,7035824433                   ,Sophomore ,,Economics & Mathematics                                                                                         ,,0,0
+403,17,Stanley            ,Vinet             ,stanley.q.vinet@vanderbilt.edu           ,(805) 710-6514               ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+404,-1,Mina               ,Aziz              ,mina.h.aziz@vanderbilt.edu               ,6155861875                   ,Sophomore ,,Biochemistry and Neuroscience                                                                                   ,,0,0
+405,-1,Vincent            ,Kang              ,weixi.kang@vanderbilt.edu                ,6152430598                   ,Sophomore ,,Chemistry                                                                                                       ,,0,0
+406,-1,Kyle               ,Schroeder         ,kyle.r.schroeder@vanderbilt.edu          ,15134449624                  ,Junior    ,,"Neuroscience and Medicine, Health, & Society"                                                                  ,,0,0
+407,-1,Hannah             ,Kirkham           ,hannah.k.kirkham@vanderbilt.edu          ,5135074129                   ,Sophomore ,,biomedical engineering                                                                                          ,,0,0
+408,-1,Ikenna             ,Chukwu            ,ikenna.v.chukwu@vanderbilt.edu           ,4049989400                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+409,-1,Phoebe             ,White             ,phoebe.a.white@vanderbilt.edu            ,914-707-1214                 ,Senior    ,,Biology and MHS                                                                                                 ,,0,0
+410,-1,Aaron              ,Kwag              ,aaron.m.kwag@vanderbilt.edu              ,6626100097                   ,Junior    ,,Neuroscience                                                                                                    ,,0,0
+411,-1,Anurag             ,Epparla           ,anurag.epparla@vanderbilt.edu            ,901-283-2707                 ,Junior    ,,MCB                                                                                                             ,,0,0
+412,-1,Zachary            ,Ritholz           ,zachary.ritholz@vanderbilt.edu           ,5164973983                   ,Sophomore ,,Computer Engineering                                                                                            ,,0,0
+413,-1,Nathaniel          ,Baek              ,nathaniel.baek@vanderbil.edu             ,9493837469                   ,Senior    ,,MHS                                                                                                             ,,0,0
+414,-1,Henoc              ,Zinga             ,henoc.zinga@vanderbilt.edu               ,4046673392                   ,First-Year,,Biochemistry and Economics                                                                                      ,,0,0
+415,22,Jade               ,Izaguirre         ,jade.n.izaguirre@vanderbilt.edu          ,7068476762                   ,Graduate  ,,Chemistry                                                                                                       ,,0,1
+416,22,Jenna              ,Payne             ,jenna.payne@vanderbilt.edu               ,5176489940                   ,Graduate  ,,chemistry                                                                                                       ,,0,0
+417,22,Corri              ,Calandra          ,corri.j.calandra@vanderbilt.edu          ,8567230785                   ,Graduate  ,,Chemistry                                                                                                       ,,0,0
+418,-1,Jade               ,Williams          ,jade.c.williams@vanderbilt.edu           ,(240) 246-6030               ,Graduate  ,,Chemistry                                                                                                       ,,0,0
+419,-1,David              ,Almond            ,david.w.almond@vanderbilt.edu            ,856-469-9438                 ,Graduate  ,,Chemistry                                                                                                       ,,0,0
+420,-1,Matthew            ,Shou              ,matthew.shou@vanderbilt.edu              ,5139685298                   ,Senior    ,,Molecular and Cellular Biology                                                                                  ,,0,0
+421,-1,Yulia              ,Lee               ,seo.yeon.lee@vanderbilt.edu              ,2023807593                   ,Senior    ,,Neuroscience and psychology                                                                                     ,,0,0
+422,-1,Emily              ,Hurren            ,emily.p.hurren@vanderbilt.edu            ,6097601293                   ,Junior    ,,Economics                                                                                                       ,,0,0
+423,-1,Amy                ,Pang              ,amy.s.pang@vanderbilt.edu                ,6014971589                   ,Sophomore ,,Chemical Engineering                                                                                            ,,0,0
+424,-1,Sonia              ,Kim               ,sonia.b.kim@vanderbilt.edu               ,7143218763                   ,Senior    ,,Neuroscience                                                                                                    ,,0,0
+425,-1,Benjamin           ,Fahrenkrug        ,benjamin.c.fahrenkrug@vanderbilt.edu     ,5155055521                   ,Sophomore ,,Electrical Engineering and Mathematics                                                                          ,,0,0
+426,-1,Zakariyya          ,Al-Quran          ,zakariyya.s.al-quran@vanderbilt.edu      ,3528882391                   ,Sophomore ,,Computer Engineering                                                                                            ,,0,0
+427,15,Jenna              ,Lee               ,shinhoo.j.lee@vanderbilt.edu             ,7853237626                   ,First-Year,,MHS                                                                                                             ,,0,0
+428,-1,Alexa              ,Huertas           ,alexa.m.huertas@vanderbilt.edu           ,3052134771                   ,Sophomore ,,Psychology                                                                                                      ,,0,0
+429,-1,Mariana            ,Floody            ,mariana.floody@vanderbilt.edu            ,4842386611                   ,First-Year,,Biochemistry (double major in cs)                                                                               ,,0,0
+430,-1,Sofia              ,Roth              ,sofia.roth@vanderbilt.edu                ,9175029978                   ,Sophomore ,,"Molecular and Cellular Biology, MHS"                                                                           ,,0,0
+431,-1,Nyssa              ,Kantorek          ,nyssa.r.kantorek@vanderbilt.edu          ,2146298723                   ,Senior    ,,Neuroscience                                                                                                    ,,0,0
+432,-1,Teddy              ,Wagner            ,nicholas.e.wagner@vanderbilt.edu         ,6026637567                   ,Junior    ,,Computer Science                                                                                                ,,0,0
+433,-1,Omotayo            ,Fasan             ,omotayo.n.fasan@vanderbilt.edu           ,(267) 800-5779               ,First-Year,,MHS                                                                                                             ,,0,0
+434,8 ,Henrik             ,de Jounge         ,henrik.c.de.jounge@vanderbilt.edu        ,2037270473                   ,Junior    ,,Computer Science                                                                                                ,,0,0
+435,-1,Alex               ,Shen              ,alex.shen@vanderbilt.edu                 ,9393947423                   ,First-Year,,Neuroscience                                                                                                    ,,0,0
+436,-1,Lucie              ,Fumagalli         ,lucie.fumagalli@vanderbilt.edu           ,2394940602                   ,Junior    ,,MHS & Child Development                                                                                         ,,0,0
+437,-1,Carter             ,Bell              ,carter.m.bell@vanderbilt.edu             ,7045305003                   ,Sophomore ,,Electrical Engineering                                                                                          ,,0,0
+438,-1,Allison            ,Powell            ,allison.v.powell@vanderbilt.edu          ,9012583569                   ,Senior    ,,Cognitive Studies and Neuroscience                                                                              ,,0,0
+439,-1,Alexa              ,Betjemann         ,alexa.m.betjemann@vanderbilt.edu         ,6306055794                   ,First-Year,,"MHS, Anthropology"                                                                                             ,,0,0
+440,-1,Malea              ,Hayles            ,malea.hayles@vanderbilt.edu              ,3104673481                   ,First-Year,,medicine health and society                                                                                     ,,0,0
+441,-1,Robert             ,Castro            ,robert.a.castro@vanderbilt.edu           ,3057931212                   ,Junior    ,,"Medicine, Health, and Society"                                                                                 ,,0,0
+442,-1,Samantha           ,Greenblatt        ,samantha.l.greenblatt@vanderbilt.edu     ,3019289810                   ,Senior    ,,MHS & GSS                                                                                                       ,,0,0
+443,-1,Adam               ,Geffner           ,adam.geffner@vanderbilt.edu              ,9739853534                   ,Senior    ,,Communication of Science and Technology                                                                         ,,0,0
+444,-1,Sydney             ,Corey             ,sydney.a.corey@vanderbilt.edu            ,8137657936                   ,Senior    ,,Neuroscience and MHS                                                                                            ,,0,0
+445,-1,Jenna              ,Lawrence          ,jennifer.l.lawrence@vanderbilt.edu       ,4048890805                   ,Junior    ,,MHS                                                                                                             ,,0,0
+446,-1,Buket              ,Alkan             ,buket.alkan@vanderbilt.edu               ,9319548584                   ,First-Year,,biochemistry & chemical biology                                                                                 ,,0,0
+447,-1,Tucker             ,Apgar             ,tucker.l.apgar@vanderbilt.edu            ,19787664896                  ,Sophomore ,,Biochemistry                                                                                                    ,,0,0
+448,8 ,Kenneth            ,Huff              ,kenneth.b.huff@vanderbilt.edu            ,864-494-3905                 ,Sophomore ,,Electrical Engineering                                                                                          ,,0,0
+449,-1,Olivia             ,Tsai              ,olivia.l.tsai@vanderbilt.edu             ,4435370202                   ,First-Year,,Undecided / Pre-vet track                                                                                       ,,0,0
+450,-1,Erica              ,Guelfi            ,erica.m.guelfi@vanderbilt.edu            ,2174180177                   ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+451,-1,Alba               ,Minxha            ,alba.minxha@vanderbilt.edu               ,7542134749                   ,Sophomore ,,Biomedical Engineering                                                                                          ,,0,0
+452,-1,Michelle           ,Wang              ,michelle.wang.1@vanderbilt.edu           ,571-758-8782                 ,First-Year,,Computer Science                                                                                                ,,0,0
+453,-1,Yasmine            ,Shivere           ,yasmine.l.shivere@vanderbilt.edu         ,937-361-0849                 ,First-Year,,"Medicine, Health, and Society"                                                                                 ,,0,0
+454,-1,Isabella           ,Hirsch            ,isabella.f.hirsch@vanderbilt.edu         ,8137435514                   ,First-Year,,"Psychology, Neuroscience or MHS, Pre-Med"                                                                      ,,0,0
+455,14,Manuel             ,Avila             ,manuel.a.avila@vanderbilt.edu            ,3059566641                   ,First-Year,,Biomedical Engineering                                                                                          ,,0,0
+456,-1,Ally               ,Questell          ,alyssa.m.questell@vanderbilt.edu         ,(336)258-0135                ,Sophomore ,,Biomedical Engineering                                                                                          ,,0,0
+457,-1,Rishi              ,Das               ,rishi.s.das@vanderbilt.edu               ,317-361-9459                 ,Junior    ,,Biomedical Engineering                                                                                          ,,0,0
+458,19,Shwe               ,Khin              ,shwe.y.khin@vanderbilt.edu               ,3102373580                   ,Sophomore ,,English                                                                                                         ,,0,0
+459,19,Chloe              ,Park              ,yewon.park@vanderbilt.edu                ,5625226983                   ,Sophomore ,,MHS                                                                                                             ,,0,0
+460,-1,Vidhya             ,Sundar            ,vidhya.shunmugasundaram@vanderbilt.edu   ,8566738449                   ,Sophomore ,,Biomedical Engineering                                                                                          ,,0,0
+461,-1,Martina            ,Hannaalla         ,martina.m.hannaalla@vanderbilt.edu       ,6154829775                   ,Sophomore ,,Neuroscience                                                                                                    ,,0,0
+462,-1,Robert             ,McCarthy          ,robert.d.mccarthy@vanderbilt.edu         ,8157627170                   ,Sophomore ,,"Molecular and Cellular Biology, MHS"                                                                           ,,0,0
+463,-1,Varsha             ,Nair              ,varsha.m.nair@vanderbilt.edu             ,9496480224                   ,Junior    ,,Neuroscience & AADS                                                                                             ,,0,0
+464,-1,Matthew            ,Sgaglione         ,matthew.w.sgaglione@vanderbilt.edu       ,516-459-8457                 ,Junior    ,,MHS                                                                                                             ,,0,0

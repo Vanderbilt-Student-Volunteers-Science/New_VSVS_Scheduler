@@ -8,20 +8,23 @@ import src.globalAttributes
 # partner1 - the Volunteer object of the first partner in the group; the Volunteer object that contains the information
 #            of the group of partners (only one is set when partners.csv is imported)
 def assign_partners(partner1):
-    classroom_idx = 0
-
-    while partner1.group_number == -1 and classroom_idx < len(src.globalAttributes.classroom_list):
-        classroom = src.globalAttributes.classroom_list[classroom_idx]
-        if partners_can_make_class(partner1, classroom) and \
-                src.globalAttributes.MAX_TEAM_SIZE - classroom.volunteers_assigned >= partner1.partners + 1:
-            classroom.assign_volunteer(partner1)
-            for partner_index in partner1.partner_indexes:
-                classroom.assign_volunteer(src.globalAttributes.volunteer_list[partner_index])
-        else:
-            classroom_idx += 1
+    for classroom in src.globalAttributes.classroom_list:
+        # partner 1 is unassigned
+        if partner1.group_number == -1:
+            # check availability and group size
+            if partners_can_make_class(partner1, classroom) and \
+                    src.globalAttributes.MAX_TEAM_SIZE - classroom.volunteers_assigned >= partner1.partners + 1:
+                # assign partner1
+                classroom.assign_volunteer(partner1)
+                # assign remaining partners
+                for partner_index in partner1.partner_indexes:
+                    if src.globalAttributes.volunteer_list[partner_index].group_number != -1:
+                        print(f"--ERROR: {src.globalAttributes.volunteer_list[partner_index]} is being reassigned")
+                    classroom.assign_volunteer(src.globalAttributes.volunteer_list[partner_index])
+    # failed to assign
     if partner1.group_number == -1:
         print(
-            "WARNING: " + partner1.email + "'s partner group could not be assigned together because of scheduling conflicts.")
+            f"WARNING: {str(partner1)}'s partner group could not be assigned together because of scheduling conflicts.")
 
 
 # Assigns drivers to classroom groups without drivers. If all of the classrooms a driver can make already have drivers
@@ -45,6 +48,7 @@ def assign_in_person(sorted_in_person_volunteers):
 # classroom groups over empty classroom groups.
 # sorted_applied_t_leaders - a list of unassigned volunteers that applied to be team leaders sorted from the fewest to
 #                            greatest number of classrooms they can make
+# TODO: fix syntax of loops (for classroom in classroom list)
 def assign_applied_t_leaders(sorted_t_leaders):
     for t_leader in sorted_t_leaders:
         classroom_idx = 0
@@ -73,6 +77,7 @@ def assign_applied_t_leaders(sorted_t_leaders):
 # Assigns all unassigned volunteers to classroom groups. Prioritizes assigning each volunteer to a partially-filled
 # classroom group over an empty classroom group.
 # sorted_others - a list of unassigned volunteers sorted from the fewest to greatest number of classrooms they can make
+# TODO: fix syntax of loops (for classroom in classroom list)
 def assign_others(sorted_others):
     for volunteer in sorted_others:
         classroom_idx = 0
@@ -123,3 +128,13 @@ def return_classrooms_possible(volunteer):
 def sort_by_availability(volunteer_list):
     volunteer_list.sort(key=return_classrooms_possible)
     return volunteer_list
+
+
+# assigns a single volunteer to first available classroom
+def assign_single(volunteer):
+    for classroom in src.globalAttributes.classroom_list:
+        if volunteer.group_number == -1:
+            if src.assign.volunteer_can_make_class(volunteer, classroom):
+                classroom.assign_volunteer(volunteer)
+        else:
+            return
