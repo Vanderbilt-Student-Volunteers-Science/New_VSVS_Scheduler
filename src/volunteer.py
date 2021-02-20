@@ -42,7 +42,7 @@ class Volunteer:
         self.free_time_array = src.convertSchedule.convert_to_free_time_array(self.schedule_array)
 
         # group number of -1 means not assigned to a group
-        self.group_number = -1
+        self._group_number = -1
 
         # The number of other partners (NOT including this Volunteer) Volunteer applied with, set in add_partners
         # method. This is only set in the Volunteer object of the first partner in the group.
@@ -68,6 +68,20 @@ class Volunteer:
 
         # True if the volunteer is in person, False if they are remote.
         self.is_in_person = is_in_person
+
+    @property
+    def group_number(self):
+        return self._group_number
+
+    @group_number.setter
+    def group_number(self, value):
+        if self._group_number != -1:
+            raise ValueError("You are changing the group number of an already assigned volunteer.")
+        self._group_number = value
+
+    @group_number.deleter
+    def group_number(self):
+        del self._group_number
 
     # Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of the first
     # partner in the group (the self object).
@@ -149,4 +163,7 @@ class Volunteer:
         self.assigned_t_leader = True
 
     def __str__(self):
+        return self.first + ' ' + self.last
+
+    def __repr__(self):
         return self.first + ' ' + self.last
