@@ -115,3 +115,8 @@ The volunteer class has the following members:
 - [ ] groups are assigned together
 - [ ] each group has at least one in-person
 - [ ] see how many groups of <MAX there are
+
+## Spring 2021 Changes
+- 5 volunteers per group
+- Board priority for team assignment + team leader
+- Better parsing of partner app (strip methods)
