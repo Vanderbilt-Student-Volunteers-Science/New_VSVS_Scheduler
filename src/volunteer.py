@@ -1,6 +1,6 @@
 import src.classroom
-import src.convertSchedule
-import src.globalAttributes
+import src.convert_schedule
+import src.global_attributes
 
 
 class Volunteer:
@@ -28,18 +28,18 @@ class Volunteer:
             self.car_passengers = int(car_passengers)
 
         # if they have a car that can carry the MAX_TEAM_SIZE
-        self.driver = (self.car_passengers + 1 >= src.globalAttributes.MAX_TEAM_SIZE)
+        self.driver = (self.car_passengers + 1 >= src.global_attributes.MAX_TEAM_SIZE)
 
         # TODO Convert directly from input schedule to free_time_array in one method. Don't need convert_to_schedule_array.
         # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday
         # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.)
         # value at an index is 1 if volunteer is available at that time and 0 if they are busy
-        self.schedule_array = src.convertSchedule.convert_to_schedule_array(imported_schedule)
+        self.schedule_array = src.convert_schedule.convert_to_schedule_array(imported_schedule)
 
         # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday
         # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.)
         # value at an index is the minutes of consecutive free time the volunteer has starting at that time
-        self.free_time_array = src.convertSchedule.convert_to_free_time_array(self.schedule_array)
+        self.free_time_array = src.convert_schedule.convert_to_free_time_array(self.schedule_array)
 
         # group number of -1 means not assigned to a group
         self._group_number = -1
@@ -106,8 +106,8 @@ class Volunteer:
         if partner4_email == '':
             partner4_matched = 1
 
-        while volunteer_index < len(src.globalAttributes.volunteer_list) and partners_matched == 0:
-            volunteer = src.globalAttributes.volunteer_list[volunteer_index]
+        while volunteer_index < len(src.global_attributes.volunteer_list) and partners_matched == 0:
+            volunteer = src.global_attributes.volunteer_list[volunteer_index]
             if volunteer.email == partner1_email:
                 self.partner_indexes.append(volunteer_index)
                 partner1_matched = 1
@@ -125,7 +125,7 @@ class Volunteer:
 
             if partner1_matched and partner2_matched and partner3_matched and partner4_matched:
                 partners_matched = 1
-            elif volunteer == src.globalAttributes.volunteer_list[-1]:
+            elif volunteer == src.global_attributes.volunteer_list[-1]:
                 print("WARNING: ", end='')
                 if partner1_matched == 0:
                     print(partner1_email, end=' ')
@@ -141,16 +141,16 @@ class Volunteer:
 
         # If all four partners are remote, they cannot be assigned in a group together.
         # At least one volunteer in each group must be in person.
-        if self.partners == 2 and not self.is_in_person and not src.globalAttributes.volunteer_list[
-            self.partner_indexes[0]].is_in_person and not src.globalAttributes.volunteer_list[
-            self.partner_indexes[1]].is_in_person and not src.globalAttributes.volunteer_list[
+        if self.partners == 2 and not self.is_in_person and not src.global_attributes.volunteer_list[
+            self.partner_indexes[0]].is_in_person and not src.global_attributes.volunteer_list[
+            self.partner_indexes[1]].is_in_person and not src.global_attributes.volunteer_list[
             self.partner_indexes[2]].is_in_person:
             print("WARNING:" + self.email + "'s partner group cannot be grouped together because they are all remote.")
 
         elif self.partners != 0:
-            self.partner_free_time_array = src.convertSchedule.create_partner_schedule(self.schedule_array,
-                                                                                       self.partners,
-                                                                                       self.partner_indexes)
+            self.partner_free_time_array = src.convert_schedule.create_partner_schedule(self.schedule_array,
+                                                                                        self.partners,
+                                                                                        self.partner_indexes)
 
     def increment_classrooms_possible(self):
         self.classrooms_possible += 1

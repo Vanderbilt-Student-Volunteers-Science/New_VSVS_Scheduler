@@ -3,14 +3,14 @@ import os
 
 import src.assign
 import src.classroom
-import src.globalAttributes
+import src.global_attributes
 from src.classroom import Classroom
-from src.globalAttributes import I, CLASSROOM_INDEX
+from src.global_attributes import I, CLASSROOM_INDEX
 from src.volunteer import Volunteer
 
 
 # TODO: all warnings should import warnings and use python Warnings
-# All global constants and variables are in globalAttributes.py
+# All global constants and variables are in global_attributes.py
 
 
 def main():
@@ -46,9 +46,9 @@ def main():
                 # location column in csv is either 'On-campus' or 'Remote', so we need to convert to boolean
                 is_in_person=(lambda x: True if x == 'On-campus' else False)(row[I['LOCATION']].strip())
             )
-            src.globalAttributes.volunteer_list.append(volunteer)
+            src.global_attributes.volunteer_list.append(volunteer)
 
-    print('There are {} volunteers.'.format(len(src.globalAttributes.volunteer_list)))
+    print('There are {} volunteers.'.format(len(src.global_attributes.volunteer_list)))
 
     # import partner application data from partners.csv
 
@@ -63,8 +63,8 @@ def main():
             # attributes partners, partner_indexes, and partner_schedule
             volunteer_index = 0
             first_volunteer_matched = 0
-            while volunteer_index < len(src.globalAttributes.volunteer_list) and first_volunteer_matched == 0:
-                volunteer = src.globalAttributes.volunteer_list[volunteer_index]
+            while volunteer_index < len(src.global_attributes.volunteer_list) and first_volunteer_matched == 0:
+                volunteer = src.global_attributes.volunteer_list[volunteer_index]
                 volunteer_index += 1
                 if row[1].strip().lower() == volunteer.email:
                     if len(row) == 6:
@@ -80,7 +80,7 @@ def main():
                     first_volunteer_matched = 1
 
                 # if no volunteers in volunteer_list have same email, print an alert
-                elif volunteer == src.globalAttributes.volunteer_list[-1]:
+                elif volunteer == src.global_attributes.volunteer_list[-1]:
                     print('WARNING: ' + row[
                         1].strip().lower() + ' first volunteer in their partner group was not found in individual application data.')
 
@@ -104,13 +104,13 @@ def main():
                                   day_of_week=row[CLASSROOM_INDEX['DAY_OF_WEEK']].strip()
                                   )
 
-            src.globalAttributes.classroom_list.append(classroom)
+            src.global_attributes.classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
 
     # First assign board members and their partners
     # FIXME: this assumes all board members in groups are partner #1
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in src.global_attributes.volunteer_list:
         if volunteer.board and volunteer.group_number == -1:
             if volunteer.partners:
                 src.assign.assign_partners(volunteer)
@@ -121,44 +121,44 @@ def main():
 
     # print board members that can not be assigned
     print("\n ------  BOARD MEMBERS THAT CAN NOT BE ASSIGNED ------")
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in src.global_attributes.volunteer_list:
         if volunteer.board and volunteer.group_number == -1:
             print(volunteer)
 
     print("------------")
 
     # assign partners
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in src.global_attributes.volunteer_list:
         if volunteer.group_number == -1 and volunteer.partners:
             src.assign.assign_partners(volunteer)  # adds all partners to same team
 
     # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in src.global_attributes.volunteer_list:
         if volunteer.group_number == -1:
-            for classroom in src.globalAttributes.classroom_list:
+            for classroom in src.global_attributes.classroom_list:
                 if src.assign.volunteer_can_make_class(volunteer, classroom):
                     volunteer.increment_classrooms_possible()
 
     # make list of unassigned in person volunteers, sort them by the number of classrooms they can make
     # (fewest to greatest number of classrooms they can make), then assign them to classroom groups
     in_person_list = []
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in src.global_attributes.volunteer_list:
         if volunteer.group_number == -1 and volunteer.is_in_person:
             in_person_list.append(volunteer)
     src.assign.assign_in_person(src.assign.sort_by_availability(in_person_list))
 
     # creates global variable lists of empty and partially filled classrooms
-    for classroom in src.globalAttributes.classroom_list:
+    for classroom in src.global_attributes.classroom_list:
         if classroom.volunteers_assigned == 0:
-            src.globalAttributes.empty_classrooms.append(classroom)
-        elif classroom.volunteers_assigned < src.globalAttributes.MAX_TEAM_SIZE:
-            src.globalAttributes.partially_filled_classrooms.append(classroom)
+            src.global_attributes.empty_classrooms.append(classroom)
+        elif classroom.volunteers_assigned < src.global_attributes.MAX_TEAM_SIZE:
+            src.global_attributes.partially_filled_classrooms.append(classroom)
 
     # make list of unassigned applied_t_leaders, sort them by the number of classrooms they can make (fewest to greatest
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
     # partially-filled classrooms over empty classrooms)
     applied_t_leader_list = []
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in src.global_attributes.volunteer_list:
         if volunteer.group_number == -1 and volunteer.applied_t_leader:
             applied_t_leader_list.append(volunteer)
     src.assign.assign_applied_t_leaders(src.assign.sort_by_availability(applied_t_leader_list))
@@ -167,7 +167,7 @@ def main():
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
     # partially-filled classrooms over empty classrooms)
     unsorted_list = []
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in src.global_attributes.volunteer_list:
         if volunteer.group_number == -1:
             unsorted_list.append(volunteer)
     src.assign.assign_others(src.assign.sort_by_availability(unsorted_list))
@@ -176,7 +176,7 @@ def main():
     # TODO: think through this part better
     # FIXME: catch ValueError from reassigning volunteers if we are going to do this
     unassigned_volunteers = []
-    for classroom in src.globalAttributes.classroom_list:
+    for classroom in src.global_attributes.classroom_list:
         if classroom.volunteers_assigned == 1:
             unassigned_volunteers.extend(classroom.empty_classroom())
     src.assign.assign_others(src.assign.sort_by_availability(unassigned_volunteers))
@@ -205,7 +205,7 @@ def main():
         csv_writer.writerow(["Volunteer ID", "Group Number", "First Name", "Last Name", "Email", "Phone Number",
                              "Year in School", " ", "Major", " ", "Driver", "Team Leader"])
 
-        for volunteer_id, volunteer in enumerate(src.globalAttributes.volunteer_list):
+        for volunteer_id, volunteer in enumerate(src.global_attributes.volunteer_list):
             if volunteer.group_number == -1:
                 unassigned_volunteers += 1
             csv_writer.writerow(
@@ -227,11 +227,11 @@ def main():
 
     print('There were {} unassigned volunteers.'.format(unassigned_volunteers))
 
-    for classroom in src.globalAttributes.classroom_list:
+    for classroom in src.global_attributes.classroom_list:
         print("{} volunteers assigned to group {}".format(classroom.volunteers_assigned, classroom.group_number))
 
-    classroom_counts = [0] * len(src.globalAttributes.classroom_list)
-    for volunteer in src.globalAttributes.volunteer_list:
+    classroom_counts = [0] * len(src.global_attributes.classroom_list)
+    for volunteer in src.global_attributes.volunteer_list:
         if volunteer.group_number != -1:
             classroom_counts[volunteer.group_number - 1] += 1
 

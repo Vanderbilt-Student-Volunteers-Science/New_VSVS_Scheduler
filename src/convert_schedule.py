@@ -1,7 +1,6 @@
 import re
 
-import src.globalAttributes
-from src.globalAttributes import *
+import src.global_attributes
 
 
 # Converts input time to military time.
@@ -33,16 +32,16 @@ def convert_to_military(time):
 #                     are Wednesday, etc.); value at an index is 1 if volunteer is available at that time and 0 if they
 #                     are busy
 def convert_to_schedule_array(imported_schedule):
-    schedule_array = [1] * 4 * BLOCKS_PER_DAY
-    for i in range(BLOCKS_PER_DAY):
+    schedule_array = [1] * 4 * src.global_attributes.BLOCKS_PER_DAY
+    for i in range(src.global_attributes.BLOCKS_PER_DAY):
         if 'M' in imported_schedule[i]:
             schedule_array[i] = 0
         if 'T' in imported_schedule[i]:
-            schedule_array[BLOCKS_PER_DAY + i] = 0
+            schedule_array[src.global_attributes.BLOCKS_PER_DAY + i] = 0
         if 'W' in imported_schedule[i]:
-            schedule_array[2 * BLOCKS_PER_DAY + i] = 0
+            schedule_array[2 * src.global_attributes.BLOCKS_PER_DAY + i] = 0
         if 'R' in imported_schedule[i]:
-            schedule_array[3 * BLOCKS_PER_DAY + i] = 0
+            schedule_array[3 * src.global_attributes.BLOCKS_PER_DAY + i] = 0
     return schedule_array
 
 
@@ -60,13 +59,13 @@ def convert_to_free_time_array(schedule_array):
     free_time_array = []
 
     # i is the index being set, j is the index being tested for availability
-    for i in range(4 * BLOCKS_PER_DAY):
+    for i in range(4 * src.global_attributes.BLOCKS_PER_DAY):
         j = i
         consecutive_free_time = 0
-        while j < 4 * BLOCKS_PER_DAY and schedule_array[j] == 1 and (
-                j % BLOCKS_PER_DAY != 0 or j == i):  # (j % 34 != 0 or j == i) prevents overlap into new day
+        while j < 4 * src.global_attributes.BLOCKS_PER_DAY and schedule_array[j] == 1 and (
+                j % src.global_attributes.BLOCKS_PER_DAY != 0 or j == i):  # (j % 34 != 0 or j == i) prevents overlap into new day
             j += 1
-            consecutive_free_time += SCHEDULE_BLOCK_LENGTH
+            consecutive_free_time += src.global_attributes.SCHEDULE_BLOCK_LENGTH
         free_time_array.append(consecutive_free_time)
 
     return free_time_array
@@ -93,7 +92,7 @@ def calculate_free_time_start(class_start_time, school_travel_time):
 # class_start_time -   time class starts in military time
 # class_end_time -     time class ends in military time
 # school_travel_time - time it takes to travel to school one-way in minutes
-# TODO: import travel times directly from globalAttributes to here
+# TODO: import travel times directly from global_attributes to here
 # TODO: use ints not floats
 def calculate_free_time_needed(class_start_time, class_end_time, school_travel_time):
     class_start_minutes = class_start_time % 100
@@ -135,8 +134,8 @@ def military_to_free_time_array(day_of_week, free_time_start):
     min = int(min / 15) * 15
     # TODO: what is this doing? documentation?
     if min == 0:
-        return int((BLOCKS_PER_DAY * day) + ((hour - 8) * 4) + 3)
-    return int((BLOCKS_PER_DAY * day) + ((hour - 7) * 4) + ((min - 15) / 15))
+        return int((src.global_attributes.BLOCKS_PER_DAY * day) + ((hour - 8) * 4) + 3)
+    return int((src.global_attributes.BLOCKS_PER_DAY * day) + ((hour - 7) * 4) + ((min - 15) / 15))
 
 
 # Creates a free_time_array for a group of partners.
@@ -150,23 +149,23 @@ def create_partner_schedule(volunteer_schedule_array, num_partners, partner_inde
     if num_partners == 1:
         partner_schedule_array = schedule_array_and(
             volunteer_schedule_array,
-            src.globalAttributes.volunteer_list[partner_indexes[0]].schedule_array
+            src.global_attributes.volunteer_list[partner_indexes[0]].schedule_array
         )
     elif num_partners == 2:
         partner_schedule_array = schedule_array_and(
             schedule_array_and(
                 volunteer_schedule_array,
-                src.globalAttributes.volunteer_list[partner_indexes[0]].schedule_array),
-            src.globalAttributes.volunteer_list[partner_indexes[1]].schedule_array
+                src.global_attributes.volunteer_list[partner_indexes[0]].schedule_array),
+            src.global_attributes.volunteer_list[partner_indexes[1]].schedule_array
         )
     else:
         partner_schedule_array = schedule_array_and(
             schedule_array_and(
                 volunteer_schedule_array,
-                src.globalAttributes.volunteer_list[partner_indexes[0]].schedule_array),
+                src.global_attributes.volunteer_list[partner_indexes[0]].schedule_array),
             schedule_array_and(
-                src.globalAttributes.volunteer_list[partner_indexes[1]].schedule_array,
-                src.globalAttributes.volunteer_list[partner_indexes[2]].schedule_array)
+                src.global_attributes.volunteer_list[partner_indexes[1]].schedule_array,
+                src.global_attributes.volunteer_list[partner_indexes[2]].schedule_array)
         )
 
     return convert_to_free_time_array(partner_schedule_array)
