@@ -149,21 +149,39 @@ def partners_can_make_class(partner, classroom):
 
 
 # FIXME: Do we need these two methods? I feel like they can be done inline...
-# Helper method for sort_by_availability
 def return_classrooms_possible(volunteer):
+    """ Helper method for sort_by_availability
+
+    :param volunteer:
+    :type volunteer: Volunteer
+    :return: number of classrooms possible
+    """
     return volunteer.classrooms_possible
 
 
-# Sorts a list of Volunteer objects from the least to greatest classrooms_possible
 def sort_by_availability(volunteer_list):
+    """ Sorts a list of Volunteer objects from the least to greatest classrooms_possible
+
+    :param volunteer_list: list of volunteers
+    :type volunteer_list: list[Volunteer]
+    :return: sorted volunteer list
+    :rtype: list[Volunteer]
+    """
     volunteer_list.sort(key=return_classrooms_possible)
     return volunteer_list
 
 
-# assigns a single volunteer to first available classroom
 def assign_single(volunteer):
+    """ assigns a single volunteer to first available classroom
+
+    :param volunteer: volunteer to be assignes
+    :type volunteer: Volunteer
+    :return:
+    """
+    # loop through classrooms
     for classroom in src.global_attributes.classroom_list:
         if volunteer.group_number == -1:
+            # assign to first classroom the volunteer can make
             if src.assign.volunteer_can_make_class(volunteer, classroom):
                 classroom.assign_volunteer(volunteer)
         else:

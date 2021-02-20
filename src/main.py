@@ -116,7 +116,6 @@ def main():
     for volunteer in src.global_attributes.volunteer_list:
         if volunteer.board and volunteer.group_number == -1:
             print(volunteer)
-
     print("------------")
 
     # assign partners
@@ -129,7 +128,7 @@ def main():
         if volunteer.group_number == -1:
             for classroom in src.global_attributes.classroom_list:
                 if src.assign.volunteer_can_make_class(volunteer, classroom):
-                    volunteer.increment_classrooms_possible()
+                    volunteer.classrooms_possible += 1
 
     # make list of unassigned in person volunteers, sort them by the number of classrooms they can make
     # (fewest to greatest number of classrooms they can make), then assign them to classroom groups

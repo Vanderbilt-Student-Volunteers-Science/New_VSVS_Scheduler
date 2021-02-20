@@ -1,11 +1,31 @@
 import src.convert_schedule
 import src.global_attributes
+from src.volunteer import Volunteer
 
 
 class Classroom:
 
     def __init__(self, group_number, teacher_name, teacher_phone, school, teacher_email, class_start_time,
                  class_end_time, day_of_week):
+        """ Classroom constructor
+
+        :param group_number: classroom number
+        :type group_number: int
+        :param teacher_name: teacher name
+        :type teacher_name: str
+        :param teacher_phone: teacher phone number
+        :type teacher_phone: str
+        :param school: school where classroom is
+        :type school: str
+        :param teacher_email: teacher email address
+        :type teacher_email: str
+        :param class_start_time: start time of lesson (eg. 1:00 PM)
+        :type class_start_time: str
+        :param class_end_time: end time of lesson (eg. 1:55 PM)
+        :type class_end_time: str
+        :param day_of_week: day of the week
+        :type day_of_week: str
+        """
 
         # TODO: make group_number the index of classroom in classroom_list
         self.group_number = group_number
@@ -46,13 +66,17 @@ class Classroom:
 
         self.volunteers = []
 
-    # Assigns a volunteer to a classroom. Updates the Volunteer group_number attribute with the group number of the
-    # classroom the volunteer is being assigned to and the Classroom object with a new volunteers_assigned value. If
-    # the classroom doesn't have a team leader or driver and the volunteer is one of those, sets the Classroom t_leader
-    # and Volunteer assigned_t_leader attributes or the Classroom driver and Volunteer assigned_driver attributes.
-    # self -      Classroom object volunteer is being assigned to
-    # volunteer - volunteer being assigned to self Classroom object
     def assign_volunteer(self, volunteer):
+        """ Assigns a volunteer to a classroom. Updates the Volunteer group_number attribute with the group number of
+        the classroom the volunteer is being assigned to and the Classroom object with a new volunteers_assigned value.
+        If the classroom doesn't have a team leader or driver and the volunteer is one of those, sets the Classroom
+        t_leader and Volunteer assigned_t_leader attributes or the Classroom driver and Volunteer assigned_driver
+        attributes.
+
+        :param volunteer: volunteer being assigned to self Classroom object
+        :type volunteer: Volunteer
+        :return: None
+        """
         if self.volunteers_assigned < src.global_attributes.MAX_TEAM_SIZE:
             self.volunteers_assigned += 1
             self.volunteers.append(volunteer)
@@ -62,10 +86,15 @@ class Classroom:
                 self.has_in_person_volunteer = True
             if not self.t_leader and volunteer.applied_t_leader:
                 self.t_leader = True
-                volunteer.assign_t_leader()
+                # assign volunteer as team leader
+                volunteer.assigned_t_leader = True
 
-    # unassigns volunteers from a classroom and returns a list of the volunteers that were unassigned
     def empty_classroom(self):
+        """unassigns volunteers from a classroom and returns a list of the volunteers that were unassigned
+
+        :return: list of the volunteers that were unassigned
+        :rtype: list[Volunteer]
+        """
         unassigned_volunteers = []
         for volunteer in src.global_attributes.volunteer_list:
             if volunteer.group_number == self.group_number:

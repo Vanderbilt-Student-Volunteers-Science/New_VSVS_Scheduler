@@ -169,13 +169,6 @@ class Volunteer:
                                                                                         self.partners,
                                                                                         self.partner_indexes)
 
-    def increment_classrooms_possible(self):
-        self.classrooms_possible += 1
-
-    # Designate the volunteer as the team leader for their group
-    def assign_t_leader(self):
-        self.assigned_t_leader = True
-
     def __str__(self):
         return self.first + ' ' + self.last
 

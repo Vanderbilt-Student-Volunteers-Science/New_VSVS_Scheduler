@@ -102,13 +102,19 @@ def calculate_free_time_start(class_start_time, school_travel_time):
             return class_start_hours - ((hours_away + 1) * 100) + (60 - minutes_away)
 
 
-# Returns minutes of free time needed to perform a lesson, including driving and teaching time.
-# class_start_time -   time class starts in military time
-# class_end_time -     time class ends in military time
-# school_travel_time - time it takes to travel to school one-way in minutes
 # TODO: import travel times directly from global_attributes to here
 # TODO: use ints not floats
 def calculate_free_time_needed(class_start_time, class_end_time, school_travel_time):
+    """ Returns minutes of free time needed to perform a lesson, including driving and teaching time.
+
+    :param class_start_time: time class starts in military time
+    :type class_start_time: int
+    :param class_end_time: time class ends in military time
+    :type class_end_time: int
+    :param school_travel_time: time it takes to travel to school one-way in minutes
+    :return: free time needed
+    :rtype: int
+    """
     class_start_minutes = class_start_time % 100
     class_start_hours = (class_start_time - class_start_minutes) / 100  # 1PM is 13 (NOT 1300)
     class_end_minutes = class_end_time % 100
@@ -126,11 +132,18 @@ def calculate_free_time_needed(class_start_time, class_end_time, school_travel_t
                 2 * school_travel_time))
 
 
-# Returns the index in a free_time_array that corresponds to the time (and day of week) a lesson starts.
-# day_of_week -     day of the week the lesson takes place
-# free_time_start - the first time a volunteer needs to be free to perform a lesson in military time
 # TODO: remove constants in this function
 def military_to_free_time_array(day_of_week, free_time_start):
+    """ Returns the index in a free_time_array that corresponds to the time (and day of week) a lesson starts.
+
+    :param day_of_week: day of the week the lesson takes place
+    :type day_of_week: str
+    :param free_time_start: the first time a volunteer needs to be free to perform a lesson in military time
+    :type free_time_start: int
+    :raises ValueError: if invalid day of week
+    :return:
+    :rtype: int
+    """
     if day_of_week == "Monday":
         day = 0
     elif day_of_week == "Tuesday":
@@ -152,14 +165,17 @@ def military_to_free_time_array(day_of_week, free_time_start):
     return int((src.global_attributes.BLOCKS_PER_DAY * day) + ((hour - 7) * 4) + ((min - 15) / 15))
 
 
-# Creates a free_time_array for a group of partners.
-# volunteer_schedule_array - schedule_array of the Volunteer object for the first partner in the group; the Volunteer
-#                            object where the partner_free_time_array will be stored
-# num_partners -             number of people in the group - 1 (number of people other than the first partner in the
-#                            group)
-# partner_indexes -          indexes of the Volunteer objects in volunteer_list corresponding to all of them members in
-#                            the group (except the first partner)
 def create_partner_schedule(volunteer_schedule_array, num_partners, partner_indexes):
+    """ Creates a free_time_array for a group of partners.
+
+    :param volunteer_schedule_array: schedule_array of the Volunteer object for the first partner in the group; the
+    Volunteer object where the partner_free_time_array will be stored
+    :param num_partners: number of people in the group - 1 (number of people other than the first partner in the group)
+    :param partner_indexes: indexes of the Volunteer objects in volunteer_list corresponding to all of them members
+    in the group (except the first partner)
+    :return: partner_schedule_array
+    :rtype: list[int]
+    """
     if num_partners == 1:
         partner_schedule_array = schedule_array_and(
             volunteer_schedule_array,
@@ -185,8 +201,13 @@ def create_partner_schedule(volunteer_schedule_array, num_partners, partner_inde
     return convert_to_free_time_array(partner_schedule_array)
 
 
-# Helper function for create_partner_schedule. Computes the 'and' schedule array of two schedule arrays.
 def schedule_array_and(schedule_array1, schedule_array2):
+    """ Helper function for create_partner_schedule. Computes the 'and' schedule array of two schedule arrays.
+
+    :param schedule_array1:
+    :param schedule_array2:
+    :return:
+    """
     output_array = []
     for schedule_index in range(len(schedule_array1)):
         output_array.append(schedule_array1[schedule_index] and schedule_array2[schedule_index])
