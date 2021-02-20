@@ -5,12 +5,44 @@ import src.global_attributes
 
 class Volunteer:
     def __init__(self, first, last, phone, email, year_in_school, major, robotics_interest, special_needs_interest,
-                 applied_t_leader, board, car_passengers, imported_schedule, is_in_person):
+                 applied_t_leader, board, driver, car_passengers, imported_schedule, is_in_person):
+        """ constructor for volunteer object
+
+        :param first: first name
+        :type first: str
+        :param last: last name
+        :type last: str
+        :param phone: phone number
+        :type phone: str
+        :param email: Vanderbilt email address
+        :type email: str
+        :param year_in_school: year at Vanderbilt (First-Year, Sophomore, Junior, Senior, Graduate)
+        :type year_in_school: str
+        :param major: major at Vanderbilt
+        :type major: str
+        :param robotics_interest: is this volunteer interested in teaching robotics?
+        :type robotics_interest: bool
+        :param special_needs_interest: is this volunteer interested in working with students with special needs?
+        :type special_needs_interest: bool
+        :param applied_t_leader: did this volunteer apply to be a team leader?
+        :type applied_t_leader: bool
+        :param board: is this volunteer on VSVS Board?
+        :type board: bool
+        :param driver: is this volunteer a driver?
+        :type driver: bool
+        :param car_passengers: if driver, how many passengers in car (not including driver)
+        :type car_passengers: str
+        :param imported_schedule: raw schedule data from Google Form
+        :type imported_schedule: list[str]
+        :param is_in_person: is this volunteer on-campus/in-person?
+        :type is_in_person: bool
+        """
         self.first = first
         self.last = last
         self.phone = phone
         self.email = email.lower()
         self.year_in_school = year_in_school
+        # TODO: we don't really need major... should we just remove this?
         self.major = major
         self.robotics_interest = robotics_interest
         self.special_needs_interest = special_needs_interest
@@ -28,6 +60,8 @@ class Volunteer:
             self.car_passengers = int(car_passengers)
 
         # if they have a car that can carry the MAX_TEAM_SIZE
+        # self.driver = driver
+        # they only count as drivers if they can carry a full load of passengers?
         self.driver = (self.car_passengers + 1 >= src.global_attributes.MAX_TEAM_SIZE)
 
         # TODO Convert directly from input schedule to free_time_array in one method. Don't need convert_to_schedule_array.
@@ -69,12 +103,20 @@ class Volunteer:
         # True if the volunteer is in person, False if they are remote.
         self.is_in_person = is_in_person
 
+    # group number is a property (special type of Python variable) so we can have a custom setter method
     @property
     def group_number(self):
         return self._group_number
 
     @group_number.setter
     def group_number(self, value):
+        """
+
+        :param value: new group number
+        :type value: int
+        :raises ValueError: if re-assinging an already assigned volunteer
+        :return:
+        """
         if self._group_number != -1:
             raise ValueError("You are changing the group number of an already assigned volunteer.")
         self._group_number = value
@@ -83,61 +125,35 @@ class Volunteer:
     def group_number(self):
         del self._group_number
 
-    # Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of the first
-    # partner in the group (the self object).
-    def add_partners(self, partner1_email, partner2_email, partner3_email, partner4_email):
-        partner1_email = partner1_email.lower()
-        partner2_email = partner2_email.lower()
-        partner3_email = partner3_email.lower()
-        partner4_email = partner4_email.lower()
+    def add_partners(self, *args):
+        """ Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of
+        the first partner in the group (the self object).
 
-        volunteer_index = 0
+        :param args: any number of emails for the partners
+        :type args: (str)
+        :raises ValueError: if # of partners > max team size
+        :return: None
+        """
 
-        partner1_matched = 0
-        partner2_matched = 0
-        partner3_matched = 0
-        partner4_matched = 0
+        for partner_email in args:
+            partner_email = partner_email.strip().lower()
+            found = False
+            # if not empty string
+            if partner_email:
+                for i, volunteer in enumerate(src.global_attributes.volunteer_list):
+                    if volunteer.email == partner_email:
+                        self.partner_indexes.append(i)
+                        found = True
 
-        partners_matched = 0
-        if partner2_email == '':
-            partner2_matched = 1
-        if partner3_email == '':
-            partner3_matched = 1
-        if partner4_email == '':
-            partner4_matched = 1
+                if not found:
+                    print(f"WARNING: {partner_email} from {self.email}'s volunteer group was not found in the "
+                          f"individual application data.")
 
-        while volunteer_index < len(src.global_attributes.volunteer_list) and partners_matched == 0:
-            volunteer = src.global_attributes.volunteer_list[volunteer_index]
-            if volunteer.email == partner1_email:
-                self.partner_indexes.append(volunteer_index)
-                partner1_matched = 1
-            elif volunteer.email == partner2_email:
-                self.partner_indexes.append(volunteer_index)
-                partner2_matched = 1
-            elif volunteer.email == partner3_email:
-                self.partner_indexes.append(volunteer_index)
-                partner3_matched = 1
-            elif volunteer.email == partner4_email:
-                self.partner_indexes.append(volunteer_index)
-                partner4_matched = 1
-
-            volunteer_index += 1
-
-            if partner1_matched and partner2_matched and partner3_matched and partner4_matched:
-                partners_matched = 1
-            elif volunteer == src.global_attributes.volunteer_list[-1]:
-                print("WARNING: ", end='')
-                if partner1_matched == 0:
-                    print(partner1_email, end=' ')
-                if partner2_matched == 0:
-                    print(partner2_email, end=' ')
-                if partner3_matched == 0:
-                    print(partner3_email, end=' ')
-                if partner4_matched == 0:
-                    print(partner4_email, end=' ')
-                print("from " + self.email + "'s partner group were not found in individual application data.")
-
+        # count number of partners
         self.partners = len(self.partner_indexes)
+
+        if self.partners + 1 > src.global_attributes.MAX_TEAM_SIZE:
+            raise ValueError(f'{self.partners} is too many partners.')
 
         # If all four partners are remote, they cannot be assigned in a group together.
         # At least one volunteer in each group must be in person.
@@ -148,15 +164,13 @@ class Volunteer:
             print("WARNING:" + self.email + "'s partner group cannot be grouped together because they are all remote.")
 
         elif self.partners != 0:
+            # if it is fine, then generate partner free time array
             self.partner_free_time_array = src.convert_schedule.create_partner_schedule(self.schedule_array,
                                                                                         self.partners,
                                                                                         self.partner_indexes)
 
     def increment_classrooms_possible(self):
         self.classrooms_possible += 1
-
-    def set_group_number(self, group_number):
-        self.group_number = group_number
 
     # Designate the volunteer as the team leader for their group
     def assign_t_leader(self):

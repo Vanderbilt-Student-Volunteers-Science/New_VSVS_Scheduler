@@ -57,7 +57,7 @@ class Classroom:
             self.volunteers_assigned += 1
             self.volunteers.append(volunteer)
 
-            volunteer.set_group_number(self.group_number)
+            volunteer.group_number = self.group_number
             if not self.has_in_person_volunteer and volunteer.is_in_person:
                 self.has_in_person_volunteer = True
             if not self.t_leader and volunteer.applied_t_leader:

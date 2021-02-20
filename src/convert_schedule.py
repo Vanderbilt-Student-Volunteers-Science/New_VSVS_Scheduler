@@ -3,9 +3,15 @@ import re
 import src.global_attributes
 
 
-# Converts input time to military time.
-# time - time with AM or PM; ex: "2:05 PM"
 def convert_to_military(time):
+    """ Converts input time to military time.
+
+    :param time: time with AM or PM; ex: "2:05 PM"
+    :type time: str
+    :raises ValueError if invalid time format
+    :return: military time
+    :rtype: int
+    """
     # use regular expressions to split string into three groups for hour, min, AM/PM
     # groups in the regex are set off with parentheses
     # [\d]* means one or more numbers
@@ -24,14 +30,17 @@ def convert_to_military(time):
         return 1200 + (100 * int(hour)) + int(minute)
 
 
-# Converts the schedule imported from individuals.csv into a schedule_array.
-# imported_schedule - array of days of the week a volunteer is busy; each index corresponds to a time of day and the
-#                     letters at the index indicate the days of the week the volunteer is busy at that time
-# schedule_array -    array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday
-#                     through Thursday (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101
-#                     are Wednesday, etc.); value at an index is 1 if volunteer is available at that time and 0 if they
-#                     are busy
 def convert_to_schedule_array(imported_schedule):
+    """ Converts the raw schedule imported from individuals.csv into a schedule_array.
+
+    :param imported_schedule: array of days of the week a volunteer is busy; each index corresponds to a time of day
+    and the letters at the index indicate the days of the week the volunteer is busy at that time
+    :type imported_schedule: list[str]
+    :return: schedule_array: array containing an index for each 15-min block between the times of 7:15am-3:45pm,
+    Monday through Thursday (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are
+    Wednesday, etc.); value at an index is 1 if volunteer is available at that time and 0 if they are busy
+    :rtype: list[int]
+    """
     schedule_array = [1] * 4 * src.global_attributes.BLOCKS_PER_DAY
     for i in range(src.global_attributes.BLOCKS_PER_DAY):
         if 'M' in imported_schedule[i]:
@@ -45,17 +54,19 @@ def convert_to_schedule_array(imported_schedule):
     return schedule_array
 
 
-# Converts the array of times in week order (output of convert_to_schedule_array) to an array where value at each time
-# index corresponds to how much free time they have starting at that index. For example, if I am free from 10:00 to
-# 11:30 on Monday, index 11 (10:00-10:15) will become 90, index 12 (10:15-10:30) will become 75, index 17 (11:30-11:45)
-# will become 0, etc.
-# schedule_array -  array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday
-#                   through Thursday (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101
-#                   are Wednesday, etc.); value at an index is 1 if volunteer is available at that time and 0 if they
-#                   are busy
-# free_time_array - array where indices are the same as schedule_array but the value at each index is the minutes of
-#                   consecutive free time the volunteer has starting at that time
 def convert_to_free_time_array(schedule_array):
+    """ Converts the array of times in week order (output of convert_to_schedule_array) to an array where value at
+    each time index corresponds to how much free time they have starting at that index. For example, if I am free
+    from 10:00 to 11:30 on Monday, index 11 (10:00-10:15) will become 90, index 12 (10:15-10:30) will become 75,
+    index 17 (11:30-11:45) will become 0, etc.
+
+    :param schedule_array: array containing an index for each 15-min block between the times of 7:15am-3:45pm,
+    Monday through Thursday (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are
+    Wednesday, etc.); value at an index is 1 if volunteer is available at that time and 0 if they are busy
+    :return: free_time_array: array where indices are the same as schedule_array but the value at each index is the
+    minutes of consecutive free time the volunteer has starting at that time
+    :rtype: list[int]
+    """
     free_time_array = []
 
     # i is the index being set, j is the index being tested for availability
@@ -71,10 +82,13 @@ def convert_to_free_time_array(schedule_array):
     return free_time_array
 
 
-# Returns the first time a volunteer needs to be free to perform a lesson in military time.
-# class_start_time -   time class starts in military time
-# school_travel_time - time it takes to travel to school one-way in minutes
 def calculate_free_time_start(class_start_time, school_travel_time):
+    """ Returns the first time a volunteer needs to be free to perform a lesson in military time
+
+    :param class_start_time: time class starts in military time
+    :param school_travel_time: time it takes to travel to school one-way in minutes
+    :return: first time a volunteer needs to be free to perform a lesson in military time
+    """
     class_start_minutes = class_start_time % 100
     if class_start_minutes >= school_travel_time:
         return class_start_time - school_travel_time
@@ -100,7 +114,7 @@ def calculate_free_time_needed(class_start_time, class_end_time, school_travel_t
     class_end_minutes = class_end_time % 100
     class_end_hours = (class_end_time - class_end_minutes) / 100
     # FIXME: edge case on last time period
-    if class_end_time == 1545:
+    if 1545 <= class_end_time <= 1600:
         return 60
     if class_start_hours == class_end_hours:
         # TODO: change from (1 * school_travel_time) to (2 * school_travel_time) to account for driving time both ways
@@ -109,7 +123,7 @@ def calculate_free_time_needed(class_start_time, class_end_time, school_travel_t
         # TODO: change from (1 * school_travel_time) to (2 * school_travel_time) to account for driving time both ways
         # changed because we only need 15 mins at beginning of lesson for teams to review their lessons (no travel time this semester)
         return int((60 - class_start_minutes) + (60 * (class_end_hours - class_start_hours - 1)) + class_end_minutes + (
-                    2 * school_travel_time))
+                2 * school_travel_time))
 
 
 # Returns the index in a free_time_array that corresponds to the time (and day of week) a lesson starts.

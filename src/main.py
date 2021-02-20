@@ -5,7 +5,7 @@ import src.assign
 import src.classroom
 import src.global_attributes
 from src.classroom import Classroom
-from src.global_attributes import I, CLASSROOM_INDEX
+from src.global_attributes import INDIVIDUAL_INDEX, CLASSROOM_INDEX
 from src.volunteer import Volunteer
 
 
@@ -23,28 +23,32 @@ def main():
         for row in csv_reader:  # for each individual
 
             # check vanderbilt email
-            if not ('vanderbilt' in row[I['EMAIL']].strip().lower()):
-                print(f"WARNING: {row[I['FIRST']].strip()} {row[I['LAST']].strip()} does not have a Vanderbilt email.")
+            if not ('vanderbilt' in row[INDIVIDUAL_INDEX['EMAIL']].strip().lower()):
+                print(
+                    f"WARNING: {row[INDIVIDUAL_INDEX['FIRST']].strip()} {row[INDIVIDUAL_INDEX['LAST']].strip()} does not have a Vanderbilt email.")
 
             # pull data from row in the csv, create a Volunteer object, and add it to global variable
             # volunteer_list
             # I is a dictionary containing all the indices for each field
             volunteer = Volunteer(
-                first=row[I['FIRST']].strip(),
-                last=row[I['LAST']].strip(),
-                phone=row[I['PHONE']].strip(),
-                email=row[I['EMAIL']].strip().lower(),
-                year_in_school=row[I['YEAR']].strip(),
-                major=row[I['MAJOR']].strip(),
-                robotics_interest=False,  # no robotics for Fall 2020
+                first=row[INDIVIDUAL_INDEX['FIRST']].strip(),
+                last=row[INDIVIDUAL_INDEX['LAST']].strip(),
+                phone=row[INDIVIDUAL_INDEX['PHONE']].strip(),
+                email=row[INDIVIDUAL_INDEX['EMAIL']].strip().lower(),
+                year_in_school=row[INDIVIDUAL_INDEX['YEAR']].strip(),
+                major=row[INDIVIDUAL_INDEX['MAJOR']].strip(),
+                robotics_interest=False,  # no robotics for Spring 2021
                 special_needs_interest=(lambda x: True if x == 'Yes' else False)(
-                    row[I['SPECIAL_NEEDS_INTEREST']].strip()),
-                applied_t_leader=(lambda x: True if x == 'Yes' else False)(row[I['APPLIED_T_LEADER']].strip()),
-                board=(lambda x: True if x == 'Yes' else False)(row[I['BOARD']].strip()),
-                car_passengers=0,  # no drivers/cars for Fall 2020
-                imported_schedule=row[I['IMPORTED_SCHEDULE_START']:I['IMPORTED_SCHEDULE_END'] + 1],
+                    row[INDIVIDUAL_INDEX['SPECIAL_NEEDS_INTEREST']].strip()),
+                applied_t_leader=(lambda x: True if x == 'Yes' else False)(
+                    row[INDIVIDUAL_INDEX['APPLIED_T_LEADER']].strip()),
+                board=(lambda x: True if x == 'Yes' else False)(row[INDIVIDUAL_INDEX['BOARD']].strip()),
+                driver=False,  # no drivers for Spring 2021
+                car_passengers='',  # no drivers/cars for Spring 2021
+                imported_schedule=row[INDIVIDUAL_INDEX['IMPORTED_SCHEDULE_START']:INDIVIDUAL_INDEX[
+                                                                                      'IMPORTED_SCHEDULE_END'] + 1],
                 # location column in csv is either 'On-campus' or 'Remote', so we need to convert to boolean
-                is_in_person=(lambda x: True if x == 'On-campus' else False)(row[I['LOCATION']].strip())
+                is_in_person=(lambda x: True if x == 'On-campus' else False)(row[INDIVIDUAL_INDEX['LOCATION']].strip())
             )
             src.global_attributes.volunteer_list.append(volunteer)
 
@@ -57,32 +61,20 @@ def main():
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
         csv_reader = csv.reader(partners_csv, delimiter=',')  # divides partners_csv by commas
         next(csv_reader)  # skip header row
+
         for row in csv_reader:  # for each group of partners
-
-            # finds first volunteer in partner group in volunteer_list and sets their Volunteer object
-            # attributes partners, partner_indexes, and partner_schedule
-            volunteer_index = 0
-            first_volunteer_matched = 0
-            while volunteer_index < len(src.global_attributes.volunteer_list) and first_volunteer_matched == 0:
-                volunteer = src.global_attributes.volunteer_list[volunteer_index]
-                volunteer_index += 1
-                if row[1].strip().lower() == volunteer.email:
-                    if len(row) == 6:
-                        volunteer.add_partners(row[2].strip().lower(), row[3].strip().lower(), row[4].strip().lower(),
-                                               row[5].strip().lower())
-                    elif len(row) == 5:
-                        volunteer.add_partners(row[2].strip().lower(), row[3].strip().lower(), row[4].strip().lower(),
-                                               '')
-                    elif len(row) == 4:
-                        volunteer.add_partners(row[2].strip().lower(), row[3].strip().lower(), '', '')
-                    else:
-                        volunteer.add_partners(row[2].strip().lower(), '', '', '')
-                    first_volunteer_matched = 1
-
-                # if no volunteers in volunteer_list have same email, print an alert
-                elif volunteer == src.global_attributes.volunteer_list[-1]:
-                    print('WARNING: ' + row[
-                        1].strip().lower() + ' first volunteer in their partner group was not found in individual application data.')
+            first_partner_email = row[1].strip().lower()
+            # if the first partner submitted an individual application
+            if first_partner_email in [volunteer.email for volunteer in src.global_attributes.volunteer_list]:
+                # find first partner
+                for volunteer in src.global_attributes.volunteer_list:
+                    if volunteer.email == first_partner_email:
+                        first_partner = volunteer
+                # add remaining partners to first partner
+                first_partner.add_partners(*tuple(row[2:]))
+            else:
+                print(f'WARNING: {first_partner_email} filled out a partner application but not an individual '
+                      f'application.')
 
     print("------------")
 

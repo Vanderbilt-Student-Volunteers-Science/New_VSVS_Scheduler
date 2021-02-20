@@ -1,13 +1,19 @@
 import src.global_attributes
+from src.classroom import Classroom
+from src.volunteer import Volunteer
 
 
-# Assigns a group of partners to a classroom they all can make (if there is one) using the partner_schedule attribute of
-# the first partner's Volunteer object. When a group is assigned, uses classroom.assign_volunteer to reflect this in the
-# Volunteer objects of each of the volunteers in the group and the Classroom object of the classroom the group is being
-# assigned to.
-# partner1 - the Volunteer object of the first partner in the group; the Volunteer object that contains the information
-#            of the group of partners (only one is set when partners.csv is imported)
 def assign_partners(partner1):
+    """ Assigns a group of partners to a classroom they all can make (if there is one) using the partner_schedule
+    attribute of the first partner's Volunteer object. When a group is assigned, uses classroom.assign_volunteer to
+    reflect this in the Volunteer objects of each of the volunteers in the group and the Classroom object of the
+    classroom the group is being assigned to.
+
+    :param partner1: the Volunteer object of the first partner in the group; the Volunteer object that contains the
+    information of the group of partners (only one is set when partners.csv is imported)
+    :type partner1: Volunteer
+    :return: None
+    """
     for classroom in src.global_attributes.classroom_list:
         # partner 1 is unassigned
         if partner1.group_number == -1:
@@ -19,7 +25,7 @@ def assign_partners(partner1):
                 # assign remaining partners
                 for partner_index in partner1.partner_indexes:
                     if src.global_attributes.volunteer_list[partner_index].group_number != -1:
-                        print(f"--ERROR: {src.global_attributes.volunteer_list[partner_index]} is being reassigned")
+                        print(f"--WARNING: {src.global_attributes.volunteer_list[partner_index]} is being reassigned")
                     classroom.assign_volunteer(src.global_attributes.volunteer_list[partner_index])
     # failed to assign
     if partner1.group_number == -1:
@@ -27,12 +33,16 @@ def assign_partners(partner1):
             f"WARNING: {str(partner1)}'s partner group could not be assigned together because of scheduling conflicts.")
 
 
-# Assigns drivers to classroom groups without drivers. If all of the classrooms a driver can make already have drivers
-# (or are full), the driver is not assigned. When a driver is assigned, uses classroom.assign_volunteer to reflect this
-# in the driver's Volunteer object and the Classroom object of the classroom they are being assigned to.
-# sorted_drivers - list of all volunteers that are unassigned and can drive a group of volunteers sorted from the
-#                  fewest to greatest number of classrooms they can make
 def assign_in_person(sorted_in_person_volunteers):
+    """Assigns drivers to classroom groups without drivers. If all of the classrooms a driver can make already have
+    drivers (or are full), the driver is not assigned. When a driver is assigned, uses classroom.assign_volunteer to
+    reflect this in the driver's Volunteer object and the Classroom object of the classroom they are being assigned to.
+
+    :param sorted_in_person_volunteers: list of all volunteers that are unassigned and can drive a group of
+    volunteers sorted from the fewest to greatest number of classrooms they can make
+    :type sorted_in_person_volunteers: list[Volunteer]
+    :return: None
+    """
     for volunteer in sorted_in_person_volunteers:
         classroom_idx = 0
         while volunteer.group_number == -1 and classroom_idx < len(src.global_attributes.classroom_list):
@@ -44,12 +54,16 @@ def assign_in_person(sorted_in_person_volunteers):
                 classroom_idx += 1
 
 
-# Assigns team leaders to classroom groups that don't have them. Prioritizes assigning team leaders to partially-filled
-# classroom groups over empty classroom groups.
-# sorted_applied_t_leaders - a list of unassigned volunteers that applied to be team leaders sorted from the fewest to
-#                            greatest number of classrooms they can make
 # TODO: fix syntax of loops (for classroom in classroom list)
 def assign_applied_t_leaders(sorted_t_leaders):
+    """ Assigns team leaders to classroom groups that don't have them. Prioritizes assigning team leaders to
+    partially-filled classroom groups over empty classroom groups.
+
+    :param sorted_t_leaders: a list of unassigned volunteers that applied to be team leaders sorted from the fewest
+    to greatest number of classrooms they can make
+    :type sorted_t_leaders: list[Volunteer]
+    :return:
+    """
     for t_leader in sorted_t_leaders:
         classroom_idx = 0
 
@@ -74,11 +88,15 @@ def assign_applied_t_leaders(sorted_t_leaders):
                 classroom_idx += 1
 
 
-# Assigns all unassigned volunteers to classroom groups. Prioritizes assigning each volunteer to a partially-filled
-# classroom group over an empty classroom group.
-# sorted_others - a list of unassigned volunteers sorted from the fewest to greatest number of classrooms they can make
 # TODO: fix syntax of loops (for classroom in classroom list)
 def assign_others(sorted_others):
+    """ Assigns all unassigned volunteers to classroom groups. Prioritizes assigning each volunteer to a
+    partially-filled classroom group over an empty classroom group.
+
+    :param sorted_others: a list of unassigned volunteers sorted from the fewest to greatest number of classrooms they can make
+    :type sorted_others: list[Volunteer]
+    :return:
+    """
     for volunteer in sorted_others:
         classroom_idx = 0
 
@@ -103,18 +121,30 @@ def assign_others(sorted_others):
                 classroom_idx += 1
 
 
-# Returns boolean if volunteer can make a classroom.
-# volunteer - Volunteer object of volunteer being checked
-# classroom - Classroom object of classroom being checked
 def volunteer_can_make_class(volunteer, classroom):
+    """ Returns boolean if volunteer can make a classroom.
+
+    :param volunteer: Volunteer object of volunteer being checked
+    :type volunteer: Volunteer
+    :param classroom: Classroom object of classroom being checked
+    :type classroom: Classroom
+    :return: if volunteer can make a classroom
+    :rtype: bool
+    """
     return volunteer.free_time_array[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
 
 
-# Returns boolean if a partner group can make a class.
-# partner -   Volunteer object of the first partner in the group; the Volunteer object that contains the information
-#             of the group of partners (only one is set when partners.csv is imported)
-# classroom - Classroom object of classroom being checked
 def partners_can_make_class(partner, classroom):
+    """ Returns boolean if a partner group can make a class.
+
+    :param partner: Volunteer object of the first partner in the group; the Volunteer object that contains the
+    information of the group of partners (only one is set when partners.csv is imported)
+    :type partner: Volunteer
+    :param classroom: Classroom object of classroom being checked
+    :type classroom: Classroom
+    :return: if partner group can make a class
+    :rtype: bool
+    """
     return partner.partner_free_time_array[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
 
 
