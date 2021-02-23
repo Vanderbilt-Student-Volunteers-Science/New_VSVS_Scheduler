@@ -8,8 +8,10 @@ Project started October 2019
 
 **Authors**: 2020 VSVS IT Committee (David Ward, Michael Selzer, Katie Helman, Nilai Vemula, Rishi Das)
 
+2021 IT Committee (Nilai Vemula, Rishi Das, Carmen Alia Arias, Lina Drechsler, Sam Bogdanov, David Ward)
+
 **Description**: Imports data from data/classrooms.csv, data/individuals.csv, and data/partners.csv and assigns
- volunteers to groups. Assigns partners, then drivers, then team leaders, then everyone else. Outputs results in results/assignments.csv.
+ volunteers to groups. Assigns partners, then drivers, then team leaders, then everyone else. Outputs results in results/raw_assignments.csv.
 
 <hr>
 
@@ -30,6 +32,7 @@ Before running:
   2. Export the responses to the partner application to csv and call it partners.csv
   3. Copy and paste (don't export) the classroom table from Access with headings and call it classrooms.csv (or manually collate responses from teacher sign up form)
   4. Place individuals.csv, partners.csv, and classrooms.csv into the data directory of this program
+  5. Update the indices in [`src/global_attributes.py`](src/global_attributes.py) to reflect any changes in the application.
 
 </p>
 </details>
