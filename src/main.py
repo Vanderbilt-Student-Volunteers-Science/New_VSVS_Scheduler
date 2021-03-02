@@ -84,8 +84,7 @@ def main():
                     if first_partner.partners:
                         for partner_index in first_partner.partner_indexes:
                             partner = src.global_attributes.volunteer_list[partner_index]
-                            partner.partner_indexes.append(i)
-                            partner.partner_indexes.extend(set(first_partner.partner_indexes) - set(partner_index))
+                            partner.partner_indexes = list(set(first_partner.partner_indexes) - set([partner_index])) + [i]
                             partner.partners = first_partner.partners
                             partner.partner_free_time_array = first_partner.partner_free_time_array
 
