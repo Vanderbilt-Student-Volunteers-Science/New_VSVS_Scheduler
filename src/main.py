@@ -70,16 +70,28 @@ def main():
         for row in csv_reader:  # for each group of partners
             first_partner_email = row[1].strip().lower()
             # if the first partner submitted an individual application
-            if first_partner_email in [volunteer.email for volunteer in src.global_attributes.volunteer_list]:
-                # find first partner
-                for volunteer in src.global_attributes.volunteer_list:
-                    if volunteer.email == first_partner_email:
-                        first_partner = volunteer
-                # add remaining partners to first partner
-                first_partner.add_partners(*tuple(row[2:]))
-            else:
-                warnings.warn(f'{first_partner_email} filled out a partner application but not an individual '
-                              f'application.')
+            for i, volunteer in enumerate(src.global_attributes.volunteer_list):
+                if first_partner_email == volunteer.email:
+                    # find first partner
+                    for volunteer in src.global_attributes.volunteer_list:
+                        if volunteer.email == first_partner_email:
+                            first_partner = volunteer
+                    # add remaining partners to first partner
+                    first_partner.add_partners(*tuple(row[2:]))
+
+                    # sets partners, partner_indexes, and partner_free_time_array attributes for the Volunteer objects
+                    # of all other partners
+                    if first_partner.partners:
+                        for partner_index in first_partner.partner_indexes:
+                            partner = src.global_attributes.volunteer_list[partner_index]
+                            partner.partner_indexes.append(i)
+                            partner.partner_indexes.extend(set(first_partner.partner_indexes) - set(partner_index))
+                            partner.partners = first_partner.partners
+                            partner.partner_free_time_array = first_partner.partner_free_time_array
+
+                else:
+                    warnings.warn(f'{first_partner_email} filled out a partner application but not an individual '
+                                  f'application.')
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
@@ -104,7 +116,6 @@ def main():
     # ASSIGN VOLUNTEERS
 
     # First assign board members and their partners
-    # FIXME: this assumes all board members in groups are partner #1
     for volunteer in src.global_attributes.volunteer_list:
         if volunteer.board and volunteer.group_number == -1:
             if volunteer.partners:
