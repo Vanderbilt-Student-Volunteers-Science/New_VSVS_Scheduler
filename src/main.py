@@ -72,10 +72,7 @@ def main():
             # if the first partner submitted an individual application
             for i, volunteer in enumerate(src.global_attributes.volunteer_list):
                 if first_partner_email == volunteer.email:
-                    # find first partner
-                    for volunteer in src.global_attributes.volunteer_list:
-                        if volunteer.email == first_partner_email:
-                            first_partner = volunteer
+                    first_partner = volunteer
                     # add remaining partners to first partner
                     first_partner.add_partners(*tuple(row[2:]))
 
