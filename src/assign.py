@@ -7,12 +7,11 @@ from src.volunteer import Volunteer
 
 def assign_partners(partner1):
     """ Assigns a group of partners to a classroom they all can make (if there is one) using the partner_schedule
-    attribute of the first partner's Volunteer object. When a group is assigned, uses classroom.assign_volunteer to
+    attribute of a partner's Volunteer object. When a group is assigned, uses classroom.assign_volunteer to
     reflect this in the Volunteer objects of each of the volunteers in the group and the Classroom object of the
     classroom the group is being assigned to.
 
-    :param partner1: the Volunteer object of the first partner in the group; the Volunteer object that contains the
-    information of the group of partners (only one is set when partners.csv is imported)
+    :param partner1: the Volunteer object of a partner in the group
     :type partner1: Volunteer
     :return: None
     """
