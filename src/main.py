@@ -10,6 +10,8 @@ from src.global_attributes import INDIVIDUAL_INDEX, CLASSROOM_INDEX
 from src.volunteer import Volunteer
 
 
+# This is an example of a change
+
 # All global constants and variables are in global_attributes.py
 
 def custom_formatwarning(msg, *args, **kwargs):
