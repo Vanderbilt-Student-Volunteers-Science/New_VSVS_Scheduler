@@ -10,8 +10,6 @@ from src.global_attributes import INDIVIDUAL_INDEX, CLASSROOM_INDEX
 from src.volunteer import Volunteer
 
 
-# This is an example of a change
-
 # All global constants and variables are in global_attributes.py
 
 def custom_formatwarning(msg, *args, **kwargs):
@@ -83,7 +81,7 @@ def main():
                     if first_partner.partners:
                         for partner_index in first_partner.partner_indexes:
                             partner = src.global_attributes.volunteer_list[partner_index]
-                            partner.partner_indexes = list(set(first_partner.partner_indexes) - set([partner_index])) + [i]
+                            partner.partner_indexes = list(set(first_partner.partner_indexes) - {partner_index}) + [i]
                             partner.partners = first_partner.partners
                             partner.partner_free_time_array = first_partner.partner_free_time_array
 
