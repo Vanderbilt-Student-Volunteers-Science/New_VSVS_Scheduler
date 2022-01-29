@@ -30,43 +30,38 @@ def convert_to_military(time):
         return 1200 + (100 * int(hour)) + int(minute)
 
 
-def convert_to_schedule_array(imported_schedule):
+def convert_to_free_time_array(schedule):
     """ Converts the raw schedule imported from individuals.csv into a schedule_array.
 
-    :param imported_schedule: array of days of the week a volunteer is busy; each index corresponds to a time of day
+    Schedule_array contains an index for each 15-min block between the times of 7:15am-3:45pm,
+    Monday through Thursday (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are
+    Wednesday, etc.); value at an index is 1 if volunteer is available at that time and 0 if they are busy
+
+    Converts the schedule_array to an array where value at each time index corresponds to how
+    much free time they have starting at that index. For example, if I am free from 10:00 to 11:30 on Monday,
+    index 11 (10:00-10:15) will become 90, index 12 (10:15-10:30) will become 75, index 17 (11:30-11:45) will
+    become 0, etc.
+
+    :param schedule: array of days of the week a volunteer is busy; each index corresponds to a time of day
     and the letters at the index indicate the days of the week the volunteer is busy at that time
-    :type imported_schedule: list[str]
-    :return: schedule_array: array containing an index for each 15-min block between the times of 7:15am-3:45pm,
-    Monday through Thursday (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are
-    Wednesday, etc.); value at an index is 1 if volunteer is available at that time and 0 if they are busy
-    :rtype: list[int]
-    """
-    schedule_array = [1] * 4 * src.global_attributes.BLOCKS_PER_DAY
-    for i in range(src.global_attributes.BLOCKS_PER_DAY):
-        if 'M' in imported_schedule[i]:
-            schedule_array[i] = 0
-        if 'T' in imported_schedule[i]:
-            schedule_array[src.global_attributes.BLOCKS_PER_DAY + i] = 0
-        if 'W' in imported_schedule[i]:
-            schedule_array[2 * src.global_attributes.BLOCKS_PER_DAY + i] = 0
-        if 'R' in imported_schedule[i]:
-            schedule_array[3 * src.global_attributes.BLOCKS_PER_DAY + i] = 0
-    return schedule_array
+    :type schedule: list[str]
 
-
-def convert_to_free_time_array(schedule_array):
-    """ Converts the array of times in week order (output of convert_to_schedule_array) to an array where value at
-    each time index corresponds to how much free time they have starting at that index. For example, if I am free
-    from 10:00 to 11:30 on Monday, index 11 (10:00-10:15) will become 90, index 12 (10:15-10:30) will become 75,
-    index 17 (11:30-11:45) will become 0, etc.
-
-    :param schedule_array: array containing an index for each 15-min block between the times of 7:15am-3:45pm,
-    Monday through Thursday (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are
-    Wednesday, etc.); value at an index is 1 if volunteer is available at that time and 0 if they are busy
     :return: free_time_array: array where indices are the same as schedule_array but the value at each index is the
     minutes of consecutive free time the volunteer has starting at that time
     :rtype: list[int]
     """
+
+    schedule_array = [1] * 4 * src.global_attributes.BLOCKS_PER_DAY
+    for i in range(src.global_attributes.BLOCKS_PER_DAY):
+        if 'M' in schedule[i]:
+            schedule_array[i] = 0
+        if 'T' in schedule[i]:
+            schedule_array[src.global_attributes.BLOCKS_PER_DAY + i] = 0
+        if 'W' in schedule[i]:
+            schedule_array[2 * src.global_attributes.BLOCKS_PER_DAY + i] = 0
+        if 'R' in schedule[i]:
+            schedule_array[3 * src.global_attributes.BLOCKS_PER_DAY + i] = 0
+
     free_time_array = []
 
     # i is the index being set, j is the index being tested for availability
@@ -123,7 +118,6 @@ def calculate_free_time_needed(class_start_time, class_end_time, school_travel_t
     if 1545 <= class_end_time <= 1600:
         return 60
     if class_start_hours == class_end_hours:
-        # TODO: change from (1 * school_travel_time) to (2 * school_travel_time) to account for driving time both ways
         return int(class_end_minutes - class_start_minutes + (2 * school_travel_time))
     else:  # start_hour < end_hour
         # TODO: change from (1 * school_travel_time) to (2 * school_travel_time) to account for driving time both ways
@@ -165,40 +159,6 @@ def military_to_free_time_array(day_of_week, free_time_start):
     return int((src.global_attributes.BLOCKS_PER_DAY * day) + ((hour - 7) * 4) + ((min - 15) / 15))
 
 
-def create_partner_schedule(volunteer_schedule_array, num_partners, partner_indexes):
-    """ Creates a free_time_array for a group of partners.
-
-    :param volunteer_schedule_array: schedule_array of the Volunteer object for the first partner in the group; the
-    Volunteer object where the partner_free_time_array will be stored
-    :param num_partners: number of people in the group - 1 (number of people other than the first partner in the group)
-    :param partner_indexes: indexes of the Volunteer objects in volunteer_list corresponding to all of them members
-    in the group (except the first partner)
-    :return: partner_schedule_array
-    :rtype: list[int]
-    """
-    if num_partners == 1:
-        partner_schedule_array = schedule_array_and(
-            volunteer_schedule_array,
-            src.global_attributes.volunteer_list[partner_indexes[0]].schedule_array
-        )
-    elif num_partners == 2:
-        partner_schedule_array = schedule_array_and(
-            schedule_array_and(
-                volunteer_schedule_array,
-                src.global_attributes.volunteer_list[partner_indexes[0]].schedule_array),
-            src.global_attributes.volunteer_list[partner_indexes[1]].schedule_array
-        )
-    else:
-        partner_schedule_array = schedule_array_and(
-            schedule_array_and(
-                volunteer_schedule_array,
-                src.global_attributes.volunteer_list[partner_indexes[0]].schedule_array),
-            schedule_array_and(
-                src.global_attributes.volunteer_list[partner_indexes[1]].schedule_array,
-                src.global_attributes.volunteer_list[partner_indexes[2]].schedule_array)
-        )
-
-    return convert_to_free_time_array(partner_schedule_array)
 
 
 def schedule_array_and(schedule_array1, schedule_array2):
@@ -213,3 +173,4 @@ def schedule_array_and(schedule_array1, schedule_array2):
         output_array.append(schedule_array1[schedule_index] and schedule_array2[schedule_index])
 
     return output_array
+
