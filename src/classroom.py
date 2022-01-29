@@ -39,9 +39,6 @@ class Classroom:
         # has a team leader?
         self.t_leader = False
 
-        # has a driver?
-        self.driver = False
-
         # time the class starts in military time
         self.class_start_time = src.convert_schedule.convert_to_military(class_start_time)
 
@@ -62,8 +59,6 @@ class Classroom:
         self.start_time_schedule_index = src.convert_schedule.military_to_free_time_array(self.day_of_week,
                                                                                           self.free_time_start)
 
-        self.has_in_person_volunteer = False
-
         self.volunteers = []
 
     def assign_volunteer(self, volunteer):
@@ -82,8 +77,6 @@ class Classroom:
             self.volunteers.append(volunteer)
 
             volunteer.group_number = self.group_number
-            if not self.has_in_person_volunteer and volunteer.is_in_person:
-                self.has_in_person_volunteer = True
             if not self.t_leader and volunteer.applied_t_leader:
                 self.t_leader = True
                 # assign volunteer as team leader
@@ -107,10 +100,9 @@ class Classroom:
         # make classroom empty
         self.volunteers_assigned = 0
         self.t_leader = False
-        self.driver = False
-        self.has_in_person_volunteer = False
         self.volunteers = []
         return unassigned_volunteers
 
     def __str__(self):
         return self.teacher_name + ' @ ' + self.school
+
