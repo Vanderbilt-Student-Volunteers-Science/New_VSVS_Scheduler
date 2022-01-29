@@ -5,37 +5,7 @@ from src.classroom import Classroom
 from src.volunteer import Volunteer
 
 
-def assign_partners(partner1):
-    """ Assigns a group of partners to a classroom they all can make (if there is one) using the partner_schedule
-    attribute of a partner's Volunteer object. When a group is assigned, uses classroom.assign_volunteer to
-    reflect this in the Volunteer objects of each of the volunteers in the group and the Classroom object of the
-    classroom the group is being assigned to.
-
-    :param partner1: the Volunteer object of a partner in the group
-    :type partner1: Volunteer
-    :return: None
-    """
-    for classroom in src.global_attributes.classroom_list:
-        # partner 1 is unassigned
-        if partner1.group_number == -1:
-            # check availability and group size
-            if partners_can_make_class(partner1, classroom) and \
-                    src.global_attributes.MAX_TEAM_SIZE - classroom.volunteers_assigned >= partner1.partners + 1:
-                # assign partner1
-                classroom.assign_volunteer(partner1)
-                # assign remaining partners
-                for partner_index in partner1.partner_indexes:
-                    if src.global_attributes.volunteer_list[partner_index].group_number != -1:
-                        warnings.warn(f"{src.global_attributes.volunteer_list[partner_index]} is being reassigned "
-                                      f"during partner assignment.")
-                    classroom.assign_volunteer(src.global_attributes.volunteer_list[partner_index])
-    # failed to assign
-    if partner1.group_number == -1:
-        warnings.warn(
-            f"{str(partner1)}'s partner group could not be assigned together because of scheduling conflicts.")
-
-
-def assign_in_person(sorted_in_person_volunteers):
+def assign(sorted_in_person_volunteers):
     """Assigns drivers to classroom groups without drivers. If all of the classrooms a driver can make already have
     drivers (or are full), the driver is not assigned. When a driver is assigned, uses classroom.assign_volunteer to
     reflect this in the driver's Volunteer object and the Classroom object of the classroom they are being assigned to.
@@ -136,20 +106,6 @@ def volunteer_can_make_class(volunteer, classroom):
     return volunteer.free_time_array[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
 
 
-def partners_can_make_class(partner, classroom):
-    """ Returns boolean if a partner group can make a class.
-
-    :param partner: Volunteer object of the first partner in the group; the Volunteer object that contains the
-    information of the group of partners (only one is set when partners.csv is imported)
-    :type partner: Volunteer
-    :param classroom: Classroom object of classroom being checked
-    :type classroom: Classroom
-    :return: if partner group can make a class
-    :rtype: bool
-    """
-    return partner.partner_free_time_array[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
-
-
 # FIXME: Do we need these two methods? I feel like they can be done inline...
 def return_classrooms_possible(volunteer):
     """ Helper method for sort_by_availability
@@ -176,7 +132,7 @@ def sort_by_availability(volunteer_list):
 def assign_single(volunteer):
     """ assigns a single volunteer to first available classroom
 
-    :param volunteer: volunteer to be assignes
+    :param volunteer: volunteer to be assignees
     :type volunteer: Volunteer
     :return:
     """
