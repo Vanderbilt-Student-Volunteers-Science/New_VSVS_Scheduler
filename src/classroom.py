@@ -19,9 +19,6 @@ class Classroom:
         # has a team leader?
         self.t_leader = False
 
-        # has a driver?
-        self.driver = False
-
         # time the class starts in military time
         self.class_start_time = src.convertSchedule.convert_to_military(class_start_time)
 
@@ -41,8 +38,6 @@ class Classroom:
         # >= volunteer_time_needed for a volunteer to be able to visit this classroom
         self.start_time_schedule_index = src.convertSchedule.military_to_free_time_array(self.day_of_week,
                                                                                          self.free_time_start)
-
-        self.has_in_person_volunteer = False
 
     # Assigns a volunteer to a classroom. Updates the Volunteer group_number attribute with the group number of the
     # classroom the volunteer is being assigned to and the Classroom object with a new volunteers_assigned value. If
@@ -71,8 +66,6 @@ class Classroom:
         # make classroom empty
         self.volunteers_assigned = 0
         self.t_leader = False
-        self.driver = False
-        self.has_in_person_volunteer = False
         return unassigned_volunteers
 
     def __str__(self):

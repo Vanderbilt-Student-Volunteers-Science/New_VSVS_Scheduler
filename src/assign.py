@@ -34,7 +34,7 @@ def assign_in_person(sorted_in_person_volunteers):
         classroom_idx = 0
         while volunteer.group_number == -1 and classroom_idx < len(src.globalAttributes.classroom_list):
             classroom = src.globalAttributes.classroom_list[classroom_idx]
-            if volunteer_can_make_class(volunteer, classroom) and not classroom.has_in_person_volunteer and \
+            if volunteer_can_make_class(volunteer, classroom) and \
                     classroom.volunteers_assigned < src.globalAttributes.MAX_TEAM_SIZE:
                 classroom.assign_volunteer(volunteer)
             else:
