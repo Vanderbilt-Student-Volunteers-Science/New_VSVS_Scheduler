@@ -10,24 +10,11 @@ class Volunteer:
         self.last = last
         self.phone = phone
         self.email = email.lower()
-        self.year_in_school = year_in_school
-        self.major = major
         self.robotics_interest = robotics_interest
         self.special_needs_interest = special_needs_interest
 
         # if volunteer applied to be a team leader
         self.applied_t_leader = applied_t_leader
-
-        # people a driver can drive (not including driver)
-        if car_passengers == '':
-            self.car_passengers = 0
-        elif car_passengers == '4+':
-            self.car_passengers = 4
-        else:
-            self.car_passengers = int(car_passengers)
-
-        # if they have a car that can carry the MAX_TEAM_SIZE
-        self.driver = (self.car_passengers + 1 >= src.globalAttributes.MAX_TEAM_SIZE)
 
         # TODO Convert directly from input schedule to free_time_array in one method. Don't need convert_to_schedule_array.
         # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday
