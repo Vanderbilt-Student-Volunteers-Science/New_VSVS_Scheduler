@@ -1,12 +1,14 @@
 import csv
 import os
 
-import src.assign
+from src.assign import assign_partners, volunteer_can_make_class, assign_in_person, sort_by_availability, \
+    assign_applied_t_leaders, assign_others
 import src.classroom
 import src.globalAttributes
 from src.classroom import Classroom
 from src.volunteer import Volunteer
-from src.__init__ import volunteer_list
+from src.__init__ import volunteer_list, classroom_list
+
 
 # All global constants and variables are in globalAttributes.py (If we included them in here, it would result in
 # circular imports)
@@ -20,10 +22,7 @@ def main():
         csv_reader = csv.DictReader(individuals_csv)
 
         for row in csv_reader:  # for each individual
-            row_list = list(row.values())
-            # pull data from row in the csv, create a Volunteer object, and add it to global variable
-            # volunteer_list
-            # I is a dictionary containing all the indices for each field
+            # pull data from row in the csv, create a Volunteer object, and add it to global variable volunteer_list
 
             volunteer = Volunteer(
                 first=row['First Name'],
@@ -85,32 +84,24 @@ def main():
                                   day_of_week=row[13]
                                   )
 
-            src.globalAttributes.classroom_list.append(classroom)
+            classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
 
     # assign partners
     for volunteer in volunteer_list:
         if volunteer.group_number == -1 and volunteer.partners:
-            src.assign.assign_partners(volunteer)  # adds all partners to same team
+            assign_partners(volunteer)  # adds all partners to same team
 
     # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
     for volunteer in volunteer_list:
         if volunteer.group_number == -1:
-            for classroom in src.globalAttributes.classroom_list:
-                if src.assign.volunteer_can_make_class(volunteer, classroom):
+            for classroom in classroom_list:
+                if volunteer_can_make_class(volunteer, classroom):
                     volunteer.increment_classrooms_possible()
 
-    # make list of unassigned in person volunteers, sort them by the number of classrooms they can make
-    # (fewest to greatest number of classrooms they can make), then assign them to classroom groups
-    in_person_list = []
-    for volunteer in volunteer_list:
-        if volunteer.group_number == -1:
-            in_person_list.append(volunteer)
-    src.assign.assign_in_person(src.assign.sort_by_availability(in_person_list))
-
     # creates global variable lists of empty and partially filled classrooms
-    for classroom in src.globalAttributes.classroom_list:
+    for classroom in classroom_list:
         if classroom.volunteers_assigned == 0:
             src.globalAttributes.empty_classrooms.append(classroom)
         elif classroom.volunteers_assigned < src.globalAttributes.MAX_TEAM_SIZE:
@@ -121,9 +112,9 @@ def main():
     # partially-filled classrooms over empty classrooms)
     applied_t_leader_list = []
     for volunteer in volunteer_list:
-        if volunteer.group_number == -1 and volunteer.applied_t_leader:
+        if volunteer.group_number == -1 and volunteer.leader_interest:
             applied_t_leader_list.append(volunteer)
-    src.assign.assign_applied_t_leaders(src.assign.sort_by_availability(applied_t_leader_list))
+    assign_applied_t_leaders(sort_by_availability(applied_t_leader_list))
 
     # make list of unassigned volunteers, sort them by the number of classrooms they can make (fewest to greatest
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
@@ -132,15 +123,15 @@ def main():
     for volunteer in volunteer_list:
         if volunteer.group_number == -1:
             unsorted_list.append(volunteer)
-    src.assign.assign_others(src.assign.sort_by_availability(unsorted_list))
+    assign_others(sort_by_availability(unsorted_list))
 
     # reassign volunteers that were assigned to groups of 1
     # TODO: think through this part better
     unassigned_volunteers = []
-    for classroom in src.globalAttributes.classroom_list:
+    for classroom in classroom_list:
         if classroom.volunteers_assigned == 1:
             unassigned_volunteers.extend(classroom.empty_classroom())
-    src.assign.assign_others(src.assign.sort_by_availability(unassigned_volunteers))
+    assign_others(sort_by_availability(unassigned_volunteers))
 
     # OUTPUT RESULTS
 
@@ -186,7 +177,7 @@ def main():
     print('There were {} unassigned volunteers.'.format(unassigned_volunteers))
 
     # TODO: Remove after testing?
-    for classroom in src.globalAttributes.classroom_list:
+    for classroom in classroom_list:
         print("{} volunteers assigned to group {}".format(group_size[classroom.group_number], classroom.group_number))
 
 

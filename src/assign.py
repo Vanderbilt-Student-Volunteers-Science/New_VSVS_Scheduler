@@ -10,13 +10,13 @@ import src.globalAttributes
 def assign_partners(partner1):
     classroom_idx = 0
 
-    while partner1.group_number == -1 and classroom_idx < len(src.globalAttributes.classroom_list):
-        classroom = src.globalAttributes.classroom_list[classroom_idx]
+    while partner1.group_number == -1 and classroom_idx < len(src.__init__.classroom_list):
+        classroom = src.__init__.classroom_list[classroom_idx]
         if partners_can_make_class(partner1, classroom) and \
                 src.globalAttributes.MAX_TEAM_SIZE - classroom.volunteers_assigned >= partner1.partners + 1:
             classroom.assign_volunteer(partner1)
             for partner_index in partner1.partner_indexes:
-                classroom.assign_volunteer(src.globalAttributes.volunteer_list[partner_index])
+                classroom.assign_volunteer(src.__init__.volunteer_list[partner_index])
         else:
             classroom_idx += 1
     if partner1.group_number == -1:
@@ -32,8 +32,8 @@ def assign_partners(partner1):
 def assign_in_person(sorted_in_person_volunteers):
     for volunteer in sorted_in_person_volunteers:
         classroom_idx = 0
-        while volunteer.group_number == -1 and classroom_idx < len(src.globalAttributes.classroom_list):
-            classroom = src.globalAttributes.classroom_list[classroom_idx]
+        while volunteer.group_number == -1 and classroom_idx < len(src.__init__.classroom_list):
+            classroom = src.__init__.classroom_list[classroom_idx]
             if volunteer_can_make_class(volunteer, classroom) and \
                     classroom.volunteers_assigned < src.globalAttributes.MAX_TEAM_SIZE:
                 classroom.assign_volunteer(volunteer)

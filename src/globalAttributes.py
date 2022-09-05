@@ -14,9 +14,6 @@ SCHOOL_TRAVEL_TIME = 15
 
 # VARIABLES
 
-# contains all of the Classroom objects, one for each VSVS group that needs to be created
-classroom_list = []
-
 # contains all Classroom objects that are partially filled; starts being filled after partners and drivers have been
 # assigned
 partially_filled_classrooms = []
