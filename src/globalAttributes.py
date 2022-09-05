@@ -12,10 +12,6 @@ MIN_TEAM_SIZE = 3
 # minutes to travel one-way to any school
 SCHOOL_TRAVEL_TIME = 15
 
-# index for each field in the individuals csv
-I = {'FIRST': 3, 'LAST': 4, 'PHONE': 5, 'EMAIL': 6, 'SCHOOL': 7, 'YEAR': 8, 'MAJOR': 9, 'SPECIAL_NEEDS_INTEREST': 10,
-     'APPLIED_T_LEADER': 12, 'IMPORTED_SCHEDULE_START': 14, 'IMPORTED_SCHEDULE_END': 47, 'LOCATION': 51}
-
 # VARIABLES
 
 # contains all of the Volunteer objects, one for each VSVS volunteer

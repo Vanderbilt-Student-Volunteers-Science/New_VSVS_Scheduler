@@ -53,8 +53,6 @@ class Classroom:
     def assign_volunteer(self, volunteer):
         self.volunteers_assigned += 1
         volunteer.set_group_number(self.group_number)
-        if not self.has_in_person_volunteer and volunteer.is_in_person:
-            self.has_in_person_volunteer = True
         if not self.t_leader and volunteer.applied_t_leader:
             self.t_leader = True
             volunteer.assign_t_leader()

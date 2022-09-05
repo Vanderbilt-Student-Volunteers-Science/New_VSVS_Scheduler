@@ -5,7 +5,6 @@ import src.assign
 import src.classroom
 import src.globalAttributes
 from src.classroom import Classroom
-from src.globalAttributes import I
 from src.volunteer import Volunteer
 
 
@@ -17,28 +16,25 @@ def main():
 
     # import individual application data from individuals.csv
     with open('../data/individuals.csv', 'r') as individuals_csv:  # opens individuals.csv as individuals_csv
-        csv_reader = csv.reader(individuals_csv, delimiter=',')  # divides individuals_csv by commas
-        next(csv_reader)  # skips the header
-        for row in csv_reader:  # for each individual
+        # returns each row in the csv as a dictionary. The first row in the csv is used for the keys of the dictionary
+        csv_reader = csv.DictReader(individuals_csv)
 
+        for row in csv_reader:  # for each individual
+            row_list = list(row.values())
             # pull data from row in the csv, create a Volunteer object, and add it to global variable
             # volunteer_list
             # I is a dictionary containing all the indices for each field
+
             volunteer = Volunteer(
-                first=row[I['FIRST']].strip(),
-                last=row[I['LAST']].strip(),
-                phone=row[I['PHONE']].strip(),
-                email=row[I['EMAIL']].strip(),
-                year_in_school=row[I['YEAR']].strip(),
-                major=row[I['MAJOR']].strip(),
+                first=row['First Name'],
+                last=row['Last Name'],
+                phone=row['Phone Number'],
+                email=row['Email'],
                 robotics_interest=False,  # no robotics for Fall 2020
                 special_needs_interest=(lambda x: True if x == 'Yes' else False)(
-                    row[I['SPECIAL_NEEDS_INTEREST']].strip()),
-                applied_t_leader=(lambda x: True if x == 'Yes' else False)(row[I['APPLIED_T_LEADER']].strip()),
-                car_passengers=0,  # no drivers/cars for Fall 2020
-                imported_schedule=row[I['IMPORTED_SCHEDULE_START']:I['IMPORTED_SCHEDULE_END'] + 1],
-                # location column in csv is either 'On-campus' or 'Remote', so we need to convert to boolean
-                is_in_person=(lambda x: True if x == 'On-campus' else False)(row[I['LOCATION']].strip())
+                    row['Special Needs Students']),
+                applied_t_leader=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
+                imported_schedule=list(row.values())[16:50],
             )
             src.globalAttributes.volunteer_list.append(volunteer)
 
@@ -109,7 +105,7 @@ def main():
     # (fewest to greatest number of classrooms they can make), then assign them to classroom groups
     in_person_list = []
     for volunteer in src.globalAttributes.volunteer_list:
-        if volunteer.group_number == -1 and volunteer.is_in_person:
+        if volunteer.group_number == -1:
             in_person_list.append(volunteer)
     src.assign.assign_in_person(src.assign.sort_by_availability(in_person_list))
 
@@ -180,9 +176,7 @@ def main():
                     volunteer.last,
                     volunteer.email,
                     volunteer.phone,
-                    volunteer.year_in_school,
                     '',
-                    volunteer.major,
                     '',
                     int(volunteer.assigned_driver),  # convert True/False to 1/0
                     int(volunteer.assigned_t_leader)  # convert True/False to 1/0
