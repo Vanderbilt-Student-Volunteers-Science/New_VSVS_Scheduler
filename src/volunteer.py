@@ -4,8 +4,8 @@ import src.globalAttributes
 
 
 class Volunteer:
-    def __init__(self, first, last, phone, email, year_in_school, major, robotics_interest, special_needs_interest,
-                 applied_t_leader, car_passengers, imported_schedule, is_in_person):
+    def __init__(self, first, last, phone, email,  robotics_interest, special_needs_interest, applied_t_leader,
+                 imported_schedule):
         self.first = first
         self.last = last
         self.phone = phone
