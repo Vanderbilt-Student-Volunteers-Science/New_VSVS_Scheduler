@@ -52,9 +52,6 @@ class Volunteer:
         # Set after partners and drivers are assigned.
         self.classrooms_possible = 0
 
-        # True if the volunteer is in person, False if they are remote.
-        self.is_in_person = is_in_person
-
     # Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of the first
     # partner in the group (the self object).
     def add_partners(self, partner1_email, partner2_email, partner3_email):
