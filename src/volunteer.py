@@ -69,8 +69,8 @@ class Volunteer:
             partner2_matched = 1
         if partner3_email == '':
             partner3_matched = 1
-        while volunteer_index < len(src.globalAttributes.volunteer_list) and partners_matched == 0:
-            volunteer = src.globalAttributes.volunteer_list[volunteer_index]
+        while volunteer_index < len(src.__init__.volunteer_list) and partners_matched == 0:
+            volunteer = src.__init__.volunteer_list[volunteer_index]
             if volunteer.email == partner1_email:
                 self.partner_indexes.append(volunteer_index)
                 partner1_matched = 1
@@ -85,7 +85,7 @@ class Volunteer:
 
             if partner1_matched and partner2_matched and partner3_matched:
                 partners_matched = 1
-            elif volunteer == src.globalAttributes.volunteer_list[-1]:
+            elif volunteer == src.__init__.volunteer_list[-1]:
                 print("WARNING: ", end='')
                 if partner1_matched == 0:
                     print(partner1_email, end=' ')
@@ -96,15 +96,7 @@ class Volunteer:
                 print("from " + self.email + "'s partner group were not found in individual application data.")
 
         self.partners = len(self.partner_indexes)
-
-        # If all three partners are remote, they cannot be assigned in a group together.
-        # At least one volunteer in each group must be in person.
-        if self.partners == 2 and not self.is_in_person and not src.globalAttributes.volunteer_list[
-            self.partner_indexes[0]].is_in_person and not src.globalAttributes.volunteer_list[
-            self.partner_indexes[1]].is_in_person:
-            print("WARNING:" + self.email + "'s partner group cannot be grouped together because they are all remote.")
-
-        elif self.partners != 0:
+        if self.partners != 0:
             self.partner_free_time_array = src.convertSchedule.create_partner_schedule(self.schedule_array,
                                                                                        self.partners,
                                                                                        self.partner_indexes)

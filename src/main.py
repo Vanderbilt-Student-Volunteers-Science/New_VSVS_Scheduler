@@ -6,10 +6,10 @@ import src.classroom
 import src.globalAttributes
 from src.classroom import Classroom
 from src.volunteer import Volunteer
+from src.__init__ import volunteer_list
 
-
-# All global constants and variables are in globalAttributes.py
-
+# All global constants and variables are in globalAttributes.py (If we included them in here, it would result in
+# circular imports)
 
 def main():
     #  IMPORT FILE DATA
@@ -36,9 +36,9 @@ def main():
                 applied_t_leader=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
                 imported_schedule=list(row.values())[16:50],
             )
-            src.globalAttributes.volunteer_list.append(volunteer)
+            volunteer_list.append(volunteer)
 
-    print('There are {} volunteers.'.format(len(src.globalAttributes.volunteer_list)))
+    print('There are {} volunteers.'.format(len(volunteer_list)))
 
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
@@ -50,8 +50,8 @@ def main():
             # attributes partners, partner_indexes, and partner_schedule
             volunteer_index = 0
             first_volunteer_matched = 0
-            while volunteer_index < len(src.globalAttributes.volunteer_list) and first_volunteer_matched == 0:
-                volunteer = src.globalAttributes.volunteer_list[volunteer_index]
+            while volunteer_index < len(volunteer_list) and first_volunteer_matched == 0:
+                volunteer = volunteer_list[volunteer_index]
                 volunteer_index += 1
                 if row[1].lower() == volunteer.email:
                     if len(row) == 5:
@@ -63,7 +63,7 @@ def main():
                     first_volunteer_matched = 1
 
                 # if no volunteers in volunteer_list have same email, print an alert
-                elif volunteer == src.globalAttributes.volunteer_list[-1]:
+                elif volunteer == volunteer_list[-1]:
                     print('WARNING: ' + row[
                         1] + ' first volunteer in their partner group was not found in individual application data.')
 
@@ -90,12 +90,12 @@ def main():
     # ASSIGN VOLUNTEERS
 
     # assign partners
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in volunteer_list:
         if volunteer.group_number == -1 and volunteer.partners:
             src.assign.assign_partners(volunteer)  # adds all partners to same team
 
     # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in volunteer_list:
         if volunteer.group_number == -1:
             for classroom in src.globalAttributes.classroom_list:
                 if src.assign.volunteer_can_make_class(volunteer, classroom):
@@ -104,7 +104,7 @@ def main():
     # make list of unassigned in person volunteers, sort them by the number of classrooms they can make
     # (fewest to greatest number of classrooms they can make), then assign them to classroom groups
     in_person_list = []
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in volunteer_list:
         if volunteer.group_number == -1:
             in_person_list.append(volunteer)
     src.assign.assign_in_person(src.assign.sort_by_availability(in_person_list))
@@ -120,7 +120,7 @@ def main():
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
     # partially-filled classrooms over empty classrooms)
     applied_t_leader_list = []
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in volunteer_list:
         if volunteer.group_number == -1 and volunteer.applied_t_leader:
             applied_t_leader_list.append(volunteer)
     src.assign.assign_applied_t_leaders(src.assign.sort_by_availability(applied_t_leader_list))
@@ -129,7 +129,7 @@ def main():
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
     # partially-filled classrooms over empty classrooms)
     unsorted_list = []
-    for volunteer in src.globalAttributes.volunteer_list:
+    for volunteer in volunteer_list:
         if volunteer.group_number == -1:
             unsorted_list.append(volunteer)
     src.assign.assign_others(src.assign.sort_by_availability(unsorted_list))
@@ -163,7 +163,7 @@ def main():
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
         # FIXME: should we add a header row for this output file?
-        for volunteer_id, volunteer in enumerate(src.globalAttributes.volunteer_list):
+        for volunteer_id, volunteer in enumerate(volunteer_list):
             if volunteer.group_number == -1:
                 unassigned_volunteers += 1
             else:

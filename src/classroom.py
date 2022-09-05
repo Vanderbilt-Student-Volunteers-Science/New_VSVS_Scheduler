@@ -55,7 +55,7 @@ class Classroom:
     # unassigns volunteers from a classroom and returns a list of the volunteers that were unassigned
     def empty_classroom(self):
         unassigned_volunteers = []
-        for volunteer in src.globalAttributes.volunteer_list:
+        for volunteer in src.__init__.volunteer_list:
             if volunteer.group_number == self.group_number:
                 # unassign volunteers
                 volunteer.set_group_number(-1)
