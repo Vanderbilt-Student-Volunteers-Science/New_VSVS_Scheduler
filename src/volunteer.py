@@ -4,8 +4,10 @@ import src.globalAttributes
 
 
 class Volunteer:
-    def __init__(self, first, last, phone, email, robotics_interest, special_needs_interest, leader_app,
-                 imported_schedule):
+    """This class stores volunteer information: first name, last name, phone, email, robotics interest, special needs
+    interest, leadership application, schedule """
+    def __init__(self, first: str, last: str, phone: str, email: str, robotics_interest: bool,
+                 special_needs_interest: bool, leader_app:bool, imported_schedule:list):
         self.first = first
         self.last = last
         self.phone = phone
