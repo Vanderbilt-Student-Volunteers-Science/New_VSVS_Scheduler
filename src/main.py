@@ -1,7 +1,7 @@
 import csv
 import os
 
-from src.assign import assign_partners, volunteer_can_make_class, assign_in_person, sort_by_availability, \
+from src.assign import assign_partners, volunteer_can_make_class,  sort_by_availability, \
     assign_applied_t_leaders, assign_others
 import src.classroom
 import src.globalAttributes
