@@ -4,7 +4,7 @@ import src.globalAttributes
 
 
 class Volunteer:
-    def __init__(self, first, last, phone, email,  robotics_interest, special_needs_interest, applied_t_leader,
+    def __init__(self, first, last, phone, email, robotics_interest, special_needs_interest, leader_app,
                  imported_schedule):
         self.first = first
         self.last = last
@@ -14,7 +14,7 @@ class Volunteer:
         self.special_needs_interest = special_needs_interest
 
         # if volunteer applied to be a team leader
-        self.leader_interest = applied_t_leader
+        self.leader_app = leader_app
 
         # TODO Convert directly from input schedule to free_time_array in one method. Don't need convert_to_schedule_array.
         # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday

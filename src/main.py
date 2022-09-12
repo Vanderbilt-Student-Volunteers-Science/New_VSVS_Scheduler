@@ -25,14 +25,14 @@ def main():
             # pull data from row in the csv, create a Volunteer object, and add it to global variable volunteer_list
 
             volunteer = Volunteer(
-                first=row['First Name'],
-                last=row['Last Name'],
+                first=row['First Name'].strip(),
+                last=row['Last Name'].strip(),
                 phone=row['Phone Number'],
-                email=row['Email'],
+                email=row['Email'].strip(),
                 robotics_interest=False,  # no robotics for Fall 2020
                 special_needs_interest=(lambda x: True if x == 'Yes' else False)(
                     row['Special Needs Students']),
-                applied_t_leader=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
+                leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
                 imported_schedule=list(row.values())[16:50],
             )
             volunteer_list.append(volunteer)
@@ -112,7 +112,7 @@ def main():
     # partially-filled classrooms over empty classrooms)
     applied_t_leader_list = []
     for volunteer in volunteer_list:
-        if volunteer.group_number == -1 and volunteer.leader_interest:
+        if volunteer.group_number == -1 and volunteer.leader_app:
             applied_t_leader_list.append(volunteer)
     assign_applied_t_leaders(sort_by_availability(applied_t_leader_list))
 

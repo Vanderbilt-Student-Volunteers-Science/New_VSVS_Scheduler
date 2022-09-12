@@ -48,7 +48,7 @@ class Classroom:
     def assign_volunteer(self, volunteer):
         self.volunteers_assigned += 1
         volunteer.set_group_number(self.group_number)
-        if not self.t_leader and volunteer.leader_interest:
+        if not self.t_leader and volunteer.leader_app:
             self.t_leader = True
             volunteer.assign_t_leader()
 
