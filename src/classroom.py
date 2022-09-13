@@ -4,8 +4,8 @@ import src.globalAttributes
 
 class Classroom:
 
-    def __init__(self, group_number, teacher_name, teacher_phone, school, teacher_email, class_start_time,
-                 class_end_time, day_of_week):
+    def __init__(self, group_number: int, teacher_name: str, teacher_phone: str, school: str, teacher_email: str,
+                 class_start_time: str, class_end_time: str, day_of_week: str):
 
         # TODO: make group_number the index of classroom in classroom_list
         self.group_number = group_number

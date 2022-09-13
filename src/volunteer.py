@@ -7,7 +7,7 @@ class Volunteer:
     """This class stores volunteer information: first name, last name, phone, email, robotics interest, special needs
     interest, leadership application, schedule """
     def __init__(self, first: str, last: str, phone: str, email: str, robotics_interest: bool,
-                 special_needs_interest: bool, leader_app:bool, imported_schedule:list):
+                 special_needs_interest: bool, leader_app: bool, imported_schedule: list):
         self.first = first
         self.last = last
         self.phone = phone
