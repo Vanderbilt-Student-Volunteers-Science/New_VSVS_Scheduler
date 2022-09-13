@@ -68,22 +68,26 @@ def main():
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
-        csv_reader = csv.reader(classrooms_csv, delimiter=',')  # divides classrooms_csv by commas
-        next(csv_reader)  # skip header row
-        for row in csv_reader:  # for each classroom
-
-            # creates a Classroom object and adds it to global variable classroom_list
-            # row indices correspond to columns of classrooms.csv
-            classroom = Classroom(group_number=int(row[1].strip()),
-                                  teacher_name=row[3],
-                                  teacher_phone=row[4],
-                                  school=row[6],
-                                  teacher_email=row[9],
-                                  class_start_time=row[11],
-                                  class_end_time=row[12],
-                                  day_of_week=row[13]
-                                  )
-
+        csv_reader = csv.DictReader(classrooms_csv)
+        for row in csv_reader:  # for each teacher application
+            teacher_name = row['Name']
+            teacher_phone = row['Cell Phone Number']
+            school = row['School']
+            email = row['Email Address']
+            number_of_classes = row['Number of Classes']
+            for i in range(int(number_of_classes)): # for all of that teacher's classes
+                # class_num keeps track of which class out of the total number_of_classes is being created
+                class_num = i + 1
+                # creates a Classroom object and adds it to global variable classroom_list
+                classroom = Classroom(group_number=1,
+                                      teacher_name=teacher_name,
+                                      teacher_phone=teacher_phone,
+                                      school=school,
+                                      teacher_email=email,
+                                      class_start_time=row[f'Start Time (Class {class_num} of {number_of_classes})'],
+                                      class_end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
+                                      day_of_week='Thursday'
+                                      )
             classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
