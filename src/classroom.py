@@ -1,5 +1,5 @@
 import src.convertSchedule
-import src.globalAttributes
+from __init__ import volunteer_list, SCHOOL_TRAVEL_TIME
 
 
 class Classroom:
@@ -26,13 +26,12 @@ class Classroom:
         self.class_end_time = src.convertSchedule.convert_to_military(class_end_time)
 
         # the latest time a volunteer can start being available and be able to make this lesson
-        self.free_time_start = src.convertSchedule.calculate_free_time_start(self.class_start_time,
-                                                                             src.globalAttributes.SCHOOL_TRAVEL_TIME)
+        self.free_time_start = src.convertSchedule.calculate_free_time_start(self.class_start_time, SCHOOL_TRAVEL_TIME)
 
         # minutes of free time needed starting at free_time_start for a volunteer to be able to make this lesson
         self.volunteer_time_needed = src.convertSchedule.calculate_free_time_needed(self.class_start_time,
                                                                                     self.class_end_time,
-                                                                                    src.globalAttributes.SCHOOL_TRAVEL_TIME)
+                                                                                    SCHOOL_TRAVEL_TIME)
 
         # the index in the array of Volunteer attribute free_time_array (or partner_schedule) that needs to be
         # >= volunteer_time_needed for a volunteer to be able to visit this classroom
@@ -55,7 +54,7 @@ class Classroom:
     # unassigns volunteers from a classroom and returns a list of the volunteers that were unassigned
     def empty_classroom(self):
         unassigned_volunteers = []
-        for volunteer in src.__init__.volunteer_list:
+        for volunteer in volunteer_list:
             if volunteer.group_number == self.group_number:
                 # unassign volunteers
                 volunteer.set_group_number(-1)

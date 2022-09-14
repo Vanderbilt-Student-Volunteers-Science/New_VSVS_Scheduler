@@ -1,13 +1,11 @@
 import csv
 import os
 
-from src.assign import assign_partners, volunteer_can_make_class,  sort_by_availability, \
+from src.assign import assign_partners, volunteer_can_make_class, sort_by_availability, \
     assign_applied_t_leaders, assign_others
-import src.classroom
-import src.globalAttributes
 from src.classroom import Classroom
 from src.volunteer import Volunteer
-from src.__init__ import volunteer_list, classroom_list
+from src.__init__ import volunteer_list, partially_filled_classrooms, empty_classrooms, MAX_TEAM_SIZE, classroom_list
 
 
 # All global constants and variables are in globalAttributes.py (If we included them in here, it would result in
@@ -41,8 +39,8 @@ def main():
 
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
-        csv_reader = csv.reader(partners_csv, delimiter=',')  # divides partners_csv by commas
-        next(csv_reader)  # skip header row
+        # returns each row in the csv as a dictionary. The first row in the csv is used for the keys of the dictionary
+        csv_reader = csv.DictReader(partners_csv)  # divides partners_csv by commas
         for row in csv_reader:  # for each group of partners
 
             # finds first volunteer in partner group in volunteer_list and sets their Volunteer object
@@ -52,43 +50,45 @@ def main():
             while volunteer_index < len(volunteer_list) and first_volunteer_matched == 0:
                 volunteer = volunteer_list[volunteer_index]
                 volunteer_index += 1
-                if row[1].lower() == volunteer.email:
-                    if len(row) == 5:
-                        volunteer.add_partners(row[2], row[3], row[4])
-                    elif len(row) == 4:
-                        volunteer.add_partners(row[2], row[3], '')
+                if row['Email Address'].lower() == volunteer.email:
+                    if row['Group Member #4'] != '':
+                        volunteer.add_partners(row['Group Member #2'], row['Group Member #3'], row['Group Member #4'])
+                    elif row['Group Member #3'] != '':
+                        volunteer.add_partners(row['Group Member #2'], row['Group Member #3'], '')
                     else:
-                        volunteer.add_partners(row[2], '', '')
+                        volunteer.add_partners(row['Group Member #2'], '', '')
                     first_volunteer_matched = 1
 
                 # if no volunteers in volunteer_list have same email, print an alert
                 elif volunteer == volunteer_list[-1]:
-                    print('WARNING: ' + row[
-                        1] + ' first volunteer in their partner group was not found in individual application data.')
+                    print('WARNING: ' + row['Email Address'] + 'first volunteer in their partner group was not found '
+                                                               'in individual application data.')
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
         csv_reader = csv.DictReader(classrooms_csv)
+        group_num = 3
         for row in csv_reader:  # for each teacher application
             teacher_name = row['Name']
             teacher_phone = row['Cell Phone Number']
             school = row['School']
             email = row['Email Address']
             number_of_classes = row['Number of Classes']
-            for i in range(int(number_of_classes)): # for all of that teacher's classes
+            for i in range(int(number_of_classes)):  # for all of that teacher's classes
+                group_num += 1
                 # class_num keeps track of which class out of the total number_of_classes is being created
                 class_num = i + 1
                 # creates a Classroom object and adds it to global variable classroom_list
-                classroom = Classroom(group_number=1,
+                classroom = Classroom(group_number=group_num,
                                       teacher_name=teacher_name,
                                       teacher_phone=teacher_phone,
                                       school=school,
                                       teacher_email=email,
                                       class_start_time=row[f'Start Time (Class {class_num} of {number_of_classes})'],
                                       class_end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
-                                      day_of_week='Thursday'
+                                      day_of_week=row[f'Days (Class {class_num} of {number_of_classes})'].strip()
                                       )
-            classroom_list.append(classroom)
+                classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
 
@@ -107,9 +107,9 @@ def main():
     # creates global variable lists of empty and partially filled classrooms
     for classroom in classroom_list:
         if classroom.volunteers_assigned == 0:
-            src.globalAttributes.empty_classrooms.append(classroom)
-        elif classroom.volunteers_assigned < src.globalAttributes.MAX_TEAM_SIZE:
-            src.globalAttributes.partially_filled_classrooms.append(classroom)
+            empty_classrooms.append(classroom)
+        elif classroom.volunteers_assigned < MAX_TEAM_SIZE:
+            partially_filled_classrooms.append(classroom)
 
     # make list of unassigned applied_t_leaders, sort them by the number of classrooms they can make (fewest to greatest
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
@@ -134,7 +134,17 @@ def main():
     unassigned_volunteers = []
     for classroom in classroom_list:
         if classroom.volunteers_assigned == 1:
-            unassigned_volunteers.extend(classroom.empty_classroom())
+            empty_classrooms.append(classroom)
+            for volunteer in volunteer_list:
+                if volunteer.group_number == classroom.group_number:
+                    volunteer.set_group_number(-1)
+
+    for volunteer in volunteer_list:
+        if volunteer.group_number == -1:
+            unassigned_volunteers.append(volunteer)
+    assign_others(sort_by_availability(unassigned_volunteers))
+
+
     assign_others(sort_by_availability(unassigned_volunteers))
 
     # OUTPUT RESULTS

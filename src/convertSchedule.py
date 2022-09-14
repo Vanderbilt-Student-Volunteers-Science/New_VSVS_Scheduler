@@ -1,6 +1,6 @@
 import re
 
-import src.globalAttributes
+from src.__init__ import volunteer_list
 
 
 # Converts input time to military time.
@@ -10,11 +10,11 @@ def convert_to_military(time):
     # groups in the regex are set off with parentheses
     # [\d]* means one or more numbers
     # [A|P]M means AM or PM
-    regex = r'([\d]*):([\d]*) ([A|P]M)'
+    regex = r'([\d]*):([\d]*):([\d]*) ([A|P]M)'
     try:
         # search the time string for this regex pattern
         # then, select groups 1, 2, and 3 and save them as hour, min, am_pm
-        hour, minute, am_pm = re.search(regex, time).group(1, 2, 3)
+        hour, minute, seconds, am_pm = re.search(regex, time).group(1, 2, 3, 4)
     except:
         raise ValueError('{} is an invalid time string.'.format(time))
 
@@ -145,23 +145,23 @@ def create_partner_schedule(volunteer_schedule_array, num_partners, partner_inde
     if num_partners == 1:
         partner_schedule_array = schedule_array_and(
             volunteer_schedule_array,
-            src.globalAttributes.volunteer_list[partner_indexes[0]].schedule_array
+            volunteer_list[partner_indexes[0]].schedule_array
         )
     elif num_partners == 2:
         partner_schedule_array = schedule_array_and(
             schedule_array_and(
                 volunteer_schedule_array,
-                src.globalAttributes.volunteer_list[partner_indexes[0]].schedule_array),
-            src.globalAttributes.volunteer_list[partner_indexes[1]].schedule_array
+                volunteer_list[partner_indexes[0]].schedule_array),
+            volunteer_list[partner_indexes[1]].schedule_array
         )
     else:
         partner_schedule_array = schedule_array_and(
             schedule_array_and(
                 volunteer_schedule_array,
-                src.globalAttributes.volunteer_list[partner_indexes[0]].schedule_array),
+                volunteer_list[partner_indexes[0]].schedule_array),
             schedule_array_and(
-                src.globalAttributes.volunteer_list[partner_indexes[1]].schedule_array,
-                src.globalAttributes.volunteer_list[partner_indexes[2]].schedule_array)
+                volunteer_list[partner_indexes[1]].schedule_array,
+                volunteer_list[partner_indexes[2]].schedule_array)
         )
 
     return convert_to_free_time_array(partner_schedule_array)

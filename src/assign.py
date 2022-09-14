@@ -1,4 +1,4 @@
-import src.globalAttributes
+from src.__init__ import MAX_TEAM_SIZE, partially_filled_classrooms, empty_classrooms, classroom_list, volunteer_list
 
 
 # Assigns a group of partners to a classroom they all can make (if there is one) using the partner_schedule attribute of
@@ -10,35 +10,18 @@ import src.globalAttributes
 def assign_partners(partner1):
     classroom_idx = 0
 
-    while partner1.group_number == -1 and classroom_idx < len(src.__init__.classroom_list):
-        classroom = src.__init__.classroom_list[classroom_idx]
+    while partner1.group_number == -1 and classroom_idx < len(classroom_list):
+        classroom = classroom_list[classroom_idx]
         if partners_can_make_class(partner1, classroom) and \
-                src.globalAttributes.MAX_TEAM_SIZE - classroom.volunteers_assigned >= partner1.partners + 1:
+                MAX_TEAM_SIZE - classroom.volunteers_assigned >= partner1.partners + 1:
             classroom.assign_volunteer(partner1)
             for partner_index in partner1.partner_indexes:
-                classroom.assign_volunteer(src.__init__.volunteer_list[partner_index])
+                classroom.assign_volunteer(volunteer_list[partner_index])
         else:
             classroom_idx += 1
     if partner1.group_number == -1:
-        print(
-            "WARNING: " + partner1.email + "'s partner group could not be assigned together because of scheduling conflicts.")
-
-
-# Assigns drivers to classroom groups without drivers. If all of the classrooms a driver can make already have drivers
-# (or are full), the driver is not assigned. When a driver is assigned, uses classroom.assign_volunteer to reflect this
-# in the driver's Volunteer object and the Classroom object of the classroom they are being assigned to.
-# sorted_drivers - list of all volunteers that are unassigned and can drive a group of volunteers sorted from the
-#                  fewest to greatest number of classrooms they can make
-def assign_in_person(sorted_in_person_volunteers):
-    for volunteer in sorted_in_person_volunteers:
-        classroom_idx = 0
-        while volunteer.group_number == -1 and classroom_idx < len(src.__init__.classroom_list):
-            classroom = src.__init__.classroom_list[classroom_idx]
-            if volunteer_can_make_class(volunteer, classroom) and \
-                    classroom.volunteers_assigned < src.globalAttributes.MAX_TEAM_SIZE:
-                classroom.assign_volunteer(volunteer)
-            else:
-                classroom_idx += 1
+        print("WARNING: " + partner1.email + "'s partner group could not be assigned together because of scheduling "
+                                             "conflicts.")
 
 
 # Assigns team leaders to classroom groups that don't have them. Prioritizes assigning team leaders to partially-filled
@@ -49,23 +32,23 @@ def assign_applied_t_leaders(sorted_t_leaders):
     for t_leader in sorted_t_leaders:
         classroom_idx = 0
 
-        while t_leader.group_number == -1 and classroom_idx < len(src.globalAttributes.partially_filled_classrooms):
-            classroom = src.globalAttributes.partially_filled_classrooms[classroom_idx]
-            if volunteer_can_make_class(t_leader, classroom) and classroom.t_leader == 0:
+        while t_leader.group_number == -1 and classroom_idx < len(partially_filled_classrooms):
+            classroom = partially_filled_classrooms[classroom_idx]
+            if volunteer_can_make_class(t_leader, classroom) and not classroom.t_leader:
                 classroom.assign_volunteer(t_leader)
-                if classroom.volunteers_assigned >= src.globalAttributes.MAX_TEAM_SIZE:
-                    src.globalAttributes.partially_filled_classrooms.pop(classroom_idx)
+                if classroom.volunteers_assigned >= MAX_TEAM_SIZE:
+                    partially_filled_classrooms.pop(classroom_idx)
             else:
                 classroom_idx += 1
 
         classroom_idx = 0
 
-        while t_leader.group_number == -1 and classroom_idx < len(src.globalAttributes.empty_classrooms):
-            classroom = src.globalAttributes.empty_classrooms[classroom_idx]
+        while t_leader.group_number == -1 and classroom_idx < len(empty_classrooms):
+            classroom = empty_classrooms[classroom_idx]
             if volunteer_can_make_class(t_leader, classroom):
                 classroom.assign_volunteer(t_leader)
-                src.globalAttributes.partially_filled_classrooms.append(classroom)
-                src.globalAttributes.empty_classrooms.pop(classroom_idx)
+                partially_filled_classrooms.append(classroom)
+                empty_classrooms.pop(classroom_idx)
             else:
                 classroom_idx += 1
 
@@ -77,23 +60,22 @@ def assign_others(sorted_others):
     for volunteer in sorted_others:
         classroom_idx = 0
 
-        while volunteer.group_number == -1 and classroom_idx < len(src.globalAttributes.partially_filled_classrooms):
-            classroom = src.globalAttributes.partially_filled_classrooms[classroom_idx]
+        while volunteer.group_number == -1 and classroom_idx < len(partially_filled_classrooms):
+            classroom = partially_filled_classrooms[classroom_idx]
             if volunteer_can_make_class(volunteer, classroom):
                 classroom.assign_volunteer(volunteer)
-                if classroom.volunteers_assigned >= src.globalAttributes.MAX_TEAM_SIZE:
-                    src.globalAttributes.partially_filled_classrooms.pop(classroom_idx)
+                if classroom.volunteers_assigned >= MAX_TEAM_SIZE:
+                    partially_filled_classrooms.pop(classroom_idx)
             else:
                 classroom_idx += 1
 
         classroom_idx = 0
 
-        while volunteer.group_number == -1 and classroom_idx < len(src.globalAttributes.empty_classrooms):
-            if volunteer_can_make_class(volunteer, src.globalAttributes.empty_classrooms[classroom_idx]):
-                src.globalAttributes.empty_classrooms[classroom_idx].assign_volunteer(volunteer)
-                src.globalAttributes.partially_filled_classrooms.append(
-                    src.globalAttributes.empty_classrooms[classroom_idx])
-                src.globalAttributes.empty_classrooms.pop(classroom_idx)
+        while volunteer.group_number == -1 and classroom_idx < len(empty_classrooms):
+            if volunteer_can_make_class(volunteer, empty_classrooms[classroom_idx]):
+                empty_classrooms[classroom_idx].assign_volunteer(volunteer)
+                partially_filled_classrooms.append(empty_classrooms[classroom_idx])
+                empty_classrooms.pop(classroom_idx)
             else:
                 classroom_idx += 1
 

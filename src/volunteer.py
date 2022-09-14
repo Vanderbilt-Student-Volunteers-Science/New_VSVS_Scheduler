@@ -1,6 +1,6 @@
 import src.classroom
 import src.convertSchedule
-import src.globalAttributes
+from src.__init__ import volunteer_list
 
 
 class Volunteer:
@@ -71,8 +71,8 @@ class Volunteer:
             partner2_matched = 1
         if partner3_email == '':
             partner3_matched = 1
-        while volunteer_index < len(src.__init__.volunteer_list) and partners_matched == 0:
-            volunteer = src.__init__.volunteer_list[volunteer_index]
+        while volunteer_index < len(volunteer_list) and partners_matched == 0:
+            volunteer = volunteer_list[volunteer_index]
             if volunteer.email == partner1_email:
                 self.partner_indexes.append(volunteer_index)
                 partner1_matched = 1
@@ -87,7 +87,7 @@ class Volunteer:
 
             if partner1_matched and partner2_matched and partner3_matched:
                 partners_matched = 1
-            elif volunteer == src.__init__.volunteer_list[-1]:
+            elif volunteer == volunteer_list[-1]:
                 print("WARNING: ", end='')
                 if partner1_matched == 0:
                     print(partner1_email, end=' ')
@@ -98,6 +98,7 @@ class Volunteer:
                 print("from " + self.email + "'s partner group were not found in individual application data.")
 
         self.partners = len(self.partner_indexes)
+
         if self.partners != 0:
             self.partner_free_time_array = src.convertSchedule.create_partner_schedule(self.schedule_array,
                                                                                        self.partners,
