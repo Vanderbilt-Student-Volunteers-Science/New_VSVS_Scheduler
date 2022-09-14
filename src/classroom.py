@@ -17,7 +17,7 @@ class Classroom:
         self.volunteers_assigned = 0
 
         # has a team leader?
-        self.t_leader = False
+        self.team_leader = False
 
         # time the class starts in military time
         self.class_start_time = src.convertSchedule.convert_to_military(class_start_time)
@@ -47,8 +47,8 @@ class Classroom:
     def assign_volunteer(self, volunteer):
         self.volunteers_assigned += 1
         volunteer.set_group_number(self.group_number)
-        if not self.t_leader and volunteer.leader_app:
-            self.t_leader = True
+        if not self.team_leader and volunteer.leader_app:
+            self.team_leader = True
             volunteer.assign_t_leader()
 
     # unassigns volunteers from a classroom and returns a list of the volunteers that were unassigned
@@ -64,7 +64,7 @@ class Classroom:
 
         # make classroom empty
         self.volunteers_assigned = 0
-        self.t_leader = False
+        self.team_leader = False
         return unassigned_volunteers
 
     def __str__(self):

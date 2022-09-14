@@ -34,7 +34,7 @@ def assign_applied_t_leaders(sorted_t_leaders):
 
         while t_leader.group_number == -1 and classroom_idx < len(partially_filled_classrooms):
             classroom = partially_filled_classrooms[classroom_idx]
-            if volunteer_can_make_class(t_leader, classroom) and not classroom.t_leader:
+            if volunteer_can_make_class(t_leader, classroom) and not classroom.team_leader:
                 classroom.assign_volunteer(t_leader)
                 if classroom.volunteers_assigned >= MAX_TEAM_SIZE:
                     partially_filled_classrooms.pop(classroom_idx)
