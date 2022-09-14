@@ -59,7 +59,6 @@ class Classroom:
                 # unassign volunteers
                 volunteer.set_group_number(-1)
                 volunteer.assigned_t_leader = False
-                volunteer.assigned_driver = False
                 unassigned_volunteers.append(volunteer)
 
         # make classroom empty

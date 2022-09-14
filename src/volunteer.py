@@ -44,9 +44,6 @@ class Volunteer:
         # This is only set in the Volunteer object of the first partner in the group.
         self.partner_free_time_array = 0
 
-        # Was the volunteer assigned to be the driver for their group?
-        self.assigned_driver = False
-
         # Was the volunteer assigned to be their group's team leader?
         self.assigned_t_leader = False
 

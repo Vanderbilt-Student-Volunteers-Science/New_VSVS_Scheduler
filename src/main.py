@@ -88,6 +88,7 @@ def main():
                                       class_end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
                                       day_of_week=row[f'Days (Class {class_num} of {number_of_classes})'].strip()
                                       )
+                print(teacher_name + ' ' + str(classroom.class_start_time) + " "+ str(classroom.class_end_time))
                 classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
@@ -167,24 +168,30 @@ def main():
     group_size = [0] * 108
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
-        # FIXME: should we add a header row for this output file?
-        for volunteer_id, volunteer in enumerate(volunteer_list):
+        csv_writer.writerow(
+            ['Group Number', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Teacher', 'Day',
+             'Start Time', 'End Time']
+        )
+        for volunteer in volunteer_list:
             if volunteer.group_number == -1:
                 unassigned_volunteers += 1
             else:
                 group_size[volunteer.group_number] += 1
+                assigned_class = classroom_list[volunteer.group_number-4]
+                start_time = str(assigned_class.class_start_time)
+                end_time = str(assigned_class.class_end_time)
             csv_writer.writerow(
                 [
-                    volunteer_id,
                     volunteer.group_number,
                     volunteer.first,
                     volunteer.last,
                     volunteer.email,
                     volunteer.phone,
-                    '',
-                    '',
-                    int(volunteer.assigned_driver),  # convert True/False to 1/0
-                    int(volunteer.assigned_t_leader)  # convert True/False to 1/0
+                    (lambda x: 'True' if x else '')(volunteer.assigned_t_leader),
+                    assigned_class.teacher_name,
+                    assigned_class.day_of_week,
+                    (lambda x: x[0:2] + ':' + x[2:] if len(x) == 4 else x[0:1] + ":" + x[1:])(start_time),
+                    (lambda x: x[0:2] + ':' + x[2:] if len(x) == 4 else x[0:1] + ":" + x[1:])(end_time)
                 ]
             )
 
