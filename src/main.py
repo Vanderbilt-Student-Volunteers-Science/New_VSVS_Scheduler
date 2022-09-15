@@ -4,7 +4,7 @@ import os
 from src.assign import assign_partners, volunteer_can_make_class, sort_by_availability, \
     assign_applied_t_leaders, assign_others
 from src.classroom import Classroom
-from src.volunteer import Volunteer
+from src.volunteer import Volunteer, import_volunteer_info
 from src.__init__ import volunteer_list, partially_filled_classrooms, empty_classrooms, MAX_TEAM_SIZE, classroom_list
 
 
@@ -13,30 +13,7 @@ from src.__init__ import volunteer_list, partially_filled_classrooms, empty_clas
 
 def main():
     #  IMPORT FILE DATA
-
-    # import individual application data from individuals.csv
-    with open('../data/individuals.csv', 'r') as individuals_csv:  # opens individuals.csv as individuals_csv
-        # returns each row in the csv as a dictionary. The first row in the csv is used for the keys of the dictionary
-        csv_reader = csv.DictReader(individuals_csv)
-
-        for row in csv_reader:  # for each individual
-            # pull data from row in the csv, create a Volunteer object, and add it to global variable volunteer_list
-
-            volunteer = Volunteer(
-                first=row['First Name'].strip(),
-                last=row['Last Name'].strip(),
-                phone=row['Phone Number'],
-                email=row['Email'].strip(),
-                robotics_interest=False,  # no robotics for Fall 2020
-                special_needs_interest=(lambda x: True if x == 'Yes' else False)(
-                    row['Special Needs Students']),
-                leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
-                imported_schedule=list(row.values())[16:50],
-            )
-            volunteer_list.append(volunteer)
-
-    print('There are {} volunteers.'.format(len(volunteer_list)))
-
+    import_volunteer_info('../data/individuals.csv')
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
         # returns each row in the csv as a dictionary. The first row in the csv is used for the keys of the dictionary
@@ -88,7 +65,7 @@ def main():
                                       class_end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
                                       day_of_week=row[f'Days (Class {class_num} of {number_of_classes})'].strip()
                                       )
-                print(teacher_name + ' ' + str(classroom.class_start_time) + " "+ str(classroom.class_end_time))
+                print(teacher_name + ' ' + str(classroom.start_time) + " " + str(classroom.end_time))
                 classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
@@ -178,8 +155,8 @@ def main():
             else:
                 group_size[volunteer.group_number] += 1
                 assigned_class = classroom_list[volunteer.group_number-4]
-                start_time = str(assigned_class.class_start_time)
-                end_time = str(assigned_class.class_end_time)
+                start_time = str(assigned_class.start_time)
+                end_time = str(assigned_class.end_time)
             csv_writer.writerow(
                 [
                     volunteer.group_number,
@@ -188,7 +165,7 @@ def main():
                     volunteer.email,
                     volunteer.phone,
                     (lambda x: 'True' if x else '')(volunteer.assigned_t_leader),
-                    assigned_class.teacher_name,
+                    assigned_class.teacher,
                     assigned_class.day_of_week,
                     (lambda x: x[0:2] + ':' + x[2:] if len(x) == 4 else x[0:1] + ":" + x[1:])(start_time),
                     (lambda x: x[0:2] + ':' + x[2:] if len(x) == 4 else x[0:1] + ":" + x[1:])(end_time)

@@ -9,7 +9,7 @@ class Classroom:
 
         # TODO: make group_number the index of classroom in classroom_list
         self.group_number = group_number
-        self.teacher_name = teacher_name
+        self.teacher = teacher_name
         self.teacher_phone = teacher_phone
         self.school = school
         self.teacher_email = teacher_email
@@ -20,17 +20,17 @@ class Classroom:
         self.team_leader = False
 
         # time the class starts in military time
-        self.class_start_time = src.convertSchedule.convert_to_military(class_start_time)
+        self.start_time = src.convertSchedule.convert_to_military(class_start_time)
 
         # time the class ends in military time
-        self.class_end_time = src.convertSchedule.convert_to_military(class_end_time)
+        self.end_time = src.convertSchedule.convert_to_military(class_end_time)
 
         # the latest time a volunteer can start being available and be able to make this lesson
-        self.free_time_start = src.convertSchedule.calculate_free_time_start(self.class_start_time, SCHOOL_TRAVEL_TIME)
+        self.free_time_start = src.convertSchedule.calculate_free_time_start(self.start_time, SCHOOL_TRAVEL_TIME)
 
         # minutes of free time needed starting at free_time_start for a volunteer to be able to make this lesson
-        self.volunteer_time_needed = src.convertSchedule.calculate_free_time_needed(self.class_start_time,
-                                                                                    self.class_end_time,
+        self.volunteer_time_needed = src.convertSchedule.calculate_free_time_needed(self.start_time,
+                                                                                    self.end_time,
                                                                                     SCHOOL_TRAVEL_TIME)
 
         # the index in the array of Volunteer attribute free_time_array (or partner_schedule) that needs to be
@@ -67,4 +67,4 @@ class Classroom:
         return unassigned_volunteers
 
     def __str__(self):
-        return self.teacher_name + ' at ' + self.school
+        return self.teacher + ' at ' + self.school

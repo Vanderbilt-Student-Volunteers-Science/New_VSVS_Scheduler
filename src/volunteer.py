@@ -1,13 +1,53 @@
+import csv
+
 import src.classroom
 import src.convertSchedule
 from src.__init__ import volunteer_list
 
 
+def import_volunteer_info(file_name: str):
+    """ reads csv with volunteer information and creates a Volunteer object from each row
+
+        :param file_name: filepath to the csv with volunteer info
+    """
+
+    with open(file_name, 'r') as individuals_csv:  # opens csv as individuals_csv
+        # returns each row in the csv as a dictionary. The first row in the csv is used for the keys of the dictionary
+        csv_reader = csv.DictReader(individuals_csv)
+
+        for row in csv_reader:  # for each individual
+            # pull data from row in the csv, create a Volunteer object, and add it to global variable volunteer_list
+            volunteer = Volunteer(
+                first=row['First Name'].strip(),
+                last=row['Last Name'].strip(),
+                phone=row['Phone Number'],
+                email=row['Email'].strip(),
+                robotics_interest=False,  # no robotics for Fall 2020
+                special_needs_interest=(lambda x: True if x == 'Yes' else False)(row['Special Needs Students']),
+                leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
+                imported_schedule=list(row.values())[16:50],
+            )
+            volunteer_list.append(volunteer)
+
+    print('There are {} volunteers.'.format(len(volunteer_list)))
+
+
 class Volunteer:
     """This class stores volunteer information: first name, last name, phone, email, robotics interest, special needs
     interest, leadership application, schedule """
+
     def __init__(self, first: str, last: str, phone: str, email: str, robotics_interest: bool,
                  special_needs_interest: bool, leader_app: bool, imported_schedule: list):
+        """
+        :param first:
+        :param last:
+        :param phone:
+        :param email:
+        :param robotics_interest:
+        :param special_needs_interest:
+        :param leader_app:
+        :param imported_schedule:
+        """
         self.first = first
         self.last = last
         self.phone = phone
