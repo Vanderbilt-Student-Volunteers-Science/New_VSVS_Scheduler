@@ -1,4 +1,4 @@
-# Global variables
+# Contains global constants and variables for VSVS Volunteer Sorting Program
 volunteer_list = []  # contains all the Volunteer objects, one for each VSVS volunteer
 classroom_list = []  # contains all the Classroom objects, one for each VSVS group that needs to be created
 partially_filled_classrooms = []  # contains all Classroom objects that are partially filled

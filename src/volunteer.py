@@ -39,14 +39,16 @@ class Volunteer:
     def __init__(self, first: str, last: str, phone: str, email: str, robotics_interest: bool,
                  special_needs_interest: bool, leader_app: bool, imported_schedule: list):
         """
-        :param first:
-        :param last:
-        :param phone:
-        :param email:
-        :param robotics_interest:
-        :param special_needs_interest:
-        :param leader_app:
-        :param imported_schedule:
+        :param first: first name
+        :param last: last name
+        :param phone: cell phone number
+        :param email: vanderbilt email
+        :param robotics_interest: Are they interested in robotics? Yes=true, No=false
+        :param special_needs_interest: Are they interested in working with special needs students? Yes=true, No=false
+        :param leader_app: Did they apply to be a team leader? Yes=true, No=false
+        :param imported_schedule: A list with an element for each 15-min block. The elements in the list are each a
+                                  string of letters. The letters in the string indicate the days of the week during
+                                  which the volunteer is not available for that time block.
         """
         self.first = first
         self.last = last
@@ -54,9 +56,7 @@ class Volunteer:
         self.email = email.lower()
         self.robotics_interest = robotics_interest
         self.special_needs_interest = special_needs_interest
-
-        # if volunteer applied to be a team leader
-        self.leader_app = leader_app
+        self.leader_app = leader_app  # if volunteer applied to be a team leader
 
         # TODO Convert directly from input schedule to free_time_array in one method. Don't need convert_to_schedule_array.
         # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday

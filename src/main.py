@@ -8,8 +8,8 @@ from src.volunteer import Volunteer, import_volunteer_info
 from src.__init__ import volunteer_list, partially_filled_classrooms, empty_classrooms, MAX_TEAM_SIZE, classroom_list
 
 
-# All global constants and variables are in globalAttributes.py (If we included them in here, it would result in
-# circular imports)
+# All global constants and variables are in init.py (If we included them in here, it would result in
+# circular imports and )
 
 def main():
     #  IMPORT FILE DATA
@@ -120,9 +120,6 @@ def main():
     for volunteer in volunteer_list:
         if volunteer.group_number == -1:
             unassigned_volunteers.append(volunteer)
-    assign_others(sort_by_availability(unassigned_volunteers))
-
-
     assign_others(sort_by_availability(unassigned_volunteers))
 
     # OUTPUT RESULTS
