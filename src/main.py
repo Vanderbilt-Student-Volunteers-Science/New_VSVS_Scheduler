@@ -8,7 +8,7 @@ from src.volunteer import Volunteer, import_volunteers, import_partners
 from src.__init__ import volunteer_list, partially_filled_classrooms, empty_classrooms, MAX_TEAM_SIZE, classroom_list
 
 
-# All global constants and variables are in init.py (If we included them in here, it would result in
+# All global constants and variables are in __init__.py (If we included them in here, it would result in
 # circular imports and )
 
 def main():

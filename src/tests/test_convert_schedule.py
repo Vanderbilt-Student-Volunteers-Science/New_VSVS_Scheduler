@@ -1,7 +1,7 @@
 import unittest
 
 from src import convertSchedule
-from src.globalAttributes import SCHOOL_TRAVEL_TIME
+from src.__init__ import SCHOOL_TRAVEL_TIME
 
 
 class TestConvertSchedule(unittest.TestCase):
