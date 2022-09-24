@@ -4,7 +4,7 @@ import os
 from src.assign import assign_partners, volunteer_can_make_class, sort_by_availability, \
     assign_applied_t_leaders, assign_others
 from src.classroom import Classroom
-from src.volunteer import Volunteer, import_volunteer_info
+from src.volunteer import Volunteer, import_volunteers, import_partners
 from src.__init__ import volunteer_list, partially_filled_classrooms, empty_classrooms, MAX_TEAM_SIZE, classroom_list
 
 
@@ -13,31 +13,8 @@ from src.__init__ import volunteer_list, partially_filled_classrooms, empty_clas
 
 def main():
     #  IMPORT FILE DATA
-    import_volunteer_info('../data/individuals.csv')
-    # import partner application data from partners.csv
-    with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
-        # returns each row in the csv as a dictionary. The first row in the csv is used for the keys of the dictionary
-        csv_reader = csv.DictReader(partners_csv)
-        for row in csv_reader:  # for each group of partners
-            number_of_partners = int(row['Number of Partners'])  # number of partners in the group
-            group = [] # list of the partner volunteer objects
-            for i in range(number_of_partners): # for each partner in the group
-                volunteer_found = False
-                volunteer_index = 0
-                while volunteer_index < len(volunteer_list) and not volunteer_found:
-                    volunteer = volunteer_list[volunteer_index]
-                    volunteer_index += 1
-                    if row[f'Group Member #{i + 1}'].lower() == volunteer.email:
-                        volunteer_found = True
-                        group.append(volunteer) # add the volunteer object for the partner to the group list
-                    # if we've iterated through the entire list, and we can't find the partner
-                    elif volunteer == volunteer_list[-1]:
-                        print(f'WARNING: Group Member #{i + 1} ' + row[f'Group Member #{i + 1}'] + 'in group was not '
-                                                                                                   'found in '
-                                                                                                   'individual '
-                                                                                                   'application data.')
-            if len(group) > 1:
-                group[0].add_partners(group)
+    import_volunteers('../data/individuals.csv')  # import volunteer application data from volunteers.csv
+    import_partners('../data/partners.csv')  # import partner application data from partners.csv
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv

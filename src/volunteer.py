@@ -5,7 +5,7 @@ import src.convertSchedule
 from src.__init__ import volunteer_list
 
 
-def import_volunteer_info(file_name: str):
+def import_volunteers(file_name: str):
     """ reads csv with volunteer information and creates a Volunteer object from each row
 
         :param file_name: filepath to the csv with volunteer info
@@ -14,7 +14,7 @@ def import_volunteer_info(file_name: str):
     with open(file_name, 'r') as individuals_csv:  # opens csv as individuals_csv
         # returns each row in the csv as a dictionary. The first row in the csv is used for the keys of the dictionary
         csv_reader = csv.DictReader(individuals_csv)
-        volunteer_index =0
+        volunteer_index = 0
         for row in csv_reader:  # for each individual
             # pull data from row in the csv, create a Volunteer object, and add it to global variable volunteer_list
             volunteer_index += 1
@@ -32,6 +32,37 @@ def import_volunteer_info(file_name: str):
             volunteer_list.append(volunteer)
 
     print('There are {} volunteers.'.format(len(volunteer_list)))
+
+
+def import_partners(file_name: str):
+    """
+
+    :param file_name:
+    :return:
+    """
+    with open(file_name) as partners_csv:  # opens partners.csv as partners_csv
+        # returns each row in the csv as a dictionary. The first row in the csv is used for the keys of the dictionary
+        csv_reader = csv.DictReader(partners_csv)
+        for row in csv_reader:  # for each group of partners
+            number_of_partners = int(row['Number of Partners'])  # number of partners in the group
+            group = []  # list of the partner volunteer objects
+            for i in range(number_of_partners):  # for each partner in the group
+                volunteer_found = False
+                volunteer_index = 0
+                while volunteer_index < len(volunteer_list) and not volunteer_found:
+                    volunteer = volunteer_list[volunteer_index]
+                    volunteer_index += 1
+                    if row[f'Group Member #{i + 1}'].lower() == volunteer.email:
+                        volunteer_found = True
+                        group.append(volunteer)  # add the volunteer object for the partner to the group list
+                    # if we've iterated through the entire list, and we can't find the partner
+                    elif volunteer == volunteer_list[-1]:
+                        print(f'WARNING: Group Member #{i + 1} ' + row[f'Group Member #{i + 1}'] + 'in group was not '
+                                                                                                   'found in '
+                                                                                                   'individual '
+                                                                                                   'application data.')
+            if len(group) > 1:
+                group[0].add_partners(group)
 
 
 class Volunteer:
