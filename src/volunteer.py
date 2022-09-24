@@ -14,10 +14,12 @@ def import_volunteer_info(file_name: str):
     with open(file_name, 'r') as individuals_csv:  # opens csv as individuals_csv
         # returns each row in the csv as a dictionary. The first row in the csv is used for the keys of the dictionary
         csv_reader = csv.DictReader(individuals_csv)
-
+        volunteer_index =0
         for row in csv_reader:  # for each individual
             # pull data from row in the csv, create a Volunteer object, and add it to global variable volunteer_list
+            volunteer_index += 1
             volunteer = Volunteer(
+                index=volunteer_index,
                 first=row['First Name'].strip(),
                 last=row['Last Name'].strip(),
                 phone=row['Phone Number'],
@@ -36,7 +38,7 @@ class Volunteer:
     """This class stores volunteer information: first name, last name, phone, email, robotics interest, special needs
     interest, leadership application, schedule """
 
-    def __init__(self, first: str, last: str, phone: str, email: str, robotics_interest: bool,
+    def __init__(self, index: int, first: str, last: str, phone: str, email: str, robotics_interest: bool,
                  special_needs_interest: bool, leader_app: bool, imported_schedule: list):
         """
         :param first: first name
@@ -50,6 +52,7 @@ class Volunteer:
                                   string of letters. The letters in the string indicate the days of the week during
                                   which the volunteer is not available for that time block.
         """
+        self.index = index
         self.first = first
         self.last = last
         self.phone = phone
@@ -91,51 +94,17 @@ class Volunteer:
         # Set after partners and drivers are assigned.
         self.classrooms_possible = 0
 
-    # Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of the first
-    # partner in the group (the self object).
-    def add_partners(self, partner1_email, partner2_email, partner3_email):
-        partner1_email = partner1_email.lower()
-        partner2_email = partner2_email.lower()
-        partner3_email = partner3_email.lower()
+    def add_partners(self, group: list):
+        """
+        Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of the first
+        partner in the group (the self object)
 
-        volunteer_index = 0
-
-        partner1_matched = 0
-        partner2_matched = 0
-        partner3_matched = 0
-        partners_matched = 0
-        if partner2_email == '':
-            partner2_matched = 1
-        if partner3_email == '':
-            partner3_matched = 1
-        while volunteer_index < len(volunteer_list) and partners_matched == 0:
-            volunteer = volunteer_list[volunteer_index]
-            if volunteer.email == partner1_email:
-                self.partner_indexes.append(volunteer_index)
-                partner1_matched = 1
-            elif volunteer.email == partner2_email:
-                self.partner_indexes.append(volunteer_index)
-                partner2_matched = 1
-            elif volunteer.email == partner3_email:
-                self.partner_indexes.append(volunteer_index)
-                partner3_matched = 1
-
-            volunteer_index += 1
-
-            if partner1_matched and partner2_matched and partner3_matched:
-                partners_matched = 1
-            elif volunteer == volunteer_list[-1]:
-                print("WARNING: ", end='')
-                if partner1_matched == 0:
-                    print(partner1_email, end=' ')
-                if partner2_matched == 0:
-                    print(partner2_email, end=' ')
-                if partner3_matched == 0:
-                    print(partner3_email, end=' ')
-                print("from " + self.email + "'s partner group were not found in individual application data.")
-
-        self.partners = len(self.partner_indexes)
-
+        :param group:
+        :return:
+        """
+        self.partners = len(group)
+        for partner in group:
+            self.partner_indexes.append(partner.index)
         if self.partners != 0:
             self.partner_free_time_array = src.convertSchedule.create_partner_schedule(self.schedule_array,
                                                                                        self.partners,

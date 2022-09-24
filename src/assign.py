@@ -1,13 +1,16 @@
 from src.__init__ import MAX_TEAM_SIZE, partially_filled_classrooms, empty_classrooms, classroom_list, volunteer_list
 
 
-# Assigns a group of partners to a classroom they all can make (if there is one) using the partner_schedule attribute of
-# the first partner's Volunteer object. When a group is assigned, uses classroom.assign_volunteer to reflect this in the
-# Volunteer objects of each of the volunteers in the group and the Classroom object of the classroom the group is being
-# assigned to.
-# partner1 - the Volunteer object of the first partner in the group; the Volunteer object that contains the information
-#            of the group of partners (only one is set when partners.csv is imported)
 def assign_partners(partner1):
+    """
+    Assigns a group of partners to a classroom they all can make (if there is one) using partner1.partner_schedule.
+    When a group is assigned, uses classroom.assign_volunteer() for each partner (including partner1).
+
+
+    :param partner1:the Volunteer object of the first partner in the group; the Volunteer object that contains the
+                    information of the group of partners (only one is set when partners.csv is imported)
+    :return:
+    """
     classroom_idx = 0
 
     while partner1.group_number == -1 and classroom_idx < len(classroom_list):

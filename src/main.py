@@ -17,29 +17,27 @@ def main():
     # import partner application data from partners.csv
     with open('../data/partners.csv') as partners_csv:  # opens partners.csv as partners_csv
         # returns each row in the csv as a dictionary. The first row in the csv is used for the keys of the dictionary
-        csv_reader = csv.DictReader(partners_csv)  # divides partners_csv by commas
+        csv_reader = csv.DictReader(partners_csv)
         for row in csv_reader:  # for each group of partners
-
-            # finds first volunteer in partner group in volunteer_list and sets their Volunteer object
-            # attributes partners, partner_indexes, and partner_schedule
-            volunteer_index = 0
-            first_volunteer_matched = 0
-            while volunteer_index < len(volunteer_list) and first_volunteer_matched == 0:
-                volunteer = volunteer_list[volunteer_index]
-                volunteer_index += 1
-                if row['Email Address'].lower() == volunteer.email:
-                    if row['Group Member #4'] != '':
-                        volunteer.add_partners(row['Group Member #2'], row['Group Member #3'], row['Group Member #4'])
-                    elif row['Group Member #3'] != '':
-                        volunteer.add_partners(row['Group Member #2'], row['Group Member #3'], '')
-                    else:
-                        volunteer.add_partners(row['Group Member #2'], '', '')
-                    first_volunteer_matched = 1
-
-                # if no volunteers in volunteer_list have same email, print an alert
-                elif volunteer == volunteer_list[-1]:
-                    print('WARNING: ' + row['Email Address'] + 'first volunteer in their partner group was not found '
-                                                               'in individual application data.')
+            number_of_partners = int(row['Number of Partners'])  # number of partners in the group
+            group = [] # list of the partner volunteer objects
+            for i in range(number_of_partners): # for each partner in the group
+                volunteer_found = False
+                volunteer_index = 0
+                while volunteer_index < len(volunteer_list) and not volunteer_found:
+                    volunteer = volunteer_list[volunteer_index]
+                    volunteer_index += 1
+                    if row[f'Group Member #{i + 1}'].lower() == volunteer.email:
+                        volunteer_found = True
+                        group.append(volunteer) # add the volunteer object for the partner to the group list
+                    # if we've iterated through the entire list, and we can't find the partner
+                    elif volunteer == volunteer_list[-1]:
+                        print(f'WARNING: Group Member #{i + 1} ' + row[f'Group Member #{i + 1}'] + 'in group was not '
+                                                                                                   'found in '
+                                                                                                   'individual '
+                                                                                                   'application data.')
+            if len(group) > 1:
+                group[0].add_partners(group)
 
     # import classroom information from classrooms.csv
     with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
@@ -53,17 +51,16 @@ def main():
             number_of_classes = row['Number of Classes']
             for i in range(int(number_of_classes)):  # for all of that teacher's classes
                 group_num += 1
-                # class_num keeps track of which class out of the total number_of_classes is being created
-                class_num = i + 1
+                class_num = i + 1  # class_num keeps track of which class out of the total being created
                 # creates a Classroom object and adds it to global variable classroom_list
                 classroom = Classroom(group_number=group_num,
                                       teacher_name=teacher_name,
                                       teacher_phone=teacher_phone,
                                       school=school,
-                                      teacher_email=email,
-                                      class_start_time=row[f'Start Time (Class {class_num} of {number_of_classes})'],
-                                      class_end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
-                                      day_of_week=row[f'Days (Class {class_num} of {number_of_classes})'].strip()
+                                      email=email,
+                                      start_time=row[f'Start Time (Class {class_num} of {number_of_classes})'],
+                                      end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
+                                      day=row[f'Days (Class {class_num} of {number_of_classes})'].strip()
                                       )
                 print(teacher_name + ' ' + str(classroom.start_time) + " " + str(classroom.end_time))
                 classroom_list.append(classroom)
@@ -151,7 +148,7 @@ def main():
                 unassigned_volunteers += 1
             else:
                 group_size[volunteer.group_number] += 1
-                assigned_class = classroom_list[volunteer.group_number-4]
+                assigned_class = classroom_list[volunteer.group_number - 4]
                 start_time = str(assigned_class.start_time)
                 end_time = str(assigned_class.end_time)
             csv_writer.writerow(
