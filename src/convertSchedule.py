@@ -98,7 +98,7 @@ def calculate_free_time_start(class_start_time, school_travel_time):
 
 # TODO: import travel times directly from globalAttributes to here
 # TODO: use ints not floats
-def calculate_free_time_needed(class_start_time, class_end_time, school_travel_time):
+def calculate_free_time_needed(class_start_time, class_end_time, school_travel_time: int):
     """ Returns minutes of free time needed to perform a lesson, including driving and teaching time.
 
     :param class_start_time: time class starts in military time
