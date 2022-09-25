@@ -68,8 +68,7 @@ class Classroom:
             volunteer.assign_t_leader()
 
     def empty_classroom(self):
-        """
-        Unassigns all volunteers from a classroom
+        """Unassigns all volunteers from a classroom
 
         :return: list of the volunteers that were unassigned
         """

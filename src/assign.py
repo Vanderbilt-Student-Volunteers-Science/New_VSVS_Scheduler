@@ -1,4 +1,6 @@
 from src.__init__ import MAX_TEAM_SIZE, partially_filled_classrooms, empty_classrooms, classroom_list, volunteer_list
+from src.classroom import Classroom
+from src.volunteer import Volunteer
 
 
 def assign_partners(partner1):
@@ -27,11 +29,15 @@ def assign_partners(partner1):
                                              "conflicts.")
 
 
-# Assigns team leaders to classroom groups that don't have them. Prioritizes assigning team leaders to partially-filled
-# classroom groups over empty classroom groups.
-# sorted_applied_t_leaders - a list of unassigned volunteers that applied to be team leaders sorted from the fewest to
-#                            greatest number of classrooms they can make
-def assign_applied_t_leaders(sorted_t_leaders):
+def assign_applied_t_leaders(sorted_t_leaders: list):
+    """ Assigns team leaders to classroom groups that don't have them. Prioritizes assigning team leaders to
+    partially-filled classroom groups over empty classroom groups.
+
+    :param sorted_t_leaders: a list of unassigned volunteers that applied to be team leaders sorted from the fewest to
+    the greatest number of classrooms they can make
+
+    :return:
+    """
     for t_leader in sorted_t_leaders:
         classroom_idx = 0
 
@@ -56,10 +62,14 @@ def assign_applied_t_leaders(sorted_t_leaders):
                 classroom_idx += 1
 
 
-# Assigns all unassigned volunteers to classroom groups. Prioritizes assigning each volunteer to a partially-filled
-# classroom group over an empty classroom group.
-# sorted_others - a list of unassigned volunteers sorted from the fewest to greatest number of classrooms they can make
-def assign_others(sorted_others):
+def assign_others(sorted_others: list):
+    """Assigns all unassigned volunteers to classroom groups. Prioritizes assigning each volunteer to a partially-filled
+    classroom group over an empty classroom group.
+
+    :param sorted_others: a list of unassigned volunteers sorted from the fewest to the greatest number of classrooms
+    they can make
+    :return:
+    """
     for volunteer in sorted_others:
         classroom_idx = 0
 
@@ -83,18 +93,24 @@ def assign_others(sorted_others):
                 classroom_idx += 1
 
 
-# Returns boolean if volunteer can make a classroom.
-# volunteer - Volunteer object of volunteer being checked
-# classroom - Classroom object of classroom being checked
-def volunteer_can_make_class(volunteer, classroom):
+def volunteer_can_make_class(volunteer: Volunteer, classroom: Classroom):
+    """ Returns boolean if volunteer can make a classroom.
+
+    :param volunteer: Volunteer object of volunteer being checked
+    :param classroom: Classroom object of classroom being checked
+    :return:
+    """
     return volunteer.free_time_array[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
 
 
-# Returns boolean if a partner group can make a class.
-# partner -   Volunteer object of the first partner in the group; the Volunteer object that contains the information
-#             of the group of partners (only one is set when partners.csv is imported)
-# classroom - Classroom object of classroom being checked
-def partners_can_make_class(partner, classroom):
+def partners_can_make_class(partner: Volunteer, classroom: Classroom):
+    """ Returns boolean if a partner group can make a class.
+
+    :param partner: Volunteer object of the first partner in the group; the Volunteer object that contains the
+    information of the group of partners (only one is set when partners.csv is imported)
+    :param classroom: Classroom object of classroom being checked
+    :return:
+    """
     return partner.partner_free_time_array[classroom.start_time_schedule_index] >= classroom.volunteer_time_needed
 
 
@@ -104,7 +120,11 @@ def return_classrooms_possible(volunteer):
     return volunteer.classrooms_possible
 
 
-# Sorts a list of Volunteer objects from the least to greatest classrooms_possible
-def sort_by_availability(volunteer_list):
+def sort_by_availability(volunteer_list: list):
+    """ Sorts a list of Volunteer objects from the least to the greatest classrooms_possible
+
+    :param volunteer_list:
+    :return:
+    """
     volunteer_list.sort(key=return_classrooms_possible)
     return volunteer_list
