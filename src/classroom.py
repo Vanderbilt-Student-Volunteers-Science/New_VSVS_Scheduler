@@ -4,13 +4,12 @@ from __init__ import volunteer_list, SCHOOL_TRAVEL_TIME
 
 class Classroom:
     """
-    This class stores classroom information: group number, teacher name, teacher phone, school, teacher's email, class
-     start time, class end time, day of the week """
+    This class stores classroom information
+    """
 
     def __init__(self, group_number: int, teacher_name: str, teacher_phone: str, school: str, email: str,
                  start_time: str, end_time: str, day: str):
         """
-
         :param group_number:
         :param teacher_name:
         :param teacher_phone:
