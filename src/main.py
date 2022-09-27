@@ -39,7 +39,6 @@ def main():
                                       end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
                                       day=row[f'Days (Class {class_num} of {number_of_classes})'].strip()
                                       )
-                print(teacher_name + ' ' + str(classroom.start_time) + " " + str(classroom.end_time))
                 classroom_list.append(classroom)
 
     # ASSIGN VOLUNTEERS
@@ -142,6 +141,28 @@ def main():
                     (lambda x: x[0:2] + ':' + x[2:] if len(x) == 4 else x[0:1] + ":" + x[1:])(end_time)
                 ]
             )
+
+        with open('../results/classrooms.csv', 'w', newline='') as classrooms_csv:
+            csv_writer = csv.writer(classrooms_csv, delimiter=',')
+            csv_writer.writerow(
+                ['Group Number', 'Teacher', 'Phone', 'School', 'School Phone', 'Email', 'Grade', 'Start Time',
+                 'End Time', 'Day']
+            )
+            for classroom in classroom_list:
+                csv_writer.writerow(
+                    [
+                        classroom.group_number,
+                        classroom.teacher,
+                        '',
+                        classroom.school,
+                        '',
+                        classroom.teacher_email,
+                        '',
+                        classroom.start_time,
+                        classroom.end_time,
+                        classroom.day_of_week
+                    ]
+                )
 
     print('There were {} unassigned volunteers.'.format(unassigned_volunteers))
 
