@@ -17,7 +17,7 @@ def main():
     import_partners('../data/partners.csv')  # import partner application data from partners.csv
 
     # import classroom information from classrooms.csv
-    with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
+    with open('../data/classrooms.csv') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
         csv_reader = csv.DictReader(classrooms_csv)
         group_num = 3
         for row in csv_reader:  # for each teacher application
