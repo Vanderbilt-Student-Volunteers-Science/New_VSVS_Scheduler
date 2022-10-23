@@ -12,6 +12,7 @@ from src.__init__ import volunteer_list, partially_filled_classrooms, empty_clas
 # circular imports and )
 
 def main():
+    print("world")
     #  IMPORT FILE DATA
     import_volunteers('../data/individuals.csv')  # import volunteer application data from volunteers.csv
     import_partners('../data/partners.csv')  # import partner application data from partners.csv
