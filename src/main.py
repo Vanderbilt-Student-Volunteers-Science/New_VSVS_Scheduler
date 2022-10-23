@@ -3,8 +3,7 @@ import os
 
 from src.assign import assign_partners, volunteer_can_make_class, sort_by_availability, \
     assign_applied_t_leaders, assign_others
-from src.classroom import Classroom
-from src.volunteer import Volunteer, import_volunteers, import_partners
+
 from src.__init__ import volunteer_list, partially_filled_classrooms, empty_classrooms, MAX_TEAM_SIZE, classroom_list
 
 
@@ -12,41 +11,7 @@ from src.__init__ import volunteer_list, partially_filled_classrooms, empty_clas
 # circular imports and )
 
 def main():
-    #  IMPORT FILE DATA
-    import_volunteers('../data/individuals.csv')  # import volunteer application data from volunteers.csv
-    import_partners('../data/partners.csv')  # import partner application data from partners.csv
 
-    # import classroom information from classrooms.csv
-    with open('../data/classrooms.csv', 'r') as classrooms_csv:  # opens classrooms.csv as classrooms_csv
-        csv_reader = csv.DictReader(classrooms_csv)
-        group_num = 3
-        for row in csv_reader:  # for each teacher application
-            teacher_name = row['Name']
-            teacher_phone = row['Cell Phone Number']
-            school = row['School']
-            email = row['Email Address']
-            number_of_classes = row['Number of Classes']
-            for i in range(int(number_of_classes)):  # for all of that teacher's classes
-                group_num += 1
-                class_num = i + 1  # class_num keeps track of which class out of the total being created
-                # creates a Classroom object and adds it to global variable classroom_list
-                classroom = Classroom(group_number=group_num,
-                                      teacher_name=teacher_name,
-                                      teacher_phone=teacher_phone,
-                                      school=school,
-                                      email=email,
-                                      start_time=row[f'Start Time (Class {class_num} of {number_of_classes})'],
-                                      end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
-                                      day=row[f'Days (Class {class_num} of {number_of_classes})'].strip()
-                                      )
-                classroom_list.append(classroom)
-
-    # ASSIGN VOLUNTEERS
-
-    # assign partners
-    for volunteer in volunteer_list:
-        if volunteer.group_number == -1 and volunteer.partners:
-            assign_partners(volunteer)  # adds all partners to same team
 
     # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
     for volunteer in volunteer_list:

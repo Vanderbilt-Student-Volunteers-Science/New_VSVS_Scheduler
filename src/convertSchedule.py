@@ -55,34 +55,6 @@ def calculate_free_time_start(class_start_time, school_travel_time):
 # TODO: use ints not floats
 
 
-def military_to_free_time_array(day_of_week, free_time_start):
-    """ Returns the index in a free_time_array that corresponds to the time (and day of week) a lesson starts.
-
-    :param day_of_week: day of the week the lesson takes place
-    :param free_time_start: the first time a volunteer needs to be free to perform a lesson in military time
-    :return:
-    """
-    if day_of_week == "Monday":
-        day = 0
-    elif day_of_week == "Tuesday":
-        day = 1
-    elif day_of_week == "Wednesday":
-        day = 2
-    elif day_of_week == "Thursday":
-        day = 3
-    else:
-        raise ValueError('{} is an invalid day of the week.'.format(day_of_week))
-
-    hour = int(free_time_start / 100)
-    min = free_time_start % 100
-    min = int(min / 15) * 15
-    if min == 0:
-        return int((34 * day) + ((hour - 8) * 4) + 3)
-    return int((34 * day) + ((hour - 7) * 4) + ((min - 15) / 15))
-
-
-#
-
 def create_partner_schedule(volunteer_schedule_array, num_partners, partner_indexes):
     """ Creates a free_time_array for a group of partners.
 
@@ -118,15 +90,3 @@ def create_partner_schedule(volunteer_schedule_array, num_partners, partner_inde
     return convert_to_free_time_array(partner_schedule_array)
 
 
-def schedule_array_and(schedule_array1, schedule_array2):
-    """ Helper function for create_partner_schedule. Computes the 'and' schedule array of two schedule arrays.
-
-    :param schedule_array1:
-    :param schedule_array2:
-    :return:
-    """
-    output_array = []
-    for schedule_index in range(len(schedule_array1)):
-        output_array.append(schedule_array1[schedule_index] and schedule_array2[schedule_index])
-
-    return output_array
