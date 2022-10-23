@@ -13,6 +13,7 @@ class SorterTestCase(unittest.TestCase):
         self.scheduler.import_volunteers('test_data/individuals.csv')
         self.scheduler.import_partners('test_data/partners.csv')
         self.assertEqual(len(self.scheduler.volunteer_list), 360)
+        self.assertEqual(len(self.scheduler.unassigned_volunteers), 360)
         self.assertEqual(len(self.scheduler.partner_groups), 36)
 
     def test_classroom_import(self):

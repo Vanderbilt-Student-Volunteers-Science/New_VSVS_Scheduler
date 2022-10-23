@@ -17,6 +17,7 @@ def can_make_class(schedule: dict, classroom: Classroom):
 
 class Scheduler:
     volunteer_list = []
+    unassigned_volunteers = []
     classroom_list = []
     partner_groups = []
 
@@ -58,6 +59,7 @@ class Scheduler:
                     free_time=self.schedule_to_free_time(schedule)
                 )
                 self.volunteer_list.append(volunteer)
+                self.unassigned_volunteers.append(volunteer)
 
         print('There are {} volunteers.'.format(len(self.volunteer_list)))
 
@@ -180,34 +182,65 @@ class Scheduler:
 
         return weekly_free_time
 
-    def assign_partners(self):
+    def find_class_for_partners(self):
+        """
+        Assigns partners to a classroom they all can make based on parnters.free_time. When classroom is found,
+        classroom.assign_partners is used to assign them.
+
+        :return:
+        """
+        self.sort_classrooms_by_num_of_volunteers()
         for partners in self.partner_groups:
             class_idx = 0
             while partners.group_number == -1 and class_idx < len(self.classroom_list):
                 curr_class = self.classroom_list[class_idx]
                 if can_make_class(partners.free_time, curr_class) & (self.max_team_size - curr_class.num_of_volunteers):
-                    curr_class.assign_partners(partners)
+                    self.assign_partners(partners)
                 else:
                     class_idx += 1
             if partners.group_number == -1:
                 print("WARNING: " + partners.volunteers + "partner group could not be assigned together because of "
                                                           "scheduling conflicts.")
 
-    def classrooms_possible_for_volunteer(self, volunteer: Volunteer):
-        for volunteer in self.volunteer_list:
-            for classroom in self.classroom_list:
-                if can_make_class(volunteer.free_time, classroom):
-                    volunteer.classrooms_possible += 1
-
-    def classrooms_possible_for_partners(self, partners: Partners):
-        for partners in self.partner_groups:
-            for classroom in self.classroom_list:
-                if can_make_class(partners.free_time, classroom):
-                    partners.classrooms_possible += 1
+    def assign_partners(self, partners: Partners, classroom: Classroom):
+        partners.group_number = classroom.group_number
+        for volunteer in partners.volunteers:
+            self.unassigned_volunteers.remove(volunteer)
+            curr_volunteer = self.volunteer_list[volunteer.index]
+            classroom.assign_volunteer(curr_volunteer)
 
     def sort_by_availability(self):
         """
         sorts volunteer and partner lists from the least to the greatest classrooms_possible
         """
-        self.volunteer_list.sort(key=lambda volunteer: volunteer.classrooms_possible)
+        for partners in self.partner_groups:
+            for classroom in self.classroom_list:
+                if can_make_class(partners.free_time, classroom):
+                    partners.classrooms_possible += 1
+
+        # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
+        for person in self.unassigned_volunteers:
+            for classroom in self.classroom_list:
+                if can_make_class(person.free_time, classroom):
+                    person.classrooms_possible += 1
+
+        self.unassigned_volunteers.sort(key=lambda volunteer: volunteer.classrooms_possible)
         self.partner_groups.sort(key=lambda group: group.classrooms_possible)
+
+    def sort_classrooms_by_num_of_volunteers(self):
+        self.classroom_list.sort(key=lambda classroom: classroom.num_of_volunteers, reverse=True)
+
+    def assign_team_leaders(self):
+        # assign them to classroom groups(prioritizing adding them to partially-filled classrooms over empty classrooms)
+        self.sort_classrooms_by_num_of_volunteers()
+        for volunteer in self.unassigned_volunteers:
+            if volunteer.leader_app:
+                class_idx = 0
+                curr_volunteer = self.volunteer_list[volunteer.index]
+                while curr_volunteer.group_number == -1 and class_idx < len(self.classroom_list):
+                    curr_class = self.classroom_list[class_idx]
+                    if can_make_class(curr_volunteer.free_time,
+                                      curr_class) and self.max_team_size - curr_class.num_of_volunteers:
+                        if not curr_class.team_leader:
+                            curr_class.assign_volunteer(curr_volunteer)
+                            self.unassigned_volunteers.remove(volunteer)

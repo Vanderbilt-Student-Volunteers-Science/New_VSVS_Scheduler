@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 
 import src.convertSchedule
-from src.partners import Partners
 
 
 class Classroom:
@@ -58,9 +57,6 @@ class Classroom:
             self.team_leader = True
             volunteer.assign_t_leader()
 
-    def assign_partners(self, partners: Partners):
-        for volunteer in partners.volunteers:
-            self.assign_volunteer(volunteer)
     # def empty_classroom(self):
     #     """Unassigns all volunteers from a classroom
     #

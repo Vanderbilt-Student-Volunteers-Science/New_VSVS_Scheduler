@@ -55,10 +55,6 @@ class Volunteer:
     #         self.partner_free_time_array = src.convertSchedule.create_partner_schedule(self.schedule_array,
     #                                                                                    self.partners,
     #                                                                                    self.partner_indexes)
-
-    def increment_classrooms_possible(self):
-        self.classrooms_possible += 1
-
     def set_group_number(self, group_number):
         self.group_number = group_number
 

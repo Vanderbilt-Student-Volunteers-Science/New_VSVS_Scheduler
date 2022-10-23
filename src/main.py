@@ -9,32 +9,19 @@ from src.__init__ import volunteer_list, partially_filled_classrooms, empty_clas
 
 # All global constants and variables are in __init__.py (If we included them in here, it would result in
 # circular imports and )
+from src.scheduler import Scheduler
+
 
 def main():
+    vsvs_scheduler = Scheduler()
 
+    # Import all the data
+    vsvs_scheduler.import_volunteers('../data/individuals.csv')
+    vsvs_scheduler.import_classrooms('../data/classrooms.csv')
+    vsvs_scheduler.import_partners('../data/partners.csv')
 
-    # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
-    for volunteer in volunteer_list:
-        if volunteer.group_number == -1:
-            for classroom in classroom_list:
-                if volunteer_can_make_class(volunteer, classroom):
-                    volunteer.increment_classrooms_possible()
-
-    # creates global variable lists of empty and partially filled classrooms
-    for classroom in classroom_list:
-        if classroom.volunteers_assigned == 0:
-            empty_classrooms.append(classroom)
-        elif classroom.volunteers_assigned < MAX_TEAM_SIZE:
-            partially_filled_classrooms.append(classroom)
-
-    # make list of unassigned applied_t_leaders, sort them by the number of classrooms they can make (fewest to greatest
-    # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
-    # partially-filled classrooms over empty classrooms)
-    applied_t_leader_list = []
-    for volunteer in volunteer_list:
-        if volunteer.group_number == -1 and volunteer.leader_app:
-            applied_t_leader_list.append(volunteer)
-    assign_applied_t_leaders(sort_by_availability(applied_t_leader_list))
+    vsvs_scheduler.sort_by_availability()
+    vsvs_scheduler.find_class_for_partners()
 
     # make list of unassigned volunteers, sort them by the number of classrooms they can make (fewest to greatest
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
