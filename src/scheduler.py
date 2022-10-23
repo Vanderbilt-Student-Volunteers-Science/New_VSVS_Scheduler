@@ -7,6 +7,12 @@ from src.volunteer import Volunteer
 
 
 def can_make_class(schedule: dict, classroom: Classroom):
+    """ Returns boolean of whether volunteer/partner group can make a classroom based on the schedule parameter
+
+    :param schedule: free time schedule of a volunteer or partner group
+    :param classroom: classroom that we are checking compatability with
+    :return: bool: whether or not volunteer/partners can make that class
+    """
     day = classroom.weekday
     time = classroom.start_time.strftime('%H:%M')
     if schedule[day][time]:
@@ -231,7 +237,11 @@ class Scheduler:
         self.classroom_list.sort(key=lambda classroom: classroom.num_of_volunteers, reverse=True)
 
     def assign_team_leaders(self):
-        # assign them to classroom groups(prioritizing adding them to partially-filled classrooms over empty classrooms)
+        """Assigns team leaders to classroom groups that don't have them. Prioritizes assigning team leaders to
+        partially-filled classroom groups over empty classroom groups.
+
+        :return:
+        """
         self.sort_classrooms_by_num_of_volunteers()
         for volunteer in self.unassigned_volunteers:
             if volunteer.leader_app:
@@ -240,7 +250,9 @@ class Scheduler:
                 while curr_volunteer.group_number == -1 and class_idx < len(self.classroom_list):
                     curr_class = self.classroom_list[class_idx]
                     if can_make_class(curr_volunteer.free_time,
-                                      curr_class) and self.max_team_size - curr_class.num_of_volunteers:
-                        if not curr_class.team_leader:
-                            curr_class.assign_volunteer(curr_volunteer)
-                            self.unassigned_volunteers.remove(volunteer)
+                                      curr_class) and self.max_team_size - curr_class.num_of_volunteers and not curr_class.team_leader:
+                        curr_class.assign_volunteer(curr_volunteer)
+                        self.unassigned_volunteers.remove(volunteer)
+                    else:
+                        class_idx += 1
+

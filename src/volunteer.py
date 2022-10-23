@@ -40,21 +40,6 @@ class Volunteer:
         # Number of classrooms the volunteer can make according to their schedule.
         # Set after partners and drivers are assigned.
 
-    # def add_partners(self, group: list):
-    #     """
-    #     Sets the partners, partner_indexes, and partner_free_time_array attributes for the Volunteer object of the first
-    #     partner in the group (the self object)
-    #
-    #     :param group:
-    #     :return:
-    #     """
-    #     self.partners = len(group)
-    #     for partner in group:
-    #         self.partner_indexes.append(partner.index)
-    #     if self.partners != 0:
-    #         self.partner_free_time_array = src.convertSchedule.create_partner_schedule(self.schedule_array,
-    #                                                                                    self.partners,
-    #                                                                                    self.partner_indexes)
     def set_group_number(self, group_number):
         self.group_number = group_number
 
