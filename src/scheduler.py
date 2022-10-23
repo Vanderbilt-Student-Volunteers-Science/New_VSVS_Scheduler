@@ -212,8 +212,7 @@ class Scheduler:
         partners.group_number = classroom.group_number
         for volunteer in partners.volunteers:
             self.unassigned_volunteers.remove(volunteer)
-            curr_volunteer = self.volunteer_list[volunteer.index]
-            classroom.assign_volunteer(curr_volunteer)
+            classroom.assign_volunteer(volunteer)
 
     def sort_by_availability(self):
         """
@@ -246,12 +245,11 @@ class Scheduler:
         for volunteer in self.unassigned_volunteers:
             if volunteer.leader_app:
                 class_idx = 0
-                curr_volunteer = self.volunteer_list[volunteer.index]
-                while curr_volunteer.group_number == -1 and class_idx < len(self.classroom_list):
+                while volunteer.group_number == -1 and class_idx < len(self.classroom_list):
                     curr_class = self.classroom_list[class_idx]
-                    if can_make_class(curr_volunteer.free_time,
+                    if can_make_class(volunteer.free_time,
                                       curr_class) and self.max_team_size - curr_class.num_of_volunteers and not curr_class.team_leader:
-                        curr_class.assign_volunteer(curr_volunteer)
+                        curr_class.assign_volunteer(volunteer)
                         self.unassigned_volunteers.remove(volunteer)
                     else:
                         class_idx += 1
