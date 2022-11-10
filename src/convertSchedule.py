@@ -1,7 +1,5 @@
 import re
 
-from src.__init__ import volunteer_list
-
 
 def convert_to_free_time_array(schedule_array):
     """ Converts the array of times in week order (output of convert_to_schedule_array) to an array where value at each
@@ -50,43 +48,5 @@ def calculate_free_time_start(class_start_time, school_travel_time):
         else:
             return class_start_hours - ((hours_away + 1) * 100) + (60 - minutes_away)
 
-
 # TODO: import travel times directly from globalAttributes to here
 # TODO: use ints not floats
-
-
-def create_partner_schedule(volunteer_schedule_array, num_partners, partner_indexes):
-    """ Creates a free_time_array for a group of partners.
-
-    :param volunteer_schedule_array: schedule_array of the Volunteer object for the first partner in the group; the
-    Volunteer object where the partner_free_time_array will be stored
-    :param num_partners: number of people in the group - 1 (number of people other than the first partner in the group)
-    :param partner_indexes: indexes of the Volunteer objects in volunteer_list corresponding to all of them members in
-    the group (except the first partner)
-    :return:
-    """
-    if num_partners == 1:
-        partner_schedule_array = schedule_array_and(
-            volunteer_schedule_array,
-            volunteer_list[partner_indexes[0]].schedule_array
-        )
-    elif num_partners == 2:
-        partner_schedule_array = schedule_array_and(
-            schedule_array_and(
-                volunteer_schedule_array,
-                volunteer_list[partner_indexes[0]].schedule_array),
-            volunteer_list[partner_indexes[1]].schedule_array
-        )
-    else:
-        partner_schedule_array = schedule_array_and(
-            schedule_array_and(
-                volunteer_schedule_array,
-                volunteer_list[partner_indexes[0]].schedule_array),
-            schedule_array_and(
-                volunteer_list[partner_indexes[1]].schedule_array,
-                volunteer_list[partner_indexes[2]].schedule_array)
-        )
-
-    return convert_to_free_time_array(partner_schedule_array)
-
-

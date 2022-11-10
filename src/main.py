@@ -13,15 +13,9 @@ from src.scheduler import Scheduler
 
 
 def main():
-    vsvs_scheduler = Scheduler()
+    vsvs_scheduler = Scheduler(volunteer_file='../data/individuals.csv', classroom_file='../data/classrooms.csv',
+                               partner_file='../data/partners.csv')
 
-    # Import all the data
-    vsvs_scheduler.import_volunteers('../data/individuals.csv')
-    vsvs_scheduler.import_classrooms('../data/classrooms.csv')
-    vsvs_scheduler.import_partners('../data/partners.csv')
-
-    vsvs_scheduler.sort_by_availability()
-    vsvs_scheduler.find_class_for_partners()
 
     # make list of unassigned volunteers, sort them by the number of classrooms they can make (fewest to greatest
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to

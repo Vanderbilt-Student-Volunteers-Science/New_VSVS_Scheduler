@@ -1,9 +1,7 @@
 import csv
 from datetime import datetime, timedelta
-
-from src.classroom import Classroom
 from src.partners import Partners
-from src.volunteer import Volunteer
+from src.volunteer import Volunteer, Classroom
 
 
 def can_make_class(schedule: dict, classroom: Classroom):
@@ -11,47 +9,58 @@ def can_make_class(schedule: dict, classroom: Classroom):
 
     :param schedule: free time schedule of a volunteer or partner group
     :param classroom: classroom that we are checking compatability with
-    :return: bool: whether or not volunteer/partners can make that class
+    :return: bool: whether volunteer/partners can make that class
     """
     day = classroom.weekday
     time = classroom.start_time.strftime('%H:%M')
-    if schedule[day][time]:
-        return schedule[day][time] >= classroom.duration
+    if time in schedule[day]:
+        return schedule[day][time] >= classroom.free_time_duration()
     else:
         return False
 
 
 class Scheduler:
-    volunteer_list = []
-    unassigned_volunteers = []
-    classroom_list = []
-    partner_groups = []
 
-    def __init__(self, max_team_size: int = 4, min_team_size: int = 3, travel_time: int = 15):
+    def __init__(self, volunteer_file: str, partner_file: str, classroom_file: str, max_team_size: int = 4,
+                 min_team_size: int = 3, travel_time: int = 15):
         """
 
         :param max_team_size:maximum number of volunteers to allow in a classroom group
         :param min_team_size:minimum acceptable number of volunteers in a classroom group that can visit a classroom
         :param travel_time:minutes to travel one-way to any school
         """
+        self.volunteer_list = []
+        self.unassigned_volunteers = []
+        self.classroom_list = []
+        self.partner_groups = []
+
+        # Import data
+        self.import_volunteers(volunteer_file)
+        self.import_partners(partner_file)
+        self.import_classrooms(classroom_file)
 
         self.max_team_size = max_team_size
         self.min_team_size = min_team_size
         self.travel_time = travel_time
-        self.first_time = "07:15"
-        self.last_time = "15:30"
 
-    def import_volunteers(self, file_name: str):
+        self.sort_by_availability()
+        self.find_class_for_partners()
+
+    def import_volunteers(self, filename: str):
         """reads csv with volunteer information and creates a Volunteer object from each row
 
-        :param file_name: filepath to the csv with volunteer info
+        :param filename: filepath to the csv with volunteer info
         :return:
         """
-        with open(file_name) as individuals_csv:  # opens file as individuals_csv
+        try:
+            open(filename)
+        except FileNotFoundError:
+            msg = "Sorry, the file " + filename + " does not exist."
+
+        with open(filename) as individuals_csv:  # opens file as individuals_csv
             # maps the information in each row to a dict whose keys are given by the first row in the csv
             csv_reader = csv.DictReader(individuals_csv)
             volunteer_idx = 0
-
             # pull data from row in the csv, create a Volunteer object, and add it to volunteer_list
             for row in csv_reader:  # for each individual
                 volunteer_idx += 1
@@ -62,12 +71,13 @@ class Scheduler:
                     phone=row['Phone Number'],
                     email=row['Email'].strip(),
                     team_leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
-                    free_time=self.schedule_to_free_time(schedule)
+                    free_time=schedule
                 )
                 self.volunteer_list.append(volunteer)
                 self.unassigned_volunteers.append(volunteer)
 
         print('There are {} volunteers.'.format(len(self.volunteer_list)))
+        return self.volunteer_list
 
     def import_classrooms(self, filename: str):
         """
@@ -75,6 +85,11 @@ class Scheduler:
         :param filename:
         :return:
         """
+        try:
+            open(filename)
+        except FileNotFoundError:
+            msg = "Sorry, the file " + filename + "does not exist."
+
         with open(filename) as classrooms_csv:  # opens classrooms.csv as classrooms_csv
             # maps the information in each row to a dict whose keys are given by the first row in the csv
             csv_reader = csv.DictReader(classrooms_csv)
@@ -90,7 +105,7 @@ class Scheduler:
                     class_num = i + 1  # class_num keeps track of which class out of the total being created
                     # creates a Classroom object and adds it to classroom_list attribute in the sorter class
                     classroom = Classroom(group_number=group_num,
-                                          teacher=teacher_name,
+                                          name=teacher_name,
                                           phone=teacher_phone,
                                           school=school,
                                           email=email,
@@ -99,14 +114,21 @@ class Scheduler:
                                           )
                     self.classroom_list.append(classroom)
             print('There are {} classrooms.'.format(len(self.classroom_list)))
+            return self.classroom_list
 
-    def import_partners(self, file_name: str):
+    def import_partners(self, filename: str):
         """
 
-        :param file_name:
+        :param filename:
         :return:
         """
-        with open(file_name) as partners_csv:  # opens partners.csv as partners_csv
+
+        try:
+            open(filename)
+        except FileNotFoundError:
+            msg = "Sorry, the file " + filename + "does not exist."
+
+        with open(filename) as partners_csv:  # opens partners.csv as partners_csv
             # returns the information in each row as a dictionary whose keys are given by the first row in the csv
             csv_reader = csv.DictReader(partners_csv)
             for row in csv_reader:  # for each group of partners
@@ -122,71 +144,7 @@ class Scheduler:
                 if len(group) > 1:
                     partners = Partners(group)
                     self.partner_groups.append(partners)
-
-    def convert_imported_list_to_schedule(self, raw_schedule: list):
-        """Converts the schedule imported from individuals.csv into a schedule_dictionary.
-
-        :param raw_schedule: each element represents a 15-min block & the letters are the weekdays the volunteer is busy
-        :return: dictionary with a list of times that volunteer is busy for each weekday
-        """
-        # list of times for each of day of the week that volunteer is unavailable
-        weekly_schedule = {'Monday': [], 'Tuesday': [], 'Wednesday': [], 'Thursday': []}
-        start_time = datetime.strptime(self.first_time, "%H:%M")
-        end_time = datetime.strptime(self.last_time, "%H:%M")
-
-        current_time = start_time
-        idx = 0
-        while current_time < end_time:
-            if 'M' in raw_schedule[idx]:
-                weekly_schedule['Monday'].append(current_time)
-            if 'T' in raw_schedule[idx]:
-                weekly_schedule['Tuesday'].append(current_time)
-            if 'W' in raw_schedule[idx]:
-                weekly_schedule['Wednesday'].append(current_time)
-            if 'R' in raw_schedule[idx]:
-                weekly_schedule['Thursday'].append(current_time)
-            current_time = current_time + timedelta(minutes=15)
-            idx += 1
-        return weekly_schedule
-
-    def schedule_to_free_time(self, schedule: list):
-        """
-
-        :param schedule:
-        :return:
-        """
-        unavailability_schedule = self.convert_imported_list_to_schedule(schedule)
-        start_time = datetime.strptime(self.first_time, "%H:%M")
-        end_time = datetime.strptime(self.last_time, "%H:%M")
-
-        # each day of the week has a dictionary with a key corresponding to the time of day and a value corresponding
-        # the minutes of consecutive free time the volunteer has starting at that time
-        weekly_free_time = {'Monday': {}, 'Tuesday': {}, 'Wednesday': {}, 'Thursday': {}}
-
-        for day in unavailability_schedule:  # for each weekday
-            current_time = start_time
-            day_free_time = weekly_free_time[day]  # dictionary that will keep track of free time for that weekday
-            if unavailability_schedule[day]:  # checks that the unavailability schedule for the day exists/ is nonempty
-                idx = 0
-                next_unavailable_time = unavailability_schedule[day][idx]
-            else:
-                next_unavailable_time = end_time  # if no unavailability schedule for day, person is available all day
-            while current_time < end_time:
-                while next_unavailable_time >= current_time:
-                    time_available = int((next_unavailable_time - current_time).total_seconds() / 60)  # time in minutes
-                    if time_available > 0:
-                        # adds free time left from current time into current weekday dictionary in weekly_free_time
-                        day_free_time[current_time.strftime('%H:%M')] = time_available
-                    current_time += timedelta(minutes=15)  # increases current time by 15 minutes
-                if next_unavailable_time == end_time:
-                    pass  # no need to check next unavailable time in unavailability_schedule
-                elif idx == len(unavailability_schedule[day]) - 1 and unavailability_schedule[day][idx] != end_time:
-                    next_unavailable_time = end_time  # if no more unavailability, next unavailable time is end of day
-                else:
-                    idx += 1
-                    next_unavailable_time = unavailability_schedule[day][idx]  # check next unavailable time
-
-        return weekly_free_time
+        return self.partner_groups
 
     def find_class_for_partners(self):
         """
@@ -201,12 +159,12 @@ class Scheduler:
             while partners.group_number == -1 and class_idx < len(self.classroom_list):
                 curr_class = self.classroom_list[class_idx]
                 if can_make_class(partners.free_time, curr_class) & (self.max_team_size - curr_class.num_of_volunteers):
-                    self.assign_partners(partners)
+                    self.assign_partners(partners, curr_class)
                 else:
                     class_idx += 1
             if partners.group_number == -1:
-                print("WARNING: " + partners.volunteers + "partner group could not be assigned together because of "
-                                                          "scheduling conflicts.")
+                print(f"WARNING:{partners.volunteers} partner group could not be assigned together because of "
+                      "scheduling conflicts.")
 
     def assign_partners(self, partners: Partners, classroom: Classroom):
         partners.group_number = classroom.group_number
@@ -253,4 +211,3 @@ class Scheduler:
                         self.unassigned_volunteers.remove(volunteer)
                     else:
                         class_idx += 1
-

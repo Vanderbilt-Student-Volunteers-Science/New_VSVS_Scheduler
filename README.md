@@ -18,9 +18,9 @@ Project started October 2019
 In order to run this program, you will first need to prepare three input files. Currently, these three input files
  come from the Google Forms we are using as the applications. Click on the following file names to get specifics
   about the specifications of each input file.
-1. [`data/classrooms.csv`](docs/classrooms.md)
-2. [`data/individuals.csv`](docs/individuals.md)
-3. [`data/partners.csv`](docs/partners.md)
+1. [`data/classrooms.csv`](data/classrooms.md)
+2. [`data/individuals.csv`](data/individuals.md)
+3. [`data/partners.csv`](data/partners.md)
 
 <details><summary>Detailed Instructions on Generating Input Files</summary>
 <p>
@@ -38,7 +38,7 @@ Assuming there are no deviations from the format outlined above, the program can
  `src/main.py`. Assuming successful operations, there will be one output file generated: `results/assignments.csv
  `. If the `results/` directory does not exist, the program will create it for you.
  
-**Note:** If you make any changes, be sure to add unit tests for any new code. Read [this documentation](docs/automated_testing.md) for more information. Tests are run on each
+**Note:** If you make any changes, be sure to add unit tests for any new code. Read [this documentation](data/automated_testing.md) for more information. Tests are run on each
 commit through GitHub Actions. The badge at the top of this README tells us if tests are passing or failing.
  
 ## Repository Structure
