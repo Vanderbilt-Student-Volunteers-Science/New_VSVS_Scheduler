@@ -4,25 +4,10 @@ from src.partners import Partners
 from src.volunteer import Volunteer, Classroom
 
 
-def can_make_class(schedule: dict, classroom: Classroom):
-    """ Returns boolean of whether volunteer/partner group can make a classroom based on the schedule parameter
-
-    :param schedule: free time schedule of a volunteer or partner group
-    :param classroom: classroom that we are checking compatability with
-    :return: bool: whether volunteer/partners can make that class
-    """
-    day = classroom.weekday
-    time = classroom.start_time.strftime('%H:%M')
-    if time in schedule[day]:
-        return schedule[day][time] >= classroom.free_time_duration()
-    else:
-        return False
-
-
 class Scheduler:
 
     def __init__(self, volunteer_file: str, partner_file: str, classroom_file: str, max_team_size: int = 4,
-                 min_team_size: int = 3, travel_time: int = 15):
+                 min_team_size: int = 3, travel_time: int = 30):
         """
 
         :param max_team_size:maximum number of volunteers to allow in a classroom group
@@ -158,7 +143,7 @@ class Scheduler:
             class_idx = 0
             while partners.group_number == -1 and class_idx < len(self.classroom_list):
                 curr_class = self.classroom_list[class_idx]
-                if can_make_class(partners.free_time, curr_class) & (self.max_team_size - curr_class.num_of_volunteers):
+                if curr_class.can_make_class(partners.free_time) & (self.max_team_size - curr_class.num_of_volunteers):
                     self.assign_partners(partners, curr_class)
                 else:
                     class_idx += 1
@@ -178,13 +163,13 @@ class Scheduler:
         """
         for partners in self.partner_groups:
             for classroom in self.classroom_list:
-                if can_make_class(partners.free_time, classroom):
+                if classroom.can_make_class(partners.free_time):
                     partners.classrooms_possible += 1
 
         # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
         for person in self.unassigned_volunteers:
             for classroom in self.classroom_list:
-                if can_make_class(person.free_time, classroom):
+                if classroom.can_make_class(person.free_time):
                     person.classrooms_possible += 1
 
         self.unassigned_volunteers.sort(key=lambda volunteer: volunteer.classrooms_possible)
@@ -205,8 +190,8 @@ class Scheduler:
                 class_idx = 0
                 while volunteer.group_number == -1 and class_idx < len(self.classroom_list):
                     curr_class = self.classroom_list[class_idx]
-                    if can_make_class(volunteer.free_time,
-                                      curr_class) and self.max_team_size - curr_class.num_of_volunteers and not curr_class.team_leader:
+                    if curr_class.can_make_class(volunteer.free_time,) \
+                            and self.max_team_size - curr_class.num_of_volunteers and not curr_class.team_leader:
                         curr_class.assign_volunteer(volunteer)
                         self.unassigned_volunteers.remove(volunteer)
                     else:

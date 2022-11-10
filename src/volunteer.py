@@ -178,6 +178,18 @@ class Classroom(Applicant):
             self.team_leader = True
             volunteer.assign_t_leader()
 
+    def can_make_class(self, schedule: dict):
+        """ Returns boolean of whether volunteer/partner group can make a classroom based on the schedule parameter
+
+        :param schedule: free time schedule of a volunteer or partner group
+        :return: bool: whether volunteer/partners can make that class
+        """
+        time = self.start_time.strftime('%H:%M')
+        if time in schedule[self.weekday]:
+            return schedule[self.weekday][time] >= self.free_time_duration()
+        else:
+            return False
+
     # def empty_classroom(self):
     #     """Unassigns all volunteers from a classroom
     #
