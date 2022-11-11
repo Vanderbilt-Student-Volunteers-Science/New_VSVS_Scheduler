@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-
+from partners import Partners
 
 class Applicant:
     def __init__(self, name: str, phone: str, email: str):
@@ -155,15 +155,19 @@ class Classroom(Applicant):
         # TODO: make group_number the index of classroom in classroom_list
 
         # the latest time a volunteer can start being available and be able to make this lesson
-
-    #        self.free_time_start = src.convertSchedule.calculate_free_time_start(self.start_time, 15)
+        # self.free_time_start = src.convertSchedule.calculate_free_time_start(self.start_time, 15)
 
     def free_time_duration(self):
         """Returns minutes of free time needed to perform a lesson, including driving and teaching time.
         :returns: minutes of free time needed starting at free_time_start for a volunteer to attend the lesson """
-        return (self.end_time - self.start_time + timedelta(minutes=15)).total_seconds() / 60
+        return (self.end_time - self.start_time + timedelta(minutes=30)).total_seconds() / 60
 
-    def assign_volunteer(self, volunteer):
+    def assign_partners(self, partners: Partners):
+        partners.group_number = self.group_number
+        for volunteer in partners.volunteers:
+            self.assign_volunteer(volunteer)
+
+    def assign_volunteer(self, volunteer: Volunteer):
         """
         Assigns a volunteer to a classroom. Updates the volunteer.group_number with the group number of the classroom.
         If the classroom doesn't have a team leader and the volunteer applied to be one, it sets the Classroom t_leader
@@ -190,23 +194,7 @@ class Classroom(Applicant):
         else:
             return False
 
-    # def empty_classroom(self):
-    #     """Unassigns all volunteers from a classroom
-    #
-    #     :return: list of the volunteers that were unassigned
-    #     """
-    #     unassigned_volunteers = []
-    #     for volunteer in volunteer_list:
-    #         if volunteer.group_number == self.group_number:
-    #             # unassign volunteers
-    #             volunteer.set_group_number(-1)
-    #             volunteer.assigned_t_leader = False
-    #             unassigned_volunteers.append(volunteer)
-    #
-    #     # make classroom empty
-    #     self.number_of_volunteers = 0
-    #     self.team_leader = False
-    #     return unassigned_volunteers
+
 
     def __str__(self):
         return self.name + ' at ' + self.school

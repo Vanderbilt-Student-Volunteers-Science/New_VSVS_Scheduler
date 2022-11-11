@@ -1,14 +1,5 @@
 import csv
 import os
-
-from src.assign import assign_partners, volunteer_can_make_class, sort_by_availability, \
-    assign_applied_t_leaders, assign_others
-
-from src.__init__ import volunteer_list, partially_filled_classrooms, empty_classrooms, MAX_TEAM_SIZE, classroom_list
-
-
-# All global constants and variables are in __init__.py (If we included them in here, it would result in
-# circular imports and )
 from src.scheduler import Scheduler
 
 
@@ -20,26 +11,22 @@ def main():
     # make list of unassigned volunteers, sort them by the number of classrooms they can make (fewest to greatest
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
     # partially-filled classrooms over empty classrooms)
-    unsorted_list = []
-    for volunteer in volunteer_list:
-        if volunteer.group_number == -1:
-            unsorted_list.append(volunteer)
-    assign_others(sort_by_availability(unsorted_list))
+
 
     # reassign volunteers that were assigned to groups of 1
     # TODO: think through this part better
-    unassigned_volunteers = []
-    for classroom in classroom_list:
-        if classroom.volunteers_assigned == 1:
-            empty_classrooms.append(classroom)
-            for volunteer in volunteer_list:
-                if volunteer.group_number == classroom.group_number:
-                    volunteer.set_group_number(-1)
-
-    for volunteer in volunteer_list:
-        if volunteer.group_number == -1:
-            unassigned_volunteers.append(volunteer)
-    assign_others(sort_by_availability(unassigned_volunteers))
+    # unassigned_volunteers = []
+    # for classroom in classroom_list:
+    #     if classroom.volunteers_assigned == 1:
+    #         empty_classrooms.append(classroom)
+    #         for volunteer in volunteer_list:
+    #             if volunteer.group_number == classroom.group_number:
+    #                 volunteer.set_group_number(-1)
+    #
+    # for volunteer in volunteer_list:
+    #     if volunteer.group_number == -1:
+    #         unassigned_volunteers.append(volunteer)
+    # assign_others(sort_by_availability(unassigned_volunteers))
 
     # OUTPUT RESULTS
 
@@ -65,12 +52,12 @@ def main():
             ['Group Number', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Teacher', 'Day',
              'Start Time', 'End Time']
         )
-        for volunteer in volunteer_list:
+        for volunteer in vsvs_scheduler.volunteer_list:
             if volunteer.group_number == -1:
                 unassigned_volunteers += 1
             else:
                 group_size[volunteer.group_number] += 1
-                assigned_class = classroom_list[volunteer.group_number - 4]
+                assigned_class = vsvs_scheduler.classroom_list[volunteer.group_number - 4]
                 start_time = str(assigned_class.start_time)
                 end_time = str(assigned_class.end_time)
             csv_writer.writerow(
@@ -94,7 +81,7 @@ def main():
                 ['Group Number', 'Teacher', 'Phone', 'School', 'School Phone', 'Email', 'Grade', 'Start Time',
                  'End Time', 'Day']
             )
-            for classroom in classroom_list:
+            for classroom in vsvs_scheduler.classroom_list:
                 csv_writer.writerow(
                     [
                         classroom.group_number,
@@ -113,7 +100,7 @@ def main():
     print('There were {} unassigned volunteers.'.format(unassigned_volunteers))
 
     # TODO: Remove after testing?
-    for classroom in classroom_list:
+    for classroom in vsvs_scheduler.classroom_list:
         print("{} volunteers assigned to group {}".format(group_size[classroom.group_number], classroom.group_number))
 
 

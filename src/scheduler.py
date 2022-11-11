@@ -1,7 +1,7 @@
 import csv
 from datetime import datetime, timedelta
 from src.partners import Partners
-from src.volunteer import Volunteer, Classroom
+from src.applicant import Volunteer, Classroom
 
 
 class Scheduler:
@@ -15,7 +15,6 @@ class Scheduler:
         :param travel_time:minutes to travel one-way to any school
         """
         self.volunteer_list = []
-        self.unassigned_volunteers = []
         self.classroom_list = []
         self.partner_groups = []
 
@@ -30,6 +29,9 @@ class Scheduler:
 
         self.sort_by_availability()
         self.find_class_for_partners()
+        self.assign_team_leaders()
+        self.assign_volunteers()
+        self.assign_second_time()
 
     def import_volunteers(self, filename: str):
         """reads csv with volunteer information and creates a Volunteer object from each row
@@ -59,7 +61,6 @@ class Scheduler:
                     free_time=schedule
                 )
                 self.volunteer_list.append(volunteer)
-                self.unassigned_volunteers.append(volunteer)
 
         print('There are {} volunteers.'.format(len(self.volunteer_list)))
         return self.volunteer_list
@@ -131,6 +132,41 @@ class Scheduler:
                     self.partner_groups.append(partners)
         return self.partner_groups
 
+    def assign_volunteers(self):
+        """Assigns all unassigned volunteers to classroom groups. Prioritizes assigning each volunteer to a partially-filled
+          classroom group over an empty classroom group.
+
+          :param sorted_others: a list of unassigned volunteers sorted from the fewest to the greatest number of classrooms
+          they can make
+          :return:
+          """
+        for volunteer in self.volunteer_list:
+            self.sort_classrooms_by_num_of_volunteers()
+            classroom_idx = 0
+            while volunteer.group_number == -1 and classroom_idx < len(self.classroom_list):
+                classroom = self.classroom_list[classroom_idx]
+                if classroom.can_make_class(volunteer) and classroom.num_of_volunteers < self.max_team_size:
+                    classroom.assign_volunteer(volunteer)
+                else:
+                    classroom_idx += 1
+
+    def assign_second_time(self):
+        """Unassigns all volunteers from a classroom
+
+                :return: list of the volunteers that were unassigned
+                """
+        self.sort_classrooms_by_num_of_volunteers()
+        for classroom in self.classroom_list:
+            if classroom.num_of_volunteers < self.min_team_size:
+                group_num = classroom.group_number
+                for volunteer in self.volunteer_list:
+                    if volunteer.group_number == group_num:
+                        volunteer.set_group_number(-1)
+                        volunteer.assigned_t_leader = False
+                        classroom.number_of_volunteers = 0
+                        classroom.team_leader = False
+        self.assign_volunteers()
+
     def find_class_for_partners(self):
         """
         Assigns partners to a classroom they all can make based on parnters.free_time. When classroom is found,
@@ -144,18 +180,13 @@ class Scheduler:
             while partners.group_number == -1 and class_idx < len(self.classroom_list):
                 curr_class = self.classroom_list[class_idx]
                 if curr_class.can_make_class(partners.free_time) & (self.max_team_size - curr_class.num_of_volunteers):
-                    self.assign_partners(partners, curr_class)
+                    curr_class.assign_partners(partners)
                 else:
                     class_idx += 1
             if partners.group_number == -1:
                 print(f"WARNING:{partners.volunteers} partner group could not be assigned together because of "
                       "scheduling conflicts.")
-
-    def assign_partners(self, partners: Partners, classroom: Classroom):
-        partners.group_number = classroom.group_number
-        for volunteer in partners.volunteers:
-            self.unassigned_volunteers.remove(volunteer)
-            classroom.assign_volunteer(volunteer)
+        self.sort_by_availability()
 
     def sort_by_availability(self):
         """
@@ -167,12 +198,12 @@ class Scheduler:
                     partners.classrooms_possible += 1
 
         # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
-        for person in self.unassigned_volunteers:
+        for person in self.volunteer_list:
             for classroom in self.classroom_list:
                 if classroom.can_make_class(person.free_time):
                     person.classrooms_possible += 1
 
-        self.unassigned_volunteers.sort(key=lambda volunteer: volunteer.classrooms_possible)
+        self.volunteer_list.sort(key=lambda volunteer: volunteer.classrooms_possible)
         self.partner_groups.sort(key=lambda group: group.classrooms_possible)
 
     def sort_classrooms_by_num_of_volunteers(self):
@@ -185,14 +216,13 @@ class Scheduler:
         :return:
         """
         self.sort_classrooms_by_num_of_volunteers()
-        for volunteer in self.unassigned_volunteers:
+        for volunteer in self.volunteer_list:
             if volunteer.leader_app:
                 class_idx = 0
                 while volunteer.group_number == -1 and class_idx < len(self.classroom_list):
                     curr_class = self.classroom_list[class_idx]
-                    if curr_class.can_make_class(volunteer.free_time,) \
+                    if curr_class.can_make_class(volunteer.free_time, ) \
                             and self.max_team_size - curr_class.num_of_volunteers and not curr_class.team_leader:
                         curr_class.assign_volunteer(volunteer)
-                        self.unassigned_volunteers.remove(volunteer)
                     else:
                         class_idx += 1
