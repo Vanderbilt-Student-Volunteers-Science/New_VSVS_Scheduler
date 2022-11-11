@@ -40,9 +40,10 @@ class Volunteer(Applicant):
         :param email:
         :param team_leader_app: Did they apply to be a team leader? Yes=true, No=false
         :param index: volunteer index in the volunteer_list
-        :param imported_schedule:A list with an element for each 15-min block. The elements in the list are each a
-                                  string of letters. The letters in the string indicate the days of the week during
-                                  which the volunteer is not available for that time block.
+        :param imported_schedule:A list with an element for each 15-min block between the times of 7:15am-3:45pm,
+                                  Monday through Thursday. The elements in the list are each a string of letters. The
+                                  letters in the string indicate the days of the week during which the volunteer is not
+                                  available for that time block.
         """
         super().__init__(name, phone, email)
         self.leader_app = team_leader_app
@@ -51,13 +52,6 @@ class Volunteer(Applicant):
 
         self.classrooms_possible = 0  # Number of classrooms the volunteer can make according to their schedule
         self.leader = False  # Was the volunteer assigned to be their group's team leader?
-
-        # TODO Convert directly from input schedule to free_time_array in one method. Don't need convert_to_schedule_array.
-
-        # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday
-        # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.)
-        # value at an index is the minutes of consecutive free time the volunteer has starting at that time
-        # self.free_time_array = src.convertSchedule.convert_to_free_time_array(self.schedule_array)
 
     def assign_team_leader(self):
         self.leader = True
@@ -79,7 +73,7 @@ class Volunteer(Applicant):
         # the minutes of consecutive free time the volunteer has starting at that time
         weekly_free_time = {'Monday': {}, 'Tuesday': {}, 'Wednesday': {}, 'Thursday': {}}
 
-        for day in unavailability_schedule:  # for each weekday
+        for day in unavailability_schedule:
             current_time = start_time
             day_free_time = weekly_free_time[day]  # dictionary that will keep track of free time for that weekday
             if unavailability_schedule[day]:  # checks that the unavailability schedule for the day exists/ is nonempty
@@ -145,8 +139,6 @@ class Classroom(Applicant):
         self.school = school
         self.team_leader = False  # has a team leader?
 
-        # TODO: make group_number the index of classroom in classroom_list
-
     def free_time_duration(self):
         """:returns: minutes of free time needed to perform a lesson, including driving and teaching time."""
         return (self.end_time - self.start_time + timedelta(minutes=30)).total_seconds() / 60
@@ -170,7 +162,6 @@ class Classroom(Applicant):
         equal to this volunteer and updates volunteer.assigned_t_leader.
 
         :param volunteer:volunteer being assigned
-        :return: None
         """
         self.num_of_volunteers += 1
         volunteer.set_group_number(self.group_number)
