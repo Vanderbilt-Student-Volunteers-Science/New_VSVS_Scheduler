@@ -101,7 +101,6 @@ class Volunteer(Applicant):
                 else:
                     idx += 1
                     next_unavailable_time = unavailability_schedule[day][idx]  # check next unavailable time
-
         return weekly_free_time
 
     def convert_imported_list_to_schedule_dict(self, raw_schedule: list):
