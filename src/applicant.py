@@ -35,7 +35,7 @@ class Volunteer(Applicant):
         :param email:
         :param team_leader_app: Did they apply to be a team leader? Yes=true, No=false
         :param index: volunteer index in the volunteer_list
-        :param imported_schedule:A list with an element for each 15-min block between the times of 7:15am-3:45pm,
+        :param imported_schedule: A list with an element for each 15-min block between the times of 7:15am-3:45pm,
                                   Monday through Thursday. The elements in the list are each a string of letters. The
                                   letters in the string indicate the days of the week during which the volunteer is not
                                   available for that time block.
@@ -139,8 +139,7 @@ class Classroom(Applicant):
         return (self.end_time - self.start_time + timedelta(minutes=30)).total_seconds() / 60
 
     def assign_partners(self, partners: Partners):
-        """Updates the group_number in the Partners object and assigns each of the Volunteer objects in Partners to
-        this classroom.
+        """Updates the group_number for Partners object and assigns each Volunteer object in Partners to this classroom.
 
         :param partners: Partners object being assigned to this classroom
 
@@ -152,9 +151,9 @@ class Classroom(Applicant):
     def assign_volunteer(self, volunteer: Volunteer):
         """Assigns a volunteer to a classroom.
 
-        Updates the volunteer.group_number with the group number of the classroom.
-        If the classroom doesn't have a team leader and the volunteer applied to be one, it sets the Classroom t_leader
-        equal to this volunteer and updates volunteer.assigned_t_leader.
+        Updates the volunteer.group_number with the group number of the classroom. If the classroom doesn't have a team
+        leader and the volunteer applied to be one, it sets the Classroom t_leader equal to this volunteer and updates
+        volunteer.assigned_t_leader.
 
         :param volunteer:volunteer being assigned
         """
@@ -165,7 +164,7 @@ class Classroom(Applicant):
             volunteer.assign_team_leader()
 
     def can_make_class(self, schedule: dict):
-        """ Returns boolean of whether volunteer/partner group can make a classroom based on the schedule parameter
+        """Returns boolean of whether volunteer/partner group can make a classroom based on the schedule parameter.
 
         :param schedule: free time schedule of a volunteer or partner group
         :return: bool: whether volunteer/partners can make that class

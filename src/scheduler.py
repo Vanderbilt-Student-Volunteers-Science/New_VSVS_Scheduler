@@ -6,7 +6,7 @@ from src.applicant import Volunteer, Classroom
 
 # Helper functions for importing data from csv files
 def import_volunteers(filename: str):
-    """reads csv with volunteer information and creates a Volunteer object from each row
+    """Reads csv with volunteer information and creates a Volunteer object from each row.
 
     :param filename: filepath to the csv with volunteer info
     :return:list of Volunteer objects
@@ -43,7 +43,7 @@ def import_volunteers(filename: str):
 
 
 def import_classrooms(filename: str):
-    """reads csv with classroom information and creates a Classroom object from each row
+    """Reads csv with classroom information and creates a Classroom object from each row.
 
     :param filename: filepath to the csv with volunteer info
     :return: list of Classroom objects
@@ -106,7 +106,7 @@ class Scheduler:
         self.assign_second_time()
 
     def import_partners(self, filename: str):
-        """reads csv with partner group information and creates a Partners object from each row
+        """Reads csv with partner group information and creates a Partners object from each row.
 
         :param filename: filepath to the csv with volunteer info
         :return: list of Partners objects
