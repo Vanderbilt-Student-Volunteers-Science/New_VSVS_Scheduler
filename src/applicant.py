@@ -169,7 +169,13 @@ class Classroom(Applicant):
         :param schedule: free time schedule of a volunteer or partner group
         :return: bool: whether volunteer/partners can make that class
         """
-        time = self.start_time.strftime('%H:%M')
+        time_deviation = self.start_time.minute % 15
+        if time_deviation != 0:
+            new_time = self.start_time - timedelta(minutes=time_deviation)
+            time = new_time.strftime('%H:%M')
+        else:
+            time = self.start_time.strftime('%H:%M')
+
         if time in schedule[self.weekday]:
             return schedule[self.weekday][time] >= self.free_time_duration()
         else:

@@ -1,10 +1,21 @@
 import unittest
 from src.scheduler import Scheduler
 
-from src.applicant import Volunteer
+from src.applicant import Volunteer, Classroom
 from src.partners import Partners
 from src.tests.test_data.sample_data_and_outputs import sample_raw_schedule, free_time_schedule, converted_schedule, \
-    partner_1_schedule, partner_2_schedule, partners_combined_schedule, partner_3_schedule
+    partner_1_schedule, partner_2_schedule, partners_combined_schedule, partner_3_schedule, schedule_can_make_class
+
+
+class ClassroomTestCase(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.fake_class = Classroom(name="John Doe", phone="000-000-000", email="john.doe@vanderbilt.edu",
+                                   group_number=0, school="Sunset Elementary", start_time="9:10:00 AM",
+                                   end_time="10:25:00 AM")
+
+    def test_can_make_class(self):
+        self.assertTrue(self.fake_class.can_make_class(schedule_can_make_class))
 
 
 class VolunteerTestCase(unittest.TestCase):
@@ -22,7 +33,6 @@ class VolunteerTestCase(unittest.TestCase):
 
 class PartnersTestCase(unittest.TestCase):
     def test_create_partner_schedule(self):
-
         # create 3 dummy Volunteer objects for testing
         fake_partner_1 = Volunteer(name="John Doe", phone="000-000-000", email="john.doe@vanderbilt.edu",
                                    team_leader_app=True, index=0, imported_schedule=sample_raw_schedule)

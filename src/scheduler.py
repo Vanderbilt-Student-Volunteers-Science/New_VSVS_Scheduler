@@ -37,6 +37,7 @@ def import_volunteers(filename: str):
                 imported_schedule=schedule
             )
             volunteers.append(volunteer)
+            print(str(volunteer) + f" {volunteer.free_time}")
 
     print('There are {} volunteers.'.format(len(volunteers)))
     return volunteers
