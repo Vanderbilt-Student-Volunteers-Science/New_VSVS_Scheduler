@@ -16,16 +16,26 @@ class Partners:
         :return:
         """
         partners_schedule = {"Monday": {}, "Tuesday": {}, "Wednesday": {}, "Thursday": {}}
-        for i in range(len(self.volunteers)):  # for all volunteers in group
-            curr_volunteer = self.volunteers[i].free_time
-            for day in partners_schedule:  # for each weekday
-                for time in curr_volunteer[day]:  # for each time
-                    if i == 0:
+
+        # for all volunteers in group
+        for idx in range(len(self.volunteers)):
+            curr_volunteer = self.volunteers[idx].free_time
+            for day in curr_volunteer:
+                for time in curr_volunteer[day]:
+
+                    # If it's the first partner (idx = 0), then just copy their schedule into partners_schedule
+                    if idx == 0:
                         partners_schedule[day][time] = curr_volunteer[day][time]
+
+                    # If not the first partner and the time is not in partners_schedule then just skip
                     elif time not in partners_schedule[day]:
                         pass
+
+                    # If not the first partner and the time in partners_schedule, check if partners_schedule or
+                    # curr_volunteer has less free time at the time. Keep the one with the least time.
                     elif curr_volunteer[day][time] < partners_schedule[day][time]:
                         partners_schedule[day][time] = curr_volunteer[day][time]
+
         return partners_schedule
 
     def __str__(self):
