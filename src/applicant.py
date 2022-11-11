@@ -4,6 +4,7 @@ from partners import Partners
 
 class Applicant:
     """Base class that the Volunteer and the Classroom classes inherit from."""
+
     def __init__(self, name: str, phone: str, email: str):
         self.name = name
         self.phone = phone
@@ -31,7 +32,6 @@ class Applicant:
 
 
 class Volunteer(Applicant):
-    """ This class stores volunteer information"""
 
     def __init__(self, name: str, phone: str, email: str, team_leader_app: bool, index: int, imported_schedule: list):
         """
@@ -59,8 +59,7 @@ class Volunteer(Applicant):
         # value at an index is the minutes of consecutive free time the volunteer has starting at that time
         # self.free_time_array = src.convertSchedule.convert_to_free_time_array(self.schedule_array)
 
-    # Designate the volunteer as the team leader for their group
-    def assign_t_leader(self):
+    def assign_team_leader(self):
         self.leader = True
 
     def __str__(self):
@@ -106,19 +105,20 @@ class Volunteer(Applicant):
         return weekly_free_time
 
     def convert_imported_list_to_schedule_dict(self, raw_schedule: list):
-        """ Converts the schedule imported from individuals.csv into a schedule_dictionary.
+        """Converts the schedule imported from individuals.csv into a schedule_dictionary.
 
         :param raw_schedule: each element represents a 15-min block & the letters are the weekdays the volunteer is busy
         :return: dictionary with a list of datetime objects that represent 15-minute time blocks of when the volunteer
         is busy for each weekday. {'Monday': [], 'Tuesday': [], 'Wednesday': [], 'Thursday': []}
         """
-        # list of times for each of day of the week that volunteer is unavailable
         weekly_schedule = {'Monday': [], 'Tuesday': [], 'Wednesday': [], 'Thursday': []}
         start_time = datetime.strptime(self.first_time, "%H:%M")
         end_time = datetime.strptime(self.last_time, "%H:%M")
 
         current_time = start_time
         idx = 0
+
+        # for each 15-minute time block, check if volunteer is busy
         while current_time < end_time:
             if 'M' in raw_schedule[idx]:
                 weekly_schedule['Monday'].append(current_time)
@@ -128,13 +128,13 @@ class Volunteer(Applicant):
                 weekly_schedule['Wednesday'].append(current_time)
             if 'R' in raw_schedule[idx]:
                 weekly_schedule['Thursday'].append(current_time)
-            current_time = current_time + timedelta(minutes=15)
-            idx += 1
+            current_time = current_time + timedelta(minutes=15)  # increment time by 15 minutes at the end of each loop
+            idx += 1  # look at the next element of the raw_schedule for the next loop
+
         return weekly_schedule
 
 
 class Classroom(Applicant):
-    """This class stores classroom information"""
 
     def __init__(self, name: str, phone: str, email: str, group_number: int, school: str, start_time: str,
                  end_time: str):
@@ -144,28 +144,29 @@ class Classroom(Applicant):
         self.set_times(start_time, end_time)
         self.num_of_volunteers = 0
         self.school = school
-
-        # time the class starts/ends in military time
-
         self.team_leader = False  # has a team leader?
 
         # TODO: make group_number the index of classroom in classroom_list
-
-        # the latest time a volunteer can start being available and be able to make this lesson
-        # self.free_time_start = src.convertSchedule.calculate_free_time_start(self.start_time, 15)
 
     def free_time_duration(self):
         """:returns: minutes of free time needed to perform a lesson, including driving and teaching time."""
         return (self.end_time - self.start_time + timedelta(minutes=30)).total_seconds() / 60
 
     def assign_partners(self, partners: Partners):
+        """Updates the group_number in the Partners object and assigns each of the Volunteer objects in Partners to
+        this classroom.
+
+        :param partners: Partners object being assigned to this classroom
+
+        """
         partners.group_number = self.group_number
         for volunteer in partners.volunteers:
             self.assign_volunteer(volunteer)
 
     def assign_volunteer(self, volunteer: Volunteer):
-        """
-        Assigns a volunteer to a classroom. Updates the volunteer.group_number with the group number of the classroom.
+        """Assigns a volunteer to a classroom.
+
+        Updates the volunteer.group_number with the group number of the classroom.
         If the classroom doesn't have a team leader and the volunteer applied to be one, it sets the Classroom t_leader
         equal to this volunteer and updates volunteer.assigned_t_leader.
 
@@ -176,7 +177,7 @@ class Classroom(Applicant):
         volunteer.set_group_number(self.group_number)
         if not self.team_leader and volunteer.leader_app:
             self.team_leader = True
-            volunteer.assign_t_leader()
+            volunteer.assign_team_leader()
 
     def can_make_class(self, schedule: dict):
         """ Returns boolean of whether volunteer/partner group can make a classroom based on the schedule parameter

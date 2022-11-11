@@ -12,17 +12,20 @@ def import_volunteers(filename: str):
     :return:list of Volunteer objects
     """
     volunteers = []
+
+    # Check that the file exists
     try:
         open(filename)
     except FileNotFoundError:
         msg = "Sorry, the file " + filename + " does not exist."
 
-    with open(filename) as individuals_csv:  # opens file as individuals_csv
-        # maps the information in each row to a dict whose keys are given by the first row in the csv
+    # opens file as individuals_csv and maps info in each row to a dict whose keys are given by the 1st row of the csv
+    with open(filename) as individuals_csv:
         csv_reader = csv.DictReader(individuals_csv)
         volunteer_idx = 0
-        # pull data from row in the csv, create a Volunteer object, and add it to volunteer_list
-        for row in csv_reader:  # for each individual
+
+        # pull data from row in the csv, create a Volunteer object, and add it to volunteers
+        for row in csv_reader:
             volunteer_idx += 1
             schedule = list(row.values())[16:50]
             volunteer = Volunteer(
@@ -46,25 +49,30 @@ def import_classrooms(filename: str):
     :return: list of Classroom objects
     """
     classrooms = []
+
+    # Check that the file exists
     try:
         open(filename)
     except FileNotFoundError:
         msg = "Sorry, the file " + filename + "does not exist."
 
-    with open(filename) as classrooms_csv:  # opens classrooms.csv as classrooms_csv
-        # maps the information in each row to a dict whose keys are given by the first row in the csv
+    # opens file as classrooms_csv and maps info in each row to a dict whose keys are given by the 1st row of the csv
+    with open(filename) as classrooms_csv:
         csv_reader = csv.DictReader(classrooms_csv)
         group_num = 1
+
+        # pull data from row in the csv
         for row in csv_reader:  # for each teacher
             teacher_name = row['Name']
             teacher_phone = row['Cell Phone Number']
             school = row['School']
             email = row['Email Address']
             number_of_classes = row['Number of Classes']
-            for i in range(int(number_of_classes)):  # for all of that teacher's classes
+
+            # for each of the teachers classes a Classroom object is created and added to classrooms
+            for i in range(int(number_of_classes)):
                 group_num += 1
                 class_num = i + 1  # class_num keeps track of which class out of the total being created
-                # creates a Classroom object and adds it to classroom_list attribute in the sorter class
                 classroom = Classroom(group_number=group_num,
                                       name=teacher_name,
                                       phone=teacher_phone,
@@ -104,21 +112,28 @@ class Scheduler:
         :return: list of Partners objects
         """
         partners = []
+
+        # Check that the file exists
         try:
             open(filename)
         except FileNotFoundError:
             msg = "Sorry, the file " + filename + "does not exist."
 
-        with open(filename) as partners_csv:  # opens partners.csv as partners_csv
-            # returns the information in each row as a dictionary whose keys are given by the first row in the csv
+        # opens file as partners_csv and maps info in each row to a dict whose keys are given by the 1st row of the csv
+        with open(filename) as partners_csv:
             csv_reader = csv.DictReader(partners_csv)
-            for row in csv_reader:  # for each group of partners
-                number_of_partners = int(row['Number of Partners'])  # number of partners in the group
-                partner_emails = []  # list of the partner volunteer emails
+
+            # pull data from row in the csv, create a Partners object, and add it to partners
+            for row in csv_reader:
+                number_of_partners = int(row['Number of Partners'])
+                partner_emails = []
+
+                # for each person in the partners_csv row, add their email to partner_emails
                 for i in range(number_of_partners):  # for each partner in the group
                     partner_email = row[f'Group Member #{i + 1}'].lower()
-                    partner_emails.append(partner_email)  # add partner email to the list
-                # add all the partners' volunteer objects to the list 'group'
+                    partner_emails.append(partner_email)
+
+                # list comprehension adds all the partners' volunteer objects to the list 'group'
                 group = [volunteer for volunteer in self.volunteer_list if volunteer.email in partner_emails]
                 if len(group) < number_of_partners:
                     print(f'WARNING: Not all group members were found: {partner_emails}')
@@ -128,20 +143,21 @@ class Scheduler:
         return partners
 
     def sort_by_availability(self):
-        """
-        sorts volunteer and partner lists from the least to the greatest classrooms_possible
-        """
+        """Sorts volunteer and partner lists from the least to the greatest number of classrooms possible"""
+
+        # Counts how many classrooms each partner group can make
         for partners in self.partner_groups:
             for classroom in self.classroom_list:
                 if classroom.can_make_class(partners.free_time):
                     partners.classrooms_possible += 1
 
-        # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
+        # Counts how many classrooms each volunteer can make
         for person in self.volunteer_list:
             for classroom in self.classroom_list:
                 if classroom.can_make_class(person.free_time):
                     person.classrooms_possible += 1
 
+        # Sorts the volunteer_list and partners_list from the least to the greatest number of classrooms possible
         self.volunteer_list.sort(key=lambda volunteer: volunteer.classrooms_possible)
         self.partner_groups.sort(key=lambda group: group.classrooms_possible)
 
