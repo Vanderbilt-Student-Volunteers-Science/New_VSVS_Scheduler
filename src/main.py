@@ -39,11 +39,11 @@ def main():
         try:
             os.mkdir(path)
         except OSError:
-            print('WARNING: failed to create {} directory'.format(path))
+            print(f'WARNING: failed to create {path} directory')
         else:
-            print('Created {} directory'.format(path))
+            print(f'Created {path} directory')
     else:
-        print('{} directory already exists'.format(path))
+        print(f'{path} directory already exists')
 
     group_size = [0] * 108
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:

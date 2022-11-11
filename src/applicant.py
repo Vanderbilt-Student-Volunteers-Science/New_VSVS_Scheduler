@@ -12,6 +12,7 @@ class Applicant:
 
         # Defaults
         self.group_number = -1  # group number of -1 means not assigned to a group
+        self.grade_level = 0
         self.robotics = False
         self.special_needs = False
         self.weekday = "Not assigned"
@@ -19,12 +20,6 @@ class Applicant:
         self.end_time = 0
         self.first_time = "07:15"
         self.last_time = "15:30"
-
-    def set_group_number(self, num: int):
-        self.group_number = num
-
-    def set_weekday(self, day: str):
-        self.weekday = day
 
     def set_times(self, start: str, end: str):
         self.start_time = datetime.strptime(start, '%I:%M:%S %p')
@@ -132,8 +127,8 @@ class Classroom(Applicant):
     def __init__(self, name: str, phone: str, email: str, group_number: int, school: str, start_time: str,
                  end_time: str):
         super().__init__(name, phone, email)
-        self.set_group_number(group_number)
-        self.set_weekday("Monday")
+        self.group_number = group_number
+        self.weekday = "Monday"
         self.set_times(start_time, end_time)
         self.num_of_volunteers = 0
         self.school = school
@@ -164,7 +159,7 @@ class Classroom(Applicant):
         :param volunteer:volunteer being assigned
         """
         self.num_of_volunteers += 1
-        volunteer.set_group_number(self.group_number)
+        volunteer.group_number = self.group_number
         if not self.team_leader and volunteer.leader_app:
             self.team_leader = True
             volunteer.assign_team_leader()
