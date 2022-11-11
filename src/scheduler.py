@@ -4,28 +4,92 @@ from src.partners import Partners
 from src.applicant import Volunteer, Classroom
 
 
+# Helper functions for importing data from csv files
+def import_volunteers(filename: str):
+    """reads csv with volunteer information and creates a Volunteer object from each row
+
+    :param filename: filepath to the csv with volunteer info
+    :return:list of Volunteer objects
+    """
+    volunteers = []
+    try:
+        open(filename)
+    except FileNotFoundError:
+        msg = "Sorry, the file " + filename + " does not exist."
+
+    with open(filename) as individuals_csv:  # opens file as individuals_csv
+        # maps the information in each row to a dict whose keys are given by the first row in the csv
+        csv_reader = csv.DictReader(individuals_csv)
+        volunteer_idx = 0
+        # pull data from row in the csv, create a Volunteer object, and add it to volunteer_list
+        for row in csv_reader:  # for each individual
+            volunteer_idx += 1
+            schedule = list(row.values())[16:50]
+            volunteer = Volunteer(
+                index=volunteer_idx,
+                name=row['First Name'].strip() + ' ' + row['Last Name'].strip(),
+                phone=row['Phone Number'],
+                email=row['Email'].strip(),
+                team_leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
+                imported_schedule=schedule
+            )
+            volunteers.append(volunteer)
+
+    print('There are {} volunteers.'.format(len(volunteers)))
+    return volunteers
+
+
+def import_classrooms(filename: str):
+    """reads csv with classroom information and creates a Classroom object from each row
+
+    :param filename: filepath to the csv with volunteer info
+    :return: list of Classroom objects
+    """
+    classrooms = []
+    try:
+        open(filename)
+    except FileNotFoundError:
+        msg = "Sorry, the file " + filename + "does not exist."
+
+    with open(filename) as classrooms_csv:  # opens classrooms.csv as classrooms_csv
+        # maps the information in each row to a dict whose keys are given by the first row in the csv
+        csv_reader = csv.DictReader(classrooms_csv)
+        group_num = 1
+        for row in csv_reader:  # for each teacher
+            teacher_name = row['Name']
+            teacher_phone = row['Cell Phone Number']
+            school = row['School']
+            email = row['Email Address']
+            number_of_classes = row['Number of Classes']
+            for i in range(int(number_of_classes)):  # for all of that teacher's classes
+                group_num += 1
+                class_num = i + 1  # class_num keeps track of which class out of the total being created
+                # creates a Classroom object and adds it to classroom_list attribute in the sorter class
+                classroom = Classroom(group_number=group_num,
+                                      name=teacher_name,
+                                      phone=teacher_phone,
+                                      school=school,
+                                      email=email,
+                                      start_time=row[f'Start Time (Class {class_num} of {number_of_classes})'],
+                                      end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
+                                      )
+                classrooms.append(classroom)
+        print('There are {} classrooms.'.format(len(classrooms)))
+        return classrooms
+
+
 class Scheduler:
 
     def __init__(self, volunteer_file: str, partner_file: str, classroom_file: str, max_team_size: int = 4,
-                 min_team_size: int = 3, travel_time: int = 30):
-        """
-
-        :param max_team_size:maximum number of volunteers to allow in a classroom group
-        :param min_team_size:minimum acceptable number of volunteers in a classroom group that can visit a classroom
-        :param travel_time:minutes to travel one-way to any school
-        """
-        self.volunteer_list = []
-        self.classroom_list = []
-        self.partner_groups = []
+                 min_team_size: int = 3):
 
         # Import data
-        self.import_volunteers(volunteer_file)
-        self.import_partners(partner_file)
-        self.import_classrooms(classroom_file)
+        self.volunteer_list = import_volunteers(volunteer_file)
+        self.classroom_list = import_classrooms(classroom_file)
+        self.partner_groups = self.import_partners(partner_file)
 
         self.max_team_size = max_team_size
         self.min_team_size = min_team_size
-        self.travel_time = travel_time
 
         self.sort_by_availability()
         self.find_class_for_partners()
@@ -33,82 +97,13 @@ class Scheduler:
         self.assign_volunteers()
         self.assign_second_time()
 
-    def import_volunteers(self, filename: str):
-        """reads csv with volunteer information and creates a Volunteer object from each row
+    def import_partners(self, filename: str):
+        """reads csv with partner group information and creates a Partners object from each row
 
         :param filename: filepath to the csv with volunteer info
-        :return:
+        :return: list of Partners objects
         """
-        try:
-            open(filename)
-        except FileNotFoundError:
-            msg = "Sorry, the file " + filename + " does not exist."
-
-        with open(filename) as individuals_csv:  # opens file as individuals_csv
-            # maps the information in each row to a dict whose keys are given by the first row in the csv
-            csv_reader = csv.DictReader(individuals_csv)
-            volunteer_idx = 0
-            # pull data from row in the csv, create a Volunteer object, and add it to volunteer_list
-            for row in csv_reader:  # for each individual
-                volunteer_idx += 1
-                schedule = list(row.values())[16:50]
-                volunteer = Volunteer(
-                    index=volunteer_idx,
-                    name=row['First Name'].strip() + ' ' + row['Last Name'].strip(),
-                    phone=row['Phone Number'],
-                    email=row['Email'].strip(),
-                    team_leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
-                    imported_schedule=schedule
-                )
-                self.volunteer_list.append(volunteer)
-
-        print('There are {} volunteers.'.format(len(self.volunteer_list)))
-        return self.volunteer_list
-
-    def import_classrooms(self, filename: str):
-        """
-
-        :param filename:
-        :return:
-        """
-        try:
-            open(filename)
-        except FileNotFoundError:
-            msg = "Sorry, the file " + filename + "does not exist."
-
-        with open(filename) as classrooms_csv:  # opens classrooms.csv as classrooms_csv
-            # maps the information in each row to a dict whose keys are given by the first row in the csv
-            csv_reader = csv.DictReader(classrooms_csv)
-            group_num = 1
-            for row in csv_reader:  # for each teacher
-                teacher_name = row['Name']
-                teacher_phone = row['Cell Phone Number']
-                school = row['School']
-                email = row['Email Address']
-                number_of_classes = row['Number of Classes']
-                for i in range(int(number_of_classes)):  # for all of that teacher's classes
-                    group_num += 1
-                    class_num = i + 1  # class_num keeps track of which class out of the total being created
-                    # creates a Classroom object and adds it to classroom_list attribute in the sorter class
-                    classroom = Classroom(group_number=group_num,
-                                          name=teacher_name,
-                                          phone=teacher_phone,
-                                          school=school,
-                                          email=email,
-                                          start_time=row[f'Start Time (Class {class_num} of {number_of_classes})'],
-                                          end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
-                                          )
-                    self.classroom_list.append(classroom)
-            print('There are {} classrooms.'.format(len(self.classroom_list)))
-            return self.classroom_list
-
-    def import_partners(self, filename: str):
-        """
-
-        :param filename:
-        :return:
-        """
-
+        partners = []
         try:
             open(filename)
         except FileNotFoundError:
@@ -128,9 +123,31 @@ class Scheduler:
                 if len(group) < number_of_partners:
                     print(f'WARNING: Not all group members were found: {partner_emails}')
                 if len(group) > 1:
-                    partners = Partners(group)
-                    self.partner_groups.append(partners)
-        return self.partner_groups
+                    partners_group = Partners(group)
+                    partners.append(partners_group)
+        return partners
+
+    def sort_by_availability(self):
+        """
+        sorts volunteer and partner lists from the least to the greatest classrooms_possible
+        """
+        for partners in self.partner_groups:
+            for classroom in self.classroom_list:
+                if classroom.can_make_class(partners.free_time):
+                    partners.classrooms_possible += 1
+
+        # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
+        for person in self.volunteer_list:
+            for classroom in self.classroom_list:
+                if classroom.can_make_class(person.free_time):
+                    person.classrooms_possible += 1
+
+        self.volunteer_list.sort(key=lambda volunteer: volunteer.classrooms_possible)
+        self.partner_groups.sort(key=lambda group: group.classrooms_possible)
+
+    def sort_classrooms_by_num_of_volunteers(self):
+        """Sorts the classroom_list from least to greatest number of volunteers assigned"""
+        self.classroom_list.sort(key=lambda classroom: classroom.num_of_volunteers, reverse=True)
 
     def assign_volunteers(self):
         """Assigns all unassigned volunteers to classroom groups. Prioritizes assigning each volunteer to a partially-filled
@@ -187,27 +204,6 @@ class Scheduler:
                 print(f"WARNING:{partners.volunteers} partner group could not be assigned together because of "
                       "scheduling conflicts.")
         self.sort_by_availability()
-
-    def sort_by_availability(self):
-        """
-        sorts volunteer and partner lists from the least to the greatest classrooms_possible
-        """
-        for partners in self.partner_groups:
-            for classroom in self.classroom_list:
-                if classroom.can_make_class(partners.free_time):
-                    partners.classrooms_possible += 1
-
-        # for unassigned volunteers, count classrooms they can make, total is Volunteer attribute classrooms_possible
-        for person in self.volunteer_list:
-            for classroom in self.classroom_list:
-                if classroom.can_make_class(person.free_time):
-                    person.classrooms_possible += 1
-
-        self.volunteer_list.sort(key=lambda volunteer: volunteer.classrooms_possible)
-        self.partner_groups.sort(key=lambda group: group.classrooms_possible)
-
-    def sort_classrooms_by_num_of_volunteers(self):
-        self.classroom_list.sort(key=lambda classroom: classroom.num_of_volunteers, reverse=True)
 
     def assign_team_leaders(self):
         """Assigns team leaders to classroom groups that don't have them. Prioritizes assigning team leaders to

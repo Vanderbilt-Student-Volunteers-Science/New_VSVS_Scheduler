@@ -3,6 +3,7 @@ from partners import Partners
 
 
 class Applicant:
+    """Base class that the Volunteer and the Classroom classes inherit from."""
     def __init__(self, name: str, phone: str, email: str):
         self.name = name
         self.phone = phone
@@ -34,7 +35,6 @@ class Volunteer(Applicant):
 
     def __init__(self, name: str, phone: str, email: str, team_leader_app: bool, index: int, imported_schedule: list):
         """
-
         :param name:
         :param phone:
         :param email:
@@ -106,10 +106,11 @@ class Volunteer(Applicant):
         return weekly_free_time
 
     def convert_imported_list_to_schedule_dict(self, raw_schedule: list):
-        """Converts the schedule imported from individuals.csv into a schedule_dictionary.
+        """ Converts the schedule imported from individuals.csv into a schedule_dictionary.
 
         :param raw_schedule: each element represents a 15-min block & the letters are the weekdays the volunteer is busy
-        :return: dictionary with a list of times that volunteer is busy for each weekday
+        :return: dictionary with a list of datetime objects that represent 15-minute time blocks of when the volunteer
+        is busy for each weekday. {'Monday': [], 'Tuesday': [], 'Wednesday': [], 'Thursday': []}
         """
         # list of times for each of day of the week that volunteer is unavailable
         weekly_schedule = {'Monday': [], 'Tuesday': [], 'Wednesday': [], 'Thursday': []}
@@ -137,11 +138,6 @@ class Classroom(Applicant):
 
     def __init__(self, name: str, phone: str, email: str, group_number: int, school: str, start_time: str,
                  end_time: str):
-        """
-        :param school:
-        :param start_time:time at which the class starts
-        :param end_time:time at which the class ends
-        """
         super().__init__(name, phone, email)
         self.set_group_number(group_number)
         self.set_weekday("Monday")
@@ -159,8 +155,7 @@ class Classroom(Applicant):
         # self.free_time_start = src.convertSchedule.calculate_free_time_start(self.start_time, 15)
 
     def free_time_duration(self):
-        """Returns minutes of free time needed to perform a lesson, including driving and teaching time.
-        :returns: minutes of free time needed starting at free_time_start for a volunteer to attend the lesson """
+        """:returns: minutes of free time needed to perform a lesson, including driving and teaching time."""
         return (self.end_time - self.start_time + timedelta(minutes=30)).total_seconds() / 60
 
     def assign_partners(self, partners: Partners):
