@@ -15,9 +15,6 @@ class Partners:
 
         :return:
         """
-        print(str(self.volunteers))
-        for person in self.volunteers:
-            print(str(person) + " " + str(person.free_time))
         partners_schedule = {"Monday": {}, "Tuesday": {}, "Wednesday": {}, "Thursday": {}}
         for i in range(len(self.volunteers)):  # for all volunteers in group
             curr_volunteer = self.volunteers[i].free_time
@@ -29,5 +26,4 @@ class Partners:
                         pass
                     elif curr_volunteer[day][time] < partners_schedule[day][time]:
                         partners_schedule[day][time] = curr_volunteer[day][time]
-        print(partners_schedule)
         return partners_schedule
