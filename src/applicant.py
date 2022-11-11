@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from partners import Partners
 
+
 class Applicant:
     def __init__(self, name: str, phone: str, email: str):
         self.name = name
@@ -31,7 +32,7 @@ class Applicant:
 class Volunteer(Applicant):
     """ This class stores volunteer information"""
 
-    def __init__(self, name: str, phone: str, email: str, team_leader_app: bool, index: int, free_time: list):
+    def __init__(self, name: str, phone: str, email: str, team_leader_app: bool, index: int, imported_schedule: list):
         """
 
         :param name:
@@ -46,7 +47,7 @@ class Volunteer(Applicant):
         super().__init__(name, phone, email)
         self.leader_app = team_leader_app
         self.index = index
-        self.free_time = self.schedule_to_free_time(free_time)
+        self.free_time = self.schedule_to_free_time(imported_schedule)
 
         self.classrooms_possible = 0  # Number of classrooms the volunteer can make according to their schedule
         self.leader = False  # Was the volunteer assigned to be their group's team leader?
@@ -193,8 +194,6 @@ class Classroom(Applicant):
             return schedule[self.weekday][time] >= self.free_time_duration()
         else:
             return False
-
-
 
     def __str__(self):
         return self.name + ' at ' + self.school

@@ -58,7 +58,7 @@ class Scheduler:
                     phone=row['Phone Number'],
                     email=row['Email'].strip(),
                     team_leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
-                    free_time=schedule
+                    imported_schedule=schedule
                 )
                 self.volunteer_list.append(volunteer)
 
@@ -145,7 +145,7 @@ class Scheduler:
             classroom_idx = 0
             while volunteer.group_number == -1 and classroom_idx < len(self.classroom_list):
                 classroom = self.classroom_list[classroom_idx]
-                if classroom.can_make_class(volunteer) and classroom.num_of_volunteers < self.max_team_size:
+                if classroom.can_make_class(volunteer.free_time) and classroom.num_of_volunteers < self.max_team_size:
                     classroom.assign_volunteer(volunteer)
                 else:
                     classroom_idx += 1

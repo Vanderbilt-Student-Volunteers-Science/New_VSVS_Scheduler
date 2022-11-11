@@ -1,6 +1,4 @@
 import unittest
-from src.tests.test_data.sample_data_and_outputs import sample_raw_schedule, free_time_schedule, converted_schedule
-
 from src.scheduler import Scheduler
 
 
@@ -12,7 +10,6 @@ class SorterTestCase(unittest.TestCase):
 
     def test_data_import(self):
         self.assertEqual(len(self.scheduler.volunteer_list), 360)
-        self.assertEqual(len(self.scheduler.unassigned_volunteers), 360)
         self.assertEqual(len(self.scheduler.partner_groups), 36)
         self.assertEqual(len(self.scheduler.classroom_list), 79)
 
