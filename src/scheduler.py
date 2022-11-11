@@ -143,7 +143,7 @@ class Scheduler:
         return partners
 
     def sort_by_availability(self):
-        """Sorts volunteer and partner lists from the least to the greatest number of classrooms possible"""
+        """Sorts volunteer and partner lists from the least to the greatest number of classrooms possible."""
 
         # Counts how many classrooms each partner group can make
         for partners in self.partner_groups:
@@ -162,16 +162,13 @@ class Scheduler:
         self.partner_groups.sort(key=lambda group: group.classrooms_possible)
 
     def sort_classrooms_by_num_of_volunteers(self):
-        """Sorts the classroom_list from least to greatest number of volunteers assigned"""
+        """Sorts the classroom_list from least to greatest number of volunteers assigned."""
         self.classroom_list.sort(key=lambda classroom: classroom.num_of_volunteers, reverse=True)
 
     def assign_volunteers(self):
         """Assigns all unassigned volunteers to classroom groups. Prioritizes assigning each volunteer to a partially-filled
           classroom group over an empty classroom group.
 
-          :param sorted_others: a list of unassigned volunteers sorted from the fewest to the greatest number of classrooms
-          they can make
-          :return:
           """
         for volunteer in self.volunteer_list:
             self.sort_classrooms_by_num_of_volunteers()
@@ -217,7 +214,7 @@ class Scheduler:
                 else:
                     class_idx += 1
             if partners.group_number == -1:
-                print(f"WARNING:{partners.volunteers} partner group could not be assigned together because of "
+                print(f"WARNING:{str(partners)} partner group could not be assigned together because of "
                       "scheduling conflicts.")
         self.sort_by_availability()
 

@@ -27,3 +27,12 @@ class Partners:
                     elif curr_volunteer[day][time] < partners_schedule[day][time]:
                         partners_schedule[day][time] = curr_volunteer[day][time]
         return partners_schedule
+
+    def __str__(self):
+        text_output = ""
+        for volunteer in self.volunteers:
+            if volunteer == self.volunteers[-1]:
+                text_output += str(volunteer)
+            else:
+                text_output += str(volunteer) + ", "
+        return text_output

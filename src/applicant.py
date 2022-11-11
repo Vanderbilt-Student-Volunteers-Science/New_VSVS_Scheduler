@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from partners import Partners
+from src.partners import Partners
 
 
 class Applicant:
