@@ -14,15 +14,30 @@ class ClassroomTestCase(unittest.TestCase):
                                    group_number=0, school="Sunset Elementary", start_time="9:10:00 AM",
                                    end_time="10:25:00 AM")
 
+    def test_free_time_duration(self):
+        self.assertEqual(self.fake_class.free_time_duration(), 105)
+
     def test_can_make_class(self):
+        always_unavailable = {'Monday': {}, 'Tuesday': {}, 'Wednesday': {}, 'Thursday': {}}
         self.assertTrue(self.fake_class.can_make_class(schedule_can_make_class))
+        self.assertFalse(self.fake_class.can_make_class(always_unavailable))
+
+    def test_assign_volunteer(self):
+        fake_volunteer = Volunteer(name="Jane Doe", phone="000-000-000", email="jane.doe@vanderbilt.edu",
+                                   team_leader_app=True, imported_schedule=sample_raw_schedule)
+        fake_volunteer.free_time = schedule_can_make_class
+        self.fake_class.assign_volunteer(fake_volunteer)
+        self.assertEqual(self.fake_class.num_of_volunteers, 1)
+        self.assertEqual(fake_volunteer.group_number, 0)
+        self.assertTrue(self.fake_class.team_leader)
+        self.assertTrue(fake_volunteer.leader)
 
 
 class VolunteerTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.fake_volunteer = Volunteer(name="John Doe", phone="000-000-000", email="john.doe@vanderbilt.edu",
-                                       team_leader_app=True, index=0, imported_schedule=sample_raw_schedule)
+                                       team_leader_app=True, imported_schedule=sample_raw_schedule)
 
     def test_schedule_conversions(self):
         schedule_dict = self.fake_volunteer.convert_imported_list_to_schedule_dict(sample_raw_schedule)
@@ -35,11 +50,11 @@ class PartnersTestCase(unittest.TestCase):
     def test_create_partner_schedule(self):
         # create 3 dummy Volunteer objects for testing
         fake_partner_1 = Volunteer(name="John Doe", phone="000-000-000", email="john.doe@vanderbilt.edu",
-                                   team_leader_app=True, index=0, imported_schedule=sample_raw_schedule)
+                                   team_leader_app=True, imported_schedule=sample_raw_schedule)
         fake_partner_2 = Volunteer(name="Bob Doe", phone="000-000-000", email="bob.doe@vanderbilt.edu",
-                                   team_leader_app=True, index=0, imported_schedule=sample_raw_schedule)
+                                   team_leader_app=True, imported_schedule=sample_raw_schedule)
         fake_partner_3 = Volunteer(name="Charles Doe", phone="000-000-000", email="charles.doe@vanderbilt.edu",
-                                   team_leader_app=True, index=0, imported_schedule=sample_raw_schedule)
+                                   team_leader_app=True, imported_schedule=sample_raw_schedule)
 
         # Add 3 dummy schedules to each volunteer for testing
         fake_partner_1.free_time = partner_1_schedule

@@ -16,8 +16,8 @@ class Applicant:
         self.robotics = False
         self.special_needs = False
         self.weekday = "Not assigned"
-        self.start_time = 0
-        self.end_time = 0
+        self.start_time = datetime.today()
+        self.end_time = datetime.today()
         self.first_time = "07:15"
         self.last_time = "15:30"
 
@@ -28,7 +28,7 @@ class Applicant:
 
 class Volunteer(Applicant):
 
-    def __init__(self, name: str, phone: str, email: str, team_leader_app: bool, index: int, imported_schedule: list):
+    def __init__(self, name: str, phone: str, email: str, team_leader_app: bool, imported_schedule: list):
         """
         :param name:
         :param phone:
@@ -42,14 +42,10 @@ class Volunteer(Applicant):
         """
         super().__init__(name, phone, email)
         self.leader_app = team_leader_app
-        self.index = index
         self.free_time = self.schedule_to_free_time(imported_schedule)
 
         self.classrooms_possible = 0  # Number of classrooms the volunteer can make according to their schedule
         self.leader = False  # Was the volunteer assigned to be their group's team leader?
-
-    def assign_team_leader(self):
-        self.leader = True
 
     def __str__(self):
         return self.name
@@ -138,31 +134,6 @@ class Classroom(Applicant):
         """:returns: minutes of free time needed to perform a lesson, including driving and teaching time."""
         return (self.end_time - self.start_time + timedelta(minutes=30)).total_seconds() / 60
 
-    def assign_partners(self, partners: Partners):
-        """Updates the group_number for Partners object and assigns each Volunteer object in Partners to this classroom.
-
-        :param partners: Partners object being assigned to this classroom
-
-        """
-        partners.group_number = self.group_number
-        for volunteer in partners.volunteers:
-            self.assign_volunteer(volunteer)
-
-    def assign_volunteer(self, volunteer: Volunteer):
-        """Assigns a volunteer to a classroom.
-
-        Updates the volunteer.group_number with the group number of the classroom. If the classroom doesn't have a team
-        leader and the volunteer applied to be one, it sets the Classroom t_leader equal to this volunteer and updates
-        volunteer.assigned_t_leader.
-
-        :param volunteer:volunteer being assigned
-        """
-        self.num_of_volunteers += 1
-        volunteer.group_number = self.group_number
-        if not self.team_leader and volunteer.leader_app:
-            self.team_leader = True
-            volunteer.assign_team_leader()
-
     def can_make_class(self, schedule: dict):
         """Returns boolean of whether volunteer/partner group can make a classroom based on the schedule parameter.
 
@@ -180,6 +151,31 @@ class Classroom(Applicant):
             return schedule[self.weekday][time] >= self.free_time_duration()
         else:
             return False
+
+    def assign_volunteer(self, volunteer: Volunteer):
+        """Assigns a volunteer to a classroom.
+
+        Updates the volunteer.group_number with the group number of the classroom. If the classroom doesn't have a team
+        leader and the volunteer applied to be one, it sets the Classroom t_leader equal to this volunteer and updates
+        volunteer.assigned_t_leader.
+
+        :param volunteer:volunteer being assigned
+        """
+        self.num_of_volunteers += 1
+        volunteer.group_number = self.group_number
+        if not self.team_leader and volunteer.leader_app:
+            self.team_leader = True
+            volunteer.leader = True
+
+    def assign_partners(self, partners: Partners):
+        """Updates the group_number for Partners object and assigns each Volunteer object in Partners to this classroom.
+
+        :param partners: Partners object being assigned to this classroom
+
+        """
+        partners.group_number = self.group_number
+        for volunteer in partners.volunteers:
+            self.assign_volunteer(volunteer)
 
     def __str__(self):
         return self.name + ' at ' + self.school

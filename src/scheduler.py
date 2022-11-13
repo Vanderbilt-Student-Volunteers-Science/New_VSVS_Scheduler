@@ -1,10 +1,18 @@
 import csv
+import warnings
 from datetime import datetime, timedelta
 from src.partners import Partners
 from src.applicant import Volunteer, Classroom
 
 
 # Helper functions for importing data from csv files
+def name_caps(name: str):
+    if name.isupper() or name.islower():
+        return name.strip().lower().capitalize()
+    else:
+        return name.strip()
+
+
 def import_volunteers(filename: str):
     """Reads csv with volunteer information and creates a Volunteer object from each row.
 
@@ -29,15 +37,13 @@ def import_volunteers(filename: str):
             volunteer_idx += 1
             schedule = list(row.values())[16:50]
             volunteer = Volunteer(
-                index=volunteer_idx,
-                name=row['First Name'].strip() + ' ' + row['Last Name'].strip(),
+                name=name_caps(row['First Name']) + ' ' + name_caps(row['Last Name']),
                 phone=row['Phone Number'],
                 email=row['Email'].strip(),
                 team_leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
                 imported_schedule=schedule
             )
             volunteers.append(volunteer)
-            print(str(volunteer) + f" {volunteer.free_time}")
 
     print('There are {} volunteers.'.format(len(volunteers)))
     return volunteers
@@ -137,7 +143,7 @@ class Scheduler:
                 # list comprehension adds all the partners' volunteer objects to the list 'group'
                 group = [volunteer for volunteer in self.volunteer_list if volunteer.email in partner_emails]
                 if len(group) < number_of_partners:
-                    print(f'WARNING: Not all group members were found: {partner_emails}')
+                    warnings.warn(f'WARNING: Not all group members were found: {partner_emails}')
                 if len(group) > 1:
                     partners_group = Partners(group)
                     partners.append(partners_group)
@@ -192,7 +198,7 @@ class Scheduler:
                 group_num = classroom.group_number
                 for volunteer in self.volunteer_list:
                     if volunteer.group_number == group_num:
-                        volunteer.set_group_number(-1)
+                        volunteer.group_number = -1
                         volunteer.assigned_t_leader = False
                         classroom.number_of_volunteers = 0
                         classroom.team_leader = False
@@ -215,8 +221,8 @@ class Scheduler:
                 else:
                     class_idx += 1
             if partners.group_number == -1:
-                print(f"WARNING:{str(partners)} partner group could not be assigned together because of "
-                      "scheduling conflicts.")
+                warnings.warn(f'WARNING:{str(partners)} partner group could not be assigned together because of '
+                              'scheduling conflicts.')
         self.sort_by_availability()
 
     def assign_team_leaders(self):
