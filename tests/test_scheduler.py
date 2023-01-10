@@ -1,9 +1,9 @@
 import unittest
-from src.scheduler import Scheduler
+from vsvs_scheduler.schedule import Schedule
 
-from src.applicant import Volunteer, Classroom
-from src.partners import Partners
-from src.tests.test_data.sample_data_and_outputs import sample_raw_schedule, free_time_schedule, converted_schedule, \
+from vsvs_scheduler.classroom import Classroom
+from vsvs_scheduler.applicant import Volunteer, Partners
+from tests.test_data.sample_data_and_outputs import sample_raw_schedule, free_time_schedule, converted_schedule, \
     partner_1_schedule, partner_2_schedule, partners_combined_schedule, partner_3_schedule, schedule_can_make_class
 
 
@@ -25,7 +25,7 @@ class ClassroomTestCase(unittest.TestCase):
     def test_assign_volunteer(self):
         fake_volunteer = Volunteer(name="Jane Doe", phone="000-000-000", email="jane.doe@vanderbilt.edu",
                                    team_leader_app=True, imported_schedule=sample_raw_schedule)
-        fake_volunteer.free_time = schedule_can_make_class
+        fake_volunteer.availability = schedule_can_make_class
         self.fake_class.assign_volunteer(fake_volunteer)
         self.assertEqual(self.fake_class.num_of_volunteers, 1)
         self.assertEqual(fake_volunteer.group_number, 0)
@@ -40,14 +40,15 @@ class VolunteerTestCase(unittest.TestCase):
                                        team_leader_app=True, imported_schedule=sample_raw_schedule)
 
     def test_schedule_conversions(self):
-        schedule_dict = self.fake_volunteer.convert_imported_list_to_schedule_dict(sample_raw_schedule)
-        free_time = self.fake_volunteer.schedule_to_free_time(sample_raw_schedule)
+        schedule_dict = self.fake_volunteer.convert_raw_schedule_to_dict(sample_raw_schedule)
+        free_time = self.fake_volunteer.create_availability_schedule()
         self.assertEqual(schedule_dict, converted_schedule)
+        print(schedule_dict)
         self.assertEqual(free_time, free_time_schedule)
 
 
 class PartnersTestCase(unittest.TestCase):
-    def test_create_partner_schedule(self):
+    def test_create_free_time_schedule(self):
         # create 3 dummy Volunteer objects for testing
         fake_partner_1 = Volunteer(name="John Doe", phone="000-000-000", email="john.doe@vanderbilt.edu",
                                    team_leader_app=True, imported_schedule=sample_raw_schedule)
@@ -57,20 +58,20 @@ class PartnersTestCase(unittest.TestCase):
                                    team_leader_app=True, imported_schedule=sample_raw_schedule)
 
         # Add 3 dummy schedules to each volunteer for testing
-        fake_partner_1.free_time = partner_1_schedule
-        fake_partner_2.free_time = partner_2_schedule
-        fake_partner_3.free_time = partner_3_schedule
+        fake_partner_1.availability = partner_1_schedule
+        fake_partner_2.availability = partner_2_schedule
+        fake_partner_3.availability = partner_3_schedule
 
         # Create a partner object and test that the create_partner_schedule returns the correct output
         partners = Partners([fake_partner_1, fake_partner_2, fake_partner_3])
-        self.assertEqual(partners.create_partner_schedule(), partners_combined_schedule)
+        self.assertEqual(partners.create_availability_schedule(), partners_combined_schedule)
 
 
 class SchedulerTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.scheduler = Scheduler(volunteer_file='../../data/individuals.csv',
-                                  classroom_file='../../data/classrooms.csv', partner_file='../../data/partners.csv')
+        cls.scheduler = Schedule(volunteer_file='../data/individuals.csv',
+                                 classroom_file='../data/classrooms.csv', partner_file='../data/partners.csv')
 
     def test_data_import(self):
         self.assertEqual(len(self.scheduler.volunteer_list), 360)
@@ -79,16 +80,16 @@ class SchedulerTestCase(unittest.TestCase):
 
     def test_file_not_found(self):
         with self.assertRaises(FileNotFoundError, msg="Sorry, the file volunteer_fake does not exist."):
-            error_scheduler = Scheduler(volunteer_file='volunteer_fake', classroom_file='../../data/classrooms.csv',
-                                        partner_file='../../data/partners.csv')
+            error_scheduler = Schedule(volunteer_file='volunteer_fake', classroom_file='../data/classrooms.csv',
+                                       partner_file='../data/partners.csv')
 
         with self.assertRaises(FileNotFoundError, msg="Sorry, the file classroom_fake does not exist."):
-            error_scheduler = Scheduler(volunteer_file='../../data/individuals.csv', classroom_file='classroom_fake',
-                                        partner_file='../../data/partners.csv')
+            error_scheduler = Schedule(volunteer_file='../data/individuals.csv', classroom_file='classroom_fake',
+                                       partner_file='../data/partners.csv')
 
         with self.assertRaises(FileNotFoundError, msg="Sorry, the file partners_fake does not exist."):
-            error_scheduler = Scheduler(volunteer_file='../../data/individuals.csv',
-                                        classroom_file='../../data/classrooms.csv', partner_file='partners_fake')
+            error_scheduler = Schedule(volunteer_file='../data/individuals.csv',
+                                       classroom_file='../data/classrooms.csv', partner_file='partners_fake')
 
 
 if __name__ == '__main__':

@@ -1,12 +1,14 @@
 import csv
 import os
-from src.scheduler import Scheduler
+import argparse
+from vsvs_scheduler.schedule import ApplicationScheduler
 
 
 def main():
+    applicants = ApplicationScheduler()
+    applicants.import_applications()
 
-    vsvs_scheduler = Scheduler(volunteer_file='../data/individuals.csv', classroom_file='../data/classrooms.csv',
-                               partner_file='../data/partners.csv')
+
 
     # make list of unassigned volunteers, sort them by the number of classrooms they can make (fewest to greatest
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
@@ -52,14 +54,14 @@ def main():
             ['Group Number', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Teacher', 'Day',
              'Start Time', 'End Time']
         )
-        for volunteer in vsvs_scheduler.volunteer_list:
+        for volunteer in vsvs_scheduler.applicant_list:
             if volunteer.group_number == -1:
                 unassigned_volunteers += 1
             else:
                 group_size[volunteer.group_number] += 1
                 assigned_class = vsvs_scheduler.classroom_list[volunteer.group_number - 4]
-                start_time = str(assigned_class.start_time)
-                end_time = str(assigned_class.end_time)
+                start_time = str(assigned_class.first_time)
+                end_time = str(assigned_class.last_time)
             csv_writer.writerow(
                 [
                     volunteer.group_number,
@@ -91,8 +93,8 @@ def main():
                         '',
                         classroom.teacher_email,
                         '',
-                        classroom.start_time,
-                        classroom.end_time,
+                        classroom.first_time,
+                        classroom.last_time,
                         classroom.day_of_week
                     ]
                 )
