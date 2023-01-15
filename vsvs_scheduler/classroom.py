@@ -92,17 +92,5 @@ class Classroom:
         return self.teacher + ' at ' + self.school
 
 
-class Group:
-    def __init__(self, classroom: Classroom):
-        self.classroom = classroom
-        self.volunteers: list[Volunteer] = []
-
-    def assign(self, applicant: Applicant):
-        volunteers = applicant.assign()
-        if volunteers == list:
-            for person in volunteers:
-                self.volunteers.append(person)
-        else:
-            self.volunteers.append(volunteers)
 
 
