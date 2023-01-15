@@ -134,7 +134,7 @@ class Scheduler:
         for group in self.partners:
             while group.group_number == -1 and idx < len(self.classrooms):
                 curr_class = self.classrooms[idx]
-                if group.can_make_class(curr_class) and MAX_TEAM_SIZE - curr_class.volunteers_assigned >= len(
+                if group.can_make_class(curr_class) and MAX_TEAM_SIZE - curr_class.num_of_volunteers >= len(
                         group.members):
                     group.assign_partners(curr_class)
                 else:
@@ -146,7 +146,7 @@ class Scheduler:
 
     def assign_leaders(self):
         self.incomplete_classrooms = [classroom for classroom in self.classrooms if
-                                      classroom.volunteers_assigned < MAX_TEAM_SIZE]
+                                      classroom.num_of_volunteers < MAX_TEAM_SIZE]
         team_leader_apps = \
             [volunteer for volunteer in self.individuals if volunteer.group_number == -1 and volunteer.leader_app]
 
@@ -158,7 +158,7 @@ class Scheduler:
                 classroom = self.classrooms[idx]
                 if volunteer.can_make_class(classroom) and not classroom.team_leader:
                     classroom.assign_volunteer(volunteer)
-                    if classroom.volunteers_assigned >= MAX_TEAM_SIZE:
+                    if classroom.num_of_volunteers >= MAX_TEAM_SIZE:
                         self.incomplete_classrooms.remove(classroom)
                 else:
                     idx += 1
@@ -170,10 +170,11 @@ class Scheduler:
                 classroom = self.incomplete_classrooms[idx]
                 if volunteer.can_make_class(classroom):
                     classroom.assign_volunteer(volunteer)
-                    if classroom.volunteers_assigned >= MAX_TEAM_SIZE:
+                    if classroom.num_of_volunteers >= MAX_TEAM_SIZE:
                         self.incomplete_classrooms.remove(classroom)
                 else:
                     idx += 1
+        self.incomplete_classrooms.sort(key=lambda classroom: classroom.num_of_volunteers)
 
     def possible_classrooms(self):
         for volunteer in self.individuals:

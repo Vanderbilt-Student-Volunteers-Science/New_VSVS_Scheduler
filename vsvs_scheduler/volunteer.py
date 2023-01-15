@@ -1,5 +1,7 @@
-from src.classroom import Classroom
+
 from datetime import datetime, timedelta
+
+from vsvs_scheduler.classroom import Classroom
 
 
 class Volunteer:
@@ -40,7 +42,7 @@ class Volunteer:
         self.group_number = -1
 
         # Was the volunteer assigned to be their group's team leader?
-        self.assigned_t_leader = False
+        self.assigned_leader = False
 
         # Number of classrooms the volunteer can make according to their schedule.
         # Set after partners and drivers are assigned.
@@ -110,7 +112,23 @@ class Volunteer:
         return schedule_dict
 
     def can_make_class(self, classroom: Classroom):
-        return self.availability[classroom.weekday][classroom.free_time_start] >= classroom.volunteer_time_needed
+        """Returns boolean of whether volunteer/partner group can make a classroom based on the schedule parameter.
+
+        :param volunteers:
+        :return: bool: whether volunteer/partners can make that class
+        """
+        schedule = self.availability
+        time_deviation = classroom.start_time.minute % 15
+        if time_deviation != 0:
+            new_time = classroom.start_time - timedelta(minutes=time_deviation)
+            time = new_time
+        else:
+            time = classroom.start_time
+
+        if time in schedule[classroom.weekday]:
+            return schedule[classroom.weekday][time] >= classroom.free_time_duration()
+
+        return False
 
     def __str__(self):
         return self.name
@@ -147,7 +165,18 @@ class Partners:
         return partners_schedule
 
     def can_make_class(self, classroom: Classroom):
-        return self.availability[classroom.weekday][classroom.free_time_start] >= classroom.volunteer_time_needed
+        schedule = self.availability
+        time_deviation = classroom.start_time.minute % 15
+        if time_deviation != 0:
+            new_time = classroom.start_time - timedelta(minutes=time_deviation)
+            time = new_time
+        else:
+            time = classroom.start_time
+
+        if time in schedule[classroom.weekday]:
+            return schedule[classroom.weekday][time] >= classroom.free_time_duration()
+
+        return False
 
     def increment_possible_classrooms(self):
         self.possible_classrooms += 1
@@ -158,4 +187,3 @@ class Partners:
         for member in self.members:
             classroom.assign_volunteer(member)
         self.group_number = classroom.group_number
-

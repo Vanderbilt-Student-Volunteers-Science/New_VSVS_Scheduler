@@ -1,10 +1,12 @@
 import unittest
+from datetime import datetime, timedelta
+
 from vsvs_scheduler.schedule import Schedule
 
 from vsvs_scheduler.classroom import Classroom
-from vsvs_scheduler.applicant import Volunteer, Partners
 from tests.test_data.sample_data_and_outputs import sample_raw_schedule, free_time_schedule, converted_schedule, \
     partner_1_schedule, partner_2_schedule, partners_combined_schedule, partner_3_schedule, schedule_can_make_class
+from vsvs_scheduler.volunteer import Volunteer
 
 
 class ClassroomTestCase(unittest.TestCase):
@@ -15,36 +17,35 @@ class ClassroomTestCase(unittest.TestCase):
                                    end_time="10:25:00 AM")
 
     def test_free_time_duration(self):
-        self.assertEqual(self.fake_class.free_time_duration(), 105)
-
-    def test_can_make_class(self):
-        always_unavailable = {'Monday': {}, 'Tuesday': {}, 'Wednesday': {}, 'Thursday': {}}
-        self.assertTrue(self.fake_class.can_make_class(schedule_can_make_class))
-        self.assertFalse(self.fake_class.can_make_class(always_unavailable))
+        self.assertEqual(self.fake_class.free_time_duration(), timedelta(minutes=105))
 
     def test_assign_volunteer(self):
         fake_volunteer = Volunteer(name="Jane Doe", phone="000-000-000", email="jane.doe@vanderbilt.edu",
-                                   team_leader_app=True, imported_schedule=sample_raw_schedule)
+                                   leader_app=True, imported_schedule=sample_raw_schedule)
         fake_volunteer.availability = schedule_can_make_class
         self.fake_class.assign_volunteer(fake_volunteer)
         self.assertEqual(self.fake_class.num_of_volunteers, 1)
         self.assertEqual(fake_volunteer.group_number, 0)
         self.assertTrue(self.fake_class.team_leader)
-        self.assertTrue(fake_volunteer.leader)
+        self.assertTrue(fake_volunteer.assigned_leader)
 
 
 class VolunteerTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.fake_volunteer = Volunteer(name="John Doe", phone="000-000-000", email="john.doe@vanderbilt.edu",
-                                       team_leader_app=True, imported_schedule=sample_raw_schedule)
+                                       leader_app=True, imported_schedule=sample_raw_schedule)
 
-    def test_schedule_conversions(self):
+    def test_convert_raw_scheduler_to_dict(self):
         schedule_dict = self.fake_volunteer.convert_raw_schedule_to_dict(sample_raw_schedule)
-        free_time = self.fake_volunteer.create_availability_schedule()
         self.assertEqual(schedule_dict, converted_schedule)
-        print(schedule_dict)
+    def test_create_availability_schedule(self):
+        free_time = self.fake_volunteer.create_availability_schedule(sample_raw_schedule)
         self.assertEqual(free_time, free_time_schedule)
+
+    def test_day_availability(self):
+
+    def test_can_make_classroom(self):
 
 
 class PartnersTestCase(unittest.TestCase):

@@ -5,8 +5,7 @@ from vsvs_scheduler.schedule import ApplicationScheduler
 
 
 def main():
-    applicants = ApplicationScheduler()
-    applicants.import_applications()
+
 
 
 
@@ -69,7 +68,7 @@ def main():
                     volunteer.last,
                     volunteer.email,
                     volunteer.phone,
-                    (lambda x: 'True' if x else '')(volunteer.assigned_t_leader),
+                    (lambda x: 'True' if x else '')(volunteer.assigned_leader),
                     assigned_class.teacher,
                     assigned_class.day_of_week,
                     (lambda x: x[0:2] + ':' + x[2:] if len(x) == 4 else x[0:1] + ":" + x[1:])(start_time),
