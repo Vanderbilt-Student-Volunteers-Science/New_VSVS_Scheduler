@@ -1,12 +1,11 @@
 import unittest
-from datetime import datetime, timedelta
-
-from vsvs_scheduler.schedule import Schedule
+from datetime import timedelta
 
 from vsvs_scheduler.classroom import Classroom
-from tests.test_data.sample_data_and_outputs import sample_raw_schedule, free_time_schedule, converted_schedule, \
-    partner_1_schedule, partner_2_schedule, partners_combined_schedule, partner_3_schedule, schedule_can_make_class
-from vsvs_scheduler.volunteer import Volunteer
+from tests.test_data.sample_data_and_outputs import sample_raw_schedule, free_time_schedule, schedule_dict_from_raw, \
+    partner_1_schedule, partner_2_schedule, partners_combined_schedule, partner_3_schedule, schedule_can_make_class, \
+    sample_Monday_availability
+from vsvs_scheduler.volunteer import Volunteer, Partners
 
 
 class ClassroomTestCase(unittest.TestCase):
@@ -38,34 +37,48 @@ class VolunteerTestCase(unittest.TestCase):
 
     def test_convert_raw_scheduler_to_dict(self):
         schedule_dict = self.fake_volunteer.convert_raw_schedule_to_dict(sample_raw_schedule)
-        self.assertEqual(schedule_dict, converted_schedule)
+        self.assertEqual(schedule_dict, schedule_dict)
+
+    def test_day_availability(self):
+        day_availability = self.fake_volunteer.day_availability(schedule_dict_from_raw["Monday"])
+        self.assertEqual(day_availability, sample_Monday_availability)
+
+    def test_can_make_classroom(self):
+        can_attend_example = Classroom(name="John Doe", phone="000-000-000", email="john.doe@vanderbilt.edu",
+                                       group_number=0, school="Sunset Elementary", start_time="8:00:00 AM",
+                                       end_time="9:00:00 AM")
+        cannot_attend_example = Classroom(name="John Doe", phone="000-000-000", email="john.doe@vanderbilt.edu",
+                                          group_number=0, school="Sunset Elementary", start_time="9:30:00 AM",
+                                          end_time="10:40:00 AM")
+        self.assertTrue(self.fake_volunteer.can_make_class(can_attend_example))
+        self.assertFalse(self.fake_volunteer.can_make_class(cannot_attend_example))
+
     def test_create_availability_schedule(self):
         free_time = self.fake_volunteer.create_availability_schedule(sample_raw_schedule)
         self.assertEqual(free_time, free_time_schedule)
 
-    def test_day_availability(self):
-
-    def test_can_make_classroom(self):
-
 
 class PartnersTestCase(unittest.TestCase):
-    def test_create_free_time_schedule(self):
+    @classmethod
+    def SetupClass(cls):
         # create 3 dummy Volunteer objects for testing
         fake_partner_1 = Volunteer(name="John Doe", phone="000-000-000", email="john.doe@vanderbilt.edu",
-                                   team_leader_app=True, imported_schedule=sample_raw_schedule)
+                                   leader_app=True, imported_schedule=sample_raw_schedule)
         fake_partner_2 = Volunteer(name="Bob Doe", phone="000-000-000", email="bob.doe@vanderbilt.edu",
-                                   team_leader_app=True, imported_schedule=sample_raw_schedule)
+                                   leader_app=True, imported_schedule=sample_raw_schedule)
         fake_partner_3 = Volunteer(name="Charles Doe", phone="000-000-000", email="charles.doe@vanderbilt.edu",
-                                   team_leader_app=True, imported_schedule=sample_raw_schedule)
+                                   leader_app=True, imported_schedule=sample_raw_schedule)
 
         # Add 3 dummy schedules to each volunteer for testing
         fake_partner_1.availability = partner_1_schedule
         fake_partner_2.availability = partner_2_schedule
         fake_partner_3.availability = partner_3_schedule
 
-        # Create a partner object and test that the create_partner_schedule returns the correct output
-        partners = Partners([fake_partner_1, fake_partner_2, fake_partner_3])
-        self.assertEqual(partners.create_availability_schedule(), partners_combined_schedule)
+        # Create a partner object
+        cls.partners_grouup = Partners([fake_partner_1, fake_partner_2, fake_partner_3])
+
+    def test_create_free_time_schedule(self):
+        self.assertEqual(self.partners_group.create_availability_schedule(), partners_combined_schedule)
 
 
 class SchedulerTestCase(unittest.TestCase):

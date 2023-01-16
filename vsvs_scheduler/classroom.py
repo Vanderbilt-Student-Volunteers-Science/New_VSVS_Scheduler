@@ -1,7 +1,5 @@
 from datetime import datetime, timedelta
 
-from datetime import datetime
-
 
 # Classroom
 # This is Cal adding a comment to see if he can get the Superlinter to work
@@ -83,7 +81,7 @@ class Classroom:
 
     def free_time_duration(self):
         """:returns: minutes of free time needed to perform a lesson, including driving and teaching time."""
-        return self.end_time - self.start_time + timedelta(minutes=30)
+        return (self.end_time - self.start_time + timedelta(minutes=30)).seconds/60
 
     def __str__(self):
         return self.teacher + ' at ' + self.school

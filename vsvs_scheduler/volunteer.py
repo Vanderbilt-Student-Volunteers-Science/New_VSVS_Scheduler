@@ -13,8 +13,6 @@ class Volunteer:
     def __init__(self, name: str, phone: str, email: str, leader_app: bool, imported_schedule: list,
                  robotics_interest: bool = False, special_needs_interest: bool = False):
         """
-        :param phone: cell phone number
-        :param email: vanderbilt email
         :param robotics_interest: Are they interested in robotics? Yes=true, No=false
         :param special_needs_interest: Are they interested in working with special needs students? Yes=true, No=false
         :param leader_app: Did they apply to be a team leader? Yes=true, No=false
@@ -72,10 +70,10 @@ class Volunteer:
 
         while current_time < self.last_time:
             while next_unavailable_time >= current_time:
-                time_available = int((next_unavailable_time - current_time).total_seconds() / 60)  # time in minutes
+                time_available = int((next_unavailable_time - current_time).seconds / 60)  # time in minutes
                 if time_available > 0:
                     # adds free time left from current time into current weekday dictionary in weekly_free_time
-                    day_availability[current_time.time] = time_available
+                    day_availability[current_time] = time_available
                 current_time += timedelta(minutes=15)
             if idx == len(day_schedule) - 1:
                 next_unavailable_time = self.last_time
