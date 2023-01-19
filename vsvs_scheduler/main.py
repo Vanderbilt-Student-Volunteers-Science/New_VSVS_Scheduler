@@ -1,7 +1,5 @@
 import csv
 import os
-import argparse
-from vsvs_scheduler.schedule import ApplicationScheduler
 
 
 def main():
