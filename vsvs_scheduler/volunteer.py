@@ -11,7 +11,7 @@ class Volunteer:
     last_time = datetime.strptime("15:30", "%H:%M")
 
     def __init__(self, name: str, phone: str, email: str, leader_app: bool, imported_schedule: list,
-                 robotics_interest: bool = False, special_needs_interest: bool = False):
+                 robotics_interest: bool = False, special_needs_interest: bool = False, board_member: bool = False):
         """
         :param robotics_interest: Are they interested in robotics? Yes=true, No=false
         :param special_needs_interest: Are they interested in working with special needs students? Yes=true, No=false
@@ -27,9 +27,10 @@ class Volunteer:
         self.name = name
         self.phone = phone
         self.email = email.lower()
+        self.board = board_member
         self.robotics_interest = robotics_interest
         self.special_needs_interest = special_needs_interest
-        self.leader_app = leader_app  # if volunteer applied to be a team leader
+        self.leader_app = leader_app or board_member  # if volunteer applied to be a team leader or is board member
 
         # array containing an index for each 15-min block between the times of 7:15am-3:45pm, Monday through Thursday
         # (indexes 0-33 are Monday 7:15am to 3:45pm, 34-67 are Tuesday 7:15-3:45, 68-101 are Wednesday, etc.)
@@ -124,7 +125,7 @@ class Volunteer:
             time = classroom.start_time
 
         if time in schedule[classroom.weekday]:
-            return schedule[classroom.weekday][time] >= classroom.free_time_duration()
+            return schedule[classroom.weekday][time] >= classroom.duration()
 
         return False
 
@@ -135,46 +136,14 @@ class Volunteer:
 class Partners:
     def __init__(self, group: list[Volunteer]):
         self.members = group
-        self.availability = self.create_availability_schedule()
         self.possible_classrooms = 0
         self.group_number = -1
 
-    def create_availability_schedule(self):
-        """
-
-        :return:
-        """
-        partners_schedule = {}
-
-        # for all volunteers in group
-        for curr_partner in self.members:
-            if self.members.index(curr_partner) == 0:
-                partners_schedule = curr_partner.availability
-            else:
-                for day in partners_schedule:
-                    for time in partners_schedule[day].copy():
-                        # If time is not in partners_schedule then just skip
-                        if time not in curr_partner.availability[day]:
-                            del partners_schedule[day][time]
-                        # If not the first partner and the time in partners_schedule, check if partners_schedule or
-                        # curr_partner has less free time at the time. Keep the one with the least time.
-                        elif curr_partner.availability[day][time] < partners_schedule[day][time]:
-                            partners_schedule[day][time] = curr_partner[day][time]
-        return partners_schedule
-
     def can_make_class(self, classroom: Classroom):
-        schedule = self.availability
-        time_deviation = classroom.start_time.minute % 15
-        if time_deviation != 0:
-            new_time = classroom.start_time - timedelta(minutes=time_deviation)
-            time = new_time
-        else:
-            time = classroom.start_time
-
-        if time in schedule[classroom.weekday]:
-            return schedule[classroom.weekday][time] >= classroom.free_time_duration()
-
-        return False
+        for member in self.members:
+            if not member.can_make_class(classroom):
+                return False
+        return True
 
     def increment_possible_classrooms(self):
         self.possible_classrooms += 1

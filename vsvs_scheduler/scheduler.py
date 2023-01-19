@@ -3,9 +3,8 @@ import os
 import warnings
 from datetime import datetime
 
-from src import MAX_TEAM_SIZE
-from src.classroom import Classroom
-from src.volunteer import Volunteer, Partners
+from vsvs_scheduler.classroom import Classroom
+from vsvs_scheduler.volunteer import Volunteer, Partners
 
 
 def file_prompt(applicant_type: str):
@@ -15,19 +14,99 @@ def file_prompt(applicant_type: str):
 
 
 class Scheduler:
-    def __init__(self, earliest: str = "7:15", latest: str = "15:30"):
+    def __init__(self, earliest: str = "7:15", latest: str = "15:30", max_team_size: int = 4):
         earliest_time = datetime.strptime(earliest, "%H:%M")
         latest_time = datetime.strptime(latest, "%H:%M")
         self.individuals = []
         self.classrooms = []
         self.incomplete_classrooms = []
         self.partners = []
+        self.max_size = max_team_size
+
+    def import_data(self):
+        self.import_volunteers()
+        self.import_partners()
+        self.import_classrooms()
+
+    def create_assignments(self):
+        self.assign_partners()
+        self.assign_volunteers("board")
+        self.assign_volunteers("leaders")
+        self.assign_volunteers()
+
+    def assign_partners(self):
+        """
+        Assigns a group of partners to a classroom they all can make (if there is one) using partner1.partner_schedule.
+        When a group is assigned, uses classroom.assign_volunteer() for each partner (including partner1).
+
+
+        :param partner1:the Volunteer object of the first partner in the group; the Volunteer object that contains the
+                        information of the group of partners (only one is set when partners.csv is imported)
+        :return:
+        """
+        idx = 0
+
+        for group in self.partners:
+            while group.group_number == -1 and idx < len(self.classrooms):
+                curr_class = self.classrooms[idx]
+                if group.can_make_class(curr_class) and self.max_size - curr_class.num_of_volunteers >= len(
+                        group.members):
+                    group.assign_partners(curr_class)
+                else:
+                    idx += 1
+            if group.group_number == -1:
+                print(
+                    "WARNING: " + group.email + "'s partner group could not be assigned together because of scheduling" +
+                    "conflicts.")
+
+    def assign_volunteers(self, volunteer_type: str = "default"):
+        self.incomplete_classrooms = [classroom for classroom in self.classrooms if
+                                      classroom.num_of_volunteers < self.max_size]
+        volunteer_list = self.individuals
+
+        if volunteer_type == "leaders":
+            volunteer_list = \
+                [volunteer for volunteer in self.individuals if volunteer.group_number == -1 and volunteer.leader_app]
+        elif volunteer_type == "board":
+            volunteer_list = \
+                [volunteer for volunteer in self.individuals if volunteer.group_number == -1 and volunteer.board]
+
+        volunteer_list.sort(key=lambda volunteer: volunteer.possible_classrooms)
+
+        for volunteer in volunteer_list:
+            idx = 0
+            while volunteer.group_number == -1 and idx < len(self.incomplete_classrooms):
+                classroom = self.incomplete_classrooms[idx]
+                if volunteer.can_make_class(classroom) and (volunteer_type == "default" or not classroom.team_leader):
+                    classroom.assign_volunteer(volunteer)
+                    if classroom.num_of_volunteers >= self.max_size:
+                        self.incomplete_classrooms.remove(classroom)
+                else:
+                    idx += 1
+        self.incomplete_classrooms.sort(key=lambda classroom: classroom.num_of_volunteers)
+
+    def possible_classrooms(self):
+        for volunteer in self.individuals:
+            if volunteer.group_number == -1:
+                for classroom in self.classrooms:
+                    if volunteer.can_make_class(classroom):
+                        volunteer.possible_classrooms += 1
+        self.individuals = self.individuals.sort(key=lambda person: person.possible_classrooms)
+
+        for group in self.partners:
+            for classroom in self.classrooms:
+                if group.can_make_class(classroom):
+                    group.increment_possible_classrooms()
+        self.partners = self.partners.sort(key=lambda person: person.possible_classrooms)
 
     def import_volunteers(self):
         """ reads csv with volunteer information and creates a Volunteer object from each row
         :param filename: filepath to the csv with volunteer info
         """
         filename = file_prompt("individuals")
+        if filename is None:
+            filename = '../data/individuals.csv'
+
         print("Importing Volunteers ...\n")
 
         # opens file as individuals_csv and maps info in each row to a dict whose keys are given by the 1st row of
@@ -46,15 +125,18 @@ class Scheduler:
                     leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
                     imported_schedule=schedule
                 )
-            self.individuals.append(volunteer)
+                self.individuals.append(volunteer)
 
-            print('There are {} volunteers.'.format(len(self.individuals)))
+            print('\nThere are {} volunteers.'.format(len(self.individuals)))
 
     def import_classrooms(self):
         """Reads csv with classroom information and creates a Classroom object from each row.
         :param filename: filepath to the csv with volunteer info
         """
         filename = file_prompt("classrooms")
+        if filename is None:
+            filename = '../data/classrooms.csv'
+
         print("Importing Classrooms ... \n")
 
         # opens file as classrooms_csv and maps info in each row to a dict whose keys are given by the 1st row of the
@@ -85,7 +167,8 @@ class Scheduler:
                         end_time=row[f'End Time (Class {class_num} of {number_of_classes})']
                     )
                     self.classrooms.append(classroom)
-                print('There are {} classrooms.'.format(len(self.classrooms)))
+
+            print('\nThere are {} classrooms.'.format(len(self.classrooms)))
 
     def import_partners(self):
         """
@@ -94,6 +177,8 @@ class Scheduler:
         :return:
         """
         filename = file_prompt("partners")
+        if filename is None:
+            filename = '../data/partners.csv'
         print("Importing Partners ...\n")
 
         # opens file as partners_csv and maps info in each row to a dict whose keys are given by the 1st row of the csv
@@ -117,75 +202,4 @@ class Scheduler:
                 if len(group) > 1:
                     self.partners.append(Partners(group))
 
-            print('There are {} partners.'.format(len(self.partners)))
-
-    def assign_partners(self):
-        """
-        Assigns a group of partners to a classroom they all can make (if there is one) using partner1.partner_schedule.
-        When a group is assigned, uses classroom.assign_volunteer() for each partner (including partner1).
-
-
-        :param partner1:the Volunteer object of the first partner in the group; the Volunteer object that contains the
-                        information of the group of partners (only one is set when partners.csv is imported)
-        :return:
-        """
-        idx = 0
-
-        for group in self.partners:
-            while group.group_number == -1 and idx < len(self.classrooms):
-                curr_class = self.classrooms[idx]
-                if group.can_make_class(curr_class) and MAX_TEAM_SIZE - curr_class.num_of_volunteers >= len(
-                        group.members):
-                    group.assign_partners(curr_class)
-                else:
-                    idx += 1
-            if group.group_number == -1:
-                print(
-                    "WARNING: " + group.email + "'s partner group could not be assigned together because of scheduling" +
-                    "conflicts.")
-
-    def assign_leaders(self):
-        self.incomplete_classrooms = [classroom for classroom in self.classrooms if
-                                      classroom.num_of_volunteers < MAX_TEAM_SIZE]
-        team_leader_apps = \
-            [volunteer for volunteer in self.individuals if volunteer.group_number == -1 and volunteer.leader_app]
-
-        team_leader_apps.sort(key=lambda volunteer: volunteer.possible_classrooms)
-
-        for volunteer in team_leader_apps:
-            idx = 0
-            while volunteer.group_number == -1 and idx < len(self.classrooms):
-                classroom = self.classrooms[idx]
-                if volunteer.can_make_class(classroom) and not classroom.team_leader:
-                    classroom.assign_volunteer(volunteer)
-                    if classroom.num_of_volunteers >= MAX_TEAM_SIZE:
-                        self.incomplete_classrooms.remove(classroom)
-                else:
-                    idx += 1
-
-    def assign_volunteers(self):
-        for volunteer in self.individuals:
-            idx = 0
-            while volunteer.group_number == -1 and idx < len(self.incomplete_classrooms):
-                classroom = self.incomplete_classrooms[idx]
-                if volunteer.can_make_class(classroom):
-                    classroom.assign_volunteer(volunteer)
-                    if classroom.num_of_volunteers >= MAX_TEAM_SIZE:
-                        self.incomplete_classrooms.remove(classroom)
-                else:
-                    idx += 1
-        self.incomplete_classrooms.sort(key=lambda classroom: classroom.num_of_volunteers)
-
-    def possible_classrooms(self):
-        for volunteer in self.individuals:
-            if volunteer.group_number == -1:
-                for classroom in self.classrooms:
-                    if volunteer.can_make_class(classroom):
-                        volunteer.possible_classrooms += 1
-        self.individuals = self.individuals.sort(key=lambda person: person.possible_classrooms)
-
-        for group in self.partners:
-            for classroom in self.classrooms:
-                if group.can_make_class(classroom):
-                    group.increment_possible_classrooms()
-        self.partners = self.partners.sort(key=lambda person: person.possible_classrooms)
+            print('\nThere are {} partners.'.format(len(self.partners)))

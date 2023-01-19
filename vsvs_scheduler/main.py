@@ -46,6 +46,13 @@ def main():
     else:
         print(f'{path} directory already exists')
 
+    with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
+        csv_writer = csv.writer(assignments_csv, delimiter=',')
+        csv_writer.writerow(
+            ['Group Number', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Teacher', 'Day',
+             'Start Time', 'End Time']
+        )
+        for
     group_size = [0] * 108
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
