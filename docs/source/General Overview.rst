@@ -19,7 +19,9 @@ VSVS has 3 different types of applications for people who want to be involved.
 **Teacher Applications:**
 
 This application is for teachers who would liked to have VSVS teams visit their classrooms to teach lessons. We collect
-the following information
+the following information:
+
+   - 
 
 **Volunteer Applications:**
 
@@ -36,17 +38,15 @@ who want to teach lessons. We collect the following information in the applicati
 **Partner Applications:**
 
 The final application, the partner application, allows volunteers to indicate preferences if they would like to be in a
-team with specific people.
+team with specific people. We collect the following information in the application:
+
+   - Number of Partners
+   - Group Member emails
 
 **ONE PERSON** from the group needs to fill out a partner application. And **EVERYONE** needs to submit their own
 individual application. For instance, if 3 friends decide they want to be in the same group, VSVS should receive 3
 individual applications and 1 partner application.
 
-
-
-
-
-**Partners:**
 
 
 

@@ -154,3 +154,9 @@ class Partners:
         for member in self.members:
             classroom.assign_volunteer(member)
         self.group_number = classroom.group_number
+
+    def __str__(self):
+        result = ""
+        for member in self.members:
+            result += member.__str__
+        return result

@@ -23,7 +23,6 @@ class Scheduler:
         self.partners = []
         self.max_size = max_team_size
 
-    def import_data(self):
         self.import_volunteers()
         self.import_partners()
         self.import_classrooms()
@@ -33,6 +32,15 @@ class Scheduler:
         self.assign_volunteers("board")
         self.assign_volunteers("leaders")
         self.assign_volunteers()
+
+        missing_team_leaders = [classroom for classroom in self.classrooms if not classroom.team_leader]
+        incomplete_group = [classroom for classroom in self.classrooms if len(classroom.volunteers) < 3]
+
+        if missing_team_leaders:
+            warnings.warn(f'WARNING: Classrooms are missing team leaders: {missing_team_leaders}')
+        if incomplete_group:
+            warnings.warn(f'WARNING: Classrooms without necessary number of volunteers {incomplete_group}')
+
 
     def assign_partners(self):
         """
@@ -56,12 +64,12 @@ class Scheduler:
                     idx += 1
             if group.group_number == -1:
                 print(
-                    "WARNING: " + group.email + "'s partner group could not be assigned together because of scheduling" +
+                    f"WARNING: {group.__str__}'s partner group could not be assigned together because of scheduling" +
                     "conflicts.")
 
     def assign_volunteers(self, volunteer_type: str = "default"):
         self.incomplete_classrooms = [classroom for classroom in self.classrooms if
-                                      classroom.num_of_volunteers < self.max_size]
+                                      len(classroom.volunteers) < self.max_size]
         volunteer_list = self.individuals
 
         if volunteer_type == "leaders":
@@ -79,18 +87,17 @@ class Scheduler:
                 classroom = self.incomplete_classrooms[idx]
                 if volunteer.can_make_class(classroom) and (volunteer_type == "default" or not classroom.team_leader):
                     classroom.assign_volunteer(volunteer)
-                    if classroom.num_of_volunteers >= self.max_size:
+                    if len(classroom.volunteers) >= self.max_size:
                         self.incomplete_classrooms.remove(classroom)
                 else:
                     idx += 1
-        self.incomplete_classrooms.sort(key=lambda classroom: classroom.num_of_volunteers)
+        self.incomplete_classrooms.sort(key=lambda classroom: len(classroom.volunteers))
 
     def possible_classrooms(self):
         for volunteer in self.individuals:
-            if volunteer.group_number == -1:
-                for classroom in self.classrooms:
-                    if volunteer.can_make_class(classroom):
-                        volunteer.possible_classrooms += 1
+            for classroom in self.classrooms:
+                if volunteer.can_make_class(classroom):
+                    volunteer.possible_classrooms += 1
         self.individuals = self.individuals.sort(key=lambda person: person.possible_classrooms)
 
         for group in self.partners:
@@ -107,7 +114,7 @@ class Scheduler:
         if filename is None:
             filename = '../data/individuals.csv'
 
-        print("Importing Volunteers ...\n")
+        print("\nImporting Volunteers ...")
 
         # opens file as individuals_csv and maps info in each row to a dict whose keys are given by the 1st row of
         # the csv
@@ -127,7 +134,7 @@ class Scheduler:
                 )
                 self.individuals.append(volunteer)
 
-            print('\nThere are {} volunteers.'.format(len(self.individuals)))
+            print('There are {} volunteers.\n'.format(len(self.individuals)))
 
     def import_classrooms(self):
         """Reads csv with classroom information and creates a Classroom object from each row.
@@ -137,7 +144,7 @@ class Scheduler:
         if filename is None:
             filename = '../data/classrooms.csv'
 
-        print("Importing Classrooms ... \n")
+        print("\nImporting Classrooms ...")
 
         # opens file as classrooms_csv and maps info in each row to a dict whose keys are given by the 1st row of the
         # csv
@@ -168,7 +175,7 @@ class Scheduler:
                     )
                     self.classrooms.append(classroom)
 
-            print('\nThere are {} classrooms.'.format(len(self.classrooms)))
+            print('There are {} classrooms.\n'.format(len(self.classrooms)))
 
     def import_partners(self):
         """
@@ -179,7 +186,7 @@ class Scheduler:
         filename = file_prompt("partners")
         if filename is None:
             filename = '../data/partners.csv'
-        print("Importing Partners ...\n")
+        print("\nImporting Partners ...")
 
         # opens file as partners_csv and maps info in each row to a dict whose keys are given by the 1st row of the csv
         with open(filename) as partners_csv:
@@ -202,4 +209,4 @@ class Scheduler:
                 if len(group) > 1:
                     self.partners.append(Partners(group))
 
-            print('\nThere are {} partners.'.format(len(self.partners)))
+            print('There are {} partners.\n'.format(len(self.partners)))
