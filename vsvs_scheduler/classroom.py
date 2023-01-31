@@ -28,15 +28,16 @@ class Classroom:
         self.teacher_email = email
         self.weekday = weekday
         self.volunteers = []
+        self.possible_volunteers = 0
 
         # has a team leader?
         self.team_leader = False
 
         # time the class starts in military time
-        self.start_time = datetime.strptime(start_time, '%H:%M:%S %p')
+        self.start_time = datetime.strptime(start_time, '%H:%M')
 
         # time the class ends in military time
-        self.end_time = datetime.strptime(end_time, '%H:%M:%S %p')
+        self.end_time = datetime.strptime(end_time, '%H:%M')
 
     def assign_volunteer(self, volunteer):
         """
@@ -52,6 +53,14 @@ class Classroom:
         if not self.team_leader and volunteer.leader_app:
             self.team_leader = True
             volunteer.assigned_leader = True
+
+    def unassign_volunteers(self):
+        for volunteer in self.volunteers:
+            volunteer.group_number = -1
+            volunteer.assigned_leader = False
+            volunteer.possible_classrooms = 0
+        self.volunteers = []
+        self.team_leader = False
 
     def empty_classroom(self):
         """Unassigns all volunteers from a classroom

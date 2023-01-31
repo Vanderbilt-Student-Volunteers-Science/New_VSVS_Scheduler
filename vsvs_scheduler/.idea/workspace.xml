@@ -2,34 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5de35e81-5a1b-42ff-8383-2629229c4ff3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../docs/source/Git.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/doctrees/Local Repository Setup.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/doctrees/Local Repository Setup.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/doctrees/environment.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/doctrees/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/doctrees/index.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/.doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/.doctrees/environment.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/.doctrees/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/.doctrees/index.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/_sources/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/_sources/index.rst.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/_static/_sphinx_javascript_frameworks_compat.js" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/_static/_sphinx_javascript_frameworks_compat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/_static/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/_static/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/_static/doctools.js" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/_static/doctools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/_static/jquery-3.6.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/_static/jquery-3.6.0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/_static/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/_static/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/_static/searchtools.js" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/_static/searchtools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/_static/sphinx_highlight.js" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/_static/sphinx_highlight.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/_static/underscore-1.13.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/_static/underscore-1.13.1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/_static/underscore.js" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/_static/underscore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/genindex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/objects.inv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/build/html/searchindex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/source/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/source/index.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/test_data/sample_data_and_outputs.py" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/test_data/sample_data_and_outputs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tests/test_scheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/../tests/test_scheduler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/classrooms.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../data/classrooms.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/classrooms_with_access_time_adjustment.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/individuals.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../data/individuals.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/partners.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../data/partners.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../results/assignments.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../results/assignments.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classroom.py" beforeDir="false" afterPath="$PROJECT_DIR$/classroom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/scheduler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volunteer.py" beforeDir="false" afterPath="$PROJECT_DIR$/volunteer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,15 +28,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/carme/VSVS/New_VSVS_Scheduler&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/carme/Documents/New_VSVS_Scheduler",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -70,6 +50,7 @@
       <workItem from="1673896950132" duration="35000" />
       <workItem from="1673993055214" duration="16000" />
       <workItem from="1674086940557" duration="17000" />
+      <workItem from="1675094878681" duration="150000" />
     </task>
     <servers />
   </component>

@@ -5,13 +5,14 @@ from vsvs_scheduler.scheduler import Scheduler
 
 
 def main():
+
     vsvs_scheduler = Scheduler()
-    vsvs_scheduler.create_assignments()
+    partner_errors = vsvs_scheduler.create_assignments()
+    print(partner_errors)
 
     # make list of unassigned volunteers, sort them by the number of classrooms they can make (fewest to greatest
     # number of classrooms they can make), then assign them to classroom groups (prioritizing adding them to
     # partially-filled classrooms over empty classrooms)
-
 
     # reassign volunteers that were assigned to groups of 1
     # TODO: think through this part better
@@ -32,34 +33,43 @@ def main():
 
     # unassigned_volunteers = 0
     #
-    # # create the results directory if it does not exist
-    # path = "../results"
-    #
-    # if not os.path.exists(path):
-    #     try:
-    #         os.mkdir(path)
-    #     except OSError:
-    #         print(f'WARNING: failed to create {path} directory')
-    #     else:
-    #         print(f'Created {path} directory')
-    # else:
-    #     print(f'{path} directory already exists')
-    #
-    # with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
-    #     csv_writer = csv.writer(assignments_csv, delimiter=',')
-    #     csv_writer.writerow(
-    #         ['Group Number', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Teacher', 'Day',
-    #          'Start Time', 'End Time']
-    #     )
-    #     for
-    # group_size = [0] * 108
-    # with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
-    #     csv_writer = csv.writer(assignments_csv, delimiter=',')
-    #     csv_writer.writerow(
-    #         ['Group Number', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Teacher', 'Day',
-    #          'Start Time', 'End Time']
-    #     )
-    #     for volunteer in vsvs_scheduler.applicant_list:
+    # create the results directory if it does not exist
+    path = "../results"
+
+    if not os.path.exists(path):
+        try:
+            os.mkdir(path)
+        except OSError:
+            print(f'WARNING: failed to create {path} directory')
+        else:
+            print(f'Created {path} directory')
+    else:
+        print(f'{path} directory already exists')
+
+    with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
+        csv_writer = csv.writer(assignments_csv, delimiter=',')
+        csv_writer.writerow(
+            ['Group Number', 'Name', 'Email', 'Phone Number', 'Team Leader', 'Board Member', 'Teacher', 'Day',
+             'Start Time', 'End Time']
+        )
+        for classroom in vsvs_scheduler.classrooms:
+            if len(classroom.volunteers) >= 3:
+                for volunteer in classroom.volunteers:
+                    csv_writer.writerow(
+                        [
+                            classroom.group_number,
+                            volunteer.name,
+                            volunteer.email,
+                            volunteer.phone,
+                            (lambda x: 'True' if x else '')(volunteer.assigned_leader),
+                            (lambda x: 'True' if x else '')(volunteer.board),
+                            classroom.teacher,
+                            classroom.weekday,
+                            str(classroom.start_time.hour) + ":" + str(classroom.start_time.minute),
+                            str(classroom.end_time.hour) + ":" + str(classroom.end_time.minute)
+                        ]
+                    )
+
     #         if volunteer.group_number == -1:
     #             unassigned_volunteers += 1
     #         else:
