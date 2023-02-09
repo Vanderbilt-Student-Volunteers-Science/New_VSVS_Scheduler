@@ -15,7 +15,7 @@ class Volunteer:
         :param first: first name test
         :param last: last name
         :param phone: cell
-        :param email: vandy email
+        :param email: vandy email test
         :param leader_app:
         :param imported_schedule: array containing an element for each 15-min block for 7:15am-3:45pm. Each element is a
         string of letters that indicate the weekdays in which the volunteer has commitments during the time block.
