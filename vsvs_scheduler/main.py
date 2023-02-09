@@ -49,8 +49,8 @@ def main():
     with open('../results/assignments.csv', 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
         csv_writer.writerow(
-            ['Group Number', 'Name', 'Email', 'Phone Number', 'Team Leader', 'Board Member', 'Teacher', 'Day',
-             'Start Time', 'End Time']
+            ['Group Number', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Board Member',
+             'Teacher', 'Day', 'Start Time', 'End Time']
         )
         for classroom in vsvs_scheduler.classrooms:
             if len(classroom.volunteers) >= 3:
@@ -58,7 +58,8 @@ def main():
                     csv_writer.writerow(
                         [
                             classroom.group_number,
-                            volunteer.name,
+                            volunteer.first,
+                            volunteer.last,
                             volunteer.email,
                             volunteer.phone,
                             (lambda x: 'True' if x else '')(volunteer.assigned_leader),
@@ -69,6 +70,52 @@ def main():
                             str(classroom.end_time.hour) + ":" + str(classroom.end_time.minute)
                         ]
                     )
+    with open('../results/unassigned.csv', 'w', newline='') as unassigned_csv:
+        csv_writer = csv.writer(unassigned_csv, delimiter=',')
+        csv_writer.writerow(
+            [ 'Group', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Board Member', 'Teacher',
+             'Availability', 'Start', 'End', 'Day']
+        )
+        for classroom in vsvs_scheduler.classrooms:
+            if len(classroom.volunteers) < 3:
+                csv_writer.writerow(
+                    [
+                        '',
+                        '',
+                        classroom.teacher,
+                        classroom.teacher_email,
+                        classroom.phone,
+                        '',
+                        '',
+                        'True',
+                        '',
+                        classroom.start_time,
+                        classroom.end_time,
+                        classroom.weekday
+                    ]
+                )
+        csv_writer.writerow(['']*6)
+
+        for volunteer in vsvs_scheduler.individuals:
+            if volunteer.group_number == -1:
+                csv_writer.writerow(
+                    [
+                        0,
+                        volunteer.first,
+                        volunteer.last,
+                        volunteer.email,
+                        volunteer.phone,
+                        (lambda x: 'True' if x else '')(volunteer.assigned_leader),
+                        (lambda x: 'True' if x else '')(volunteer.board),
+                        '',
+                        volunteer.availability
+                    ]
+                )
+
+
+
+
+
 
     #         if volunteer.group_number == -1:
     #             unassigned_volunteers += 1

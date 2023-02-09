@@ -1,7 +1,7 @@
 import csv
 import os
 import warnings
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from vsvs_scheduler.classroom import Classroom
 from vsvs_scheduler.volunteer import Volunteer, Partners
@@ -28,12 +28,14 @@ def file_prompt(applicant_type: str):
 
 class Scheduler:
     def __init__(self, earliest: str = "7:15", latest: str = "15:30", max_team_size: int = 4):
-        earliest_time = datetime.strptime(earliest, "%H:%M")
-        latest_time = datetime.strptime(latest, "%H:%M")
-        self.individuals = []
-        self.classrooms = []
+        self.earliest_time = datetime.strptime(earliest, "%H:%M")
+        self.latest_time = datetime.strptime(latest, "%H:%M")
+
+        self.individuals: list[Volunteer] = []
+        self.classrooms: list[Classroom] = []
+        self.partners: list[Partners] = []
+
         self.incomplete_classrooms = []
-        self.partners = []
         self.max_size = max_team_size
 
         self.import_volunteers()
@@ -66,6 +68,7 @@ class Scheduler:
 
         :return:
         """
+        self.possible_classrooms()
         idx = 0
         unassigned_groups = []
         for group in self.partners:
@@ -94,6 +97,14 @@ class Scheduler:
 
         volunteer_list.sort(key=lambda volunteer: volunteer.possible_classrooms)
 
+        for classroom in self.incomplete_classrooms:
+            classroom.possible_volunteers = 0
+            for volunteer in volunteer_list:
+                if volunteer.can_make_class(classroom):
+                    classroom.possible_volunteers += 1
+
+        self.incomplete_classrooms.sort(key=lambda classroom: classroom.possible_volunteers)
+
         for volunteer in volunteer_list:
             idx = 0
             while volunteer.group_number == -1 and idx < len(self.incomplete_classrooms):
@@ -112,23 +123,24 @@ class Scheduler:
             for classroom in self.classrooms:
                 if volunteer.group_number == -1 and volunteer.can_make_class(classroom):
                     volunteer.possible_classrooms += 1
-        self.individuals = self.individuals.sort(key=lambda person: person.possible_classrooms)
+        self.individuals.sort(key=lambda person: person.possible_classrooms)
 
         for classroom in self.classrooms:
             classroom.possible_volunteers = 0
             for volunteer in self.individuals:
                 if volunteer.group_number == -1 and volunteer.can_make_class(classroom):
                     classroom.possible_volunteers += 1
-        self.classrooms = self.classrooms.sort(key=lambda group: group.possible_volunteers)
+        self.classrooms.sort(key=lambda group: group.possible_volunteers)
 
         for group in self.partners:
             for classroom in self.classrooms:
                 if group.can_make_class(classroom):
                     group.increment_possible_classrooms()
-        self.partners = self.partners.sort(key=lambda person: person.possible_classrooms)
+        self.partners.sort(key=lambda person: person.possible_classrooms)
 
     def import_volunteers(self):
-        """ reads csv with volunteer information and creates a Volunteer object from each row
+        """
+        Imports volunteers' info from csv file and creates Volunteer instances.
         """
         filename = file_prompt("individuals")
 
@@ -140,13 +152,15 @@ class Scheduler:
             # pull data from row in the csv, create a Volunteer object, and add it to volunteers
             for row in csv_reader:
                 schedule = list(row.values())[16:50]
+                after_school = (lambda x: [] if x == "" else x.split(', '))(row["After-school"])
                 volunteer = Volunteer(
-                    name=row['First Name'].strip().lower().capitalize() + ' ' + row[
-                        'Last Name'].strip().lower().capitalize(),
+                    first=row['First Name'].strip().lower().capitalize(),
+                    last=row['Last Name'].strip().lower().capitalize(),
                     phone=row['Phone Number'],
                     email=row['Email Address'].strip(),
                     leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
                     imported_schedule=schedule,
+                    after_school=(lambda x: [] if x == "" else x.split(', '))(row["After-school"]),
                     board_member=(lambda x: True if x == 'Yes' else False)(row['Board Member'])
                 )
                 self.individuals.append(volunteer)
@@ -154,7 +168,8 @@ class Scheduler:
             print('There are {} volunteers.\n'.format(len(self.individuals)))
 
     def import_classrooms(self):
-        """Reads csv with classroom information and creates a Classroom object from each row.
+        """
+        Imports teacher and class info from csv file and create Classroom instances.
         """
         filename = file_prompt("classrooms")
 
@@ -191,6 +206,9 @@ class Scheduler:
             print('There are {} classrooms.\n'.format(len(self.classrooms)))
 
     def import_partners(self):
+        """
+        Imports partners' info from csv file and creates Partners instances.
+        """
         filename = file_prompt("partners")
 
         partners_not_found = []
@@ -228,3 +246,4 @@ class Scheduler:
             # warnings.warn(f'WARNING: Not all group members were found: {partners_not_found}')
             print('There are {} partners.\n'.format(len(self.partners)))
             return partners_not_found
+

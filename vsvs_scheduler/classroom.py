@@ -1,25 +1,19 @@
 from datetime import datetime, timedelta
 
 
-# Classroom
-# This is Cal adding a comment to see if he can get the Superlinter to work
-
 class Classroom:
-    """
-    This class stores classroom information
-    """
-
     def __init__(self, group_number: int, name: str, phone: str, school: str, email: str,
                  start_time: str, end_time: str, weekday: str = "Monday"):
         """
+
         :param group_number:
-        :param teacher_name:
-        :param teacher_phone:
+        :param name:
+        :param phone:
         :param school:
-        :param email: teacher's email address
-        :param start_time: time at which the class starts
-        :param end_time: time at which the class ends
-        :param day: day of the week for that class
+        :param email:
+        :param start_time:
+        :param end_time:
+        :param weekday:
         """
         self.group_number = group_number
         self.teacher = name
@@ -29,15 +23,9 @@ class Classroom:
         self.weekday = weekday
         self.volunteers = []
         self.possible_volunteers = 0
-
-        # has a team leader?
-        self.team_leader = False
-
-        # time the class starts in military time
-        self.start_time = datetime.strptime(start_time, '%H:%M')
-
-        # time the class ends in military time
-        self.end_time = datetime.strptime(end_time, '%H:%M')
+        self.team_leader = False  # has a team leader?
+        self.start_time = datetime.strptime(start_time, '%H:%M')  # time the class starts in military time
+        self.end_time = datetime.strptime(end_time, '%H:%M')  # time the class ends in military time
 
     def assign_volunteer(self, volunteer):
         """

@@ -52,11 +52,11 @@ class VolunteerTestCase(unittest.TestCase):
         cls.fake_volunteer = fake_volunteer1
 
     def test_convert_raw_scheduler_to_dict(self):
-        schedule_dict = self.fake_volunteer.convert_raw_schedule_to_dict(sample_raw_schedule)
+        schedule_dict = self.fake_volunteer.convert_to_unavailability_dict(sample_raw_schedule)
         self.assertEqual(schedule_dict, schedule_dict)
 
     def test_day_availability(self):
-        day_availability = self.fake_volunteer.day_availability(schedule_dict_from_raw["Monday"])
+        day_availability = self.fake_volunteer.find_day_availability(schedule_dict_from_raw["Monday"])
         self.assertEqual(day_availability, sample_Monday_availability)
 
     def test_can_make_classroom(self):
