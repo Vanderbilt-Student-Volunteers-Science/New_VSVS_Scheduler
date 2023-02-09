@@ -6,12 +6,10 @@ name: Python application
 on:
   push:
     branches:
-      - master
-      - Fall_2020
+      - main
   pull_request:
     branches:
-      - master
-      - Fall_2020
+      - main
   # Also trigger on page_build, as well as release created events
   page_build:
   release:
