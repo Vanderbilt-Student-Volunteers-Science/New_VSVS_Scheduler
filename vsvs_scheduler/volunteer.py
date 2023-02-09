@@ -12,7 +12,7 @@ class Volunteer:
                  board_member: bool = False):
         """
 
-        :param first: first name
+        :param first: first name test
         :param last: last name
         :param phone: cell
         :param email: vandy email
