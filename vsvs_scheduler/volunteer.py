@@ -20,8 +20,6 @@ class Volunteer:
         :param imported_schedule: array containing an element for each 15-min block for 7:15am-3:45pm. Each element is a
         string of letters that indicate the weekdays in which the volunteer has commitments during the time block.
         :param after_school:
-        :param robotics_interest:
-        :param special_needs_interest:
         :param board_member:
         """
 
@@ -34,8 +32,6 @@ class Volunteer:
         self.phone = phone
         self.email = email.lower()
         self.board = board_member
-        self.robotics_interest = robotics_interest
-        self.special_needs_interest = special_needs_interest
         self.leader_app = leader_app or board_member  # if volunteer applied to be a team leader or is board member
 
         self.after_school = after_school
