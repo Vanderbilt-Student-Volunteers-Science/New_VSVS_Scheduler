@@ -50,24 +50,6 @@ class Classroom:
         self.volunteers = []
         self.team_leader = False
 
-    def empty_classroom(self):
-        """Unassigns all volunteers from a classroom
-
-        :return: list of the volunteers that were unassigned
-        """
-        unassigned_volunteers = []
-        for volunteer in volunteer_list:
-            if volunteer.group_number == self.group_number:
-                # unassign volunteers
-                volunteer.group_number = -1
-                volunteer.assigned_leader = False
-                unassigned_volunteers.append(volunteer)
-
-        # make classroom empty
-        self.volunteers.clear()
-        self.team_leader = False
-        return unassigned_volunteers
-
     def duration(self):
         """:returns: minutes of free time needed to perform a lesson, including driving and teaching time."""
         return (self.end_time - self.start_time + timedelta(minutes=30)).seconds / 60
