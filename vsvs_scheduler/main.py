@@ -6,6 +6,7 @@ from vsvs_scheduler.scheduler import Scheduler
 
 def main():
 
+
     vsvs_scheduler = Scheduler()
     partner_errors = vsvs_scheduler.create_assignments()
     print(partner_errors)
