@@ -9,7 +9,7 @@ class Volunteer:
 
     def __init__(self, first: str, last: str, phone: str, email: str, leader_app: bool, imported_schedule: list,
                  after_school: list, robotics_interest: bool = False, special_needs_interest: bool = False,
-                 board_member: bool = False):
+                 board_member: bool = False, travel_time:int = 30):
         """
 
         :param first: first name test
@@ -36,7 +36,7 @@ class Volunteer:
 
         self.after_school = after_school
         self.availability = self.create_availability_schedule(imported_schedule)
-
+        self.travel_time = travel_time
         self.group_number = -1  # -1 means unassigned
         self.assigned_leader = False  # Was the volunteer assigned to be their group's team leader?
         self.possible_classrooms = 0  # number of classrooms the volunteer can make
@@ -124,7 +124,7 @@ class Volunteer:
             time = new_time
         else:
             time = classroom.start_time
-        time = time - timedelta(minutes=30)
+        time = time - timedelta(minute=self.travel_time)
 
         if time in schedule[classroom.weekday]:
             return schedule[classroom.weekday][time] >= classroom.duration()
