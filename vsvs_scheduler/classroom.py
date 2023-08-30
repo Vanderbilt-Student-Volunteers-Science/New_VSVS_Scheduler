@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from time import strftime
 from teacher import Teacher
 
 
@@ -48,5 +49,5 @@ class Classroom:
         """:returns: minutes of free time needed to perform a lesson, including driving and teaching time."""
         return (self.end_time - self.start_time + timedelta(minutes=30)).seconds / 60
 
-    def __str__(self):
-        return self.teacher + ' at ' + self.school
+    def __repr__(self):
+        return f"{self.teacher.name} at {self.teacher.school} on {self.weekday} ({self.start_time.strftime( '%H:%M')} - {strftime(self.end_time.strftime('%H:%M'))})\n"

@@ -1,8 +1,5 @@
-import csv
-import os
 import warnings
-from datetime import datetime, timedelta
-
+from datetime import datetime
 from classroom import Classroom
 from volunteer import Volunteer
 from partners import Partners
@@ -42,7 +39,7 @@ class Scheduler:
         if missing_team_leaders:
             warnings.warn(f'WARNING: Classrooms are missing team leaders: {missing_team_leaders}')
         if self.incomplete_classrooms:
-            warnings.warn(f'WARNING: Classrooms without necessary number of volunteers {incomplete_group}')
+            warnings.warn(f'WARNING: Classrooms without necessary number of volunteers {self.incomplete_classrooms}')
         return {"unassigned": self.unassigned_partners}
 
     def assign_partners(self):
@@ -58,7 +55,7 @@ class Scheduler:
         for group in self.partners:
             while group.group_number == -1 and idx < len(self.incomplete_classrooms):
                 curr_class = self.incomplete_classrooms[idx]
-                if group.can_make_class(curr_class):
+                if group.can_make_class(curr_class, self.max_size):
                     group.assign_partners(curr_class)
                     if len(curr_class.volunteers) >= self.max_size:
                         self.incomplete_classrooms.remove(curr_class)
@@ -95,7 +92,7 @@ class Scheduler:
     def find_possible_classroom_and_partners_matches(self):
         for group in self.partners:
             for classroom in self.incomplete_classrooms:
-                if group.can_make_class(classroom):
+                if group.can_make_class(classroom, self.max_size):
                     group.increment_possible_classrooms()
                     classroom.possible_partner_groups += 1
         self.partners.sort(key=lambda person: person.possible_classrooms)

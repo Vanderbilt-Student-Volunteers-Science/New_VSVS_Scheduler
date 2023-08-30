@@ -24,8 +24,9 @@ class Partners:
             classroom.assign_volunteer(member)
         self.group_number = classroom.group_number
 
-    def __str__(self):
+    def __repr__(self):
         result = ""
         for member in self.members:
-            result += member.__str__
+            result += str(member) + ", "
+        result += "\n"
         return result
