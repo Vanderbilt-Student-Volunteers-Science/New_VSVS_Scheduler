@@ -1,3 +1,4 @@
 .venv/
 .vs/
 *__pycache__/
+results/

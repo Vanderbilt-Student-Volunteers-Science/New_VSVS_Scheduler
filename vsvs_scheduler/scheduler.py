@@ -31,10 +31,14 @@ class Scheduler:
 
         missing_team_leaders = [classroom for classroom in self.classrooms if not classroom.team_leader]
 
-        for classroom in self.incomplete_classrooms:
-            classroom.unassign_volunteers()
+        num_days_to_try = 4
 
-        self.assign_volunteers()
+        while num_days_to_try > 0 and self.incomplete_classrooms:
+            for classroom in self.incomplete_classrooms:
+                classroom.unassign_volunteers()
+                classroom.change_to_next_preferred_day()
+                self.assign_volunteers()
+            num_days_to_try -= 1
 
         if missing_team_leaders:
             warnings.warn(f'WARNING: Classrooms are missing team leaders: {missing_team_leaders}')

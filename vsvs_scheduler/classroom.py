@@ -4,7 +4,7 @@ from teacher import Teacher
 
 
 class Classroom:
-    def __init__(self, group_number: int, teacher: Teacher, start_time: str, end_time: str, weekday: str = "Monday"):
+    def __init__(self, group_number: int, teacher: Teacher, start_time: str, end_time: str, weekdays: []):
         """
 
         :param group_number:
@@ -14,13 +14,15 @@ class Classroom:
         """
         self.group_number = group_number
         self.teacher = teacher
-        self.weekday = weekday
+        self.weekdays = weekdays
+        self.weekday_idx = 0
+        self.weekday = weekdays[self.weekday_idx]
         self.volunteers = []
         self.possible_volunteers = 0
         self.possible_partner_groups = 0
         self.team_leader = False  # has a team leader?
-        self.start_time = datetime.strptime(start_time, '%H:%M:%S %p')  # time the class starts in military time
-        self.end_time = datetime.strptime(end_time, '%H:%M:%S %p')  # time the class ends in military time
+        self.start_time = datetime.strptime(start_time, '%I:%M:%S %p')  # time the class starts in military time
+        self.end_time = datetime.strptime(end_time, '%I:%M:%S %p')  # time the class ends in military time
 
     def assign_volunteer(self, volunteer):
         """
@@ -47,7 +49,13 @@ class Classroom:
 
     def duration(self):
         """:returns: minutes of free time needed to perform a lesson, including driving and teaching time."""
-        return (self.end_time - self.start_time + timedelta(minutes=30)).seconds / 60
+        return (self.end_time - self.start_time + timedelta(hours=1)).seconds/60
+    
+    def change_to_next_preferred_day(self):
+        possible_weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday"]
+        if self.weekday_idx < 3 and self.weekdays[self.weekday_idx + 1] in possible_weekdays:
+            self.weekday_idx += 1
+            self.weekday = self.weekdays[self.weekday_idx]
 
     def __repr__(self):
-        return f"{self.teacher.name} at {self.teacher.school} on {self.weekday} ({self.start_time.strftime( '%H:%M')} - {strftime(self.end_time.strftime('%H:%M'))})\n"
+        return f"{self.teacher.name} at {self.teacher.school} on {self.weekday} ({self.start_time.strftime( '%I:%M %p')} - {strftime(self.end_time.strftime('%I:%M %p'))})\n"

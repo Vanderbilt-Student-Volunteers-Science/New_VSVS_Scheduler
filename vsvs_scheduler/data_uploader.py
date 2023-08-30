@@ -70,7 +70,7 @@ class VolunteerDataUploader(AbstractDataUploader):
             phone=row['Phone Number'],
             email=row['Email Address'].strip(),
             leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
-            schedule=Schedule(list(row.values())[15:56]),
+            schedule=Schedule(list(row.values())[15:55]),
             board_member=(lambda current_board_member: True if current_board_member == 'Yes' else False)(row['Board Member'])
         )
 
@@ -102,7 +102,13 @@ class ClassDataUploader(AbstractDataUploader):
                 teacher=teacher,
                 start_time=row[f'Start Time (Class {class_num} of {number_of_classes})'],
                 end_time=row[f'End Time (Class {class_num} of {number_of_classes})'],
-                weekday=row[f'Days (Class {class_num} of {number_of_classes}) [1st Preference]']
+                weekdays=[
+                    row[f'Days (Class {class_num} of {number_of_classes}) [1st Preference]'],
+                    row[f'Days (Class {class_num} of {number_of_classes}) [2nd Preference]'],
+                    row[f'Days (Class {class_num} of {number_of_classes}) [3rd Preference]'],
+                    row[f'Days (Class {class_num} of {number_of_classes}) [4th Preference]'],
+                ]
+                
             )
 
             self.applicants.append(classroom)
