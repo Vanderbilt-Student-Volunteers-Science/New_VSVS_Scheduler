@@ -1,7 +1,7 @@
 import csv
 import os
 
-from vsvs_scheduler.scheduler import Scheduler
+from scheduler import Scheduler
 
 
 def main():

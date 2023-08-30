@@ -1,31 +1,25 @@
 from datetime import datetime, timedelta
+from teacher import Teacher
 
 
 class Classroom:
-    def __init__(self, group_number: int, name: str, phone: str, school: str, email: str,
-                 start_time: str, end_time: str, weekday: str = "Monday"):
+    def __init__(self, group_number: int, teacher: Teacher, start_time: str, end_time: str, weekday: str = "Monday"):
         """
 
         :param group_number:
-        :param name:
-        :param phone:
-        :param school:
-        :param email:
         :param start_time:
         :param end_time:
         :param weekday:
         """
         self.group_number = group_number
-        self.teacher = name
-        self.phone = phone
-        self.school = school
-        self.teacher_email = email
+        self.teacher = teacher
         self.weekday = weekday
         self.volunteers = []
         self.possible_volunteers = 0
+        self.possible_partner_groups = 0
         self.team_leader = False  # has a team leader?
-        self.start_time = datetime.strptime(start_time, '%H:%M')  # time the class starts in military time
-        self.end_time = datetime.strptime(end_time, '%H:%M')  # time the class ends in military time
+        self.start_time = datetime.strptime(start_time, '%H:%M:%S %p')  # time the class starts in military time
+        self.end_time = datetime.strptime(end_time, '%H:%M:%S %p')  # time the class ends in military time
 
     def assign_volunteer(self, volunteer):
         """
