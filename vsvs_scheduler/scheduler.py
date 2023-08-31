@@ -1,14 +1,17 @@
 import warnings
 from datetime import datetime
-from classroom import Classroom
-from volunteer import Volunteer
-from partners import Partners
-from data_uploader import VolunteerDataUploader, ClassDataUploader, PartnerDataUploader
-
+from applicants.classroom import Classroom
+from applicants.volunteer import Volunteer
+from applicants.partners import Partners
+from volunteer_data_uploader import VolunteerDataUploader
+from class_data_uploader import ClassDataUploader
+from partner_data_uploader import PartnerDataUploader
 
 
 class Scheduler:
     def __init__(self, earliest: str = "7:15", latest: str = "15:30", max_team_size: int = 4):
+        """Scheduler object that holds information about the schedule and the volunteers and classrooms."""
+
         self.earliest_time = datetime.strptime(earliest, "%H:%M")
         self.latest_time = datetime.strptime(latest, "%H:%M")
 
@@ -23,7 +26,7 @@ class Scheduler:
 
 
     def create_assignments(self):
-
+        
         self.unassigned_partners = self.assign_partners()
         
         self.assign_volunteers("board")
@@ -50,12 +53,8 @@ class Scheduler:
 
 
     def assign_partners(self):
-        """
-        Assigns a group of partners to a classroom they all can make (if there is one) using partner1.partner_schedule.
-        When a group is assigned, uses classroom.assign_volunteer() for each partner (including partner1).
+        """Assigns partners to classrooms and returns a list of unassigned partners."""
 
-        :return:
-        """
         self.find_possible_classroom_and_partners_matches()
         idx = 0
         unassigned_groups = []
@@ -76,6 +75,8 @@ class Scheduler:
 
 
     def assign_volunteers(self, volunteer_type: str = "default"):
+        """Assigns volunteers to classrooms based on the volunteer_type parameter."""
+
         self.find_possible_classroom_and_volunteer_matches()
 
         volunteer_list = self.individuals
@@ -101,6 +102,8 @@ class Scheduler:
 
 
     def find_possible_classroom_and_partners_matches(self):
+        """Finds the number of possible classrooms each partner group can make and the number of possible partner groups each classroom can have."""
+
         for group in self.partners:
             for classroom in self.incomplete_classrooms:
                 if group.can_make_class(classroom, self.max_size):
@@ -112,6 +115,7 @@ class Scheduler:
 
         
     def find_possible_classroom_and_volunteer_matches(self):
+        """Finds the number of possible classrooms each volunteer can make and the number of possible volunteers each classroom can have."""
         for volunteer in self.individuals:
             for classroom in self.incomplete_classrooms:
                 if volunteer.group_number == -1 and volunteer.can_make_class(classroom):

@@ -1,12 +1,12 @@
 import unittest
 from unittest.mock import patch
 
-from vsvs_scheduler.classroom import Classroom
+from vsvs_scheduler.applicants.classroom import Classroom
 from tests.test_data.sample_data_and_outputs import sample_raw_schedule, free_time_schedule, schedule_dict_from_raw, \
     partner_1_schedule, partner_2_schedule, partner_3_schedule, schedule_can_make_class, \
     sample_Monday_availability
 from vsvs_scheduler.scheduler import Scheduler
-from vsvs_scheduler.volunteer import Volunteer, Partners
+from vsvs_scheduler.applicants.volunteer import Volunteer, Partners
 
 fake_volunteer1 = Volunteer(name="John Doe", phone="000-000-000", email="john.doe@vanderbilt.edu",
                             leader_app=True, imported_schedule=sample_raw_schedule)
