@@ -21,6 +21,7 @@ class Scheduler:
         self.max_size = max_team_size
 
 
+
     def create_assignments(self):
 
         self.unassigned_partners = self.assign_partners()
@@ -45,6 +46,8 @@ class Scheduler:
         if self.incomplete_classrooms:
             warnings.warn(f'WARNING: Classrooms without necessary number of volunteers {self.incomplete_classrooms}')
         return {"unassigned": self.unassigned_partners}
+    
+
 
     def assign_partners(self):
         """
@@ -69,6 +72,8 @@ class Scheduler:
                 unassigned_groups.append(group)
 
         return unassigned_groups
+    
+
 
     def assign_volunteers(self, volunteer_type: str = "default"):
         self.find_possible_classroom_and_volunteer_matches()
@@ -93,6 +98,8 @@ class Scheduler:
                     idx += 1
         self.incomplete_classrooms.sort(key=lambda classroom: len(classroom.volunteers))
 
+
+
     def find_possible_classroom_and_partners_matches(self):
         for group in self.partners:
             for classroom in self.incomplete_classrooms:
@@ -102,6 +109,8 @@ class Scheduler:
         self.partners.sort(key=lambda person: person.possible_classrooms)
         self.incomplete_classrooms.sort(key=lambda clsroom: clsroom.possible_partner_groups)
 
+
+        
     def find_possible_classroom_and_volunteer_matches(self):
         for volunteer in self.individuals:
             for classroom in self.incomplete_classrooms:

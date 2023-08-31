@@ -21,15 +21,22 @@ class Volunteer:
         self.possible_classrooms = 0  # number of classrooms the volunteer can make
 
 
+
     def can_make_class(self, classroom: Classroom):
-        """Returns boolean of whether volunteer can make a classroom based on the schedule parameter.
-        """
+        """Returns boolean of whether volunteer can make a classroom based on the schedule parameter."""
+
         return self.availability.can_make_class(classroom)
     
+
+
     def assign_classroom(self, classroom: Classroom):
+        """Assigns the volunteer to the classroom and updates the volunteer's group number."""
+
         self.group_number = classroom.group_number
-    
-    def __str__(self):
+
+
+        
+    def __repr__(self):
         return f"{self.first} {self.last}"
 
 
