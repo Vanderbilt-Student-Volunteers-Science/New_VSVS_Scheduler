@@ -1,4 +1,5 @@
 .venv/
 .vs/
+data/VSVS.db
 *__pycache__/
 results/
