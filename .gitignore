@@ -1,5 +1,5 @@
 .venv/
-.vs/
 data/VSVS.db
-*__pycache__/
 results/
+*__pycache__/
+.vs/
