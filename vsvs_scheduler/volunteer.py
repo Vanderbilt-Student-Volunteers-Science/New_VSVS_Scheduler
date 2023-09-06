@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from vsvs_scheduler.classroom import Classroom
+from classroom import Classroom
 
 
 class Volunteer:

@@ -3,8 +3,8 @@ import os
 import warnings
 from datetime import datetime, timedelta
 
-from vsvs_scheduler.classroom import Classroom
-from vsvs_scheduler.volunteer import Volunteer, Partners
+from classroom import Classroom
+from volunteer import Volunteer, Partners
 
 
 def file_prompt(applicant_type: str):
