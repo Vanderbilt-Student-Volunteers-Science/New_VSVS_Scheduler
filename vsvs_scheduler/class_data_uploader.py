@@ -43,7 +43,3 @@ class ClassDataUploader(AbstractDataUploader):
 
             self.applicants.append(classroom)
 
-
-
-
-
