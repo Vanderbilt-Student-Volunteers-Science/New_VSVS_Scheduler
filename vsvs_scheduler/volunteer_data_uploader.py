@@ -18,7 +18,7 @@ class VolunteerDataUploader(AbstractDataUploader):
         volunteer = Volunteer(
             first=row['First Name'].strip().lower().capitalize(),
             last=row['Last Name'].strip().lower().capitalize(),
-            phone=row['Phone Number'],
+            phone=row['Phone'],
             email=row['Email Address'].strip(),
             leader_app=(lambda x: True if x == 'Yes' else False)(row['Team Leader']),
             schedule=Schedule(list(row.values())[15:55]),
