@@ -75,6 +75,7 @@ class Schedule:
                     current_time += timedelta(minutes=15)
                     
                 # if the next time block is not 15 minutes after the current time block, add the time available to the schedule
+                time_available += 15
                 day_schedule[time_being_tracked_for_availability] = time_available
                 time_available = 0 
                 idx += 1

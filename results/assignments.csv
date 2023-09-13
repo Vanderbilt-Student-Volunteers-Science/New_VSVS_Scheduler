@@ -1,40 +1,164 @@
 Group Number,First Name,Last Name,Email,Phone Number,Team Leader,Board Member,Teacher,Day,Start Time,End Time
-1,Katherine,Walker,katherine.a.walker@vanderbilt.edu,5713869316,,,Lauren Cecil,Monday,09:18 AM,10:13 AM
-1,Lillian,Hubbard,lillian.a.hubbard@vanderbilt.edu,6159701746,,,Lauren Cecil,Monday,09:18 AM,10:13 AM
-1,Zain,Tariq,zain.h.tariq@vanderbilt.edu,5024458029,True,,Lauren Cecil,Monday,09:18 AM,10:13 AM
-1,Omotayo,Fasan,omotayo.n.fasan@vanderbilt.edu,2678005779,,,Lauren Cecil,Monday,09:18 AM,10:13 AM
-2,Jordan,Walker,jordan.a.walker@vanderbilt.edu,214-354-3807,True,True,Lauren Cecil,Monday,01:00 PM,01:55 PM
-2,Hari,Patel,hari.u.patel@vanderbilt.edu,3176253024,,,Lauren Cecil,Monday,01:00 PM,01:55 PM
-2,Gloria,Carter,gloria.m.carter@vanderbilt.edu,6157087696,,,Lauren Cecil,Monday,01:00 PM,01:55 PM
-2,John,Gardner,john.s.gardner@vanderbilt.edu,8285457317,,,Lauren Cecil,Monday,01:00 PM,01:55 PM
-3,Gabriella,Glomp,gabriella.a.glomp@vanderbilt.edu,7734564380,True,True,Lauren Cecil,Monday,02:00 PM,02:55 PM
-3,Bella,Voiland,bella.m.voiland@vanderbilt.edu,2623435194,,,Lauren Cecil,Monday,02:00 PM,02:55 PM
-3,Rebecca,Maloney,rebecca.m.maloney@vanderbilt.edu,708-941-9621,,,Lauren Cecil,Monday,02:00 PM,02:55 PM
-3,Rohan,Nigam,rohan.nigam@vanderbilt.edu,3017878932,,,Lauren Cecil,Monday,02:00 PM,02:55 PM
+1,Elizabeth,Rios,elizabeth.f.rios@vanderbilt.edu,3057616140,True,,Lily Joy,Wednesday,10:00 AM,10:50 AM
+1,Suah,Woo,suah.woo@vanderbilt.edu,541-956-3476,,,Lily Joy,Wednesday,10:00 AM,10:50 AM
+1,Iris,Kim,iris.n.kim@vanderbilt.edu,7706584339,,,Lily Joy,Wednesday,10:00 AM,10:50 AM
+1,Emmie,Lew,emmie.k.lew@vanderbilt.edu,6263151074,,,Lily Joy,Wednesday,10:00 AM,10:50 AM
+2,Owen,Dong,owen.dong@vanderbilt.edu,2487602104,True,,Lily Joy,Wednesday,12:00 PM,12:50 PM
+2,Benjamin,Dye,benjamin.t.dye@vanderbilt.edu,6155699713,,,Lily Joy,Wednesday,12:00 PM,12:50 PM
+2,Sumner,Gardner,sumner.l.gardner@vanderbilt.edu,8285457502,,,Lily Joy,Wednesday,12:00 PM,12:50 PM
+2,Lasyapriya,Pidaparthi,lasyapriya.pidaparthi@vanderbilt.edu,540-769-7364,,,Lily Joy,Wednesday,12:00 PM,12:50 PM
+3,Shayaan,Essani,shayaan.essani@vanderbilt.edu,205-215-4660,True,,Lily Joy,Wednesday,02:00 PM,02:50 PM
+3,Madison,Handsome,madison.j.handsome@vanderbilt.edu,2129200335,,,Lily Joy,Wednesday,02:00 PM,02:50 PM
+3,Nolan,Hannan,nolan.c.hannan@vanderbilt.edu,9258547984,,,Lily Joy,Wednesday,02:00 PM,02:50 PM
+3,Shreeya,Moolamalla,shreeya.r.moolamalla@vanderbilt.edu,575-915-7276,,,Lily Joy,Wednesday,02:00 PM,02:50 PM
 4,Taewoo,Kim,taewoo.kim@vanderbilt.edu,9254309686,True,,Amanda Holloway,Thursday,01:15 PM,02:50 PM
 4,Izza,Ahmad,izza.ahmad@vanderbilt.edu,+1 (301) 232-2232,,,Amanda Holloway,Thursday,01:15 PM,02:50 PM
 4,Cooper,Donovan,cooper.l.donovan@vanderbilt.edu,7745713473,,,Amanda Holloway,Thursday,01:15 PM,02:50 PM
 4,Donya,Safarian,donya.safarian@vanderbilt.edu,6159732549,,,Amanda Holloway,Thursday,01:15 PM,02:50 PM
-5,Sydney,Patel,sydney.j.patel@vanderbilt.edu,7814729422,,,Tanuverne Williams,Thursday,02:35 PM,03:55 PM
-5,Miracle,Felsner,miracle.p.felsner@vanderbilt.edu,2482022325,True,,Tanuverne Williams,Thursday,02:35 PM,03:55 PM
-5,Lisa,Kim,lisa.y.kim05@gmail.com,6158186458,,,Tanuverne Williams,Thursday,02:35 PM,03:55 PM
-5,Karen,Nie,karen.y.nie@vanderbilt.edu,6175059300,,True,Tanuverne Williams,Thursday,02:35 PM,03:55 PM
-6,Runda,Li,runda.li@vanderbilt.edu,615 931 7048,True,,Kordell Hunter,Tuesday,02:05 PM,03:00 PM
-6,Sophia,Koss,sophia.d.koss@vanderbilt.edu,4805593414,,,Kordell Hunter,Tuesday,02:05 PM,03:00 PM
-6,Cannon,Lafont,cannon.a.lafont@vanderbilt.edu,2702176681,,,Kordell Hunter,Tuesday,02:05 PM,03:00 PM
-6,Daniela,Bakker aponte,daniela.c.bakker.aponte@vanderbilt.edu,8033979884,,,Kordell Hunter,Tuesday,02:05 PM,03:00 PM
-7,Samuel,Smithee,samuel.j.smithee@vanderbilt.edu,870-919-3766,True,,Edison Waters,Thursday,12:55 PM,01:55 PM
-7,Eli,Abdou,eli.a.abdou@vanderbilt.edu,7063881233,,,Edison Waters,Thursday,12:55 PM,01:55 PM
-7,Jared,Rhodes,jared.d.rhodes@vanderbilt.edu,4803102082,,,Edison Waters,Thursday,12:55 PM,01:55 PM
-7,Gillian,Heimple,gillian.heimple@vanderbilt.edu,9087236772,,,Edison Waters,Thursday,12:55 PM,01:55 PM
-8,Daniel,Liu,daniel.x.liu@vanderbilt.edu,2604462129,True,True,Thomas Campbell,Thursday,08:15 AM,09:15 AM
-8,Sophie,Fine,sophie.p.fine@vanderbilt.edu,682-300-9224,,,Thomas Campbell,Thursday,08:15 AM,09:15 AM
-8,Jessica,Zhang,jessica.a.zhang@vanderbilt.edu,8144410097,,,Thomas Campbell,Thursday,08:15 AM,09:15 AM
-9,Remington,Bristol,remington.a.bristol@vanderbilt.edu,2077309207,,,Kimberly Woodard,Thursday,11:30 AM,12:50 PM
-9,Sam,Heberlee,samantha.r.heberlee@vanderbilt.edu,3015292709,True,,Kimberly Woodard,Thursday,11:30 AM,12:50 PM
-9,Kate,Redrupp,kate.a.redrup@vanderbilt.edu,2299775496,,,Kimberly Woodard,Thursday,11:30 AM,12:50 PM
-9,Aryana,Valedon,aryana.b.valedon@vanderbilt.edu,4105960946,,,Kimberly Woodard,Thursday,11:30 AM,12:50 PM
-10,Emma,Harvey,emma.e.harvey@vanderbilt.edu,4703450597,,,Dana Brookshire,Tuesday,10:18 AM,11:13 AM
-10,Haley,Alpaugh,haley.alpaugh@vanderbilt.edu,6176100970,True,,Dana Brookshire,Tuesday,10:18 AM,11:13 AM
-10,Sophia,Kainz,sophia.t.kainz@vanderbilt.edu,3523089802,,,Dana Brookshire,Tuesday,10:18 AM,11:13 AM
-10,Abby,Johnson,abby.n.johnson@vanderbilt.edu,9188697466,,,Dana Brookshire,Tuesday,10:18 AM,11:13 AM
+5,Sophia,Koss,sophia.d.koss@vanderbilt.edu,4805593414,True,,Tanuverne Williams,Monday,02:35 PM,03:55 PM
+5,Alend,Khoshnaw,alend.a.khoshnaw@vanderbilt.edu,615 668-1696,,,Tanuverne Williams,Monday,02:35 PM,03:55 PM
+5,Liam,Marshall,william.j.marshall@vanderbilt.edu,7068448980,,,Tanuverne Williams,Monday,02:35 PM,03:55 PM
+5,Bella,Voiland,bella.m.voiland@vanderbilt.edu,2623435194,,,Tanuverne Williams,Monday,02:35 PM,03:55 PM
+6,Eli,Abdou,eli.a.abdou@vanderbilt.edu,7063881233,True,,Kordell Hunter,Wednesday,11:00 AM,12:00 PM
+6,Ayah,Nofal,ayah.z.nofal@vanderbilt.edu,6153642369,,,Kordell Hunter,Wednesday,11:00 AM,12:00 PM
+6,Charlotte,Polk,charlotte.b.polk@vanderbilt.edu,310-947-5029,,,Kordell Hunter,Wednesday,11:00 AM,12:00 PM
+6,Jennifer,Baum,jennifer.e.baum@vanderbilt.edu,7242566556,,,Kordell Hunter,Wednesday,11:00 AM,12:00 PM
+7,Sharmila,Adapa,sharmila.adapa@vanderbilt.edu,7037980663,True,,Edison Waters,Wednesday,12:55 PM,01:55 PM
+7,Gabriella,Modugno,,203-571-9348,,,Edison Waters,Wednesday,12:55 PM,01:55 PM
+7,Olivia,Driscoll,olivia.g.driscoll@vanderbilt.edu,8054059054,,,Edison Waters,Wednesday,12:55 PM,01:55 PM
+7,John,Gardner,john.s.gardner@vanderbilt.edu,8285457317,,,Edison Waters,Wednesday,12:55 PM,01:55 PM
+8,Sophie,Fine,sophie.p.fine@vanderbilt.edu,682-300-9224,True,,Kimberly Woodard,Tuesday,08:00 AM,09:20 AM
+8,Rachel,Yun,che.yeon.yun@vanderbilt.edu,3343185192,,,Kimberly Woodard,Tuesday,08:00 AM,09:20 AM
+8,Jeffrey,Eum,jeffrey.s.eum@vanderbilt.edu,7034752144,,,Kimberly Woodard,Tuesday,08:00 AM,09:20 AM
+8,Mateo,Moreno,mateo.l.moreno@vanderbilt.edu,5024084767,,,Kimberly Woodard,Tuesday,08:00 AM,09:20 AM
+9,Ellie,Jones,eleanor.a.jones@vanderbilt.edu,817-312-3885,True,,Kimberly Woodard,Tuesday,09:20 AM,11:30 AM
+9,Sophia,Kainz,sophia.t.kainz@vanderbilt.edu,3523089802,,,Kimberly Woodard,Tuesday,09:20 AM,11:30 AM
+9,Emma,Harvey,emma.e.harvey@vanderbilt.edu,4703450597,,,Kimberly Woodard,Tuesday,09:20 AM,11:30 AM
+9,Basim,Naim,basim.naim@vanderbilt.edu,2054270473,,,Kimberly Woodard,Tuesday,09:20 AM,11:30 AM
+10,Kyle,Vallone,kyle.t.vallone@vanderbilt.edu,9494447071,True,True,Kimberly Woodard,Tuesday,11:30 AM,12:50 PM
+10,Remington,Bristol,remington.a.bristol@vanderbilt.edu,2077309207,,,Kimberly Woodard,Tuesday,11:30 AM,12:50 PM
+10,Annabelle,Yost,annabelle.a.yost@vanderbilt.edu,3306314084,,,Kimberly Woodard,Tuesday,11:30 AM,12:50 PM
+10,Theresa,Gervais,theresa.j.gervais.1@vanderbilt.edu,5745329936,,,Kimberly Woodard,Tuesday,11:30 AM,12:50 PM
+11,Veeraj,Shah,veeraj.m.shah@vanderbilt.edu,2015751351,True,True,Dana Brookshire,Thursday,09:18 AM,10:13 AM
+11,Sowmya,Senthilkumar,sowmya.senthilkumar@vanderbilt.edu,8659244915,,,Dana Brookshire,Thursday,09:18 AM,10:13 AM
+11,Nolan,Mcphaul,nolan.a.mcphaul@vanderbilt.edu,770-713-0661,,,Dana Brookshire,Thursday,09:18 AM,10:13 AM
+11,Dawn,Oh,dawn.k.oh@vanderbilt.edu,(615)-674-8409,,,Dana Brookshire,Thursday,09:18 AM,10:13 AM
+12,Williams,Criley,williams.m.criley@vanderbilt.edu,3105797999,True,True,Dana Brookshire,Thursday,10:18 AM,11:13 AM
+12,Gavin,Picklin,gavin.m.picklin@vanderbilt.edu,8474941157,,,Dana Brookshire,Thursday,10:18 AM,11:13 AM
+12,Valeria,Toscano pasos,valeria.toscano.pasos@vanderbilt.edu,5205896014,,,Dana Brookshire,Thursday,10:18 AM,11:13 AM
+12,Kate,Redrupp,kate.a.redrup@vanderbilt.edu,2299775496,,,Dana Brookshire,Thursday,10:18 AM,11:13 AM
+13,Eunjin,Choi,eunjin.g.choi@vanderbilt.edu,4703141915,True,,Dana Brookshire,Thursday,02:00 PM,02:55 PM
+13,Angela,Okugo,angela.o.okugo@vanderbilt.edu,6788624356,,,Dana Brookshire,Thursday,02:00 PM,02:55 PM
+13,Shirley,Xu,rui.xu@vanderbilt.edu,2022994499,,,Dana Brookshire,Thursday,02:00 PM,02:55 PM
+13,Anna,Morgan,anna.k.morgan@vanderbilt.edu,828-507-3593,,,Dana Brookshire,Thursday,02:00 PM,02:55 PM
+14,Yizhen (jennifer),Quan,yizhen.quan@vanderbilt.edu,5022493654,True,,Douglas Goddard,Tuesday,08:30 AM,10:00 AM
+14,Augie,Jurva,august.e.jurva@vanderbilt.edu,2627203521,,,Douglas Goddard,Tuesday,08:30 AM,10:00 AM
+14,Lucy,Van der reis,lucy.van.der.reis@vanderbilt.edu,9493036394,,,Douglas Goddard,Tuesday,08:30 AM,10:00 AM
+14,Makayla,Donald,makayla.c.donald@vanderbilt.edu,678-879-9340,,,Douglas Goddard,Tuesday,08:30 AM,10:00 AM
+15,Ishaan,Gadiyar,ishaan.v.gadiyar@vanderbilt.edu,9727689441,True,,Douglas Goddard,Tuesday,01:00 PM,02:30 PM
+15,Lily mae,Cochell,lillian.m.cochell@vanderbilt.edu,704-641-5838,,,Douglas Goddard,Tuesday,01:00 PM,02:30 PM
+15,Cecilia,Hasan,cecilia.y.hasan@vanderbilt.edu,(513) 549-8999,,,Douglas Goddard,Tuesday,01:00 PM,02:30 PM
+15,Stanley,Vinet,stanley.q.vinet@vanderbilt.edu,8057106514,,,Douglas Goddard,Tuesday,01:00 PM,02:30 PM
+16,Oscar,Ekanem,oscar.e.ekanem@vanderbilt.edu,6157753571,True,,Tiffany Merritt-Humes,Thursday,11:08 AM,12:05 PM
+16,Arden,Perry,arden.a.perry@vanderbilt.edu,9855022611,,,Tiffany Merritt-Humes,Thursday,11:08 AM,12:05 PM
+16,Lucas,Martinez,lucas.martinez@vanderbilt.edu,7864787444,,,Tiffany Merritt-Humes,Thursday,11:08 AM,12:05 PM
+16,Jessica,Zdep,jessica.l.zdep@vanderbilt.edu,9086662431,,,Tiffany Merritt-Humes,Thursday,11:08 AM,12:05 PM
+17,Pooja,Gupta,pooja.gupta@vanderbilt.edu,4073165949,True,,Tiffany Merritt-Humes,Thursday,12:08 PM,01:03 PM
+17,Grace,Howard,grace.e.howard@vanderbilt.edu,(208) 488-8640,,,Tiffany Merritt-Humes,Thursday,12:08 PM,01:03 PM
+17,Aleksandra,Ward,aleksandra.s.ward@vanderbilt.edu,661-808-5235,,,Tiffany Merritt-Humes,Thursday,12:08 PM,01:03 PM
+17,Runda,Li,runda.li@vanderbilt.edu,615 931 7048,,,Tiffany Merritt-Humes,Thursday,12:08 PM,01:03 PM
+18,Miracle,Felsner,miracle.p.felsner@vanderbilt.edu,2482022325,True,,Tiffany Merritt-Humes,Thursday,01:45 PM,02:33 PM
+18,Lisa,Kim,lisa.y.kim05@gmail.com,6158186458,,,Tiffany Merritt-Humes,Thursday,01:45 PM,02:33 PM
+18,Isaac,Ayala vega,isaac.ayala.vega@vanderbilt.edu,503-510-7347,,,Tiffany Merritt-Humes,Thursday,01:45 PM,02:33 PM
+18,Selby,Molloy,selby.k.molloy@vanderbilt.edu,203-818-1968,,,Tiffany Merritt-Humes,Thursday,01:45 PM,02:33 PM
+19,Jenna,Lee,shinhoo.j.lee@vanderbilt.edu,7853237626,True,,Esther Cancasci,Tuesday,08:55 AM,09:55 AM
+19,Melanie,Fernandez,melanie.m.fernandez@vanderbilt.edu,3055191847,,,Esther Cancasci,Tuesday,08:55 AM,09:55 AM
+19,Alyssa,Newson,alyssa.l.newson@vanderbilt.edu,8609496076,,,Esther Cancasci,Tuesday,08:55 AM,09:55 AM
+19,Katrina,Schwensen,katrina.r.schwensen@vanderbilt.edu,402-802-6807,,,Esther Cancasci,Tuesday,08:55 AM,09:55 AM
+20,Bryanna,Shao,bryanna.y.shao@vanderbilt.edu,763-226-6949,True,,Esther Cancasci,Wednesday,10:00 AM,10:55 AM
+20,Nina,Gallinar,nina.m.gallinar@vanderbilt.edu,3059053933,,,Esther Cancasci,Wednesday,10:00 AM,10:55 AM
+20,Peter,Pietri,peter.a.pietri@vanderbilt.edu,301-980-1887,,,Esther Cancasci,Wednesday,10:00 AM,10:55 AM
+20,Isabella,Deberghes,isabella.v.deberghes@vanderbilt.edu,5083833940,,,Esther Cancasci,Wednesday,10:00 AM,10:55 AM
+21,George,Xu,george.xu@vanderbilt.edu,6158774982,True,,Esther Cancasci,Tuesday,12:00 PM,12:50 PM
+21,Tyler,Jones,tyler.l.jones@vanderbilt.edu,8652278529,,,Esther Cancasci,Tuesday,12:00 PM,12:50 PM
+21,Xochi,Gervais,xochi.gervais@vanderbilt.edu,(808)-785-6939,,,Esther Cancasci,Tuesday,12:00 PM,12:50 PM
+21,Kevin,Pasquette,kevin.c.pasquette@vanderbilt.edu,9546999841,,,Esther Cancasci,Tuesday,12:00 PM,12:50 PM
+22,Carissa,Li,carissa.l.li@vanderbilt.edu,5012586629,,,Dwayne Hardin,Wednesday,08:55 AM,09:55 AM
+22,Charlotte,Martin,charlotte.a.martin@vanderbilt.edu,3367817163,,,Dwayne Hardin,Wednesday,08:55 AM,09:55 AM
+22,Jiayi,Xu,jiayi.xu.1@vanderbilt.edu,9193608968,,,Dwayne Hardin,Wednesday,08:55 AM,09:55 AM
+22,Rebekah,Zenaye,rebekah.zenaye@vanderbilt.edi,6513991807,,,Dwayne Hardin,Wednesday,08:55 AM,09:55 AM
+23,Shuang,Wu,shuang.wu@vanderbilt.edu,6292410626,True,True,Dwayne Hardin,Wednesday,01:15 PM,02:05 PM
+23,Jared,Rhodes,jared.d.rhodes@vanderbilt.edu,4803102082,,,Dwayne Hardin,Wednesday,01:15 PM,02:05 PM
+23,Kaitlyn,Kim,kaitlyn.kim@vanderbilt.edu,2015626819,,,Dwayne Hardin,Wednesday,01:15 PM,02:05 PM
+23,Jinsun,Kim,jinsun.kim@vanderbilt.edu,6786501394,,,Dwayne Hardin,Wednesday,01:15 PM,02:05 PM
+24,Gillian,Heimple,gillian.heimple@vanderbilt.edu,9087236772,True,,Dwayne Hardin,Wednesday,02:10 PM,02:55 PM
+24,Xinru,Li,xinru.li@vanderbilt.edu,6159317498,,,Dwayne Hardin,Wednesday,02:10 PM,02:55 PM
+24,Rohan,Nigam,rohan.nigam@vanderbilt.edu,3017878932,,,Dwayne Hardin,Wednesday,02:10 PM,02:55 PM
+24,Sanjana,Veerapaneni,sanjana.l.veerapaneni@vanderbilt.edu,470-266-7415,,,Dwayne Hardin,Wednesday,02:10 PM,02:55 PM
+25,Carson,Felton,carson.d.felton@vanderbilt.edu,4702130534,True,,Morgan Kearney,Thursday,09:55 AM,10:45 AM
+25,Sadie,Tavares,sadie.j.tavares@vanderbilt.edu,(518)522-3252,,,Morgan Kearney,Thursday,09:55 AM,10:45 AM
+25,Rene,Huerta,rene.e.huerta@vanderbilt.edu,8179651858,,,Morgan Kearney,Thursday,09:55 AM,10:45 AM
+26,Brooke,Schnitzlein,brooke.a.schnitzlein@vanderbilt.edu,9173195906,,,Morgan Kearney,Thursday,12:55 PM,01:55 PM
+26,Barrie,Barto,barbara.a.barto@vanderbilt.edu,7205706725,,,Morgan Kearney,Thursday,12:55 PM,01:55 PM
+26,Angelica,Harris,angelica.m.harris@vanderbilt.edu,630-457-6296,,,Morgan Kearney,Thursday,12:55 PM,01:55 PM
+26,Jordan,Walker,jordan.a.walker@vanderbilt.edu,214-354-3807,True,True,Morgan Kearney,Thursday,12:55 PM,01:55 PM
+27,Sophia,Kim,sophia.s.kim@vanderbilt.edu,5165647164,True,,Jessica Tosh ,Monday,09:55 AM,10:45 AM
+27,Parker,Wilkinson,parker.f.wilkinson@vanderbilt.edu,9319330527,,,Jessica Tosh ,Monday,09:55 AM,10:45 AM
+27,Katherine,Walker,katherine.a.walker@vanderbilt.edu,5713869316,,,Jessica Tosh ,Monday,09:55 AM,10:45 AM
+27,Iris,Kim,iris.s.kim@vanderbilt.edu,9167706331,,,Jessica Tosh ,Monday,09:55 AM,10:45 AM
+28,Samuel,Smithee,samuel.j.smithee@vanderbilt.edu,870-919-3766,True,,Jessica Tosh ,Monday,12:55 PM,01:55 PM
+28,John,Bohatch,john.j.bohatch@vanderbilt.edu,7866208538,,,Jessica Tosh ,Monday,12:55 PM,01:55 PM
+28,Michael,Phan,michael.phan@vanderbilt.edu,4049936566,,,Jessica Tosh ,Monday,12:55 PM,01:55 PM
+28,Zoe,Segal,zoe.c.segal@vanderbilt.edu,973-803-9950,,,Jessica Tosh ,Monday,12:55 PM,01:55 PM
+29,Zain,Tariq,zain.h.tariq@vanderbilt.edu,5024458029,True,,William Sayles,Monday,09:58 AM,10:48 AM
+29,Sriya,Kondapavuluru,,615-498-1493,,,William Sayles,Monday,09:58 AM,10:48 AM
+29,Jonas,Brown,jonas.h.brown@vanderbilt.edu,2038958655,,True,William Sayles,Monday,09:58 AM,10:48 AM
+29,Omotayo,Fasan,omotayo.n.fasan@vanderbilt.edu,2678005779,,,William Sayles,Monday,09:58 AM,10:48 AM
+30,Jack,Boylan,jack.e.boylan@vanderbilt.edu,5028027508,True,,Jacob Walls,Tuesday,10:13 AM,11:13 AM
+30,Astred,Ngnepieba,astred.m.ngnepieba@vanderbilt.edu,8505971404,,,Jacob Walls,Tuesday,10:13 AM,11:13 AM
+30,Drew,Hoffman,drew.j.hoffman@vanderbilt.edu,4192799195,,,Jacob Walls,Tuesday,10:13 AM,11:13 AM
+30,Johna,Grisik,johna.e.grisik@vanderbilt.edu,6782226297,,,Jacob Walls,Tuesday,10:13 AM,11:13 AM
+31,Olivia,Nickel,olivia.g.nickel@vanderbilt.edu,8479025030,,,Jacob Walls,Tuesday,02:55 PM,03:55 PM
+31,Anthony,Hoang,anthony.l.hoang@vanderbilt.edu,8083583475,True,,Jacob Walls,Tuesday,02:55 PM,03:55 PM
+31,Katie,Baker,katherine.j.baker@vanderbilt.edu,8572765069,,,Jacob Walls,Tuesday,02:55 PM,03:55 PM
+31,Nancy,Deng,nancy.deng@vanderbilt.edu,4156080011,,,Jacob Walls,Tuesday,02:55 PM,03:55 PM
+32,Matthew,Marino,matthew.c.marino@vanderbilt.edu,6789777725,,,Jamie Schimenti,Monday,08:10 AM,09:15 AM
+32,William,Zipf,william.zipf@vanderbilt.edu,9084775366,True,,Jamie Schimenti,Monday,08:10 AM,09:15 AM
+32,Anjali,Raman,anjali.p.raman@vanderbilt.edu,6174618815,,,Jamie Schimenti,Monday,08:10 AM,09:15 AM
+32,Matt,Sigel,matthew.e.sigel@vanderbilt.edu,2165136544,,True,Jamie Schimenti,Monday,08:10 AM,09:15 AM
+33,Soham,Saraf,soham.s.saraf@vanderbilt.edu,3148130616,True,True,Jamie Schimenti,Tuesday,10:55 AM,12:05 PM
+33,Abby,Johnson,abby.n.johnson@vanderbilt.edu,9188697466,,,Jamie Schimenti,Tuesday,10:55 AM,12:05 PM
+33,Yi-jhan,Hsieh,yi-jhan.hsieh@vanderbilt.edu,6154916597,,,Jamie Schimenti,Tuesday,10:55 AM,12:05 PM
+33,Stella,Rodriguez,stella.c.rodriguez@vanderbilt.edu,9803391999,,,Jamie Schimenti,Tuesday,10:55 AM,12:05 PM
+34,Haley,Alpaugh,haley.alpaugh@vanderbilt.edu,6176100970,True,,Jamie Schimenti,Tuesday,10:55 AM,12:05 PM
+34,Alejandro,Benitez galeano,alejandro.m.benitez.galeano@vanderbilt.edu,6159389637,,,Jamie Schimenti,Tuesday,10:55 AM,12:05 PM
+34,Mazyar,Azmi,mazyar.azmi@vanderbilt.edu,2018243442,,,Jamie Schimenti,Tuesday,10:55 AM,12:05 PM
+34,Sarah,Xia,shuang.xia@vanderbilt.edu,4697718388,,,Jamie Schimenti,Tuesday,10:55 AM,12:05 PM
+35,Sam,Heberlee,samantha.r.heberlee@vanderbilt.edu,3015292709,True,,Justine McMurray,Tuesday,11:05 AM,12:20 PM
+35,Garrett,Naples,garrett.c.naples@vanderbilt.edu,2032933912,,,Justine McMurray,Tuesday,11:05 AM,12:20 PM
+35,Dannah,Sader,dannah.a.sader@vanderbilt.edu,6156891652,,,Justine McMurray,Tuesday,11:05 AM,12:20 PM
+35,Aryana,Valedon,aryana.b.valedon@vanderbilt.edu,4105960946,,,Justine McMurray,Tuesday,11:05 AM,12:20 PM
+36,Maya,Gopal,maya.s.gopal@vanderbilt.edu,9046311270,True,,Justine McMurray,Tuesday,01:40 PM,02:45 PM
+36,Farhan,Hossain,farhan.hossain@vanderbilt.edu,6468977035,,,Justine McMurray,Tuesday,01:40 PM,02:45 PM
+36,Daniela,Bakker aponte,daniela.c.bakker.aponte@vanderbilt.edu,8033979884,,,Justine McMurray,Tuesday,01:40 PM,02:45 PM
+36,Karen,Nie,karen.y.nie@vanderbilt.edu,6175059300,,True,Justine McMurray,Tuesday,01:40 PM,02:45 PM
+37,Joel,Berinstein,joel.r.berinstein@vanderbilt.edu,301-332-5179,True,,Justine McMurray,Monday,11:05 AM,12:20 PM
+37,Charity,Yarbrough,charity.a.yarbrough@vanderbilt.edu,2569378152,,,Justine McMurray,Monday,11:05 AM,12:20 PM
+37,Lillian,Hubbard,lillian.a.hubbard@vanderbilt.edu,6159701746,,,Justine McMurray,Monday,11:05 AM,12:20 PM
+37,Jayden,Bartlett,jayden.a.bartlett@vanderbilt.edu,605-906-5672,,,Justine McMurray,Monday,11:05 AM,12:20 PM
+38,Gloria,Choi,gloria.s.choi@vanderbilt.edu,4173506477,True,,Justine McMurray,Thursday,01:40 PM,02:40 PM
+38,Rachel,Tadesse,rachel.tadesse@vanderbilt.edu,6159188559,,,Justine McMurray,Thursday,01:40 PM,02:40 PM
+38,Lisa,Kim,lisa.y.kim.1@vanderbilt.edu,6158186458,,,Justine McMurray,Thursday,01:40 PM,02:40 PM
+38,Lauren,Williams,lauren.a.williams@vanderbilt.edu,9018487242,,,Justine McMurray,Thursday,01:40 PM,02:40 PM
+39,Derek,Daniels,derek.c.daniels@vanderbilt.edu,574-210-4072,True,,Nicola  Vincent,Monday,08:00 AM,09:00 AM
+39,Landon,Ferguson,landon.t.ferguson@vanderbilt.edu,2769202955,,,Nicola  Vincent,Monday,08:00 AM,09:00 AM
+39,Rob,Mcfadden,robert.e.mcfadden@vanderbilt.edu,9017340437,,,Nicola  Vincent,Monday,08:00 AM,09:00 AM
+39,Frances,Smith,frances.m.smith@vanderbilt.edu,(803)-391-1133,,,Nicola  Vincent,Monday,08:00 AM,09:00 AM
+40,Gabriella,Glomp,gabriella.a.glomp@vanderbilt.edu,7734564380,True,True,Nicolle Sharp,Wednesday,11:35 AM,12:30 PM
+40,Vincent,Wang,vincent.w.wang@vanderbilt.edu,6155546161,,,Nicolle Sharp,Wednesday,11:35 AM,12:30 PM
+40,Caroline,Holman,caroline.m.holman@vanderbilt.edu,3014615330,,,Nicolle Sharp,Wednesday,11:35 AM,12:30 PM
+40,Ushang,Uke,ushang.n.uke@vanderbilt.edu,6513732510,,,Nicolle Sharp,Wednesday,11:35 AM,12:30 PM
+41,Leo,Park,dongyong.d.park@vanderbilt.edu,8323492418,True,True,Nicolle Sharp,Tuesday,01:00 PM,01:45 PM
+41,Christian,Rosig,christian.x.rosig@vanderbilt.edu,3479886654,,,Nicolle Sharp,Tuesday,01:00 PM,01:45 PM
+41,Nikhil partap,Kahlon,nikhil.partap.s.kahlon@vanderbilt.edu,6026863907,,,Nicolle Sharp,Tuesday,01:00 PM,01:45 PM
+41,Luciana,Leo,luciana.leo@vanderbilt.edu,5166958005,,,Nicolle Sharp,Tuesday,01:00 PM,01:45 PM

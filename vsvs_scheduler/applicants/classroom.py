@@ -27,7 +27,7 @@ class Classroom:
         self.possible_partner_groups = 0  
         self.team_leader = False  
 
-        self.start_time = datetime.strptime(start_time, '%I:%M:%S %p')  
+        self.start_time = datetime.strptime(start_time, '%I:%M:%S %p') 
         self.end_time = datetime.strptime(end_time, '%I:%M:%S %p')  
 
 
@@ -62,8 +62,7 @@ class Classroom:
 
 
     def change_to_next_preferred_day(self):
-        """ Changes the weekday to the next preferred day."""
-        
+        """ Changes the weekday to the next preferred day.""" 
         possible_weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday"]
         if self.weekday_idx < 3 and self.weekdays[self.weekday_idx + 1] in possible_weekdays:
             self.weekday_idx += 1

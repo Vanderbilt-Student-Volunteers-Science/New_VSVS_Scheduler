@@ -75,7 +75,10 @@ def main():
                         (lambda x: 'True' if x else '')(volunteer.assigned_leader),
                         (lambda x: 'True' if x else '')(volunteer.board),
                         '',
-                        volunteer.availability
+                        [x.strftime('%I:%M %p') for x in volunteer.availability.Monday],
+                        [x.strftime('%I:%M %p') for x in volunteer.availability.Tuesday],
+                        [x.strftime('%I:%M %p') for x in volunteer.availability.Wednesday],
+                        [x.strftime('%I:%M %p') for x in volunteer.availability.Thursday]
                     ]
                 )
 

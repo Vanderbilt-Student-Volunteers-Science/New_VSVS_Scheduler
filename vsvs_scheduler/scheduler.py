@@ -97,7 +97,7 @@ class Scheduler:
                         self.incomplete_classrooms.remove(classroom)
                 else:
                     idx += 1
-        self.incomplete_classrooms.sort(key=lambda classroom: len(classroom.volunteers))
+        self.incomplete_classrooms.sort(key=lambda classroom: len(classroom.volunteers), reverse=True)
 
 
 
