@@ -38,9 +38,9 @@ class Classroom:
         """
         self.volunteers.append(volunteer)
         volunteer.group_number = self.group_number
-        if not self.team_leader and volunteer.leader_app:
-            self.team_leader = True
-            volunteer.assigned_leader = True
+        # if not self.team_leader and volunteer.leader_app:
+        #     self.team_leader = True
+        #     volunteer.assigned_leader = True
 
     def unassign_volunteers(self):
         for volunteer in self.volunteers:

@@ -48,6 +48,8 @@ class Scheduler:
         self.assign_volunteers("leaders")
         self.assign_volunteers()
 
+        self.assign_team_leader()
+
         missing_team_leaders = [classroom for classroom in self.classrooms if not classroom.team_leader]
         incomplete_group = [classroom for classroom in self.classrooms if len(classroom.volunteers) < 3]
 
@@ -154,6 +156,12 @@ class Scheduler:
                 schedule = list(row.values())[16:50]
                 after_school = (lambda x: [] if x == "" else x.split(', '))(row["After-school"])
                 volunteer = Volunteer(
+                    team_leader_interest=(lambda x: True if x.lower() == 'yes' else False)(
+                    row['Interest in Team Leadership']),
+                    team_leader_experience=(lambda x: True if x.lower() == 'yes' else False)(
+                    row['Previous Team Leader Experience']),
+                    VSVS_experience=(lambda x: True if x.lower() == 'yes' else False)(
+                    row['VSVS Experience']),
                     first=row['First Name'].strip().lower().capitalize(),
                     last=row['Last Name'].strip().lower().capitalize(),
                     phone=row['Phone Number'],
@@ -246,4 +254,21 @@ class Scheduler:
             # warnings.warn(f'WARNING: Not all group members were found: {partners_not_found}')
             print('There are {} partners.\n'.format(len(self.partners)))
             return partners_not_found
+
+    def assign_team_leader(self):
+        # Iterate through each classroom
+        for classroom in self.classrooms:
+            if len(classroom.volunteers) > 0:
+                # Sort the volunteers within the classroom based on the criteria
+                classroom.volunteers.sort(key=lambda volunteer: (
+                    -int(volunteer.team_leader_interest),  # Prioritize those interested in team leader role
+                    -int(volunteer.team_leader_experience),  # Prioritize those with team leader experience
+                    -int(volunteer.VSVS_experience),  # Prioritize those with VSVS experience
+                    -int(volunteer.leader_app),  # Prioritize those who applied to be a team leader
+                    -int(volunteer.board)  # Prioritize board members
+                ))
+
+                # The first volunteer in the sorted list is assigned as the team leader
+                classroom.volunteers[0].assigned_leader = True
+                classroom.team_leader = True
 

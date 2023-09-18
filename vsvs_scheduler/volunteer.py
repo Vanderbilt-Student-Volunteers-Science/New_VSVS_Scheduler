@@ -7,9 +7,10 @@ class Volunteer:
     first_time = datetime.strptime("7:15", "%H:%M")
     last_time = datetime.strptime("15:30", "%H:%M")
 
-    def __init__(self, first: str, last: str, phone: str, email: str, leader_app: bool, imported_schedule: list,
-                 after_school: list, robotics_interest: bool = False, special_needs_interest: bool = False,
-                 board_member: bool = False):
+    def __init__(self, first: str, last: str, phone: str, email: str, leader_app: bool,
+                 team_leader_interest: bool, team_leader_experience: bool, VSVS_experience: bool,
+                 imported_schedule: list, after_school: list, robotics_interest: bool = False,
+                 special_needs_interest: bool = False, board_member: bool = False):
         """
 
         :param first: first name test
@@ -33,6 +34,9 @@ class Volunteer:
         self.email = email.lower()
         self.board = board_member
         self.leader_app = leader_app or board_member  # if volunteer applied to be a team leader or is board member
+        self.team_leader_interest = team_leader_interest
+        self.team_leader_experience = VSVS_experience
+        self.VSVS_experience = VSVS_experience
 
         self.after_school = after_school
         self.availability = self.create_availability_schedule(imported_schedule)
