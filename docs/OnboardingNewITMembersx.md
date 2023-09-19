@@ -1,4 +1,5 @@
 # Onboarding New IT Members
+Author: Carmen Alia Arias -- Class of 2024 (with help of ChatGPT)
 
 ## Introduction
 
