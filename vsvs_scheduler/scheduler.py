@@ -9,7 +9,7 @@ from partner_data_uploader import PartnerDataUploader
 
 
 class Scheduler:
-    def __init__(self, earliest: str = "7:15", latest: str = "15:30", max_team_size: int = 4):
+    def __init__(self, earliest: str = "7:15", latest: str = "15:30", max_team_size: int = 5, min_team_size: int = 3):
         """Scheduler object that holds information about the schedule and the volunteers and classrooms."""
 
         self.earliest_time = datetime.strptime(earliest, "%H:%M")
@@ -22,6 +22,7 @@ class Scheduler:
         self.unassigned_partners = []
         self.incomplete_classrooms = self.classrooms.copy()
         self.max_size = max_team_size
+        self.min_size = min_team_size
 
 
 
@@ -43,6 +44,8 @@ class Scheduler:
                 classroom.change_to_next_preferred_day()
                 self.assign_volunteers()
             num_days_to_try -= 1
+        
+        self.assign_volunteers("last_round")
 
         if missing_team_leaders:
             warnings.warn(f'WARNING: Classrooms are missing team leaders: {missing_team_leaders}')
@@ -85,6 +88,18 @@ class Scheduler:
             volunteer_list = [volunteer for volunteer in self.individuals if volunteer.leader_app]
         elif volunteer_type == "board":
             volunteer_list = [volunteer for volunteer in self.individuals if volunteer.board]
+        
+        if volunteer_type == "last_round":
+            for volunteer in volunteer_list:
+                idx = 0
+                while volunteer.group_number == -1 and idx < len(self.classrooms):
+                    classroom = self.classrooms[idx]
+                    if volunteer.can_make_class(classroom) and (len(classroom.volunteers) < self.max_size):
+                        classroom.assign_volunteer(volunteer)
+                        volunteer.assign_classroom(classroom)
+                    else:
+                        idx += 1
+
 
         for volunteer in volunteer_list:
             idx = 0
@@ -93,7 +108,7 @@ class Scheduler:
                 if volunteer.can_make_class(classroom) and (volunteer_type == "default" or not classroom.team_leader):
                     classroom.assign_volunteer(volunteer)
                     volunteer.assign_classroom(classroom)
-                    if len(classroom.volunteers) >= self.max_size:
+                    if len(classroom.volunteers) >= self.min_size:
                         self.incomplete_classrooms.remove(classroom)
                 else:
                     idx += 1
