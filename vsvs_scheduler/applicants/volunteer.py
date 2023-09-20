@@ -38,7 +38,10 @@ class Volunteer:
 
         return self.availability.can_make_class(classroom)
     
+    def can_make_class_last_round(self, classroom: Classroom):
+        """Returns boolean of whether volunteer can make a classroom based on the schedule parameter."""
 
+        return self.availability.can_make_class(classroom, last_round=True)
 
     def assign_classroom(self, classroom: Classroom):
         """Assigns the volunteer to the classroom and updates the volunteer's group number."""

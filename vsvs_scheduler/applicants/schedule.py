@@ -83,9 +83,13 @@ class Schedule:
 
 
                 
-    def can_make_class(self, classroom: Classroom):
+    def can_make_class(self, classroom: Classroom, last_round: bool = False) -> bool:
         """ Returns True if the volunteer can make the class, False otherwise."""
-
+        if last_round and classroom.weekday != None:
+            weekday = classroom.weekday
+        else:
+            weekday = classroom.teacher.weekday
+        
         # Standardize the start time to the nearest 15 minute interval
         time_deviation = classroom.start_time.minute % 15
         if time_deviation != 0:
@@ -94,7 +98,7 @@ class Schedule:
             start_time = classroom.start_time
 
         # Volunteer schedule for the day of the class
-        weekday_schedule = self.processed_schedule[classroom.weekday]
+        weekday_schedule = self.processed_schedule[weekday]
 
         if start_time in weekday_schedule:
             return weekday_schedule[start_time] >= classroom.duration()

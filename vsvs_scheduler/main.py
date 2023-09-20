@@ -58,7 +58,7 @@ def main():
                         '',
                         classroom.start_time.strftime('%I:%M %p'),
                         classroom.end_time.strftime('%I:%M %p'),
-                        classroom.weekday
+                        classroom.teacher.weekday
                     ]
                 )
         csv_writer.writerow(['']*6)
