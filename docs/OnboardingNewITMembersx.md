@@ -119,7 +119,7 @@ To manage project dependencies and isolate your development environment, create 
     - On Windows:
 
         ```bash
-        venv\Scripts\activate
+        .venv\Scripts\activate
         ```
     - On macOS:
 
