@@ -209,7 +209,7 @@ After making changes to your code, VSCode will detect the modifications.
 
 - With your changes staged, enter a commit message - in the Commit dialog box - describing your changes.Click the "Commit" button.
 
-After committing your changes, go to "VCS" > "Git" > "Push" in the top menu.In the Push dialog, ensure your branch is selected, and click the "Push" button.
+- After committing your changes, you should see the name of the branch that you committed the changes to on the left hand side under the "SOURCE CONTROL" menu. If you hover over the branch name, an icon will appear next to the branch name. Click on this icon to push your changes to the remote branch on GitHub.
 
 
 ### 2.3. Your First Pull Request (PR)
