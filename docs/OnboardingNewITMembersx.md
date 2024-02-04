@@ -66,11 +66,11 @@ If you're new to Git and GitHub, follow these steps to set up your Git environme
 
 We use Python for our project. Download and install Python by visiting [Python Downloads](https://www.python.org/downloads/). Ensure you select the option to add Python to your system's PATH during installation.
 
-You are free to use any Python development environment or text editor. However, if you're new to Python we recommend using PyCharm.
+You are free to use any Python development environment or text editor. However, we will recommend the VSCode editor.
 
-You can download PyCharm Community Edition (FREE) from the official website [here](https://www.jetbrains.com/pycharm/download/).
+You can download the VSCode Editor [here](https://code.visualstudio.com/).
 
-If you are struggling [this](https://www.guru99.com/how-to-install-python.html) guide is worth looking at.
+[This](https://code.visualstudio.com/docs/python/python-tutorial) guide walks through how to get started with Python in VSCode including how to setup a virtual environment. 
 
 ### 1.4. Cloning the Repository
 
@@ -91,16 +91,8 @@ If you are struggling [this](https://www.guru99.com/how-to-install-python.html) 
     git clone https://github.com/Vanderbilt-Student-Volunteers-Science/New_VSVS_Scheduler.git
     ```
 
-#### 1.4.2. Using PyCharm
-
-Alternatively, you can use PyCharm's GUI to clone the repository:
-1. Open PyCharm.
-2. Click on "File" in the top menu.
-3. Select "New" and then "Project from Version Control."
-4. Choose "Git."
-5. In the "URL" field, enter `https://github.com/Vanderbilt-Student-Volunteers-Science/New_VSVS_Scheduler.git`
-6. Choose the directory where you want to save the repository in the "Directory" field.
-7. Click the "Clone" button.
+#### 1.4.2. Using VSCode
+Alternatively, you can use VSCode's GUI to clone the repository. [This guide](https://code.visualstudio.com/docs/sourcecontrol/github) walks you through the extensions you need to install and any extra steps you need to take to be able to clone a repo in the GUI. 
 
 ### 1.5. Setting Up a Virtual Environment
 
@@ -150,33 +142,6 @@ To manage project dependencies and isolate your development environment, create 
     - Remember to save and close the file
 
     ***IT IS IMPERATIVE THAT YOU INCLUDE THE `/data` & `results/`!!!! OTHERWISE PRIVATE INFORMATION ABOUT VOLUNTEERS WILL BE MADE PUBLICLY AVAILABLE ON THE INTERNET***
-
-#### 1.5.2. Using PyCharm
-
-Installing Dependencies
-
-1. Open PyCharm.
-2. Open your project.
-3. Go to "File" > "Settings" (Windows/Linux) or "PyCharm" > "Preferences" (macOS).
-4. In the settings/preferences window, navigate to "Project" > "Python Interpreter."
-5. Click the "Install Requirements" button, represented by a + sign.
-6. In the "Install Packages" dialog, locate and select the docs/requirements.txt file from your project directory.
-7. Click "Install" to install the project's dependencies.
-
-
-Adding files to .gitignore 
-
-1. Go "File" > "Settings" (Windows/Linux) or "PyCharm" > "Preferences" (macOS).
-2. In the settings/preferences window, navigate to "Version Control" > "Ignored Files."
-3. Click the "+ Add" button.
-4. In the dialog that appears, enter .venv/ and click "OK."
-5. Click "Apply" or "OK" to save your changes.
-
-Do this again for the following files too:
->data/ \
->results/
-
-***IT IS IMPERATIVE THAT YOU INCLUDE THE `/data` & `results/`!!!! OTHERWISE PRIVATE INFORMATION ABOUT VOLUNTEERS WILL BE MADE PUBLICLY AVAILABLE ON THE INTERNET***
 
 ## 2. Development Workflow
 
@@ -230,21 +195,19 @@ Open a terminal/command prompt within the project folder/directory.
     git push
     ```
 
-#### 2.2.2. Using PyCharm
+#### 2.2.2. Using VSCode
 
-1. Open PyCharm.
+1. Open VSCode
 2. Make sure your project is open and active.
-3. In the top menu, go to "VCS" > "Git" > "Branches."
-4. In the "Branches" dialog, click the "+ New Branch" button.
-5. Enter a descriptive name for your new branch (e.g., new-feature). Optionally, you can choose to check out the new branch immediately by selecting the "Check out" option.
-6. Click the "Create" button.
+3. On the side bar to the left, select the source control icon. (It's 2 circles with squiggly lines that connect them to another circle)
+4. Click the 3 dots in to the right of the words "SOURCE CONTROL". Select "Branch". Within the branch menu, select "Create Branch From ...".
+5. When given the option to select the branch that you want to create the new branch from, select "Main". 
+5. Enter a descriptive name for your new branch. Please refer to [earlier in this guide](#21-branching-strategy) for naming conventions.  
 
-After making changes to your code, PyCharm will detect the modifications.
-- In the left-hand sidebar, you'll see a list of changed files. Check the box next to each file you want to stage.
+After making changes to your code, VSCode will detect the modifications.
+- In the left-hand sidebar, under the "SOURCE CONTROL" menu, you'll see a list of changed files. Click the "+" next to the file name to stage the file for a commit. 
 
-- Alternatively, you can right-click on a file and select "Git" > "Add" to stage it.
-
-With your changes staged, go to "VCS" > "Commit" in the top menu.In the Commit dialog, enter a commit message describing your changes.Click the "Commit" button.
+- With your changes staged, enter a commit message - in the Commit dialog box - describing your changes.Click the "Commit" button.
 
 After committing your changes, go to "VCS" > "Git" > "Push" in the top menu.In the Push dialog, ensure your branch is selected, and click the "Push" button.
 
