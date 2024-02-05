@@ -1,4 +1,5 @@
 import csv
+import os
 
 from scheduler import Scheduler
 
@@ -9,7 +10,10 @@ def main():
     partner_errors = vsvs_scheduler.create_assignments()
     print(partner_errors)
 
-    with open('results/assignments.csv', 'w', newline='') as assignments_csv:
+    if not os.path.isdir("results/"):
+        os.mkdir("results")
+
+    with open('results/assignments.csv', 'a', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
         csv_writer.writerow(
             ['Group Number', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Board Member',

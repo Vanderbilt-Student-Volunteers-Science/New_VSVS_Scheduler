@@ -62,7 +62,7 @@ If you're new to Git and GitHub, follow these steps to set up your Git environme
   git config --global user.email "your.email@example.com"
   ``
   
-### 1.3. Installing Python & PyCharm
+### 1.3. Installing Python & VSCode Editor
 
 We use Python for our project. Download and install Python by visiting [Python Downloads](https://www.python.org/downloads/). Ensure you select the option to add Python to your system's PATH during installation.
 
@@ -90,6 +90,7 @@ You can download the VSCode Editor [here](https://code.visualstudio.com/).
     ```bash
     git clone https://github.com/Vanderbilt-Student-Volunteers-Science/New_VSVS_Scheduler.git
     ```
+3. Verify that it worked. You should navigate to the directory in the file explorer or in the terminal and verify that the contents match those of the remote repository. 
 
 #### 1.4.2. Using VSCode
 Alternatively, you can use VSCode's GUI to clone the repository. [This guide](https://code.visualstudio.com/docs/sourcecontrol/github) walks you through the extensions you need to install and any extra steps you need to take to be able to clone a repo in the GUI. 

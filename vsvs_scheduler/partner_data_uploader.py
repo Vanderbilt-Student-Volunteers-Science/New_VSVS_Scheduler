@@ -6,7 +6,7 @@ class PartnerDataUploader(AbstractDataUploader):
     def __init__(self, individual_volunteers: list):
         """ This uploads partner data from csv/excel file into Partner objects"""
 
-        super().__init__("Partners")
+        super().__init__("partners")
         self.individuals = individual_volunteers
         self.partners_not_found = []
         self.import_data()

@@ -70,9 +70,9 @@ class Scheduler:
             classroom.freeze_weekday()
 
         if missing_team_leaders:
-            warnings.warn(f'WARNING: Classrooms are missing team leaders: {missing_team_leaders}')
+            warnings.warn(f'WARNING: Classrooms are missing team leaders: {missing_team_leaders}\n')
         if self.incomplete_classrooms:
-            warnings.warn(f'WARNING: Classrooms without necessary number of volunteers {self.incomplete_classrooms}')
+            warnings.warn(f'WARNING: Classrooms without necessary number of volunteers {self.incomplete_classrooms}\n')
         return {"unassigned": self.unassigned_partners}
     
     def assign_partners(self):
