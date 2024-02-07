@@ -108,7 +108,7 @@ class SchedulerTestCase(unittest.TestCase):
     def test_import_individual_functions(self):
         with patch('builtins.input', return_value='test_data/individuals.csv'):
             self.scheduler.import_volunteers()
-            self.assertEqual(len(self.scheduler.individuals), 360)
+            self.assertEqual(len(self.scheduler.volunteers), 360)
 
         with patch('builtins.input', return_value='test_data/partners.csv'):
             self.scheduler.import_partners()

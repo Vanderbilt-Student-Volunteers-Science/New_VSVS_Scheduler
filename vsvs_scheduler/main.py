@@ -2,6 +2,7 @@ import csv
 import os
 
 from scheduler import Scheduler
+from __init__ import ASSIGNMENTS_DIRECTORY, MIN_TEAM_SIZE
 
 
 def main():
@@ -10,10 +11,12 @@ def main():
     partner_errors = vsvs_scheduler.create_assignments()
     print(partner_errors)
 
-    if not os.path.isdir("results/"):
-        os.mkdir("results")
+    if not os.path.isdir(ASSIGNMENTS_DIRECTORY):
+        os.mkdir(ASSIGNMENTS_DIRECTORY)
+    
+    results_file_path = os.path.join(ASSIGNMENTS_DIRECTORY, 'assignments.csv')
 
-    with open('results/assignments.csv', 'a', newline='') as assignments_csv:
+    with open(results_file_path, 'w', newline='') as assignments_csv:
         csv_writer = csv.writer(assignments_csv, delimiter=',')
         csv_writer.writerow(
             ['Group Number', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Board Member',
@@ -22,7 +25,7 @@ def main():
 
         group_num = 1
         for classroom in vsvs_scheduler.classrooms:
-            if len(classroom.volunteers) >= 3:
+            if len(classroom.volunteers) >= MIN_TEAM_SIZE:
                 for volunteer in classroom.volunteers:
                     csv_writer.writerow(
                         [
@@ -41,14 +44,15 @@ def main():
                     )
                 group_num += 1
 
-    with open('results/unassigned.csv', 'w', newline='') as unassigned_csv:
+    unassigned_file_path = os.path.join(ASSIGNMENTS_DIRECTORY, 'unassigned.csv')
+    with open(unassigned_file_path, 'w', newline='') as unassigned_csv:
         csv_writer = csv.writer(unassigned_csv, delimiter=',')
         csv_writer.writerow(
             [ 'Group', 'First Name', 'Last Name', 'Email', 'Phone Number', 'Team Leader', 'Board Member', 'Teacher',
              'Availability', 'Start', 'End', 'Day']
         )
         for classroom in vsvs_scheduler.classrooms:
-            if len(classroom.volunteers) < 3:
+            if len(classroom.volunteers) < MIN_TEAM_SIZE:
                 csv_writer.writerow(
                     [
                         '',
@@ -67,7 +71,7 @@ def main():
                 )
         csv_writer.writerow(['']*6)
 
-        for volunteer in vsvs_scheduler.individuals:
+        for volunteer in vsvs_scheduler.volunteers:
             if volunteer.group_number == -1:
                 csv_writer.writerow(
                     [

@@ -3,26 +3,25 @@ from datetime import datetime
 from applicants.classroom import Classroom
 from applicants.volunteer import Volunteer
 from applicants.partners import Partners
-from volunteer_data_uploader import VolunteerDataUploader
-from class_data_uploader import ClassDataUploader
-from partner_data_uploader import PartnerDataUploader
+from data_uploader import DataUploader
+from __init__ import MAX_TEAM_SIZE, MIN_TEAM_SIZE, EARLIEST_TIME, LATEST_TIME
+
 
 
 class Scheduler:
-    def __init__(self, earliest: str = "7:15", latest: str = "15:30", max_team_size: int = 5, min_team_size: int = 3):
+    def __init__(self):
         """Scheduler object that holds information about the schedule and the volunteers and classrooms."""
 
-        self.earliest_time = datetime.strptime(earliest, "%H:%M")
-        self.latest_time = datetime.strptime(latest, "%H:%M")
+        self.earliest_time = datetime.strptime(EARLIEST_TIME, "%H:%M")
+        self.latest_time = datetime.strptime(LATEST_TIME, "%H:%M")
 
-        self.individuals: list[Volunteer] = VolunteerDataUploader().applicants
-        self.classrooms: list[Classroom] = ClassDataUploader().applicants
-        self.partners: list[Partners] = PartnerDataUploader(self.individuals).applicants
+        data = DataUploader()
+        self.volunteers: list[Volunteer] = data.volunteers
+        self.classrooms: list[Classroom] = data.classrooms
+        self.partners: list[Partners] = data.partners
 
         self.unassigned_partners = []
         self.incomplete_classrooms = self.classrooms.copy()
-        self.max_size = max_team_size
-        self.min_size = min_team_size
 
 
 
@@ -84,9 +83,9 @@ class Scheduler:
         for group in self.partners:
             while group.group_number == -1 and idx < len(self.incomplete_classrooms):
                 curr_class = self.incomplete_classrooms[idx]
-                if group.can_make_class(curr_class, self.max_size):
+                if group.can_make_class(curr_class, MAX_TEAM_SIZE):
                     group.assign_partners(curr_class)
-                    if len(curr_class.volunteers) >= self.max_size:
+                    if len(curr_class.volunteers) >= MAX_TEAM_SIZE:
                         self.incomplete_classrooms.remove(curr_class)
                 else:
                     idx += 1
@@ -102,19 +101,19 @@ class Scheduler:
 
         self.find_possible_classroom_and_volunteer_matches()
 
-        volunteer_list = self.individuals
+        volunteer_list = self.volunteers
         
         if volunteer_type == "leaders":
-            volunteer_list = [volunteer for volunteer in self.individuals if volunteer.leader_app]
+            volunteer_list = [volunteer for volunteer in self.volunteers if volunteer.leader_app]
         elif volunteer_type == "board":
-            volunteer_list = [volunteer for volunteer in self.individuals if volunteer.board]
+            volunteer_list = [volunteer for volunteer in self.volunteers if volunteer.board]
         
         if volunteer_type == "last_round":
             for volunteer in volunteer_list:
                 idx = 0
                 while volunteer.group_number == -1 and idx < len(self.classrooms):
                     classroom = self.classrooms[idx]
-                    if volunteer.can_make_class_last_round(classroom) and (len(classroom.volunteers) < self.max_size):
+                    if volunteer.can_make_class_last_round(classroom) and (len(classroom.volunteers) < MAX_TEAM_SIZE):
                         classroom.assign_volunteer(volunteer)
                         volunteer.assign_classroom(classroom)
                     else:
@@ -127,7 +126,7 @@ class Scheduler:
                     if volunteer.can_make_class(classroom) and (volunteer_type == "default" or not classroom.team_leader):
                         classroom.assign_volunteer(volunteer)
                         volunteer.assign_classroom(classroom)
-                        if len(classroom.volunteers) >= self.min_size:
+                        if len(classroom.volunteers) >= MIN_TEAM_SIZE:
                             self.incomplete_classrooms.remove(classroom)
                             classroom.freeze_weekday()
                     else:
@@ -140,7 +139,7 @@ class Scheduler:
                     if volunteer.can_make_class(classroom) and (volunteer_type == "default" or not classroom.team_leader):
                         classroom.assign_volunteer(volunteer)
                         volunteer.assign_classroom(classroom)
-                        if len(classroom.volunteers) >= self.min_size:
+                        if len(classroom.volunteers) >= MIN_TEAM_SIZE:
                             self.incomplete_classrooms.remove(classroom)
                     else:
                         idx += 1
@@ -162,7 +161,7 @@ class Scheduler:
 
         for group in self.partners:
             for classroom in self.incomplete_classrooms:
-                if group.can_make_class(classroom, self.max_size):
+                if group.can_make_class(classroom, MAX_TEAM_SIZE):
                     group.increment_possible_classrooms()
                     classroom.possible_partner_groups += 1
         self.partners.sort(key=lambda person: person.possible_classrooms)
@@ -172,12 +171,12 @@ class Scheduler:
         
     def find_possible_classroom_and_volunteer_matches(self):
         """Finds the number of possible classrooms each volunteer can make and the number of possible volunteers each classroom can have."""
-        for volunteer in self.individuals:
+        for volunteer in self.volunteers:
             for classroom in self.incomplete_classrooms:
                 if volunteer.group_number == -1 and volunteer.can_make_class(classroom):
                     volunteer.possible_classrooms += 1
                     classroom.possible_volunteers += 1
-        self.individuals.sort(key=lambda person: person.possible_classrooms)
+        self.volunteers.sort(key=lambda person: person.possible_classrooms)
         self.incomplete_classrooms.sort(key=lambda clsroom: clsroom.possible_volunteers)
 
         
