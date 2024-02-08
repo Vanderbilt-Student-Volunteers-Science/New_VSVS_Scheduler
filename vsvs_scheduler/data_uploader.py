@@ -1,11 +1,11 @@
 import csv
 import os
-from applicants.teacher import Teacher
-from applicants.classroom import Classroom
-from applicants.volunteer import Volunteer
-from applicants.schedule import Schedule
-from applicants.partners import Partners
-from __init__ import CLASSROOM_RAW_DATA_FILE, TEACHER_COLUMNS, VOLUNTEER_COLUMNS, VOLUNTEER_RAW_DATA_FILE, PARTNER_RAW_DATA_FILE, PARTNER_COLUMNS
+from teacher import Teacher
+from classroom import Classroom
+from volunteer import Volunteer
+from schedule import Schedule
+from partners import Partners
+from globals import CLASSROOM_RAW_DATA_FILE, TEACHER_COLUMNS, VOLUNTEER_COLUMNS, VOLUNTEER_RAW_DATA_FILE, PARTNER_RAW_DATA_FILE, PARTNER_COLUMNS
 
 
 class DataUploader():
@@ -15,7 +15,6 @@ class DataUploader():
         self.partners = []
         self.volunteers = []
         self.partners_not_found = []
-        self.import_data()
 
 
 

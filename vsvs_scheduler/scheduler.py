@@ -1,10 +1,10 @@
 import warnings
 from datetime import datetime
-from applicants.classroom import Classroom
-from applicants.volunteer import Volunteer
-from applicants.partners import Partners
+from classroom import Classroom
+from volunteer import Volunteer
+from partners import Partners
 from data_uploader import DataUploader
-from __init__ import MAX_TEAM_SIZE, MIN_TEAM_SIZE, EARLIEST_TIME, LATEST_TIME
+from globals import MAX_TEAM_SIZE, MIN_TEAM_SIZE, EARLIEST_TIME, LATEST_TIME
 
 
 
@@ -16,6 +16,7 @@ class Scheduler:
         self.latest_time = datetime.strptime(LATEST_TIME, "%H:%M")
 
         data = DataUploader()
+        data.import_data()
         self.volunteers: list[Volunteer] = data.volunteers
         self.classrooms: list[Classroom] = data.classrooms
         self.partners: list[Partners] = data.partners

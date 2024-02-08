@@ -1,6 +1,7 @@
 
 from datetime import timedelta, datetime
-from .classroom import Classroom
+from classroom import Classroom
+from globals import TIME_BLOCK_DURATION
 
 
 class Schedule:
@@ -39,7 +40,7 @@ class Schedule:
                     continue
                 availability[day].append(current_time)
             
-            current_time += timedelta(minutes=15)  # look at the next 15 minute time block
+            current_time += timedelta(minutes=TIME_BLOCK_DURATION)  # look at the next 15 minute time block
             idx += 1  
 
         self.find_free_time_duration(availability)
@@ -69,17 +70,17 @@ class Schedule:
                 time_being_tracked_for_availability = day_availability[idx]
 
                 # if the next time block is 15 minutes after the current time block, add 15 minutes to the time available
-                while (idx + 2) <= len(day_availability) and day_availability[idx + 1] == current_time + timedelta(minutes=15):
-                    time_available += 15 
+                while (idx + 2) <= len(day_availability) and day_availability[idx + 1] == current_time + timedelta(minutes=TIME_BLOCK_DURATION):
+                    time_available += TIME_BLOCK_DURATION 
                     idx += 1
-                    current_time += timedelta(minutes=15)
+                    current_time += timedelta(minutes=TIME_BLOCK_DURATION)
                     
                 # if the next time block is not 15 minutes after the current time block, add the time available to the schedule
-                time_available += 15
+                time_available += TIME_BLOCK_DURATION
                 day_schedule[time_being_tracked_for_availability] = time_available
                 time_available = 0 
                 idx += 1
-                current_time += timedelta(minutes=15)
+                current_time += timedelta(minutes=TIME_BLOCK_DURATION)
 
 
                 
@@ -91,7 +92,7 @@ class Schedule:
             weekday = classroom.teacher.weekday
         
         # Standardize the start time to the nearest 15 minute interval
-        time_deviation = classroom.start_time.minute % 15
+        time_deviation = classroom.start_time.minute % TIME_BLOCK_DURATION
         if time_deviation != 0:
             start_time = classroom.start_time - timedelta(minutes=time_deviation)
         else:

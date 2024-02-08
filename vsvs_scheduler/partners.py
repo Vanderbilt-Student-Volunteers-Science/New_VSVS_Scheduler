@@ -1,5 +1,5 @@
-from .volunteer import Volunteer
-from .classroom import Classroom
+from volunteer import Volunteer
+from classroom import Classroom
 
 
 class Partners:

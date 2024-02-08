@@ -1,5 +1,5 @@
-from .classroom import Classroom
-from .schedule import Schedule
+from classroom import Classroom
+from schedule import Schedule
 
 
 class Volunteer:

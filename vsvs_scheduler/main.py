@@ -2,7 +2,7 @@ import csv
 import os
 
 from scheduler import Scheduler
-from __init__ import ASSIGNMENTS_DIRECTORY, MIN_TEAM_SIZE
+from globals import ASSIGNMENTS_DIRECTORY, MIN_TEAM_SIZE
 
 
 def main():
