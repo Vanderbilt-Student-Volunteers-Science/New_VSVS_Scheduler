@@ -1,11 +1,10 @@
-import csv
-import os
-
+import csv, os, logging
 from scheduler import Scheduler
 from globals import ASSIGNMENTS_DIRECTORY, MIN_TEAM_SIZE
 
 
 def main():
+    logging.basicConfig(filename='vsvs_scheduler.log', filemode='w', format='%(levelname)s - %(message)s', level=logging.DEBUG)
 
     vsvs_scheduler = Scheduler()
     partner_errors = vsvs_scheduler.create_assignments()
@@ -82,11 +81,6 @@ def main():
                         volunteer.phone,
                         (lambda x: 'True' if x else '')(volunteer.assigned_leader),
                         (lambda x: 'True' if x else '')(volunteer.board),
-                        '',
-                        [x.strftime('%I:%M %p') for x in volunteer.availability.Monday],
-                        [x.strftime('%I:%M %p') for x in volunteer.availability.Tuesday],
-                        [x.strftime('%I:%M %p') for x in volunteer.availability.Wednesday],
-                        [x.strftime('%I:%M %p') for x in volunteer.availability.Thursday]
                     ]
                 )
 

@@ -3,3 +3,4 @@ data/
 results/
 *__pycache__/
 .vs/
+vsvs_scheduler.log

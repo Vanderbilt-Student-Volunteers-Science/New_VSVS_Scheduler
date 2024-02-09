@@ -22,13 +22,6 @@ class Schedule:
 
         self.processed_schedule = {day: {} for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday']}
 
-        # schedule for each day of the week
-        self.Monday = {}
-        self.Tuesday = {}
-        self.Wednesday = {}
-        self.Thursday = {}
-
-
         self.process_raw_schedule(raw_schedule)
 
     
@@ -147,6 +140,14 @@ class Schedule:
                 idx += 1
 
         return False
+    
+    def __str__(self) -> str:
+        """
+        Returns a string representation of the schedule.
 
+        Returns:
+        str: The string representation of the schedule in the format "Day: {time: duration}".
+        """
+        return str({day: {time.strftime('%I:%M %p'): available_time for time, available_time in day_schedule.items()} for day, day_schedule in self.processed_schedule.items()})
 
 

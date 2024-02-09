@@ -1,4 +1,4 @@
-import warnings
+import warnings, logging
 from classroom import Classroom
 from volunteer import Volunteer
 from partners import Partners
@@ -12,6 +12,7 @@ class Scheduler:
         """
         Scheduler object that holds information about the schedule and the volunteers and classrooms.
         """
+        logging.info('Initializing Scheduler')
 
         # Initialize data uploader and import data
         data = DataUploader()
@@ -22,8 +23,7 @@ class Scheduler:
         self.classrooms: list[Classroom] = data.classrooms
         self.partners:   list[Partners] = data.partners
 
-        # Initialize lists for unassigned partners and incomplete classrooms
-        self.unassigned_partners = []
+        # Initialize list for incomplete classrooms
         self.incomplete_classrooms = self.classrooms.copy()
 
 
@@ -33,8 +33,10 @@ class Scheduler:
         Creates assignments for partners and volunteers to classrooms.
         """
 
+        logging.info('Creating assignments')
+
         # Assign partners to classrooms
-        self.unassigned_partners = self.assign_partners()
+        self.assign_partners()
 
         # Assign volunteers to classrooms based on their roles
         self.assign_volunteers("board")
@@ -44,6 +46,9 @@ class Scheduler:
         num_days_to_try = 4
 
         while num_days_to_try > 0 and self.incomplete_classrooms:
+
+            logging.info(f'Day preference: {5 - num_days_to_try}')
+
             updated_teachers = []
             for classroom in self.incomplete_classrooms:
                 # Unassign volunteers from the classroom
@@ -55,7 +60,8 @@ class Scheduler:
             # Assign volunteers to classrooms
             self.assign_volunteers()
             num_days_to_try -= 1
-
+        
+        logging.info('Second to last round of assignments -- assigning volunteers to classrooms without leaders') 
         # Reset the weekday for teachers of incomplete classrooms
         num_days_to_try = 4
         updated_teachers = []
@@ -76,24 +82,25 @@ class Scheduler:
             self.assign_volunteers("second_to_last_round")
             num_days_to_try -= 1
         
+        logging.info('Last round of assignments -- assigning volunteers to classrooms even if min team size is reached')
          # Assign volunteers in the last round and freeze the weekday for all classrooms
         self.assign_volunteers("last_round")
         for classroom in self.classrooms:
             classroom.freeze_weekday()
 
         # Check for missing team leaders or classrooms without the necessary number of volunteers
-        missing_team_leaders = [classroom for classroom in self.classrooms if not classroom.team_leader]
+        missing_team_leaders = [classroom for classroom in self.classrooms if not classroom.team_leader and len(classroom.volunteers) >= MIN_TEAM_SIZE]
         if missing_team_leaders:
-            warnings.warn(f'WARNING: Classrooms are missing team leaders: {missing_team_leaders}\n')
+            logging.warning(f'WARNING: Classrooms are missing team leaders: {missing_team_leaders}\n')
         if self.incomplete_classrooms:
-            warnings.warn(f'WARNING: Classrooms without necessary number of volunteers {self.incomplete_classrooms}\n')
-        return {"unassigned": self.unassigned_partners}
+            logging.warning(f'WARNING: Classrooms without necessary number of volunteers {self.incomplete_classrooms}\n')
     
     def assign_partners(self):
         """
         Assigns partners to classrooms and returns a list of unassigned partners.
         """
-
+        logging.info('Assigning partners')
+        
         # Find possible matches between classrooms and partners
         self.find_possible_classroom_and_partners_matches()
         idx = 0
@@ -115,8 +122,8 @@ class Scheduler:
             # Add the group to the list of unassigned groups if it couldn't be assigned
             if group.group_number == -1:
                 unassigned_groups.append(group)
-
-        return unassigned_groups
+        
+        logging.info(f'Unassigned partners: {unassigned_groups}')
     
 
 
@@ -125,7 +132,7 @@ class Scheduler:
         Assigns volunteers to classrooms based on the volunteer_type parameter.
         The volunteer_type parameter can be "default", "leaders", "board", "last_round", or "second_to_last_round".
         """
-
+        logging.info(f'Assigning volunteers of type: {volunteer_type}')
         # Find possible matches between classrooms and volunteers
         self.find_possible_classroom_and_volunteer_matches()
 
@@ -192,6 +199,8 @@ class Scheduler:
         Unassigns volunteers for classrooms that are still incomplete.
         Also adds back any classrooms of the teacher of the current classroom that are not already in the list of incomplete classrooms.
         """
+        logging.info('Unassigning volunteers for incomplete classes')
+
         for classroom in self.incomplete_classrooms:
             classroom.teacher.unassign_volunteers()
 
@@ -220,7 +229,7 @@ class Scheduler:
         Finds the number of possible classrooms each volunteer can make and the number of possible volunteers each classroom can have.
         Sorts the volunteers and classrooms based on the number of possible matches.
         """
-        
+
         # find how many classrooms each volunteer can make
         for volunteer in self.volunteers:
             volunteer.possible_classrooms = sum(1 for classroom in self.incomplete_classrooms if volunteer.can_make_class(classroom))

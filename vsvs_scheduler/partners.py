@@ -43,8 +43,4 @@ class Partners:
 
 
     def __repr__(self):
-        result = ""
-        for member in self.members:
-            result += str(member) + ", "
-        result += "\n"
-        return result
+        return str(self.members)

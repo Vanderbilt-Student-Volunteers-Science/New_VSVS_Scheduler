@@ -1,5 +1,4 @@
-import csv
-import os
+import csv, os, logging
 from teacher import Teacher
 from classroom import Classroom
 from volunteer import Volunteer
@@ -18,6 +17,8 @@ class DataUploader():
         """
         Initializes the DataUploader with empty lists for classrooms, partners, volunteers, and partners_not_found.
         """
+        logging.info('Initializing DataUploader...')
+        
         self.classrooms = []
         self.partners = []
         self.volunteers = []
@@ -31,6 +32,10 @@ class DataUploader():
         Raises FileNotFoundError if a file does not exist.
         Raises ValueError if an invalid file name is encountered.
         """
+        logging.info('Importing data from CSV files...')
+        logging.debug(f'Current directory {os.path.abspath(os.getcwd())}')
+        logging.debug(f'Files to import: {CLASSROOM_RAW_DATA_FILE}, {VOLUNTEER_RAW_DATA_FILE}, {PARTNER_RAW_DATA_FILE}')
+
         files = [CLASSROOM_RAW_DATA_FILE, VOLUNTEER_RAW_DATA_FILE, PARTNER_RAW_DATA_FILE]
 
         for file_name in files:
@@ -54,6 +59,9 @@ class DataUploader():
                         self.process_partner_data(row)
                 else:
                     raise ValueError(f"Invalid file name: {file_name}")
+
+        logging.info('Data imported successfully.')
+        logging.debug(f'Total classrooms: {len(self.classrooms)}, Total volunteers: {len(self.volunteers)}, Total partners: {len(self.partners)}')
     
     
     def process_classroom_data(self, row: dict):
@@ -62,6 +70,8 @@ class DataUploader():
         Creates a Teacher and Classroom instance for each class a teacher has.
         Adds the Classroom instance to the classrooms list.
         """
+        logging.debug(f'{row[TEACHER_COLUMNS.NAME.value]} -- no. classes: {row[TEACHER_COLUMNS.NUM_CLASSES.value]}')
+
         group_num = 0
 
         number_of_classes = int(row[TEACHER_COLUMNS.NUM_CLASSES.value])
@@ -98,6 +108,9 @@ class DataUploader():
         Processes a row of volunteer data from the CSV file.
         Creates a Volunteer instance and adds it to the volunteers list.
         """
+        logging.debug(f'{row[VOLUNTEER_COLUMNS.FIRST_NAME.value]} {row[VOLUNTEER_COLUMNS.LAST_NAME.value]}')
+
+
         volunteer = Volunteer(
             first        = row[VOLUNTEER_COLUMNS.FIRST_NAME.value].strip().lower().capitalize(),
             last         = row[VOLUNTEER_COLUMNS.LAST_NAME.value].strip().lower().capitalize(),
@@ -107,6 +120,8 @@ class DataUploader():
             schedule     = Schedule(list(row.values())[15:55]),
             board_member = (lambda current_board_member: True if current_board_member == 'Yes' else False)(row[VOLUNTEER_COLUMNS.BOARD.value])
         )
+
+        logging.debug(f'{volunteer.availability}')
 
         self.volunteers.append(volunteer)
     
