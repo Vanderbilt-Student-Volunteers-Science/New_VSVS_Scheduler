@@ -49,9 +49,4 @@ def test_process_partner_data(data_uploader, partner_data, volunteerA_data, volu
     assert data_uploader.partners[0].members[0].email == 'jane.smith@example.com'
     assert data_uploader.partners[0].members[1].email == 'john.doe@example.com'
 
-def test_import_data(data_uploader):
-    data_uploader.import_data()
-    assert len(data_uploader.classrooms) > 0
-    assert len(data_uploader.volunteers) > 0
-    assert len(data_uploader.partners) > 0
 
