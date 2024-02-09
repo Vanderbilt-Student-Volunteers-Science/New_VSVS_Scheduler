@@ -1,15 +1,26 @@
 
 from datetime import timedelta, datetime
 from classroom import Classroom
-from globals import TIME_BLOCK_DURATION
+from globals import TIME_BLOCK_DURATION, EARLIEST_TIME, LATEST_TIME
 
 
 class Schedule:
+    """
+    The Schedule class represents a schedule for a volunteer.
+    It holds information about the volunteer's availability for each day of the week.
+    """
     def __init__(self, raw_schedule: list) -> None:
-        """ Initializes the schedule object """
+        """
+        Initializes a Schedule object with the given raw schedule.
 
-        self.first_time = datetime.strptime("7:15", "%H:%M")
-        self.last_time = datetime.strptime("17:15", "%H:%M")
+        Parameters:
+        raw_schedule (list): The raw schedule to process.
+        """
+
+        self.earliest_time = datetime.strptime(EARLIEST_TIME, "%H:%M")
+        self.latest_time = datetime.strptime(LATEST_TIME, "%H:%M")
+
+        self.processed_schedule = {day: {} for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday']}
 
         # schedule for each day of the week
         self.Monday = {}
@@ -17,24 +28,28 @@ class Schedule:
         self.Wednesday = {}
         self.Thursday = {}
 
-        self.processed_schedule = {'Monday': self.Monday, 
-                                   'Tuesday': self.Tuesday, 
-                                   'Wednesday': self.Wednesday, 
-                                   'Thursday': self.Thursday}
 
         self.process_raw_schedule(raw_schedule)
 
     
 
     def process_raw_schedule(self, raw_schedule: list) -> dict:
-        """ Processes the raw schedule into a dictionary of the form {day: {time: duration}} """
+        """
+        Processes the raw schedule into a dictionary of the form {day: {time: duration}}.
+
+        Parameters:
+        raw_schedule (list): The raw schedule to process.
+
+        Returns:
+        dict: The processed schedule.
+        """
 
         availability = {'Monday': [], 'Tuesday': [], 'Wednesday': [], 'Thursday': []}
-        current_time = self.first_time
+        current_time = self.earliest_time
         idx = 0
 
 
-        while current_time < self.last_time:
+        while current_time < self.latest_time:
             for day in raw_schedule[idx].split(', '): 
                 if day == "": 
                     continue
@@ -48,7 +63,12 @@ class Schedule:
 
 
     def find_free_time_duration(self, availability: dict):
-        """ Finds the duration of free time for each time block in the schedule """
+        """
+        Finds the duration of free time for each time block in the schedule.
+
+        Parameters:
+        availability (dict): The availability dictionary to process.
+        """
 
         for day, day_availability in availability.items(): 
 
@@ -85,7 +105,16 @@ class Schedule:
 
                 
     def can_make_class(self, classroom: Classroom, last_round: bool = False) -> bool:
-        """ Returns True if the volunteer can make the class, False otherwise."""
+        """
+        Returns True if the volunteer can make the class, False otherwise.
+
+        Parameters:
+        classroom (Classroom): The classroom to check.
+        last_round (bool): Whether this is the last round of scheduling.
+
+        Returns:
+        bool: True if the volunteer can make the class, False otherwise.
+        """
         if last_round and classroom.weekday != None:
             weekday = classroom.weekday
         else:

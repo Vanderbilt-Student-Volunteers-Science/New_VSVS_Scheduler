@@ -9,8 +9,15 @@ from globals import CLASSROOM_RAW_DATA_FILE, TEACHER_COLUMNS, VOLUNTEER_COLUMNS,
 
 
 class DataUploader():
-    def __init__(self):
+    """
+    The DataUploader class is responsible for importing and processing data from CSV files.
+    It creates instances of Teacher, Classroom, Volunteer, and Partners based on the data.
+    """
 
+    def __init__(self):
+        """
+        Initializes the DataUploader with empty lists for classrooms, partners, volunteers, and partners_not_found.
+        """
         self.classrooms = []
         self.partners = []
         self.volunteers = []
@@ -18,9 +25,12 @@ class DataUploader():
 
 
 
-    def import_data(self) -> str:
-        """ Prompt user for file path to csv/excel file."""
-
+    def import_data(self):
+        """
+        Imports data from CSV files. The files are defined in the globals.py file.
+        Raises FileNotFoundError if a file does not exist.
+        Raises ValueError if an invalid file name is encountered.
+        """
         files = [CLASSROOM_RAW_DATA_FILE, VOLUNTEER_RAW_DATA_FILE, PARTNER_RAW_DATA_FILE]
 
         for file_name in files:
@@ -47,7 +57,11 @@ class DataUploader():
     
     
     def process_classroom_data(self, row: dict):
-        """ Process row data from csv/excel file into Classroom objects."""
+        """
+        Processes a row of classroom data from the CSV file.
+        Creates a Teacher and Classroom instance for each class a teacher has.
+        Adds the Classroom instance to the classrooms list.
+        """
         group_num = 0
 
         number_of_classes = int(row[TEACHER_COLUMNS.NUM_CLASSES.value])
@@ -80,6 +94,10 @@ class DataUploader():
             self.classrooms.append(classroom)
     
     def process_volunteer_data(self, row: dict):
+        """
+        Processes a row of volunteer data from the CSV file.
+        Creates a Volunteer instance and adds it to the volunteers list.
+        """
         volunteer = Volunteer(
             first        = row[VOLUNTEER_COLUMNS.FIRST_NAME.value].strip().lower().capitalize(),
             last         = row[VOLUNTEER_COLUMNS.LAST_NAME.value].strip().lower().capitalize(),
@@ -93,7 +111,13 @@ class DataUploader():
         self.volunteers.append(volunteer)
     
     def process_partner_data(self, row: dict):
-        """ Process row data from csv/excel file into Partner objects."""
+        """
+        Processes a row of partner data from the CSV file.
+        Creates a Partners instance if there is more than one partner in a group.
+        Adds the Partners instance to the partners list.
+        If the number of partners in the group is less than the number specified in the CSV file,
+        adds the partner emails to the partners_not_found list.
+        """
 
         number_of_partners = int(row[PARTNER_COLUMNS.NUM_PARTNERS.value])
         partner_emails = [row[PARTNER_COLUMNS.EMAIL.value].lower()]
