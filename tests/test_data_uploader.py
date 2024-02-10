@@ -1,6 +1,6 @@
 import pytest
-from vsvs_scheduler.data_uploader import DataUploader
-from vsvs_scheduler.globals import TEACHER_COLUMNS, VOLUNTEER_COLUMNS, PARTNER_COLUMNS
+from src.data_uploader import DataUploader
+from src.globals import TEACHER_COLUMNS, VOLUNTEER_COLUMNS, PARTNER_COLUMNS
 
 @pytest.fixture
 def data_uploader():
