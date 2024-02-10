@@ -1,6 +1,6 @@
 import pytest
 from src.data_uploader import DataUploader
-from src.globals import TEACHER_COLUMNS, VOLUNTEER_COLUMNS, PARTNER_COLUMNS
+from src.globals import TEACHER_COLUMNS, VOLUNTEER_COLUMNS
 
 @pytest.fixture
 def data_uploader():
