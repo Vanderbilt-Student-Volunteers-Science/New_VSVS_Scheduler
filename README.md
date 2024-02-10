@@ -23,7 +23,7 @@ You will want to create a folder called `data/` inside this repo and add all the
 ---
 ***Note:*** \
 It's not strictly necessary that this folder be called data.
-However, if you choose to call your folder or the files something different you will need to update the following variables inside of [globals.py](vsvs_scheduler/globals.py):\
+However, if you choose to call your folder or the files something different you will need to update the following variables inside of [globals.py](src/globals.py):\
 `CLASSROOM_RAW_DATA_FILE` 
 \
 `VOLUNTEER_RAW_DATA_FILE`
@@ -38,11 +38,11 @@ This will ensure that the files inside the folder are not uploaded to GitHub and
 
 ----
 
-Before running the script, double check that all the column names in the csv files match the column in [globals.py](vsvs_scheduler/globals.py)
+Before running the script, double check that all the column names in the csv files match the column in [globals.py](src/globals.py)
 
 Now you're ready to run the script!
 The program can be run through the main method in
- [vsvs_scheduler/main.py](vsvs_scheduler/main.py) 
+ [src/main.py](src/main.py) 
  Assuming successful operations, there will be one output file generated: `results/assignments.csv` which will contain team assignments. 
 
  
@@ -59,7 +59,7 @@ This repository has/will have the following files:
 - tests/
     - conftest.py (contains fake data for test)
     - test_data_uploader.py (tests data_uploader)
-- vsvs_scheduler/
+- src/
     - classroom.py (Classroom class)
     - data_uploader.py (DataUploader class collects input from files)
     - globals.py (list of constants)
