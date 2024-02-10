@@ -8,7 +8,6 @@ def main():
 
     vsvs_scheduler = Scheduler()
     partner_errors = vsvs_scheduler.create_assignments()
-    print(partner_errors)
 
     if not os.path.isdir(ASSIGNMENTS_DIRECTORY):
         os.mkdir(ASSIGNMENTS_DIRECTORY)

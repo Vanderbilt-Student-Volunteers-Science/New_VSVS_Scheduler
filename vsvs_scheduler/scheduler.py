@@ -1,4 +1,4 @@
-import warnings, logging
+import logging
 from classroom import Classroom
 from volunteer import Volunteer
 from partners import Partners

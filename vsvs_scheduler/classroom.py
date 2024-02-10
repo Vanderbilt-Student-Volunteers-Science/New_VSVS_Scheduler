@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from time import strftime
 from teacher import Teacher
+from globals import TRAVEL_TIME_HOURS
 
 
 class Classroom:
@@ -83,7 +84,7 @@ class Classroom:
         Returns:
         int: The duration of the class in minutes.
         """
-        return (self.end_time - self.start_time + timedelta(hours=1)).seconds/60
+        return (self.end_time - self.start_time + timedelta(hours=TRAVEL_TIME_HOURS)).seconds/60
     
 
     def __repr__(self):

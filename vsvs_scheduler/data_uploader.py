@@ -149,7 +149,7 @@ class DataUploader():
         for partner in group:
             duplicates = [partner_group for partner_group in self.partners if partner in partner_group.members]
             if len(duplicates) != 0 and len(group) > 1:
-                    print(f'{partner.email} was in 2 groups. One deleted.')
+                    logging.info(f'{partner.email} was in 2 groups. One deleted.')
                     self.partners.remove(duplicates[0])
 
         if len(group) > 1:

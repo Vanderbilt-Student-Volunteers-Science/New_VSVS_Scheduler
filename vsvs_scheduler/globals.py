@@ -35,6 +35,8 @@ LATEST_TIME = "15:30"
 # Duration of each time block in minutes
 TIME_BLOCK_DURATION = 15
 
+TRAVEL_TIME_HOURS = 1
+
 # Maximum and minimum team sizes
 MAX_TEAM_SIZE = 5
 MIN_TEAM_SIZE = 3
