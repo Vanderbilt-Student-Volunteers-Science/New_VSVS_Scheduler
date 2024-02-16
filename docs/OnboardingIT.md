@@ -15,13 +15,13 @@ Welcome to our project! This document will guide you through setting up your dev
         * 1.4.2. [Using the PyCharm](#142-using-pycharm)
    - 1.5. [Setting Up a Virtual Environment](#15-setting-up-a-virtual-environment)
         * 1.5.1. [Using the Command Line](#151-using-the-commandline)
-        * 1.5.2.[Using PyCharm](#152-using-pycharm)
+        * 1.5.2.[Using VSCode](#152-using-pycharm)
         
 2. [Development Workflow](#2-development-workflow)
    - 2.1. [Branching Strategy](#21-branching-strategy)
    - 2.2. [Creating a Branch and Saving Changes](#22-creating-a-branch-and-saving-changes)
-        *2.2.1. [Using the Command Line](#221-using-the-command-line)
-        *2.1.2. [Using PyCharm](#222-using-pycharm)
+        * 2.2.1. [Using the Command Line](#221-using-the-command-line)
+        * 2.1.2. [Using VSCode](#222-using-pycharm)
    - 2.3. [Your First Pull Request](#22-your-first-pull-request-pr)
    
 
@@ -229,7 +229,8 @@ If you've never created a pull request before or made a branch or anything like 
 
 ### 3.1. Git & GitHub Resources
 
-- If you're new to git and/or github please read the following [blogpost](https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/) from freecodecamp. 
+- If you're new to git and/or github please read the following [blogpost](https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/) from freecodecamp.
+- Here's another [blogpost](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners) targeted at beginners. 
 
     By the end you should understand: 
     * What is a repository/repo?  
