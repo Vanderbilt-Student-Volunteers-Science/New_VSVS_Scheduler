@@ -242,5 +242,6 @@ If you've never created a pull request before or made a branch or anything like 
 ### 3.2. Python Resources
 
 - If you're totally new to Python this [site](https://www.py4e.com/lessons) has free lessons. I would recommend workign your way through through lessons 3-11 and 15.
+- Vanderbilt also has many resources. [Here](https://heardlibrary.github.io/digital-scholarship/script/python/lessons/) is a series of lessons. There are also usually in-person workshops every semester that you can find at the same link. [Here](https://heardlibrary.github.io/digital-scholarship/script/python/) is a list of more resources provided by Vanderbilt for learning Python. 
 
 
