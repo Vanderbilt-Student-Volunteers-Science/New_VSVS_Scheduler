@@ -5,7 +5,35 @@
 **Description**: Imports data from data/classrooms.csv, data/individuals.csv, and data/partners.csv and assigns
  volunteers to groups. 
 
+ **For new IT members**: Please read the [onboarding documentation](docs/OnboardingIT.md) for in-depth instructions on how to setup your development environment. 
+ 
+## Table of Contents
+- [About](#about)
+- [Applications](#applications)
+- [Input File Prep](#input-file-prep)
+- [Repository Structure](#repository-structure)
+
+## About
+
+VSVS teaches interactive, hands-on science lessons to students in 5th-8th grade classrooms from the Metro Nashville
+Public School System. Our volunteers get assigned to a classroom, where they teach at the same time each week for 4
+consecutive weeks. All lessons are Monday - Thursday, with the earliest ones starting at 7:45 AM and the latest
+lessons ending around 5:00 PM.
+Each VSVS team of volunteers has 2-3 students in addition to a team leader. The goal of our Python script is to assign
+volunteers to classrooms with a lesson time that fits into their schedule.
+
+## Applications
+
+VSVS has 3 different types of applications for people who want to be involved.
+- **Teacher Applications**: application for teachers who would like to have VSVS teams visit their classrooms to teach lessons. 
+- **Volunteer Applications**: application for Vanderbilt students (both undergraduate and graduate) volunteers who want to teach lessons. 
+- **Partner Applications**: application for volunteers who would like to be in a team with specific people.
+  
+    * *****ONE PERSON*** from the group needs to fill out a partner application and ***EVERYONE*** needs to submit their own individual application.**
+    * For instance, if 3 friends decied they want to be in the same group, we should receive 3 individual applications and 1 partner application. 
+
 ## Input File Prep
+
 You will need the applications from volunteers, partners, and teachers. 
 Currently we use Google Forms for this. 
 \
