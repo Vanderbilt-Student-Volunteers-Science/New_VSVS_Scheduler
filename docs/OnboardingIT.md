@@ -12,10 +12,9 @@ Welcome to our project! This document will guide you through setting up your dev
    - 1.3. [Installing Python & PyCharm](#13-installing-python--pycharm)
    - 1.4. [Cloning the Repositoy](#14-cloning-the-repository)
         * 1.4.1. [Using the Command Line](#141-using-the-commandline)
-        * 1.4.2. [Using the PyCharm](#142-using-pycharm)
+        * 1.4.2. [Using VSCode](#142-using-VSCode)
    - 1.5. [Setting Up a Virtual Environment](#15-setting-up-a-virtual-environment)
         * 1.5.1. [Using the Command Line](#151-using-the-commandline)
-        * 1.5.2.[Using VSCode](#152-using-pycharm)
         
 2. [Development Workflow](#2-development-workflow)
    - 2.1. [Branching Strategy](#21-branching-strategy)
@@ -27,6 +26,7 @@ Welcome to our project! This document will guide you through setting up your dev
 
 3. [Getting Help and Learning Resources](#3-getting-help-and-learning-resources)
    - 3.1. [Git & GitHub Resources](#31-git--github-resources)
+   - 3.2. [Python Resources](#32-python-resources)
 
 ---
 
@@ -93,7 +93,7 @@ You can download the VSCode Editor [here](https://code.visualstudio.com/).
 3. Verify that it worked. You should navigate to the directory in the file explorer or in the terminal and verify that the contents match those of the remote repository. 
 
 #### 1.4.2. Using VSCode
-Alternatively, you can use VSCode's GUI to clone the repository. [This guide](https://code.visualstudio.com/docs/sourcecontrol/github) walks you through the extensions you need to install and any extra steps you need to take to be able to clone a repo in the GUI. 
+Alternatively, you can use VSCode's GUI to clone the repository. [This guide](https://code.visualstudio.com/docs/sourcecontrol/overview#_cloning-a-repository) walks you through how to clone a repo in the GUI. 
 
 ### 1.5. Setting Up a Virtual Environment
 
@@ -238,3 +238,9 @@ If you've never created a pull request before or made a branch or anything like 
     * What is a remote repo vs a local repo?
 
 - Follow [this](https://github.com/skills/introduction-to-github) hands-on mini-tutorial for an introduction to github including how to make a repo, commit, and push changes.
+
+### 3.2. Python Resources
+
+- If you're totally new to Python this [site](https://www.py4e.com/lessons) has free lessons. I would recommend workign your way through through lessons 3-11 and 15.
+
+
